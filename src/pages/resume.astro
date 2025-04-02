@@ -17,7 +17,25 @@ function getAge(dateString: string) {
     return age;
 }
 
-let age = getAge("10/28/1988");
+const age = getAge("10/28/1988");
+
+const projects = [
+    {
+        title: "CleanerXcode",
+        url: "https://github.com/didisouzacosta/CleanerXcode",
+        description: "CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data."
+    },
+    {
+        title: "Formidable",
+        url: "https://github.com/didisouzacosta/Formidable",
+        description: "The Formidable protocol is designed for objects that manage forms composed of multiple FormField components. By conforming to this protocol, you can leverage built-in functionality to validate, reset, and check the validity of all form fields at once."
+    },
+    {
+        title: "Uncompress",
+        url: "https://github.com/didisouzacosta/uncompress-react-native",
+        description: "Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native."
+    }
+]   
 
 ---
 
@@ -92,41 +110,21 @@ let age = getAge("10/28/1988");
                 <h3 class="black">Projects</h3>
 
                 <ul>
-                    <li>
-                        <h4 class="black">
-                            <a href="https://github.com/didisouzacosta/CleanerXcode" target="_blank">
-                                CleanerXcode
-                            </a>
-                        </h4>
+                    {
+                        projects.map((project) => {
+                            return <li>
+                                <h4 class="black">
+                                    <a href={project.url} aria-label={project.title} target="_blank">
+                                        {project.title}
+                                    </a>
+                                </h4>
 
-                        <p>
-                            CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data.
-                        </p>
-                    </li>
-
-                    <li>
-                        <h4 class="black">
-                            <a href="https://github.com/didisouzacosta/Formidable" target="_blank">
-                                Formidable
-                            </a>
-                        </h4>
-                        
-                        <p>
-                            The Formidable protocol is designed for objects that manage forms composed of multiple FormField components. By conforming to this protocol, you can leverage built-in functionality to validate, reset, and check the validity of all form fields at once.
-                        </p>
-                    </li>
-
-                    <li>
-                        <h4 class="black">
-                            <a href="https://github.com/didisouzacosta/uncompress-react-native" target="_blank">
-                                Uncompress
-                            </a>
-                        </h4>
-                        
-                        <p>
-                            Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native.
-                        </p>
-                    </li>
+                                <p>
+                                    {project.description}
+                                </p>
+                            </li>
+                        })
+                    }
                 </ul>
 
             </section>
