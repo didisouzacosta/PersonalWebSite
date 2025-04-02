@@ -8,16 +8,12 @@ import Projects from './Projects.astro';
 <div id="container">
 	<main>
 		<section>
-			<a href="https://github.com/didisouzacosta">
-				<Image src="https://avatars.githubusercontent.com/u/11352503?v=4" alt="Adriano Souza Costa" width="120" height="120" loading="eager" priority={true} class="avatar"/>
-			</a>
+			<Image src="https://avatars.githubusercontent.com/u/11352503?v=4" alt="Adriano Souza Costa" width="120" height="120" loading="eager" priority={true} class="avatar"/>
 			
 			<h1 class="name black">
 				Adriano Souza Costa
 			</h1>
-		</section>
 
-		<section>
 			<p class="profession">
 				iOS/MacOS Developer
 			</p>
@@ -25,10 +21,19 @@ import Projects from './Projects.astro';
 			<p class="black">
 				Swift • SwiftUI • UIKit •  Objective-C • SwiftData/CoreData • CI/CD • React Native
 			</p>
+		</section>
 
+		<section>
 			<p>
-				I specialize in developing for Apple platforms iOS and macOS, priorizing user experience and design excellence. Collaborating with cross-functional teams, delivery through intuitive app interfaces using Swift, SwiftUI, UIKit, Objective-C or React Native.
+				iOS/macOS Developer with 10+ years of experience in Swift, SwiftUI, and UIKit, working on the development of scalable apps with a strong focus on UX, performance, and clean architecture. Solid expertise in integrating REST APIs, iCloud, and Apple technologies. Seeking new challenges in impactful projects.
 			</p>
+
+			<section id="resume">
+				<a href="/resume" class="resume-link">
+					<span>See my resume</span> 
+					<Icon name="right-arrow" width={12} height={12}/>
+				</a>
+			</section>
 
 			<p id="social">
 				<a href="https://x.com/didisouzacosta" target="_blank" aria-label="X" aria-labelledby="X">
@@ -80,15 +85,40 @@ import Projects from './Projects.astro';
 	}
 
 	#social {
+		display: flex;
 		margin-top: 32px;
+  		align-items: center;
 	}
 
 	#social a + a {
-    	margin-left: 8px;
+    	margin-left: 16px;
+	}
+
+	#resume {
+		margin-top: 32px;
+		margin-bottom: 48px;
+	}
+
+	#resume a.resume-link {
+		background-color: black;
+		color: white;
+		padding: 8px 12px 8px 12px;
+		border-radius: 8px;
+	}
+
+	#resume a.resume-link span {
+		margin-right: 4px;
 	}
 
 	.social-icon {
 		width: 22px;
 		height: 22px;
 	}
+
+	@media (prefers-color-scheme: dark) {
+    #resume a.resume-link {
+		background-color: white;
+		color: black;
+	}
+}
 </style>

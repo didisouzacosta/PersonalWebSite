@@ -1,8 +1,195 @@
 ---
-import AboutMe from '../components/AboutMe.astro';
+import { Image } from 'astro:assets';
+
 import Layout from '../layouts/Layout.astro';
+
+
+function getAge(dateString: string) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+let age = getAge("10/28/1988");
+
 ---
 
 <Layout>
-	<AboutMe />
+	<div id="container">
+        <main>
+            <section class="me">
+                <Image src="https://avatars.githubusercontent.com/u/11352503?v=4" alt="Adriano Souza Costa" width="120" height="120" loading="eager" priority={true} class="avatar"/>
+                
+                <h1 class="name black">
+                    Adriano Souza Costa
+                </h1>
+
+                <p>
+                    <strong class="black">Age:</strong> {age} years old
+                </p>
+
+                <p>
+                    <strong class="black">City / State / Country:</strong> Bicas • Minas Gerais • Brazil
+                </p>
+
+                <p>
+                    <strong class="black">Phone:</strong> <a href="tel:+5532991147881">(+55) 32 99114.7881</a>
+                </p>
+
+                <p>
+                    <strong class="black">Mail:</strong> <a href="mailTo:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>
+                </p>
+
+                <p>
+                    <strong class="black">Linkedin:</strong> <a href="https://www.linkedin.com/in/adrianosouzacosta">linkedin.com/in/adrianosouzacosta</a>
+                </p>
+
+                <p>
+                    <strong class="black">Github:</strong> <a href="https://github.com/didisouzacosta">github.com/didisouzacosta</a>
+                </p>
+                
+                <p>
+                    <strong class="black">Website:</strong> <a href="https://adrianosouzacosta.com.br">adrianosouzacosta.com.br</a>
+                </p>
+            </section>
+
+            <section>
+                <h3 class="black">Professional summary</h3>
+                <p>
+                    iOS / macOS Developer with 10+ years of experience in Swift, SwiftUI, Objective-C and UIKit, working on the development of scalable apps with a strong focus on UX, performance, and clean architecture. Solid expertise in integrating REST APIs, iCloud, and Apple technologies. Seeking new challenges in impactful projects.
+                </p>
+
+            </section>
+
+            <section>
+                <h3 class="black">Skills</h3>
+
+                <ul>
+                    <li><strong class="black">Languages:</strong> Swift, Objective-C and React Native.</li>
+                    <li><strong class="black">Frameworks:</strong> SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, ManagedSettings, Foundation and AudioKit.</li>
+                    <li><strong class="black">Tools:</strong> Xcode, Git, Fastlane, Firebase, Github Actions and Travis.</li>
+                    <li><strong class="black">Architectures:</strong> MV,  MVC,  MVP, MVVM, MVVMC and Clean Architecture.</li>
+                    <li><strong class="black">Other:</strong> Unit tests, CI/CD, Apple Store Connect, Distribute apps out of Apple Store.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">Work experience</h3>
+            </section>
+
+            <section>
+                <h3 class="black">Education</h3>
+            </section>
+
+            <section id="projects">
+                <h3 class="black">Projects</h3>
+
+                <ul>
+                    <li>
+                        <h4 class="black">
+                            <a href="https://github.com/didisouzacosta/CleanerXcode" target="_blank">
+                                CleanerXcode
+                            </a>
+                        </h4>
+
+                        <p>
+                            CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h4 class="black">
+                            <a href="https://github.com/didisouzacosta/Formidable" target="_blank">
+                                Formidable
+                            </a>
+                        </h4>
+                        
+                        <p>
+                            The Formidable protocol is designed for objects that manage forms composed of multiple FormField components. By conforming to this protocol, you can leverage built-in functionality to validate, reset, and check the validity of all form fields at once.
+                        </p>
+                    </li>
+
+                    <li>
+                        <h4 class="black">
+                            <a href="https://github.com/didisouzacosta/uncompress-react-native" target="_blank">
+                                Uncompress
+                            </a>
+                        </h4>
+                        
+                        <p>
+                            Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native.
+                        </p>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section>
+                <h3 class="black">Idioms</h3>
+
+                <ul>
+                    <li><strong class="black">English:</strong> Intermediate (A2).</li>
+                    <li><strong class="black">Portuguese:</strong> Native.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <style>
+        h1 {
+            font-size: 32px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        section.me p {
+            margin: 0px;
+            padding: 0px;
+            margin-bottom: 4px;
+        }
+
+        section.me h1 {
+            margin-bottom: 22px;
+        }
+
+        img.avatar {
+            border-radius: 50%;
+        }
+    
+        #container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        #projects h4 {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #projects li {
+            margin: 0px 0px 16px 0px;
+        }
+
+        #projects li:last-child {
+            margin: 0px;
+        }
+
+        #projects li p {
+            margin: 8px 0px 0px 0px;
+            padding: 0px;
+        }
+    }
+    </style>
 </Layout>
