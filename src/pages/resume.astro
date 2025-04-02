@@ -46,7 +46,7 @@ const certificates = [
         url: "https://www.udemy.com/certificate/UC-d39e7010-e6d8-4694-b2ca-d2ade49a00f2"
     },
     {
-        title: "Agile gestion with Scrum",
+        title: "Agile Management With Scrum",
         url: "https://www.udemy.com/certificate/UC-SAH7BYIK/"
     }
 ]
@@ -67,7 +67,82 @@ const projects = [
         url: "https://github.com/didisouzacosta/uncompress-react-native",
         description: "Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native."
     }
-]   
+]
+
+const works = [
+    {
+        title: "iOS Developer",
+        company: "ProDoctor",
+        period: "Augost 2021 - Present",
+        locale: "Remote",
+        description: "Developing native health apps for iOS using Swift and Objective-C, with a focus on user experience, design, and best development practices. Implementing CI/CD pipelines and publishing on the Apple Store.",
+        skills: "Swift, Objective-C, StoryBoards, CI/CD, Design"
+    },
+    {
+        title: "iOS Instructor Assistent",
+        company: "Digital House Brazil",
+        period: "August 2021 - August 2022",
+        locale: "Remote",
+        description: "Support and co-host on the iOS classes.",
+        skills: "Swift, StoryBoards, CI/CD, Apple Store"
+    },
+    {
+        title: "iOS Specialist",
+        company: "Wiser Educação",
+        period: "March 2021 - August 2021",
+        locale: "Remote",
+        description: "iOS development in the educational software sector, with a focus on user experience, design, and software quality through best development practices, automated testing, and continuous integration. Creation of optimized components for React Native.",
+        skills: "Swift, CI/CD, React Native, Apple Store, Android"
+    },
+    {
+        title: "iOS Developer",
+        company: "Consulta Remédios",
+        period: "April 2019 - March 2021",
+        locale: "Remote",
+        description: "iOS development for a health marketplace, with a focus on user experience, design, and software quality through best development practices, automated testing, and continuous integration.",
+        skills: "Swift, CI/CD, React Native, Apple Store, Design"
+    },
+    {
+        title: "iOS Developer",
+        company: "ProDoctor",
+        period: "Augost 2016 - April 2019",
+        locale: "Remote",
+        description: "Developing native health apps for iOS using Swift and Objective-C, with a focus on user experience, design, and best development practices. Implementing CI/CD pipelines and publishing on the Apple Store.",
+        skills: "Swift, Objective-C, StoryBoards, CI/CD, Design"
+    },
+    {
+        title: "iOS Developer",
+        company: "Handcom",
+        period: "April 2015 - July 2016",
+        locale: "OnSite",
+        description: "Developing native health apps for iOS using Swift and Objective-C with a focus on user experience, design, and best development practices.",
+        skills: "Swift, Objective-C, StoryBoards, CI/CD, Design"
+    },
+    {
+        title: "Developer",
+        company: "Appta",
+        period: "Octuber 2013 - April 2015",
+        locale: "OnSite",
+        description: "Front-end development for iOS/Android and back-end development for various sectors and markets, with a focus on user experience, design, and software quality through best development practices. Responsible for team management and organization.",
+        skills: "Swift, Objective-C, StoryBoards, CI/CD, Design, Android and DevOps"
+    },
+    {
+        title: "Junior Software Developer",
+        company: "Brazip",
+        period: "November 2012 - November 2013",
+        locale: "OnSite",
+        description: "iOS/Android/Flex development focused on support and chat applications, always prioritizing user experience, design, and software quality through best development practices.",
+        skills: "Objective-C, StoryBoards, Design, Android"
+    },
+    {
+        title: "Design / Fullstack Developer",
+        company: "Trópico Propaganda",
+        period: "Octuber 2008 - Octuber 2012",
+        locale: "OnSite",
+        description: "Designer and Flash developer.",
+        skills: "Flash, HTML, CSS, PHP, MySQL, Corel Draw, Photoshop, Design"
+    }
+]
 
 ---
 
@@ -82,11 +157,15 @@ const projects = [
                 </h1>
 
                 <p>
+                    <strong class="black">Open to:</strong> Remote
+                </p>
+
+                <p>
                     <strong class="black">Age:</strong> {age} years old
                 </p>
 
                 <p>
-                    <strong class="black">City / State / Country:</strong> Bicas • Minas Gerais • Brazil
+                    <strong class="black">Living in:</strong> Bicas • Minas Gerais • Brazil
                 </p>
 
                 <p>
@@ -132,6 +211,27 @@ const projects = [
 
             <section>
                 <h3 class="black">Work experience</h3>
+
+                <ul class="list">
+                    {
+                        works.map((work) => {
+                            return <li>
+                                <h4 class="black">
+                                    {work.title}<br/>
+                                    <span class="subtitle">{work.company} • {work.period}</span><br/>
+                                </h4>
+
+                                <p>
+                                    {work.description}
+                                </p>
+
+                                <p>
+                                    <strong class="black">Skills:</strong> {work.skills}
+                                </p>
+                            </li>
+                        })
+                    }
+                </ul>
             </section>
 
             <section>
@@ -143,7 +243,7 @@ const projects = [
                             return <li>
                                 <h4 class="black">
                                     {education.title}<br/>
-                                    <span class="subtitle">{education.intitution} - {education.period}</span><br/>
+                                    <span class="subtitle">{education.intitution} • {education.period}</span><br/>
                                 </h4>
 
                                 <p>
@@ -156,7 +256,7 @@ const projects = [
             </section>
 
             <section>
-                <h3 class="black">Certificates</h3>
+                <h3 class="black">Licenses & Certificates</h3>
 
                 <ul class="list">
                     {
@@ -196,7 +296,7 @@ const projects = [
             </section>
 
             <section>
-                <h3 class="black">Idioms</h3>
+                <h3 class="black">Languages</h3>
 
                 <ul>
                     <li><strong class="black">English:</strong> Intermediate (A2).</li>
@@ -209,6 +309,10 @@ const projects = [
     <style>
         h1 {
             font-size: 32px;
+        }
+
+        h3 {
+            font-size: 22px;
         }
 
         section {
@@ -240,6 +344,7 @@ const projects = [
         .list h4 {
             margin: 0px;
             padding: 0px;
+            font-size: 18px;
         }
 
         .list h4 .subtitle {
