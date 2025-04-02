@@ -19,6 +19,38 @@ function getAge(dateString: string) {
 
 const age = getAge("10/28/1988");
 
+const education = [
+    {
+        title: "System analytis and development",
+        intitution: "Vianna Júnior",
+        period: "2016 - 2018",
+        description: "The Internet Systems course at Faculdades Integradas Vianna Júnior offers all the qualities needed to train professionals capable of standing out in the market. Students will be equipped to create new platforms and applications for smartphones and tablets, as well as to manage and maintain networks, servers, websites, and databases, supported by a virtual library with over 5,000 digitized titles."
+    }
+]
+
+const certificates = [
+    {
+        title: "Building a Reminders App Clone with SwiftUI & Core Data",
+        url: "https://www.udemy.com/certificate/UC-883808bb-a2a9-49a3-bff4-987b78d6f063"
+    },
+    {
+        title: "MV Design Pattern in iOS - Build SwiftUI Apps Apple's Way",
+        url: "https://www.udemy.com/certificate/UC-2d801ec5-4f59-484c-9956-26aef88d1940"
+    },
+    {
+        title: "MVVM Design Pattern Using Swift",
+        url: "https://www.udemy.com/certificate/UC-3fe6e172-7b07-481e-98ef-5362d05886cc"
+    },
+    {
+        title: "The Complete React Native + Hooks Course [2020 Edition]",
+        url: "https://www.udemy.com/certificate/UC-d39e7010-e6d8-4694-b2ca-d2ade49a00f2"
+    },
+    {
+        title: "Agile gestion with Scrum",
+        url: "https://www.udemy.com/certificate/UC-SAH7BYIK/"
+    }
+]
+
 const projects = [
     {
         title: "CleanerXcode",
@@ -104,12 +136,47 @@ const projects = [
 
             <section>
                 <h3 class="black">Education</h3>
+
+                <ul class="list">
+                    {
+                        education.map((education) => {
+                            return <li>
+                                <h4 class="black">
+                                    {education.title}<br/>
+                                    <span class="subtitle">{education.intitution} - {education.period}</span><br/>
+                                </h4>
+
+                                <p>
+                                    {education.description}
+                                </p>
+                            </li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">Certificates</h3>
+
+                <ul class="list">
+                    {
+                        certificates.map((certificate) => {
+                            return <li>
+                                <h4 class="black">
+                                    <a href={certificate.url} aria-label={certificate.title} target="_blank">
+                                        {certificate.title}
+                                    </a>
+                                </h4>
+                            </li>
+                        })
+                    }
+                </ul>
             </section>
 
             <section id="projects">
                 <h3 class="black">Projects</h3>
 
-                <ul>
+                <ul class="list">
                     {
                         projects.map((project) => {
                             return <li>
@@ -126,7 +193,6 @@ const projects = [
                         })
                     }
                 </ul>
-
             </section>
 
             <section>
@@ -171,20 +237,25 @@ const projects = [
             align-items: center;
         }
 
-        #projects h4 {
+        .list h4 {
             margin: 0px;
             padding: 0px;
         }
 
-        #projects li {
+        .list h4 .subtitle {
+            font-weight: 400;
+            font-size: 80%;
+        }
+
+        .list li {
             margin: 0px 0px 16px 0px;
         }
 
-        #projects li:last-child {
+        .list li:last-child {
             margin: 0px;
         }
 
-        #projects li p {
+        .list li p {
             margin: 8px 0px 0px 0px;
             padding: 0px;
         }
