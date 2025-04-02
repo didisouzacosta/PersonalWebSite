@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css'
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,7 +11,11 @@ import '../styles/global.css'
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Adriano Souza Costa • iOS/macOS Developer - Swift • SwiftUI • SwiftData/CoreData • Objective-C</title>
+		<meta name="robots" content="index, follow">
+		<link rel="canonical" href="https://adrianosouzacosta.com.br">
+		<meta name="description" content={description}>
+
+		<title>{title}</title>
 
 		<!-- Google tag (gtag.js) -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSDWW4LMHQ"></script>

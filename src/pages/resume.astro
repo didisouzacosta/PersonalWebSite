@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 
 import Layout from '../layouts/Layout.astro';
 
-
 function getAge(dateString: string) {
     var today = new Date();
     var birthDate = new Date(dateString);
@@ -143,10 +142,9 @@ const works = [
         skills: "Flash, HTML, CSS, PHP, MySQL, Corel Draw, Photoshop, Design"
     }
 ]
-
 ---
 
-<Layout>
+<Layout title="Adriano Souza Costa - Resume"  description="iOS/macOS Developer with over 10 years of experience, specialized in Swift, SwiftUI, and UIKit. Focused on performance, user experience, and clean architecture. Strong background in REST APIs, iCloud, and Apple technologies.">
 	<div id="container">
         <main>
             <section class="me">

@@ -72,3 +72,18 @@ a:hover {
         background-color: white;
     }
 }
+
+@media print {
+    html {
+        background-color: white;
+        color: #4b5563;
+    }
+
+    .black {
+        color: #1F1F1F;
+    }
+
+    .tag {
+        background-color: rgb(232, 232, 232);
+    }
+}
