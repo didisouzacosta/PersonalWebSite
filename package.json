@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.5.4",
-    "astro-icon": "^1.1.5"
+    "astro-icon": "^1.1.5",
+    "html2pdf.js": "^0.10.3"
   }
 }
