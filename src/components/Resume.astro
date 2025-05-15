@@ -12,7 +12,7 @@ const { resume } = Astro.props;
 ---
 
 <Layout title={resume.title}  description={resume.summary}>
-    <a href={resume.download.url} download class="download-button">{resume.download.label}</a>
+    <a href={resume.download.url} download class="download-button no-print">{resume.download.label}</a>
 
 	<div id="container">
         <main>
@@ -233,6 +233,14 @@ const { resume } = Astro.props;
         .list li p {
             margin: 8px 0px 0px 0px;
             padding: 0px;
+        }
+
+        @media print
+        {    
+            .no-print, .no-print *
+            {
+                display: none !important;
+            }
         }
     }
     </style>

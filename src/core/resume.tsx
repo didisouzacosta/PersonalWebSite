@@ -18,7 +18,7 @@ export const eng: Resume = {
     name: "Adriano Souza Costa",
     download: {
         label: "Download in .pdf",
-        url: "/resume-pt-br.pdf"
+        url: "/resume.pdf"
     },
     openTo: {
         label: "Open to",
