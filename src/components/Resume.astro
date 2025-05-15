@@ -1,0 +1,239 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/Layout.astro';
+import type { Resume } from '../core/types';
+
+interface Props {
+    resume: Resume
+}
+
+const { resume } = Astro.props;
+---
+
+<Layout title={resume.title}  description={resume.summary}>
+    <a href="/resume.pdf" download class="download-button">Download in PDF</a>
+
+	<div id="container">
+        <main>
+            <section class="me">
+                <Image src="https://avatars.githubusercontent.com/u/11352503?v=4" alt= {resume.name} width="120" height="120" loading="eager" priority={true} class="avatar"/>
+                
+                <h1 class="name black">
+                    {resume.name}
+                </h1>
+
+                <p>
+                    <strong class="black">{resume.openTo.label}:</strong> {resume.openTo.value}
+                </p>
+
+                <p>
+                    <strong class="black">{resume.age.label}:</strong> {resume.age.value}
+                </p>
+
+                <p>
+                    <strong class="black">{resume.living.label}:</strong> {resume.living.value}
+                </p>
+
+                {
+                    resume.contacts.map((contact) => {
+                        return <p>
+                            <strong class="black">{contact.label}:</strong> <a href={contact.link}>{contact.description}</a>
+                        </p>
+                    })
+                }
+            </section>
+
+            <section>
+                <h3 class="black">{resume.summary.title}</h3>
+                <p>
+                    {resume.summary.description}
+                </p>
+            </section>
+
+            <section>
+                <h3 class="black">{resume.skills.title}</h3>
+
+                <ul>
+                    {
+                        resume.skills.items.map((skill) => {
+                            return <li><strong class="black">{skill.title}:</strong> {skill.description}</li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">{resume.jobs.title}</h3>
+
+                <ul class="list">
+                    {
+                        resume.jobs.items.map((job) => {
+                            return <li>
+                                <h4 class="black">
+                                    {job.title}<br/>
+                                    <span class="subtitle">{job.company} • {job.period}</span><br/>
+                                </h4>
+
+                                <p>
+                                    {job.description}
+                                </p>
+
+                                <p>
+                                    <strong class="black">Skills:</strong> {job.skills}
+                                </p>
+                            </li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">{resume.educations.title}</h3>
+
+                <ul class="list">
+                    {
+                        resume.educations.items.map((education) => {
+                            return <li>
+                                <h4 class="black">
+                                    {education.title}<br/>
+                                    <span class="subtitle">{education.intitution} • {education.period}</span><br/>
+                                </h4>
+
+                                <p>
+                                    {education.description}
+                                </p>
+                            </li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">{resume.certificates.title}</h3>
+
+                <ul class="list">
+                    {
+                        resume.certificates.items.map((certificate) => {
+                            return <li>
+                                <h4 class="black">
+                                    <a href={certificate.url} aria-label={certificate.title} target="_blank">
+                                        {certificate.title}
+                                    </a>
+                                </h4>
+                            </li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section id="projects">
+                <h3 class="black">{resume.projects.title}</h3>
+
+                <ul class="list">
+                    {
+                        resume.projects.items.map((project) => {
+                            return <li>
+                                <h4 class="black">
+                                    <a href={project.url} aria-label={project.title} target="_blank">
+                                        {project.title}
+                                    </a>
+                                </h4>
+
+                                <p>
+                                    {project.description}
+                                </p>
+                            </li>
+                        })
+                    }
+                </ul>
+            </section>
+
+            <section>
+                <h3 class="black">{resume.languages.title}</h3>
+
+                <ul>
+                    {
+                        resume.languages.items.map((language) => {
+                            return <li><strong class="black">{language.label}:</strong> {language.description}</li>
+                        })
+                    }
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <style>
+        h1 {
+            font-size: 32px;
+        }
+
+        h3 {
+            font-size: 22px;
+        }
+
+        section {
+            margin-bottom: 48px;
+        }
+
+        section.me p {
+            margin: 0px;
+            padding: 0px;
+            margin-bottom: 4px;
+        }
+
+        section.me h1 {
+            margin-bottom: 22px;
+        }
+
+        img.avatar {
+            border-radius: 50%;
+        }
+
+        a.download-button {
+            position: fixed;
+            left: 50%;
+            bottom: 0px;
+            transform: translate(-50%, -50%);
+            padding: 8px 16px 8px 16px;
+            margin: 16px;
+            background-color: orange;
+            color: black;
+            border-radius: 32px;
+        }
+    
+        #container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            padding-bottom: 32px;
+        }
+
+        .list h4 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 18px;
+        }
+
+        .list h4 .subtitle {
+            font-weight: 400;
+            font-size: 80%;
+        }
+
+        .list li {
+            margin: 0px 0px 16px 0px;
+        }
+
+        .list li:last-child {
+            margin: 0px;
+        }
+
+        .list li p {
+            margin: 8px 0px 0px 0px;
+            padding: 0px;
+        }
+    }
+    </style>
+</Layout>
