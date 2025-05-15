@@ -33,7 +33,7 @@ interface Job {
 interface Contact {
     label: string,
     description: string,
-    link: string
+    url: string
 }
 
 interface Language {
@@ -44,6 +44,10 @@ interface Language {
 export interface Resume {
     title: string,
     name: string,
+    download: {
+        label: string,
+        url: string,
+    },
     openTo: {
         label: string,
         value: string

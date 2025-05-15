@@ -16,6 +16,10 @@ function getAge(dateString: string) {
 export const eng: Resume = {
     title: "Adriano Souza Costa - Resume",
     name: "Adriano Souza Costa",
+    download: {
+        label: "Download in .pdf",
+        url: "/resume-pt-br.pdf"
+    },
     openTo: {
         label: "Open to",
         value: "Remote"
@@ -32,22 +36,22 @@ export const eng: Resume = {
         {
             label: "Phone",
             description: "(+55) 32 99114.7881",
-            link: "tel:+5532991147881"
+            url: "tel:+5532991147881"
         },
         {
             label: "Mail",
             description: "adrianosouzacostaios@gmail.com",
-            link: "mailto:adrianosouzacostaios@gmail.com"
+            url: "mailto:adrianosouzacostaios@gmail.com"
         },
         {
             label: "Linkedin",
             description: "linkedin.com/in/adrianosouzacosta",
-            link: "https://linkedin.com/in/adrianosouzacosta"
+            url: "https://linkedin.com/in/adrianosouzacosta"
         },
         {
             label: "Github",
             description: "github.com/didisouzacosta",
-            link: "https://github.com/didisouzacosta"
+            url: "https://github.com/didisouzacosta"
         }
     ],
     summary: {
@@ -215,6 +219,10 @@ export const eng: Resume = {
 export const ptBr: Resume = {
     title: "Adriano Souza Costa - Currículo",
     name: "Adriano Souza Costa",
+    download: {
+        label: "Baixar em .pdf",
+        url: "/resume-pt-br.pdf"
+    },
     openTo: {
         label: "Disponível para",
         value: "Remoto"
@@ -231,22 +239,22 @@ export const ptBr: Resume = {
         {
             label: "Telefone",
             description: "(+55) 32 99114.7881",
-            link: "tel:+5532991147881"
+            url: "tel:+5532991147881"
         },
         {
             label: "Email",
             description: "adrianosouzacostaios@gmail.com",
-            link: "mailto:adrianosouzacostaios@gmail.com"
+            url: "mailto:adrianosouzacostaios@gmail.com"
         },
         {
             label: "LinkedIn",
             description: "linkedin.com/in/adrianosouzacosta",
-            link: "https://linkedin.com/in/adrianosouzacosta"
+            url: "https://linkedin.com/in/adrianosouzacosta"
         },
         {
             label: "GitHub",
             description: "github.com/didisouzacosta",
-            link: "https://github.com/didisouzacosta"
+            url: "https://github.com/didisouzacosta"
         }
     ],
     summary: {

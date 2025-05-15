@@ -12,7 +12,7 @@ const { resume } = Astro.props;
 ---
 
 <Layout title={resume.title}  description={resume.summary}>
-    <a href="/resume.pdf" download class="download-button">Download in PDF</a>
+    <a href={resume.download.url} download class="download-button">{resume.download.label}</a>
 
 	<div id="container">
         <main>
@@ -38,7 +38,7 @@ const { resume } = Astro.props;
                 {
                     resume.contacts.map((contact) => {
                         return <p>
-                            <strong class="black">{contact.label}:</strong> <a href={contact.link}>{contact.description}</a>
+                            <strong class="black">{contact.label}:</strong> <a href={contact.url}>{contact.description}</a>
                         </p>
                     })
                 }
