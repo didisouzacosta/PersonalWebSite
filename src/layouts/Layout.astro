@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css'
 
-const { title, description } = Astro.props;
+const { title, description, favicon = "/favicon-32x32.png" } = Astro.props;
 ---
 
 <!doctype html>
@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href={favicon} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="robots" content="index, follow">
 		<link rel="canonical" href="https://adrianosouzacosta.com.br">
