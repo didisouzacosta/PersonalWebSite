@@ -1,58 +1,80 @@
 ---
-import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components'
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
-import Projects from './Projects.astro';
+import Projects from "./Projects.astro";
 ---
 
-<div id="container">
-	<main>
-		<section>
-			<Image src="https://avatars.githubusercontent.com/u/11352503?v=4" alt="Adriano Souza Costa" width="120" height="120" loading="eager" priority={true} class="avatar"/>
-			
-			<h1 class="name black">
-				Adriano Souza Costa
-			</h1>
+<main class="container full-height">
+	<section>
+		<Image
+			src="https://avatars.githubusercontent.com/u/11352503?v=4"
+			alt="Adriano Souza Costa"
+			width="120"
+			height="120"
+			loading="eager"
+			priority={true}
+			class="avatar"
+		/>
 
-			<p class="profession">
-				iOS/MacOS Developer
-			</p>
+		<h1 class="name black">Adriano Souza Costa</h1>
 
-			<p class="black">
-				Swift • SwiftUI • UIKit •  Objective-C • SwiftData/CoreData • CI/CD • React Native
-			</p>
+		<p class="profession">iOS/MacOS Developer</p>
+
+		<p class="black">
+			Swift • SwiftUI • UIKit • Objective-C • SwiftData/CoreData • CI/CD •
+			React Native
+		</p>
+	</section>
+
+	<section>
+		<p>
+			iOS/macOS Developer with 10+ years of experience in Swift, SwiftUI,
+			and UIKit, working on the development of scalable apps with a strong
+			focus on UX, performance, and clean architecture. Solid expertise in
+			integrating REST APIs, iCloud, and Apple technologies. Seeking new
+			challenges in impactful projects.
+		</p>
+
+		<section id="resume">
+			<a href="/resume" class="resume-link">
+				<span>See my resume</span>
+				<Icon name="right-arrow" width={12} height={12} />
+			</a>
 		</section>
 
-		<section>
-			<p>
-				iOS/macOS Developer with 10+ years of experience in Swift, SwiftUI, and UIKit, working on the development of scalable apps with a strong focus on UX, performance, and clean architecture. Solid expertise in integrating REST APIs, iCloud, and Apple technologies. Seeking new challenges in impactful projects.
-			</p>
+		<p id="social">
+			<a
+				href="https://x.com/didisouzacosta"
+				target="_blank"
+				aria-label="X"
+				aria-labelledby="X"
+			>
+				<Icon name="x" class="social-icon black" />
+			</a>
 
-			<section id="resume">
-				<a href="/resume" class="resume-link">
-					<span>See my resume</span> 
-					<Icon name="right-arrow" width={12} height={12}/>
-				</a>
-			</section>
+			<a
+				href="https://github.com/didisouzacosta"
+				target="_blank"
+				aria-label="Github"
+				aria-labelledby="Github"
+			>
+				<Icon name="github" class="social-icon black" />
+			</a>
 
-			<p id="social">
-				<a href="https://x.com/didisouzacosta" target="_blank" aria-label="X" aria-labelledby="X">
-					<Icon name="x" class="social-icon black"/>
-				</a>
+			<a
+				href="https://www.linkedin.com/in/adrianosouzacosta"
+				target="_blank"
+				aria-label="Linkedin"
+				aria-labelledby="Linkedin"
+			>
+				<Icon name="linkedin" class="social-icon black" />
+			</a>
+		</p>
+	</section>
 
-				<a href="https://github.com/didisouzacosta" target="_blank" aria-label="Github" aria-labelledby="Github">
-					<Icon name="github" class="social-icon black"/>
-				</a>
-
-				<a href="https://www.linkedin.com/in/adrianosouzacosta" target="_blank" aria-label="Linkedin" aria-labelledby="Linkedin">
-					<Icon name="linkedin" class="social-icon black"/>
-				</a>
-			</p>
-		</section>
-
-		<Projects />
-	</main>
-</div>
+	<Projects />
+</main>
 
 <style>
 	img.avatar {
@@ -87,11 +109,11 @@ import Projects from './Projects.astro';
 	#social {
 		display: flex;
 		margin-top: 32px;
-  		align-items: center;
+		align-items: center;
 	}
 
 	#social a + a {
-    	margin-left: 16px;
+		margin-left: 16px;
 	}
 
 	#resume {
@@ -116,9 +138,9 @@ import Projects from './Projects.astro';
 	}
 
 	@media (prefers-color-scheme: dark) {
-    #resume a.resume-link {
-		background-color: white;
-		color: black;
+		#resume a.resume-link {
+			background-color: white;
+			color: black;
+		}
 	}
-}
 </style>
