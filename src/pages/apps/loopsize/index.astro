@@ -1,6 +1,20 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import FaqAccordion from "../../../components/FaqAccordion.astro";
+import AppTemplate from "../../../components/app/AppTemplate.astro";
+
+const appId = 'id6749704116'
+const title = 'LoopSize'
+const description = 'LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.'
+const favicon = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/favicon-loopsize-32x32.png"
+const appIcon = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/loopsize-appicon.png"
+
+const screenshots = [
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-1.png', alt: 'Easy find the perfect ring size' },
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-2.png', alt: 'Ring dimension' },
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-3.png', alt: 'Finger dimension' },
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-4.png', alt: 'Save measurements' },
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-5.png', alt: 'mm to inches switch' },
+    { url: 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-6.png', alt: 'export with PDF' }
+]
 
 const faq = [
     {
@@ -22,125 +36,12 @@ const faq = [
 ];
 ---
 
-<Layout title="LoopSize" favicon="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/favicon-loopsize-32x32.png">
-    <main class="safe-area grid">
-        <section class="container center head">
-            <img
-                src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/loopsize-appicon.png"
-                alt="Loopsize icon"
-                loading="eager"
-                class="app-icon"
-            />
-            <h1 class="black">LoopSize</h1>
-        </section>
-
-        <div class="screenshots-container">
-            <section class="screenshots">
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-1.png" />
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-2.png" />
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-3.png" />
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-4.png" />
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-5.png" />
-                <img src="https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/screenshots/frame-6.png" />
-            </section>
-        </div>
-
-        <section class="container">
-            <article class="center body">
-                <p>
-                    LoopSize makes it easy to measure and convert ring sizes in
-                    BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export
-                    precise measurements in PDF.
-                </p>
-            </article>
-        </section>
-
-        <section class="container center">
-            <a
-                href="https://apps.apple.com/us/app/video-ai-art-generator-maker/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697"
-            >
-                <img
-                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
-                    alt="Download on the App Store"
-                    class="apple-store-button"
-                />
-            </a>
-        </section>
-
-        <section class="accordion-container">
-            <div class="accordion">
-                <FaqAccordion title="FAQ" items={faq} />
-            </div>
-        </section>
-
-        <footer class="container footer">
-            <a href="/apps/loopsize/terms-of-use">Terms of use</a> • <a
-                href="/apps/loopsize/privacy-policy">Privacy policy</a
-            >
-        </footer>
-    </main>
-</Layout>
-
-<style>
-    .app-icon {
-        max-width: 20%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 20%;
-    }
-
-    .grid {
-        display: grid;
-        gap: 64px;
-        margin-bottom: 64px;
-    }
-
-    .head {
-        margin-top: 64px;
-    }
-
-    .body {
-        font-size: 18px;
-    }
-
-    .screenshots-container {
-        display: grid;
-        justify-content: center;
-    }
-
-    .accordion-container {
-        display: grid;
-        place-items: center;
-    }
-
-    .accordion {
-        width: 100%;
-        max-width: 800px;
-    }
-
-    .screenshots {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 8px;
-        max-width: 1400px;
-    }
-
-    .screenshots img {
-        max-width: 100%;
-        border-radius: 16px;
-    }
-
-    .apple-store-button {
-        width: 200px;
-    }
-
-    @media only screen and (max-width: 768px) {
-        .app-icon {
-            max-width: 40%;
-        }
-
-        .screenshots {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-</style>
+<AppTemplate
+    appId={appId}
+    title={title}
+    favicon={favicon}
+    appIcon={appIcon}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+ />

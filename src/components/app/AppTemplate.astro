@@ -1,0 +1,137 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+
+interface Props {
+    appId: string,
+    title: string,
+    favicon: string,
+    appIcon: string,
+    description: string,
+    screenshots: { url: string, alt: string }[],
+    faq: { question: string, answer: string }[]
+}
+
+const { appId, title, favicon, appIcon, description, screenshots, faq } = Astro.props;
+---
+
+<Layout title={title} favicon={favicon} description={description}>
+    <main class="safe-area grid">
+        <section class="container center head">
+            <img
+                src={appIcon}
+                alt={title}
+                fetchpriority="high"
+                class="app-icon"
+            />
+            <h1 class="black">{title}</h1>
+        </section>
+
+        <div class="screenshots-container">
+            <section class="screenshots">
+                {
+                    screenshots.map(screenshot => (
+                        <img 
+                            src={screenshot.url}
+                            alt={screenshot.alt}
+                        />
+                    ))
+                }
+            </section>
+        </div>
+
+        <section class="container">
+            <article class="center body">
+                <p>{description}</p>
+            </article>
+        </section>
+
+        <section class="container center">
+            <a
+                href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+            >
+                <img
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
+                    alt="Download on the App Store"
+                    class="apple-store-button"
+                />
+            </a>
+        </section>
+
+        <section class="accordion-container">
+            <div class="accordion">
+                <FaqAccordion title="FAQ" items={faq} />
+            </div>
+        </section>
+
+        <footer class="container footer">
+            <a href="/apps/loopsize/terms-of-use">Terms of use</a> • <a
+                href="/apps/loopsize/privacy-policy">Privacy policy</a
+            >
+        </footer>
+    </main>
+</Layout>
+
+<style>
+    .app-icon {
+        max-width: 20%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 20%;
+    }
+
+    .grid {
+        display: grid;
+        gap: 64px;
+        margin-bottom: 64px;
+    }
+
+    .head {
+        margin-top: 64px;
+    }
+
+    .body {
+        font-size: 18px;
+    }
+
+    .screenshots-container {
+        display: grid;
+        justify-content: center;
+    }
+
+    .accordion-container {
+        display: grid;
+        place-items: center;
+    }
+
+    .accordion {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .screenshots {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 8px;
+        max-width: 1400px;
+    }
+
+    .screenshots img {
+        max-width: 100%;
+        border-radius: 16px;
+    }
+
+    .apple-store-button {
+        width: 200px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .app-icon {
+            max-width: 40%;
+        }
+
+        .screenshots {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
