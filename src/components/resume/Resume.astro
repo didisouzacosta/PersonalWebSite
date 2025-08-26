@@ -12,9 +12,7 @@ const { resume } = Astro.props;
 ---
 
 <Layout title={resume.title} description={resume.summary}>
-    <a href={resume.download.url} download class="download-button no-print"
-        >{resume.download.label}</a
-    >
+    <a href={resume.download.url} download class="download-button no-print">{resume.download.label}</a>
 
     <main class="container full-height safe-area">
         <section class="me">

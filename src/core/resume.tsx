@@ -18,7 +18,7 @@ export const eng: Resume = {
     name: "Adriano Souza Costa",
     download: {
         label: "Download in .pdf",
-        url: "/resume.pdf"
+        url: "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/resume.pdf"
     },
     openTo: {
         label: "Open to",
@@ -221,7 +221,7 @@ export const ptBr: Resume = {
     name: "Adriano Souza Costa",
     download: {
         label: "Baixar em .pdf",
-        url: "/resume-pt-br.pdf"
+        url: "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/resume-pt-br.pdf"
     },
     openTo: {
         label: "Disponível para",
