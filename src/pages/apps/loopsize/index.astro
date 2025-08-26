@@ -1,54 +1,93 @@
 ---
+import Layout from "../../../layouts/Layout.astro";
+import FaqAccordion from "../../../components/FaqAccordion.astro";
 
-import Layout from '../../../layouts/Layout.astro';
+const faq = [
+    {
+        question: "Which ring size standards does LoopSize support?",
+        answer: "We support BR, US, UK, EU/ISO, JP, CN, and IN. You can switch between them at any time.",
+    },
+    {
+        question: "Can I save my measurements?",
+        answer: "Yes! With the <strong>Pro</strong> plan, you can save measurements and export them as a custom PDF.",
+    },
+    {
+        question: "Do the printed sizes match the real size?",
+        answer: "Yes. The PDF uses a true-to-scale mm→pt conversion for A4. We recommend <em>checking</em> with a credit card to confirm the scale on your first print.",
+    },
+    {
+        question: "Does it work offline?",
+        answer: "Yes, all calculations are done locally. Sharing features may require an internet connection.",
+    }
+];
 ---
 
-<Layout 
-    title="LoopSize"
-    favicon="/favicon/favicon-loopsize-32x32.png"
->
+<Layout title="LoopSize" favicon="/favicon/favicon-loopsize-32x32.png">
     <main class="safe-area grid">
         <section class="container center head">
-            <img src='/apps/loopsize/loopsize-appicon.png' alt='Loopsize icon' loading="eager" class="app-icon"/>
+            <img
+                src="/apps/loopsize/loopsize-appicon.png"
+                alt="Loopsize icon"
+                loading="eager"
+                class="app-icon"
+            />
             <h1 class="black">LoopSize</h1>
         </section>
 
         <div class="screenshots-container">
             <section class="screenshots">
-                <img src="/apps/loopsize/screenshots/frame-1.png">
-                <img src="/apps/loopsize/screenshots/frame-2.png">
-                <img src="/apps/loopsize/screenshots/frame-3.png">
-                <img src="/apps/loopsize/screenshots/frame-4.png">
-                <img src="/apps/loopsize/screenshots/frame-5.png">
-                <img src="/apps/loopsize/screenshots/frame-6.png">
+                <img src="/apps/loopsize/screenshots/frame-1.png" />
+                <img src="/apps/loopsize/screenshots/frame-2.png" />
+                <img src="/apps/loopsize/screenshots/frame-3.png" />
+                <img src="/apps/loopsize/screenshots/frame-4.png" />
+                <img src="/apps/loopsize/screenshots/frame-5.png" />
+                <img src="/apps/loopsize/screenshots/frame-6.png" />
             </section>
         </div>
 
         <section class="container">
             <article class="center body">
-                <p>LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.</p>
+                <p>
+                    LoopSize makes it easy to measure and convert ring sizes in
+                    BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export
+                    precise measurements in PDF.
+                </p>
             </article>
         </section>
 
         <section class="container center">
-            <a href="https://apps.apple.com/us/app/video-ai-art-generator-maker/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697">
-                <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200" alt="Download on the App Store" class="apple-store-button" />
+            <a
+                href="https://apps.apple.com/us/app/video-ai-art-generator-maker/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697"
+            >
+                <img
+                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
+                    alt="Download on the App Store"
+                    class="apple-store-button"
+                />
             </a>
         </section>
 
+        <section class="accordion-container">
+            <div class="accordion">
+                <FaqAccordion title="FAQ" items={faq} />
+            </div>
+        </section>
+
         <footer class="container footer">
-            <a href="/apps/loopsize/terms-of-use">Terms of use</a> • <a href="/apps/loopsize/privacy-policy">Privacy policy</a>
+            <a href="/apps/loopsize/terms-of-use">Terms of use</a> • <a
+                href="/apps/loopsize/privacy-policy">Privacy policy</a
+            >
         </footer>
     </main>
 </Layout>
 
 <style>
-	.app-icon {
-		max-width: 20%;
+    .app-icon {
+        max-width: 20%;
         height: auto;
-		object-fit: cover;
+        object-fit: cover;
         border-radius: 20%;
-	}
+    }
 
     .grid {
         display: grid;
@@ -69,6 +108,16 @@ import Layout from '../../../layouts/Layout.astro';
         justify-content: center;
     }
 
+    .accordion-container {
+        display: grid;
+        place-items: center;
+    }
+
+    .accordion {
+        width: 100%;
+        max-width: 800px;
+    }
+
     .screenshots {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
@@ -86,8 +135,8 @@ import Layout from '../../../layouts/Layout.astro';
     }
 
     @media only screen and (max-width: 768px) {
-		.screenshots {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
+        .screenshots {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
 </style>

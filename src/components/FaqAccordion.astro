@@ -1,0 +1,95 @@
+---
+export interface Props {
+  title?: string;
+  items: { question: string; answer: string }[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<section id="faq" aria-labelledby="faq-title" class="faq-section">
+  <h2 id="faq-title" class="faq-title black">{title}</h2>
+
+  <div class="faq-list">
+    {
+      items.map((item, i) => (
+        <details class="faq-item" {...{ open: i === 0 }}>
+          <summary class="faq-summary">
+            <h3 class="faq-question black">{item.question}</h3>
+            <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 9l6 6 6-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </summary>
+
+          <div class="faq-content">
+            <p class="black" set:html={item.answer} />
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq-title {
+    padding: 0 16px;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 8px;
+  }
+
+  .faq-item {
+    border: 1px solid hsl(0, 0%, 89%);
+    border-radius: 16px;
+    background: hsl(0, 0%, 98%);
+    overflow: clip;
+  }
+
+  .faq-summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 16px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  h3.faq-question {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .faq-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 200ms ease;
+    opacity: 0.8;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-content {
+    padding: 0 1.25rem 1rem;
+    line-height: 1.6;
+    animation: fadeSlide 220ms ease;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .faq-item {
+      border: 1px solid hsl(0, 0%, 19%);
+      background: hsl(0, 0%, 10%);
+    }
+  }
+</style>
