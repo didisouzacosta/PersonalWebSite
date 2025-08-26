@@ -13,13 +13,16 @@ interface Props {
 }
 
 const { appId, title, favicon, appIcon, description, screenshots, faq } = Astro.props;
+
+const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
+
 ---
 
 <Layout title={title} favicon={favicon} description={description}>
     <main class="safe-area grid">
         <section class="container center head">
             <img
-                src={appIcon}
+                src=`${baseAssetsURL}apps/loopsize/${appIcon}`
                 alt={title}
                 fetchpriority="high"
                 class="app-icon"
@@ -32,7 +35,7 @@ const { appId, title, favicon, appIcon, description, screenshots, faq } = Astro.
                 {
                     screenshots.map(screenshot => (
                         <img 
-                            src={screenshot.url}
+                            src=`${baseAssetsURL}apps/${screenshot.url}`
                             alt={screenshot.alt}
                         />
                     ))
