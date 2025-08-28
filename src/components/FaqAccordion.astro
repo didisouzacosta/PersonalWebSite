@@ -16,6 +16,7 @@ const { title, items } = Astro.props;
         <details class="faq-item" {...{ open: i === 0 }}>
           <summary class="faq-summary">
             <h3 class="faq-question black">{item.question}</h3>
+
             <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M6 9l6 6 6-6"
@@ -28,7 +29,7 @@ const { title, items } = Astro.props;
           </summary>
 
           <div class="faq-content">
-            <p class="black" set:html={item.answer} />
+            <span class="black" set:html={item.answer} />
           </div>
         </details>
       ))
@@ -81,7 +82,7 @@ const { title, items } = Astro.props;
   }
 
   .faq-content {
-    padding: 0 1.25rem 1rem;
+    padding: 0px 16px 16px 16px;
     line-height: 1.6;
     animation: fadeSlide 220ms ease;
   }
