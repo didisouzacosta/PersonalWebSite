@@ -7,6 +7,10 @@ const description = 'LoopSize makes it easy to measure and convert ring sizes in
 const favicon = "favicon-loopsize-32x32.png"
 const appIcon = "loopsize/app-icon.png"
 
+const metas = [
+    { name: "apple-itunes-app", content: `${appId}` }
+]
+
 const screenshots = [
     { url: 'loopsize/screenshots/frame-1.png', alt: 'Easy find the perfect ring size' },
     { url: 'loopsize/screenshots/frame-2.png', alt: 'Ring dimension' },
@@ -43,6 +47,7 @@ const faq = [
 <AppTemplate
     appId={appId}
     title={title}
+    metas={metas}
     favicon={favicon}
     appIcon={appIcon}
     description={description}

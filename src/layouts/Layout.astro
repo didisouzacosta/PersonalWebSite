@@ -1,8 +1,19 @@
 ---
 import '../styles/global.css'
 
-const { title, description, favicon = "favicon-32x32.png" } = Astro.props;
-const completeFiveicon = `https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/${favicon}`
+interface Props {
+    title: string,
+	favicon: string,
+    description: string,
+    metas: { name: string, content: string }[]
+}
+
+const { 
+	title,
+	description,
+	favicon = "favicon-32x32.png",
+	metas = []
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,11 +21,15 @@ const completeFiveicon = `https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/fa
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href={completeFiveicon} />
+		<link rel="icon" type="image/png" href={`https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/${favicon}`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="robots" content="index, follow">
 		<link rel="canonical" href="https://adrianosouzacosta.com.br">
 		<meta name="description" content={description}>
+
+		{
+			metas.map((meta) => <meta name={meta.name} content={meta.content}>)
+		}
 
 		<title>{title}</title>
 

@@ -9,16 +9,22 @@ interface Props {
     appIcon: string,
     description: string,
     screenshots: { url: string, alt: string }[],
-    faq: { question: string, answer: string }[]
+    faq: { question: string, answer: string }[],
+    metas: { name: string, content: string }[]
 }
 
-const { appId, title, favicon, appIcon, description, screenshots, faq } = Astro.props;
+const { appId, title, metas, favicon, appIcon, description, screenshots, faq } = Astro.props;
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 
 ---
 
-<Layout title={title} favicon={favicon} description={description}>
+<Layout 
+    title={title}
+    favicon={favicon} 
+    description={description}
+    metas={metas}
+>
     <main class="safe-area grid">
         <section class="container center head">
             <img
