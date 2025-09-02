@@ -5,13 +5,17 @@ import Layout from "../../layouts/Layout.astro";
 import type { Resume } from "../../core/types";
 
 interface Props {
-    resume: Resume;
+    resume: Resume
 }
 
 const { resume } = Astro.props;
 ---
 
-<Layout title={resume.title} description={resume.summary}>
+<Layout 
+    title={resume.title}
+    description={resume.summary.description}
+    metas={[]}
+>
     <a href={resume.download.url} download class="download-button no-print">{resume.download.label}</a>
 
     <main class="container full-height safe-area">

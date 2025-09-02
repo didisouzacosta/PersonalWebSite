@@ -185,6 +185,11 @@ export const eng: Resume = {
         title: "Projects",
         items: [
             {
+                title: "LoopSize",
+                url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
+                description: "LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF."
+            },
+            {
                 title: "CleanerXcode",
                 url: "https://github.com/didisouzacosta/CleanerXcode",
                 description: "CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data."
@@ -387,6 +392,11 @@ export const ptBr: Resume = {
     projects: {
         title: "Projetos",
         items: [
+            {
+                title: "LoopSize",
+                url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
+                description: "O LoopSize facilita a medição e a conversão de tamanhos de anéis nos seguintes países: Brasil, EUA, Reino Unido, UE/ISO, Japão, China e Índia. Salve, compartilhe e exporte medidas precisas em PDF."
+            },
             {
                 title: "CleanerXcode",
                 url: "https://github.com/didisouzacosta/CleanerXcode",
