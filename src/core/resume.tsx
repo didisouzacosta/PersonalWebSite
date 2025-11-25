@@ -62,7 +62,7 @@ export const eng: Resume = {
         title: "Skills",
         items: [
             { title: "Languages", description: "Swift, Objective-C and React Native." },
-            { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, ManagedSettings, Foundation and AudioKit." },
+            { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation and AudioKit." },
             { title: "Tools", description: "Xcode, Git, Fastlane, Firebase, Github Actions and Travis." },
             { title: "Architectures", description: "MV,  MVC,  MVP, MVVM, MVVMC and Clean Architecture." },
             { title: "Other", description: "Unit tests, CI/CD, Apple Store Connect, Distribute apps out of Apple Store." }
@@ -100,7 +100,7 @@ export const eng: Resume = {
                 company: "Consulta Remédios",
                 period: "April 2019 - March 2021",
                 locale: "Remote",
-                description: "iOS development for a health marketplace, with a focus on user experience, design, and software quality through best development practices, automated testing, and continuous integration.",
+                description: "iOS development for a health marketplace, with a focus on user experience, design, and software quality through best development practices, automated testing, continuous integration and  e Server Driven UI to managed the struct in the main and search screens.",
                 skills: "Swift, CI/CD, React Native, Apple Store, Design"
             },
             {
@@ -270,7 +270,7 @@ export const ptBr: Resume = {
         title: "Habilidades",
         items: [
             { title: "Linguagens", description: "Swift, Objective-C e React Native." },
-            { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, ManagedSettings, Foundation e AudioKit." },
+            { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation e AudioKit." },
             { title: "Ferramentas", description: "Xcode, Git, Fastlane, Firebase, GitHub Actions e Travis." },
             { title: "Arquiteturas", description: "MV, MVC, MVP, MVVM, MVVMC e Clean Architecture." },
             { title: "Outros", description: "Testes unitários, CI/CD, Apple Store Connect e distribuição de apps fora da App Store." }
@@ -308,7 +308,7 @@ export const ptBr: Resume = {
                 company: "Consulta Remédios",
                 period: "Abril 2019 - Março 2021",
                 locale: "Remoto",
-                description: "Desenvolvimento iOS para um marketplace de saúde, com foco em experiência do usuário, design e qualidade de software mediante melhores práticas, testes automatizados e integração contínua.",
+                description: "Desenvolvimento iOS para um marketplace de saúde, com foco em experiência do usuário, design e qualidade de software mediante melhores práticas, testes automatizados, integração contínua e Server Driven UI para orquestrar a estrutura de componentes na tela inicial e pesquisa.",
                 skills: "Swift, CI/CD, React Native, Apple Store, Design"
             },
             {
