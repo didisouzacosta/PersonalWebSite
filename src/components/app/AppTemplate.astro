@@ -16,7 +16,7 @@ interface Props {
 const { appId, title, metas, favicon, appIcon, description, screenshots, faq } = Astro.props;
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
-
+const currentPath = Astro.url.pathname;
 ---
 
 <Layout 
@@ -74,9 +74,7 @@ const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
         </section>
 
         <footer class="container footer">
-            <a href="/apps/loopsize/terms-of-use">Terms of use</a> • <a
-                href="/apps/loopsize/privacy-policy">Privacy policy</a
-            >
+            <a href={`${currentPath}/terms-of-use`}>Terms of use</a> • <a href={`${currentPath}/privacy-policy`}>Privacy policy</a>
         </footer>
     </main>
 </Layout>
