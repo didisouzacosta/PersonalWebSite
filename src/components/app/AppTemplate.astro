@@ -19,9 +19,9 @@ const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
 ---
 
-<Layout 
+<Layout
     title={title}
-    favicon={favicon} 
+    favicon={favicon}
     description={description}
     metas={metas}
 >
@@ -36,28 +36,36 @@ const currentPath = Astro.url.pathname;
             <h1 class="black">{title}</h1>
         </section>
 
-        <div class="screenshots-container">
-            <section class="screenshots">
+        <section class="screenshots-container" aria-label="Screenshots">
+            <ul class="screenshots">
                 {
                     screenshots.map(screenshot => (
-                        <img 
-                            src=`${baseAssetsURL}apps/${screenshot.url}`
-                            alt={screenshot.alt}
-                        />
+                        <li>
+                            <img
+                                src=`${baseAssetsURL}apps/${screenshot.url}`
+                                alt={screenshot.alt}
+                                loading="lazy"
+                            />
+                        </li>
                     ))
                 }
-            </section>
-        </div>
-
-        <section class="container">
-            <article class="center body">
-                <p>{description}</p>
-            </article>
+            </ul>
+            <dialog id="screenshot-lightbox" aria-label="Screenshot preview">
+                <button id="lightbox-close" aria-label="Close preview">&#x2715;</button>
+                <img id="lightbox-img" src="" alt="" />
+            </dialog>
         </section>
 
-        <section class="container center">
+        <section class="container">
+            <section class="center body" aria-label="Description">
+                <p>{description}</p>
+            </section>
+        </section>
+
+        <section class="container center" aria-label="Download">
             <a
                 href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+                aria-label=`Download ${title} on the App Store`
             >
                 <img
                     src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
@@ -67,7 +75,7 @@ const currentPath = Astro.url.pathname;
             </a>
         </section>
 
-        <section class="accordion-container">
+        <section class="accordion-container" aria-label="FAQ">
             <div class="accordion">
                 <FaqAccordion title="FAQ" items={faq} />
             </div>
@@ -117,15 +125,71 @@ const currentPath = Astro.url.pathname;
     }
 
     .screenshots {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
         max-width: 1400px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
-    .screenshots img {
-        max-width: 100%;
+    .screenshots li {
+        width: calc((1400px - 5 * 8px) / 6);
+    }
+
+    .screenshots li img {
+        width: 100%;
         border-radius: 16px;
+        cursor: pointer;
+        transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .screenshots li img:hover {
+        transform: scale(1.04);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    #screenshot-lightbox {
+        padding: 0;
+        border: none;
+        border-radius: 20px;
+        background: transparent;
+        max-width: 90vw;
+        max-height: 90vh;
+        position: relative;
+    }
+
+    #screenshot-lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+    }
+
+    #lightbox-img {
+        display: block;
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 20px;
+        object-fit: contain;
+    }
+
+    #lightbox-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.55);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
     }
 
     .apple-store-button {
@@ -137,8 +201,29 @@ const currentPath = Astro.url.pathname;
             max-width: 40%;
         }
 
-        .screenshots {
-            grid-template-columns: repeat(2, 1fr);
+        .screenshots li {
+            width: calc(50% - 4px);
         }
     }
 </style>
+
+<script>
+    const dialog = document.getElementById('screenshot-lightbox') as HTMLDialogElement;
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const closeBtn = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.screenshots li img').forEach(img => {
+        img.addEventListener('click', () => {
+            const image = img as HTMLImageElement;
+            lightboxImg.src = image.src;
+            lightboxImg.alt = image.alt;
+            dialog.showModal();
+        });
+    });
+
+    closeBtn?.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+    });
+</script>

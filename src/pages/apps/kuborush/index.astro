@@ -1,41 +1,55 @@
 ---
 import AppTemplate from "../../../components/app/AppTemplate.astro";
 
-const appId = 'id6757385646'
-const title = 'KuboRush - Block Puzzle'
-const description = 'LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.'
-const favicon = "favicon-kuborush-32x32.png"
-const appIcon = "kuborush/app-icon.png"
+const appId = "id6757385646";
+const title = "KuboRush - Block Puzzle";
+const description =
+    "KuboRush is a casual block puzzle game where you fit pieces, think fast, and clear the board at your own pace. Perfect for your spare 2 minutes — no pressure, just fun.";
+const favicon = "favicon-kuborush-32x32.png";
+const appIcon = "kuborush/app-icon.png";
 
-const metas = [
-    { name: "apple-itunes-app", content: `app-id=6757385646` }
-]
+const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
 
 const screenshots = [
-    { url: '', alt: '' }
-]
+    {
+        url: "kuborush/screenshots/frame-1.png",
+        alt: "The most fun 2 minutes of your day!",
+    },
+    {
+        url: "kuborush/screenshots/frame-2.png",
+        alt: "Take full control of your move!",
+    },
+    {
+        url: "kuborush/screenshots/frame-3.png",
+        alt: "Match, plan, and make amazing combos.",
+    },
+    {
+        url: "kuborush/screenshots/frame-4.png",
+        alt: "Climb the Hall of Fame or win the Weekly Rush.",
+    },
+];
 
 const faq = [
     {
-        question: "Which ring size standards does LoopSize support?",
-        answer: "We support BR, US, UK, EU/ISO, JP, CN, and IN. You can switch between them at any time.",
+        question: "What is KuboRush?",
+        answer: "KuboRush is a casual block puzzle game where you fit pieces, think fast, and clear the board at your own pace — no time limits, no pressure. It’s designed to be the most fun 2 minutes of your day.",
     },
     {
-        question: "Can I save my measurements?",
-        answer: "Yes! With the <strong>Pro</strong> plan, you can save measurements and export them as a custom PDF.",
+        question: "What power-ups are available?",
+        answer: "KuboRush has four power-ups to keep you going: <strong>Hint</strong> gives you a nudge when you’re stuck, <strong>Shuffle</strong> brings a fresh set of pieces, <strong>Rotate</strong> lets you spin a piece to find the perfect fit, and <strong>Undo</strong> lets you take back up to 3 moves so you can experiment freely.",
     },
     {
-        question: "Do the printed sizes match the real size?",
-        answer: "Yes. The PDF uses a true-to-scale mm→pt conversion for A4. We recommend <em>checking</em> with a credit card to confirm the scale on your first print.",
+        question: "What are the competitive modes?",
+        answer: "There are two competitive modes: <strong>Hall of Fame</strong>, where you compete with friends through global leaderboards, and <strong>Weekly Rush</strong>, a weekly event with special challenges to test your skills and strategy.",
     },
     {
-        question: "Does it work offline?",
-        answer: "Yes, all calculations are done locally. Sharing features may require an internet connection.",
+        question: "Is KuboRush free?",
+        answer: "Yes, KuboRush is free to download and play. A <strong>KuboRush Pro</strong> upgrade is available as a one-time in-app purchase, unlocking additional features to enhance your experience.",
     },
     {
-        question: "How do I restore my purchases?",
-        answer: "If you’ve already purchased LoopSize Pro, you don’t need to pay again when switching to a new iPhone or reinstalling the app. Simply tap the “Restore Purchases” button in the paywall and the app will automatically check, through your Apple ID, all your previous purchases and subscriptions. If there’s an active subscription or lifetime purchase, Pro access will be unlocked instantly — at no extra cost.",
-    }
+        question: "How do I restore my purchase?",
+        answer: "If you’ve already purchased KuboRush Pro, you don’t need to pay again when switching devices or reinstalling the app. Simply tap the <em>Restore Purchases</em> button and the app will verify your purchase through your Apple ID — at no extra cost.",
+    },
 ];
 ---
 
@@ -48,4 +62,4 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
- />
+/>
