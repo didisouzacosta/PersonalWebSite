@@ -190,6 +190,11 @@ export const eng: Resume = {
                 description: "LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF."
             },
             {
+                title: "KuboRush",
+                url: "https://apps.apple.com/app/id6757385646",
+                description: "KuboRush is a casual block puzzle game for iOS where you fit pieces, think fast, and clear the board at your own pace. Includes competitive leaderboards and weekly challenges."
+            },
+            {
                 title: "CleanerXcode",
                 url: "https://github.com/didisouzacosta/CleanerXcode",
                 description: "CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data."
@@ -396,6 +401,11 @@ export const ptBr: Resume = {
                 title: "LoopSize",
                 url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
                 description: "O LoopSize facilita a medição e a conversão de tamanhos de anéis nos seguintes países: Brasil, EUA, Reino Unido, UE/ISO, Japão, China e Índia. Salve, compartilhe e exporte medidas precisas em PDF."
+            },
+            {
+                title: "KuboRush",
+                url: "https://apps.apple.com/app/id6757385646",
+                description: "KuboRush é um jogo casual de quebra-cabeça de blocos para iOS. Encaixe peças, pense rápido e limpe o tabuleiro no seu ritmo. Inclui ranking global e desafios semanais."
             },
             {
                 title: "CleanerXcode",

@@ -1,0 +1,14 @@
+---
+import AboutMe from '../../components/resume/AboutMe.astro';
+import Layout from '../../layouts/Layout.astro';
+import { homepagePtBr } from '../../core/homepage';
+---
+
+<Layout
+	title={homepagePtBr.title}
+	description={homepagePtBr.description}
+	lang="pt-br"
+	metas={[]}
+>
+	<AboutMe content={homepagePtBr} />
+</Layout>

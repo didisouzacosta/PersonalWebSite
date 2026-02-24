@@ -1,0 +1,57 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const appId = 'id6749704116'
+const title = 'LoopSize - Conversor de Tamanho de Anel'
+const description = 'O LoopSize facilita a medição e conversão de tamanhos de anéis em BR, US, UK, EU/ISO, JP, CN e IN. Salve, compartilhe e exporte medidas precisas em PDF.'
+const favicon = "favicon-loopsize-32x32.png"
+const appIcon = "loopsize/app-icon.png"
+
+const metas = [
+    { name: "apple-itunes-app", content: `app-id=6749704116` }
+]
+
+const screenshots = [
+    { url: 'loopsize/screenshots/frame-1.png', alt: 'Encontre o tamanho de anel perfeito facilmente' },
+    { url: 'loopsize/screenshots/frame-2.png', alt: 'Dimensão do anel' },
+    { url: 'loopsize/screenshots/frame-3.png', alt: 'Dimensão do dedo' },
+    { url: 'loopsize/screenshots/frame-4.png', alt: 'Salvar medidas' },
+    { url: 'loopsize/screenshots/frame-5.png', alt: 'Alternar entre mm e polegadas' },
+    { url: 'loopsize/screenshots/frame-6.png', alt: 'Exportar em PDF' }
+]
+
+const faq = [
+    {
+        question: "Quais padrões de tamanho de anel o LoopSize suporta?",
+        answer: "Suportamos BR, US, UK, EU/ISO, JP, CN e IN. Você pode alternar entre eles a qualquer momento.",
+    },
+    {
+        question: "Posso salvar minhas medidas?",
+        answer: "Sim! Com o plano <strong>Pro</strong>, você pode salvar medidas e exportá-las como PDF personalizado.",
+    },
+    {
+        question: "Os tamanhos impressos correspondem ao tamanho real?",
+        answer: "Sim. O PDF utiliza uma conversão mm→pt em escala real para A4. Recomendamos <em>verificar</em> com um cartão de crédito para confirmar a escala na primeira impressão.",
+    },
+    {
+        question: "Funciona offline?",
+        answer: "Sim, todos os cálculos são feitos localmente. As funcionalidades de compartilhamento podem requerer conexão com a internet.",
+    },
+    {
+        question: "Como restaurar minhas compras?",
+        answer: "Se você já adquiriu o LoopSize Pro, não precisa pagar novamente ao trocar de iPhone ou reinstalar o app. Basta tocar no botão \"Restaurar Compras\" na tela de pagamento e o app verificará automaticamente, pelo seu Apple ID, todas as suas compras anteriores.",
+    }
+];
+---
+
+<AppTemplate
+    appId={appId}
+    title={title}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    lang="pt-br"
+ />

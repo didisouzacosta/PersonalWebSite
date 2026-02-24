@@ -1,103 +1,183 @@
-html {
-    line-height: 24px;
+/* ==============================
+   Design System — Apple-inspired
+   ============================== */
+
+:root {
+    --bg: #FFFFFF;
+    --bg-secondary: #F5F5F7;
+    --bg-tertiary: #E8E8ED;
+    --text-primary: #1D1D1F;
+    --text-secondary: #6E6E73;
+    --text-tertiary: #86868B;
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.14);
+    --radius-card: 18px;
+    --radius-btn: 980px;
+    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --transition: 0.2s ease-out;
 }
 
-html {
-    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-	font-size: 16px;
-    background-color: white;
-    color: #4b5563;
+[data-theme="dark"] {
+    --bg: #000000;
+    --bg-secondary: #1C1C1E;
+    --bg-tertiary: #2C2C2E;
+    --text-primary: #F5F5F7;
+    --text-secondary: #86868B;
+    --text-tertiary: #636366;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
-body,html {
-    margin: 0;
-    padding: 0;
-} 
+/* ==============================
+   Reset & Base
+   ============================== */
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-h1 {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+}
+
+p {
+    margin: 0;
 }
 
 a {
     color: inherit;
-      text-decoration: none;
+    text-decoration: none;
+    transition: opacity var(--transition);
 }
 
 a:hover {
     opacity: 0.6;
-    transition: opacity .2s ease-out;
-    -moz-transition: opacity .2s ease-out;
-    -webkit-transition: opacity .2s ease-out;
-    -o-transition: opacity .2s ease-out;
 }
 
-.black {
-    color: #1F1F1F;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-.tags .tag + .tag {
-    margin-left: 4px;
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.tag {
-    padding: 3px 8px 4px 8px;
-    background-color: rgb(232, 232, 232);
-    font-size: 10px;
-    border-radius: 16px;
-    color: black;
-}
+/* ==============================
+   Layout Utilities
+   ============================== */
 
 .container {
-    max-width: 800px;
+    max-width: 980px;
     margin: 0 auto;
+    padding: 0 32px;
 }
 
-.full-height {
+.section {
+    padding: 100px 0;
+}
+
+.section-sm {
+    padding: 64px 0;
+}
+
+/* ==============================
+   Tag / Pill
+   ============================== */
+
+.tag {
+    display: inline-block;
+    padding: 3px 10px 4px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 980px;
+    letter-spacing: 0;
+}
+
+.tags {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 100vh;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
-.safe-area {
-    padding: 32px;
+/* ==============================
+   Scroll Entrance Animations
+   ============================== */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: none;
+}
+.fade-in[data-delay="1"] { transition-delay: 0.1s; }
+.fade-in[data-delay="2"] { transition-delay: 0.2s; }
+.fade-in[data-delay="3"] { transition-delay: 0.3s; }
+
+/* ==============================
+   External Link Indicator
+   ============================== */
+
+a[target="_blank"]:not(.no-ext-icon)::after {
+    content: "↗";
+    display: inline-block;
+    font-size: 0.7em;
+    margin-left: 3px;
+    opacity: 0.5;
+    vertical-align: super;
+    transition: opacity var(--transition);
+}
+a[target="_blank"]:not(.no-ext-icon):hover::after {
+    opacity: 0.9;
 }
 
-.center {
-    text-align: center;
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        background-color: #1F1F1F;
-        color: #ABABAB;
-    }
-
-    .black {
-        color: white;
-    }
-
-    .tag {
-        background-color: white;
-    }
-}
+/* ==============================
+   Dark Mode overrides for print
+   ============================== */
 
 @media print {
+    :root {
+        --bg: #FFFFFF;
+        --bg-secondary: #F5F5F7;
+        --bg-tertiary: #E8E8ED;
+        --text-primary: #1D1D1F;
+        --text-secondary: #6E6E73;
+        --text-tertiary: #86868B;
+        --border: rgba(0, 0, 0, 0.08);
+    }
+
     html {
         background-color: white;
-        color: #4b5563;
-    }
-
-    .black {
-        color: #1F1F1F;
-    }
-
-    .tag {
-        background-color: rgb(232, 232, 232);
+        color: #1D1D1F;
     }
 }

@@ -8,8 +8,8 @@ const title = 'Terms Of Use – LoopSize'
     title={title},
     favicon="favicon-loopsize-32x32.png"
 >
-    <main class="container safe-area">
-        <section class="black">
+    <main>
+        <section>
             <h1>{title}</h1>
 
             <h3>1. Purpose</h3>
@@ -76,3 +76,20 @@ const title = 'Terms Of Use – LoopSize'
         </section>
     </main>
 </Layout>
+
+<style>
+    main {
+        padding: 64px 32px;
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    h1 { margin-bottom: 32px; }
+    h3, h4 { margin-top: 32px; margin-bottom: 12px; }
+    ul { padding-left: 20px; list-style: disc; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

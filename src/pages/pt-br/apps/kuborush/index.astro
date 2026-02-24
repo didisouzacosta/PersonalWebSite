@@ -1,0 +1,66 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const appId = "id6757385646";
+const title = "KuboRush - Quebra-Cabeça de Blocos";
+const description =
+    "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu próprio ritmo. Perfeito para seus 2 minutos livres — sem pressão, só diversão.";
+const favicon = "favicon-kuborush-32x32.png";
+const appIcon = "kuborush/app-icon.png";
+
+const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
+
+const screenshots = [
+    {
+        url: "kuborush/screenshots/frame-1.png",
+        alt: "Os 2 minutos mais divertidos do seu dia!",
+    },
+    {
+        url: "kuborush/screenshots/frame-2.png",
+        alt: "Controle total dos seus movimentos!",
+    },
+    {
+        url: "kuborush/screenshots/frame-3.png",
+        alt: "Combine, planeje e faça combos incríveis.",
+    },
+    {
+        url: "kuborush/screenshots/frame-4.png",
+        alt: "Suba no Hall da Fama ou vença o Rush Semanal.",
+    },
+];
+
+const faq = [
+    {
+        question: "O que é KuboRush?",
+        answer: "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu ritmo — sem limite de tempo, sem pressão. Feito para ser os 2 minutos mais divertidos do seu dia.",
+    },
+    {
+        question: "Quais power-ups estão disponíveis?",
+        answer: "KuboRush tem quatro power-ups: <strong>Dica</strong> te ajuda quando você está travado, <strong>Embaralhar</strong> traz um novo conjunto de peças, <strong>Girar</strong> permite rotacionar uma peça para o encaixe perfeito, e <strong>Desfazer</strong> permite reverter até 3 movimentos.",
+    },
+    {
+        question: "Quais são os modos competitivos?",
+        answer: "Existem dois modos competitivos: <strong>Hall da Fama</strong>, onde você compete com amigos em rankings globais, e <strong>Rush Semanal</strong>, um evento semanal com desafios especiais para testar suas habilidades.",
+    },
+    {
+        question: "KuboRush é gratuito?",
+        answer: "Sim, KuboRush é gratuito para baixar e jogar. O upgrade <strong>KuboRush Pro</strong> está disponível como compra única no app, desbloqueando recursos adicionais.",
+    },
+    {
+        question: "Como restaurar minha compra?",
+        answer: "Se você já adquiriu o KuboRush Pro, não precisa pagar novamente ao trocar de dispositivo ou reinstalar o app. Basta tocar no botão <em>Restaurar Compras</em> e o app verificará sua compra pelo Apple ID — sem custo adicional.",
+    },
+];
+---
+
+<AppTemplate
+    appId={appId}
+    title={title}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    lang="pt-br"
+/>

@@ -10,10 +10,11 @@ interface Props {
     description: string,
     screenshots: { url: string, alt: string }[],
     faq: { question: string, answer: string }[],
-    metas: { name: string, content: string }[]
+    metas: { name: string, content: string }[],
+    lang?: string,
 }
 
-const { appId, title, metas, favicon, appIcon, description, screenshots, faq } = Astro.props;
+const { appId, title, metas, favicon, appIcon, description, screenshots, faq, lang } = Astro.props;
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
@@ -24,28 +25,52 @@ const currentPath = Astro.url.pathname;
     favicon={favicon}
     description={description}
     metas={metas}
+    lang={lang}
 >
-    <main class="safe-area grid">
-        <section class="container center head">
-            <img
-                src=`${baseAssetsURL}apps/${appIcon}`
-                alt={title}
-                fetchpriority="high"
-                class="app-icon"
-            />
-            <h1 class="black">{title}</h1>
-        </section>
+    <main class="app-page">
 
-        <section class="screenshots-container" aria-label="Screenshots">
+        <header class="app-header">
+            <div class="container app-header-inner">
+                <img
+                    src=`${baseAssetsURL}apps/${appIcon}`
+                    alt={`${title} app icon`}
+                    fetchpriority="high"
+                    class="app-icon"
+                    width="120"
+                    height="120"
+                />
+                <h1 class="app-title">{title}</h1>
+                <p class="app-subtitle">{description}</p>
+                <a
+                    href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+                    aria-label=`Download ${title} on the App Store`
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="app-store-link no-ext-icon"
+                >
+                    <img
+                        src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
+                        alt="Download on the App Store"
+                        class="app-store-badge"
+                        width="160"
+                        height="54"
+                    />
+                </a>
+            </div>
+        </header>
+
+        <section class="screenshots-section" aria-label="Screenshots">
             <ul class="screenshots">
                 {
                     screenshots.map(screenshot => (
                         <li>
-                            <img
-                                src=`${baseAssetsURL}apps/${screenshot.url}`
-                                alt={screenshot.alt}
-                                loading="lazy"
-                            />
+                            <figure>
+                                <img
+                                    src=`${baseAssetsURL}apps/${screenshot.url}`
+                                    alt={screenshot.alt}
+                                    loading="lazy"
+                                />
+                            </figure>
                         </li>
                     ))
                 }
@@ -56,72 +81,89 @@ const currentPath = Astro.url.pathname;
             </dialog>
         </section>
 
-        <section class="container">
-            <section class="center body" aria-label="Description">
-                <p>{description}</p>
-            </section>
-        </section>
-
-        <section class="container center" aria-label="Download">
-            <a
-                href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
-                aria-label=`Download ${title} on the App Store`
-            >
-                <img
-                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
-                    alt="Download on the App Store"
-                    class="apple-store-button"
-                />
-            </a>
-        </section>
-
-        <section class="accordion-container" aria-label="FAQ">
-            <div class="accordion">
-                <FaqAccordion title="FAQ" items={faq} />
+        <section class="faq-section section-sm" aria-labelledby="faq-heading">
+            <div class="container">
+                <h2 id="faq-heading" class="faq-heading">FAQ</h2>
+                <FaqAccordion items={faq} />
             </div>
         </section>
 
-        <footer class="container footer">
-            <a href={`${currentPath}/terms-of-use`}>Terms of use</a> • <a href={`${currentPath}/privacy-policy`}>Privacy policy</a>
+        <footer class="app-footer">
+            <div class="container">
+                <nav aria-label="Legal links">
+                    <a href={`${currentPath}/terms-of-use`}>Terms of use</a>
+                    <span aria-hidden="true">&bull;</span>
+                    <a href={`${currentPath}/privacy-policy`}>Privacy policy</a>
+                </nav>
+            </div>
         </footer>
     </main>
 </Layout>
 
 <style>
+    .app-page {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Header */
+    .app-header {
+        padding: 80px 0 64px;
+        text-align: center;
+    }
+
+    .app-header-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
     .app-icon {
-        max-width: 20%;
-        height: auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 27px;
         object-fit: cover;
-        border-radius: 20%;
+        border: 1px solid var(--border);
     }
 
-    .grid {
-        display: grid;
-        gap: 64px;
-        margin-bottom: 64px;
+    .app-title {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--text-primary);
+        margin: 0;
     }
 
-    .head {
-        margin-top: 64px;
+    .app-subtitle {
+        font-size: 17px;
+        color: var(--text-secondary);
+        max-width: 520px;
+        margin: 0;
+        line-height: 1.6;
     }
 
-    .body {
-        font-size: 18px;
+    .app-store-link {
+        display: inline-flex;
+        margin-top: 8px;
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
     }
 
-    .screenshots-container {
-        display: grid;
-        justify-content: center;
+    .app-store-link:hover {
+        opacity: 0.75;
+        transform: translateY(-1px);
     }
 
-    .accordion-container {
-        display: grid;
-        place-items: center;
+    .app-store-badge {
+        height: 44px;
+        width: auto;
     }
 
-    .accordion {
-        width: 100%;
-        max-width: 800px;
+    /* Screenshots */
+    .screenshots-section {
+        background-color: var(--bg-secondary);
+        padding: 48px 16px;
     }
 
     .screenshots {
@@ -130,27 +172,32 @@ const currentPath = Astro.url.pathname;
         justify-content: center;
         gap: 8px;
         max-width: 1400px;
+        margin: 0 auto;
         list-style: none;
         padding: 0;
-        margin: 0;
     }
 
     .screenshots li {
         width: calc((1400px - 5 * 8px) / 6);
     }
 
-    .screenshots li img {
+    .screenshots figure {
+        margin: 0;
+    }
+
+    .screenshots figure img {
         width: 100%;
         border-radius: 16px;
         cursor: pointer;
         transition: transform 200ms ease, box-shadow 200ms ease;
     }
 
-    .screenshots li img:hover {
+    .screenshots figure img:hover {
         transform: scale(1.04);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+        box-shadow: var(--shadow-hover);
     }
 
+    /* Lightbox */
     #screenshot-lightbox {
         padding: 0;
         border: none;
@@ -192,13 +239,47 @@ const currentPath = Astro.url.pathname;
         z-index: 1;
     }
 
-    .apple-store-button {
-        width: 200px;
+    /* FAQ */
+    .faq-section {
+        border-top: 1px solid var(--border);
+    }
+
+    .faq-heading {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+    }
+
+    /* Footer */
+    .app-footer {
+        padding: 32px 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .app-footer nav {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--text-tertiary);
+    }
+
+    .app-footer nav a {
+        color: var(--text-secondary);
+        transition: color 0.2s ease-out;
+    }
+
+    .app-footer nav a:hover {
+        color: var(--text-primary);
+        opacity: 1;
     }
 
     @media only screen and (max-width: 768px) {
         .app-icon {
-            max-width: 40%;
+            width: 96px;
+            height: 96px;
         }
 
         .screenshots li {
@@ -212,7 +293,7 @@ const currentPath = Astro.url.pathname;
     const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
     const closeBtn = document.getElementById('lightbox-close');
 
-    document.querySelectorAll('.screenshots li img').forEach(img => {
+    document.querySelectorAll('.screenshots figure img').forEach(img => {
         img.addEventListener('click', () => {
             const image = img as HTMLImageElement;
             lightboxImg.src = image.src;

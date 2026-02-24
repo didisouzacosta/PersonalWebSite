@@ -1,135 +1,179 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import type { HomepageContent } from "../../core/homepage";
 
 import Projects from "./Projects.astro";
+
+interface Props {
+    content: HomepageContent;
+}
+
+const { content } = Astro.props;
 ---
 
-<main class="container full-height safe-area">
-	<section>
-		<Image
-			src="https://avatars.githubusercontent.com/u/11352503?v=4"
-			alt="Adriano Souza Costa"
-			width="120"
-			height="120"
-			loading="eager"
-			priority={true}
-			class="avatar"
-		/>
+<nav class="home-nav" aria-label="Page sections">
+	<a href="#about">{content.aboutTitle}</a>
+	<span class="nav-sep" aria-hidden="true">•</span>
+	<a href="#projects">{content.projectsTitle}</a>
+</nav>
 
-		<h1 class="name black">Adriano Souza Costa</h1>
+<main>
+	<section id="hero" aria-label="Introduction" class="hero-section">
+		<div class="container hero-inner">
+			<Image
+				src="https://avatars.githubusercontent.com/u/11352503?v=4"
+				alt="Adriano Souza Costa"
+				width="140"
+				height="140"
+				loading="eager"
+				class="avatar fade-in"
+			/>
 
-		<p class="profession">iOS/MacOS Developer</p>
+			<h1 class="hero-name fade-in" data-delay="1">Adriano<br />Souza Costa</h1>
 
-		<p class="black">
-			Swift • SwiftUI • UIKit • Objective-C • SwiftData/CoreData • CI/CD •
-			React Native
-		</p>
+			<p class="hero-title fade-in" data-delay="1">{content.role}</p>
+
+			<div class="hero-cta fade-in" data-delay="2">
+				<a href={content.resumeLink} class="btn-primary">
+					<span>{content.resumeLabel}</span>
+					<Icon name="right-arrow" width={12} height={12} />
+				</a>
+			</div>
+
+			<nav class="social-links fade-in" data-delay="3" aria-label="Social links">
+				<a
+					href="https://x.com/didisouzacosta"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="X (Twitter)"
+					class="no-ext-icon"
+				>
+					<Icon name="x" class="social-icon" />
+				</a>
+				<a
+					href="https://github.com/didisouzacosta"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub"
+					class="no-ext-icon"
+				>
+					<Icon name="github" class="social-icon" />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/adrianosouzacosta"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="LinkedIn"
+					class="no-ext-icon"
+				>
+					<Icon name="linkedin" class="social-icon" />
+				</a>
+			</nav>
+		</div>
 	</section>
 
-	<section>
-		<p>
-			iOS/macOS Developer with 10+ years of experience in Swift, SwiftUI,
-			and UIKit, working on the development of scalable apps with a strong
-			focus on UX, performance, and clean architecture. Solid expertise in
-			integrating REST APIs, iCloud, and Apple technologies. Seeking new
-			challenges in impactful projects.
-		</p>
-
-		<section id="resume">
-			<a href="/resume" class="resume-link">
-				<span>See my resume</span>
-				<Icon name="right-arrow" width={12} height={12} />
-			</a>
-		</section>
-
-		<p id="social">
-			<a
-				href="https://x.com/didisouzacosta"
-				target="_blank"
-				aria-label="X"
-				aria-labelledby="X"
-			>
-				<Icon name="x" class="social-icon black" />
-			</a>
-
-			<a
-				href="https://github.com/didisouzacosta"
-				target="_blank"
-				aria-label="Github"
-				aria-labelledby="Github"
-			>
-				<Icon name="github" class="social-icon black" />
-			</a>
-
-			<a
-				href="https://www.linkedin.com/in/adrianosouzacosta"
-				target="_blank"
-				aria-label="Linkedin"
-				aria-labelledby="Linkedin"
-			>
-				<Icon name="linkedin" class="social-icon black" />
-			</a>
-		</p>
+	<section id="about" aria-label="About me" class="section about-section fade-in">
+		<div class="container">
+			<h2 class="section-title">{content.aboutTitle}</h2>
+			<p class="bio">{content.bio}</p>
+			<div class="skills tags" role="list" aria-label="Technical skills">
+				{content.skills.map((skill) => (
+					<span role="listitem" class="tag">{skill}</span>
+				))}
+			</div>
+		</div>
 	</section>
 
-	<Projects />
+	<section id="projects" aria-label="Projects" class="section projects-section fade-in">
+		<div class="container">
+			<h2 class="section-title">{content.projectsTitle}</h2>
+			<Projects />
+		</div>
+	</section>
 </main>
 
 <style>
-	img.avatar {
-		border-radius: 50%;
-	}
-
-	p.profession {
-		margin: 0px;
-		padding: 0px;
-	}
-
-	ul.skills {
+	/* Hero */
+	.hero-section {
+		min-height: 100svh;
 		display: flex;
-		padding: 0px;
-		margin: 16px 0px 16px 0px;
-		list-style: none;
+		align-items: center;
 	}
 
-	ul.skills li {
-		margin-right: 8px;
-		margin-left: 8px;
-	}
-
-	#container {
+	.hero-inner {
 		display: flex;
-		justify-content: center;
 		flex-direction: column;
-		min-height: 100vh;
-		align-items: center;
+		align-items: flex-start;
+		gap: 0;
+		padding-top: 80px;
+		padding-bottom: 80px;
 	}
 
-	#social {
+	.avatar {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		object-fit: cover;
+		margin-bottom: 32px;
+		border: 1px solid var(--border-strong);
+	}
+
+	.hero-name {
+		font-size: clamp(52px, 8vw, 80px);
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		line-height: 1.02;
+		color: var(--text-primary);
+		margin-bottom: 16px;
+	}
+
+	.hero-title {
+		font-size: clamp(20px, 3vw, 28px);
+		font-weight: 400;
+		color: var(--text-secondary);
+		letter-spacing: -0.01em;
+		margin-bottom: 40px;
+	}
+
+	.hero-cta {
+		margin-bottom: 40px;
+	}
+
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		background-color: var(--text-primary);
+		color: var(--bg);
+		font-size: 15px;
+		font-weight: 500;
+		padding: 10px 20px;
+		border-radius: 980px;
+		transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+	}
+
+	.btn-primary:hover {
+		opacity: 0.75;
+		transform: translateY(-1px);
+	}
+
+	.social-links {
 		display: flex;
-		margin-top: 32px;
 		align-items: center;
+		gap: 20px;
 	}
 
-	#social a + a {
-		margin-left: 16px;
+	.social-links a {
+		display: flex;
+		align-items: center;
+		color: var(--text-secondary);
+		transition: color 0.2s ease-out, opacity 0.2s ease-out;
 	}
 
-	#resume {
-		margin-top: 32px;
-		margin-bottom: 48px;
-	}
-
-	#resume a.resume-link {
-		background-color: black;
-		color: white;
-		padding: 8px 12px 8px 12px;
-		border-radius: 8px;
-	}
-
-	#resume a.resume-link span {
-		margin-right: 4px;
+	.social-links a:hover {
+		color: var(--text-primary);
+		opacity: 1;
 	}
 
 	.social-icon {
@@ -137,10 +181,70 @@ import Projects from "./Projects.astro";
 		height: 22px;
 	}
 
-	@media (prefers-color-scheme: dark) {
-		#resume a.resume-link {
-			background-color: white;
-			color: black;
-		}
+	/* About */
+	.about-section {
+		border-top: 1px solid var(--border);
+	}
+
+	.section-title {
+		font-size: clamp(36px, 5vw, 48px);
+		font-weight: 700;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 24px;
+	}
+
+	.bio {
+		font-size: 17px;
+		line-height: 1.7;
+		color: var(--text-secondary);
+		max-width: 620px;
+		margin-bottom: 28px;
+	}
+
+	.skills {
+		gap: 6px;
+	}
+
+	/* Projects */
+	.projects-section {
+		border-top: 1px solid var(--border);
+	}
+
+	/* Home nav */
+	.home-nav {
+		position: fixed;
+		top: 20px;
+		left: 24px;
+		z-index: 100;
+		display: flex;
+		align-items: center;
+		gap: 2px;
+	}
+
+	.home-nav a {
+		font-size: 14px;
+		font-weight: 500;
+		color: var(--text-secondary);
+		padding: 8px 12px;
+		border-radius: 980px;
+		transition: color 0.2s ease-out, background-color 0.2s ease-out, opacity 0.2s ease-out;
+	}
+
+	.home-nav a:hover {
+		color: var(--text-primary);
+		background-color: var(--bg-secondary);
+		opacity: 1;
+	}
+
+	.nav-sep {
+		font-size: 12px;
+		color: var(--text-tertiary);
+		padding: 0 2px;
+		user-select: none;
+	}
+
+	@media (max-width: 480px) {
+		.home-nav { display: none; }
 	}
 </style>

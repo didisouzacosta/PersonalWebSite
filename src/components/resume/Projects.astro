@@ -2,6 +2,7 @@
 const apps = [
     {
         name: "KuboRush",
+        description: "Block puzzle game",
         tags: ["iOS App", "Free"],
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/kuborush/app-icon.png",
@@ -9,6 +10,7 @@ const apps = [
     },
     {
         name: "LoopSize",
+        description: "Ring size converter",
         tags: ["iOS App", "Free"],
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/app-icon.png",
@@ -16,6 +18,7 @@ const apps = [
     },
     {
         name: "CleanerXcode",
+        description: "Xcode cache cleaner",
         tags: ["macOS App", "Free"],
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/cleanerxcode/app-icon.png",
@@ -24,6 +27,7 @@ const apps = [
     },
     {
         name: "Formidable",
+        description: "Swift form framework",
         tags: ["Framework"],
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/formidable/app-icon.png",
@@ -33,74 +37,121 @@ const apps = [
 ];
 ---
 
-<section id="projects">
-    <h3 class="black">Projects</h3>
-
-    <div class="apps">
-        {
-            apps.map((app) => {
-                return (
-                    <a href={app.url} target={app.target}>
-                        <div class="app">
-                            <img
-                                src={app.imageUrl}
-                                alt={app.name}
-                                loading="eager"
-                                class="app-icon"
-                            />
-
-                            <h4 class="app-title black">{app.name}</h4>
-
-                            <div class="tags">
-                                {app.tags.map((tag) => {
-                                    return <span class="tag">{tag}</span>;
-                                })}
+<ul class="projects-grid" role="list">
+    {
+        apps.map((app) => (
+            <li>
+                <article class="project-card">
+                    <a
+                        href={app.url}
+                        target={app.target}
+                        rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
+                        aria-label={`${app.name} — ${app.description}`}
+                        class={`card-link${app.target === "_blank" ? " no-ext-icon" : ""}`}
+                    >
+                        <img
+                            src={app.imageUrl}
+                            alt={`${app.name} app icon`}
+                            loading="lazy"
+                            class="app-icon"
+                            width="64"
+                            height="64"
+                        />
+                        <div class="card-info">
+                            <h3 class="app-name">
+                                {app.name}
+                                {app.target === "_blank" && (
+                                    <span class="ext-icon" aria-label="opens in new tab">↗</span>
+                                )}
+                            </h3>
+                            <p class="app-description">{app.description}</p>
+                            <div class="tags" role="list">
+                                {app.tags.map((tag) => (
+                                    <span role="listitem" class="tag">{tag}</span>
+                                ))}
                             </div>
                         </div>
                     </a>
-                );
-            })
-        }
-    </div>
-</section>
+                </article>
+            </li>
+        ))
+    }
+</ul>
 
 <style>
-    #projects {
-        margin-top: 64px;
-    }
-
-    #projects .apps {
+    .projects-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-auto-rows: max-content;
-        column-gap: 16px;
-        row-gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 40px;
     }
 
-    #projects .apps .app {
-        text-align: center;
+    .project-card {
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-card);
+        transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
     }
 
-    #projects .apps .app .app-icon {
-        max-width: 100%;
-        height: auto;
+    .project-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .card-link {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px;
+        opacity: 1;
+    }
+
+    .card-link:hover {
+        opacity: 1;
+    }
+
+    .app-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
         object-fit: cover;
+        flex-shrink: 0;
     }
 
-    #projects .apps .app h4 {
-        margin: 0px;
-        padding: 0px;
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
     }
 
-    .social-icon {
-        width: 22px;
-        height: 22px;
+    .app-name {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--text-primary);
     }
 
-    @media only screen and (max-width: 768px) {
-        #projects .apps {
-            grid-template-columns: repeat(2, 1fr);
-            column-gap: 8px;
+    .ext-icon {
+        font-size: 0.65em;
+        opacity: 0.45;
+        vertical-align: super;
+        margin-left: 2px;
+        transition: opacity 0.2s ease-out;
+    }
+
+    .card-link:hover .ext-icon {
+        opacity: 0.8;
+    }
+
+    .app-description {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 6px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .projects-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>
