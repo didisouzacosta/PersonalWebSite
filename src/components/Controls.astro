@@ -13,6 +13,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
         if (path === '/' || path === '') return '/pt-br/';
         if (path.startsWith('/apps/loopsize')) return '/pt-br/apps/loopsize';
         if (path.startsWith('/apps/kuborush')) return '/pt-br/apps/kuborush';
+        if (path.startsWith('/apps/duotake')) return '/pt-br/apps/duotake';
         if (path.startsWith('/resume')) return '/resume/pt-br';
         return path;
     } else {
@@ -20,6 +21,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
         if (path === '/pt-br/' || path === '/pt-br') return '/';
         if (path.startsWith('/pt-br/apps/loopsize')) return '/apps/loopsize';
         if (path.startsWith('/pt-br/apps/kuborush')) return '/apps/kuborush';
+        if (path.startsWith('/pt-br/apps/duotake')) return '/apps/duotake';
         if (path.startsWith('/resume/pt-br')) return '/resume';
         return path;
     }

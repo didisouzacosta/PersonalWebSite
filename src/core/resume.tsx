@@ -185,6 +185,11 @@ export const eng: Resume = {
         title: "Projects",
         items: [
             {
+                title: "DuoTake",
+                url: "https://adrianosouzacosta.com.br/apps/duotake",
+                description: "DuoTake lets you record or take photos with the front and back cameras at the same time, with CropOut for cleaner framing that is ideal for reacts.",
+            },
+            {
                 title: "LoopSize",
                 url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
                 description: "LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF."
@@ -397,6 +402,11 @@ export const ptBr: Resume = {
     projects: {
         title: "Projetos",
         items: [
+            {
+                title: "DuoTake",
+                url: "https://adrianosouzacosta.com.br/apps/duotake",
+                description: "O DuoTake permite gravar e fotografar com a câmera frontal e traseira ao mesmo tempo, com CropOut para um enquadramento mais limpo e ideal para reacts."
+            },
             {
                 title: "LoopSize",
                 url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",

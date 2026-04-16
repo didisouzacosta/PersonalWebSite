@@ -1,0 +1,64 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const title = "DuoTake";
+const description =
+    "O DuoTake permite gravar e fotografar com a câmera frontal e traseira ao mesmo tempo, com o plus do CropOut para um enquadramento ideal em reacts.";
+const favicon = "favicon-duotake-32x32.png";
+const appIcon = "duotake/app-icon.png";
+
+const metas = [];
+
+const screenshots = [
+    {
+        url: "duotake/screenshots/frame-1.png",
+        alt: "Capture retrato e paisagem ao mesmo tempo.",
+    },
+    {
+        url: "duotake/screenshots/frame-2.png",
+        alt: "Escolha o melhor modo para gravar em dois formatos.",
+    },
+    {
+        url: "duotake/screenshots/frame-3.png",
+        alt: "Ajuste as configurações da câmera antes de cada gravação.",
+    },
+    {
+        url: "duotake/screenshots/frame-4.png",
+        alt: "Faça fotos e vídeos prontos para qualquer plataforma.",
+    },
+];
+
+const faq = [
+    {
+        question: "O que é DuoTake?",
+        answer: "DuoTake é um app de câmera criado para capturar com a câmera frontal e traseira ao mesmo tempo, tanto em foto quanto em vídeo. Ele também inclui o <strong>CropOut</strong>, que ajuda a criar um enquadramento ideal para reacts e conteúdos de reação.",
+    },
+    {
+        question: "Para quem o DuoTake foi feito?",
+        answer: "O DuoTake é ideal para criadores, social media, vloggers e qualquer pessoa que produz reacts, comentários ou bastidores e quer mostrar ao mesmo tempo a cena e a própria reação.",
+    },
+    {
+        question: "Posso tirar fotos e gravar vídeos?",
+        answer: "Sim. O DuoTake suporta fotos e vídeos usando simultaneamente a câmera frontal e a traseira, facilitando capturar sua reação e o que você está vendo em uma única tomada.",
+    },
+    {
+        question: "O DuoTake funciona offline?",
+        answer: "Sim. A captura principal e o processamento de mídia foram pensados para funcionar diretamente no seu dispositivo. Recursos que dependem de serviços da Apple, como validação de compra ou salvamento na fototeca, podem exigir as permissões do sistema.",
+    },
+    {
+        question: "Como restaurar minha compra?",
+        answer: "Se você já desbloqueou os recursos premium do DuoTake, toque em <em>Restaurar Compras</em> e o app pedirá à Apple para validar sua compra anterior com o mesmo Apple ID — sem custo extra.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    lang="pt-br"
+/>

@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 
 interface Props {
-    appId: string,
+    appId?: string,
     title: string,
     favicon: string,
     appIcon: string,
@@ -18,6 +18,9 @@ const { appId, title, metas, favicon, appIcon, description, screenshots, faq, la
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
+const legalBasePath = currentPath.startsWith('/pt-br/')
+    ? currentPath.replace('/pt-br', '')
+    : currentPath;
 ---
 
 <Layout
@@ -41,21 +44,23 @@ const currentPath = Astro.url.pathname;
                 />
                 <h1 class="app-title">{title}</h1>
                 <p class="app-subtitle">{description}</p>
-                <a
-                    href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
-                    aria-label=`Download ${title} on the App Store`
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="app-store-link no-ext-icon"
-                >
-                    <img
-                        src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
-                        alt="Download on the App Store"
-                        class="app-store-badge"
-                        width="160"
-                        height="54"
-                    />
-                </a>
+                {appId && (
+                    <a
+                        href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+                        aria-label=`Download ${title} on the App Store`
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="app-store-link no-ext-icon"
+                    >
+                        <img
+                            src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
+                            alt="Download on the App Store"
+                            class="app-store-badge"
+                            width="160"
+                            height="54"
+                        />
+                    </a>
+                )}
             </div>
         </header>
 
@@ -91,9 +96,9 @@ const currentPath = Astro.url.pathname;
         <footer class="app-footer">
             <div class="container">
                 <nav aria-label="Legal links">
-                    <a href={`${currentPath}/terms-of-use`}>Terms of use</a>
+                    <a href={`${legalBasePath}/terms-of-use`}>Terms of use</a>
                     <span aria-hidden="true">&bull;</span>
-                    <a href={`${currentPath}/privacy-policy`}>Privacy policy</a>
+                    <a href={`${legalBasePath}/privacy-policy`}>Privacy policy</a>
                 </nav>
             </div>
         </footer>
@@ -123,9 +128,7 @@ const currentPath = Astro.url.pathname;
     .app-icon {
         width: 120px;
         height: 120px;
-        border-radius: 27px;
         object-fit: cover;
-        border: 1px solid var(--border);
     }
 
     .app-title {
