@@ -1,5 +1,15 @@
 ---
-const apps = [
+interface AppProject {
+    name: string;
+    description: string;
+    tags: string[];
+    imageUrl: string;
+    url: string;
+    isEnabled: boolean;
+    target?: "_blank";
+}
+
+const apps: AppProject[] = [
     {
         name: "KuboRush",
         description: "Block puzzle game",
@@ -7,6 +17,7 @@ const apps = [
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/kuborush/app-icon.png",
         url: "/apps/kuborush",
+        isEnabled: true,
     },
     {
         name: "LoopSize",
@@ -15,6 +26,7 @@ const apps = [
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/app-icon.png",
         url: "/apps/loopsize",
+        isEnabled: true,
     },
     {
         name: "DuoTake",
@@ -23,6 +35,7 @@ const apps = [
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/duotake/app-icon.png",
         url: "/apps/duotake",
+        isEnabled: false,
     },
     {
         name: "CleanerXcode",
@@ -32,6 +45,7 @@ const apps = [
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/cleanerxcode/app-icon.png",
         url: "https://github.com/didisouzacosta/CleanerXcode",
         target: "_blank",
+        isEnabled: true,
     },
     {
         name: "Formidable",
@@ -41,13 +55,16 @@ const apps = [
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/formidable/app-icon.png",
         url: "https://github.com/didisouzacosta/Formidable",
         target: "_blank",
+        isEnabled: true,
     },
 ];
+
+const enabledApps = apps.filter((app) => app.isEnabled);
 ---
 
 <ul class="projects-grid" role="list">
     {
-        apps.map((app) => (
+        enabledApps.map((app) => (
             <li>
                 <article class="project-card">
                     <a
