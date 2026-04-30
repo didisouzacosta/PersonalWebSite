@@ -66,7 +66,7 @@ export const eng: Resume = {
             { title: "Languages", description: "Swift, Objective-C and React Native." },
             { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation and AudioKit." },
             { title: "Tools", description: "Xcode, Git, Fastlane, Firebase, Github Actions and Travis." },
-            { title: "Codex, Claude, Agents and Skills", description: "Daily workflow, product exploration and assisted development." },
+            { title: "AI", description: "Codex, Claude, Agents and Skills" },
             { title: "Architectures", description: "MV,  MVC,  MVP, MVVM, MVVMC and Clean Architecture." },
             { title: "Other", description: "Unit tests, CI/CD, Apple Store Connect, Distribute apps out of Apple Store." }
         ]
@@ -254,7 +254,7 @@ export const ptBr: Resume = {
             { title: "Linguagens", description: "Swift, Objective-C e React Native." },
             { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation e AudioKit." },
             { title: "Ferramentas", description: "Xcode, Git, Fastlane, Firebase, GitHub Actions e Travis." },
-            { title: "Codex, Claude, Agents and Skills", description: "Fluxo diário, exploração de produto e desenvolvimento assistido." },
+            { title: "IA", description: "Codex, Claude, Agents and Skills" },
             { title: "Arquiteturas", description: "MV, MVC, MVP, MVVM, MVVMC e Clean Architecture." },
             { title: "Outros", description: "Testes unitários, CI/CD, Apple Store Connect e distribuição de apps fora da App Store." }
         ]
