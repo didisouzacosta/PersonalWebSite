@@ -625,20 +625,19 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		border: 1px solid var(--space-arc);
 		border-radius: 50%;
 		transform-origin: 50% 50%;
-		transform-style: preserve-3d;
 	}
 
 	.app-icon-stage::before {
 		width: 312%;
 		opacity: 0.42;
-		transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-10deg) translateZ(-18px);
+		transform: translate(-50%, -50%) rotate(-10deg);
 	}
 
 	.app-icon-stage::after {
 		width: 248%;
 		border-color: var(--space-arc-strong);
 		opacity: 0.5;
-		transform: translate(-50%, -50%) rotateX(61deg) rotateZ(-10deg) translateZ(10px);
+		transform: translate(-50%, -50%) rotate(10deg);
 	}
 
 	.fibonacci-ring,
@@ -667,8 +666,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		z-index: 2;
 		width: 312%;
 		aspect-ratio: 1;
-		transform: translate(-50%, -50%) rotateX(64deg) rotateZ(-10deg);
-		transform-style: preserve-3d;
+		transform: translate(-50%, -50%) rotate(-10deg);
 	}
 
 	.orbit-comet-runner {
@@ -685,7 +683,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		left: 100%;
 		width: clamp(54px, 10vw, 86px);
 		height: 12px;
-		transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg);
+		transform: translate(-50%, -50%) rotate(90deg);
 		transform-origin: 82% 50%;
 		animation: orbit-comet-depth 16s linear infinite;
 		will-change: opacity, filter, transform;
@@ -1031,25 +1029,25 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		0%, 100% {
 			opacity: 0.58;
 			filter: blur(0.45px);
-			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.78);
+			transform: translate(-50%, -50%) rotate(90deg) scale(0.78);
 		}
 
 		24% {
 			opacity: 1;
 			filter: blur(0);
-			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(1.12);
+			transform: translate(-50%, -50%) rotate(90deg) scale(1.12);
 		}
 
 		52% {
 			opacity: 0.34;
 			filter: blur(0.7px);
-			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.66);
+			transform: translate(-50%, -50%) rotate(90deg) scale(0.66);
 		}
 
 		76% {
 			opacity: 0.88;
 			filter: blur(0.1px);
-			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.96);
+			transform: translate(-50%, -50%) rotate(90deg) scale(0.96);
 		}
 	}
 
