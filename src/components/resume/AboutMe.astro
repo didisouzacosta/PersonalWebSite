@@ -13,7 +13,7 @@ interface Props {
 const { content } = Astro.props;
 const hasProjects = hasEnabledProjects();
 const heroApps = getProjectCards(content.lang);
-const visibleOrbitRadii = [72, 116.5, 188.5, 44.5];
+const fibonacciOrbitRadii = [64, 103.5, 167.5, 271];
 const bioParagraphs = content.bio.split(/\n\s*\n/).filter(Boolean);
 
 const fallbackOrbitItems = heroApps.map((app, index, apps) => {
@@ -22,7 +22,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
     const positionInShell = Math.floor(index / shellCount);
     const shellTotal = Math.ceil((apps.length - shell) / shellCount);
     const angle = (positionInShell * (360 / shellTotal) + shell * 72) % 360;
-    const radius = visibleOrbitRadii[shell];
+    const radius = fibonacciOrbitRadii[shell];
     const duration = 40 + shell * 16;
     const size = 54 + ((index * 9) % 22);
     const depth = 0.22 + shell * 0.12;
@@ -175,7 +175,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 				</div>
 			</div>
 		</div>
-		<span class="hero-continuity" aria-hidden="true"></span>
 	</section>
 
 	<section id="about" aria-label="About me" class="section about-section fade-in">
@@ -468,18 +467,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		--comet-start: -72px;
 		--comet-end: 180px;
 		animation: comet-glide 21s cubic-bezier(0.22, 0.64, 0.24, 1) -14s infinite;
-	}
-
-	.hero-continuity {
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: -1px;
-		z-index: 1;
-		height: clamp(120px, 18vh, 220px);
-		pointer-events: none;
-		background:
-			linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 86%, transparent) 62%, var(--bg) 100%);
 	}
 
 	.hero-inner {
@@ -842,6 +829,36 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	}
 
 	/* About */
+	.about-section {
+		position: relative;
+		z-index: 1;
+		margin-top: calc(clamp(104px, 16vh, 190px) * -1);
+		padding-top: clamp(176px, 24vh, 260px);
+		overflow: hidden;
+	}
+
+	.about-section::before {
+		content: "";
+		position: absolute;
+		inset: 0 0 auto;
+		height: clamp(150px, 22vh, 250px);
+		z-index: 0;
+		pointer-events: none;
+		background:
+			linear-gradient(
+				180deg,
+				transparent 0%,
+				color-mix(in srgb, var(--bg) 20%, transparent) 34%,
+				color-mix(in srgb, var(--bg) 74%, transparent) 70%,
+				var(--bg) 100%
+			);
+	}
+
+	.about-section > .container {
+		position: relative;
+		z-index: 1;
+	}
+
 	.section-title {
 		font-size: clamp(36px, 5vw, 48px);
 		font-weight: 700;
@@ -1174,7 +1191,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		const shellCount = Math.min(4, Math.max(2, Math.ceil(itemCount / 4)));
 		const minSize = stageWidth < 340 ? 48 : 52;
 		const maxSize = stageWidth < 340 ? 68 : 80;
-		const orbitRadii = [72, 116.5, 188.5, 44.5];
+		const orbitRadii = [64, 103.5, 167.5, 271];
 		const shellIndexes = Array.from({ length: shellCount }, () => 0);
 		const shellTotals = Array.from({ length: shellCount }, (_, shell) =>
 			Math.ceil((itemCount - shell) / shellCount),

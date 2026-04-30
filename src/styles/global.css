@@ -19,9 +19,9 @@
 }
 
 [data-theme="dark"] {
-    --bg: #000000;
-    --bg-secondary: #1C1C1E;
-    --bg-tertiary: #2C2C2E;
+    --bg: #0A0A0D;
+    --bg-secondary: #17181D;
+    --bg-tertiary: #24262D;
     --text-primary: #F5F5F7;
     --text-secondary: #86868B;
     --text-tertiary: #636366;
