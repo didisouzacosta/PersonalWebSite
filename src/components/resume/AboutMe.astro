@@ -13,15 +13,15 @@ interface Props {
 const { content } = Astro.props;
 const hasProjects = hasEnabledProjects();
 const heroApps = getProjectCards(content.lang);
+const visibleOrbitRadii = [72, 116.5, 188.5, 44.5];
 
 const fallbackOrbitItems = heroApps.map((app, index, apps) => {
     const shellCount = Math.min(4, Math.max(2, Math.ceil((apps.length || 1) / 4)));
     const shell = index % shellCount;
     const positionInShell = Math.floor(index / shellCount);
     const shellTotal = Math.ceil((apps.length - shell) / shellCount);
-    const radiusStep = shellCount > 1 ? 12 / (shellCount - 1) : 0;
     const angle = (positionInShell * (360 / shellTotal) + shell * 72) % 360;
-    const radius = 24 + shell * radiusStep;
+    const radius = visibleOrbitRadii[shell];
     const duration = 40 + shell * 16;
     const size = 54 + ((index * 9) % 22);
     const depth = 0.22 + shell * 0.12;
@@ -33,7 +33,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
         style: [
             `--orbit-start: ${angle.toFixed(2)}deg`,
             `--orbit-start-inverse: ${(-angle).toFixed(2)}deg`,
-            `--orbit-radius: ${radius.toFixed(2)}%`,
+            `--orbit-radius: ${radius.toFixed(2)}px`,
             `--orbit-duration: ${duration.toFixed(2)}s`,
             `--orbit-direction: ${direction}`,
             `--planet-size: ${size.toFixed(2)}px`,
@@ -56,6 +56,12 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 
 <main>
 	<section id="hero" aria-label="Introduction" class="hero-section">
+		<span class="space-stars" aria-hidden="true"></span>
+		<span class="shooting-stars" aria-hidden="true">
+			<span class="shooting-star shooting-star-1"></span>
+			<span class="shooting-star shooting-star-2"></span>
+			<span class="shooting-star shooting-star-3"></span>
+		</span>
 		<div class="container hero-inner">
 			<div class="hero-copy">
 				<Image
@@ -177,30 +183,182 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		position: relative;
 		overflow: hidden;
 		isolation: isolate;
+		--space-star: rgba(29, 29, 31, 0.18);
+		--space-star-soft: rgba(29, 29, 31, 0.08);
+		--space-arc: rgba(0, 0, 0, 0.07);
+		--space-arc-strong: rgba(0, 0, 0, 0.11);
+		--space-horizon: rgba(44, 80, 140, 0.08);
+		--comet-core: rgba(29, 29, 31, 0.22);
+		--comet-tail: rgba(44, 80, 140, 0.18);
 	}
 
 	.hero-section::before {
 		content: "";
 		position: absolute;
 		inset: 0;
-		z-index: -2;
+		z-index: -3;
 		background:
-			linear-gradient(115deg, transparent 0 34%, var(--bg-secondary) 34% 34.2%, transparent 34.2%),
-			linear-gradient(180deg, transparent 0%, var(--bg-secondary) 100%);
-		opacity: 0.5;
+			radial-gradient(ellipse 64% 46% at 76% 45%, var(--space-horizon), transparent 68%),
+			linear-gradient(115deg, transparent 0 34%, var(--bg-secondary) 34% 34.12%, transparent 34.12%),
+			linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg-secondary) 76%, transparent) 100%);
+		opacity: 0.78;
 	}
 
 	.hero-section::after {
 		content: "";
 		position: absolute;
 		inset: 0;
-		z-index: -1;
+		z-index: -2;
 		background-image:
 			linear-gradient(var(--border) 1px, transparent 1px),
 			linear-gradient(90deg, var(--border) 1px, transparent 1px);
-		background-size: 56px 56px;
-		mask-image: linear-gradient(90deg, transparent 0%, black 54%, transparent 100%);
-		opacity: 0.28;
+		background-size:
+			56px 56px,
+			56px 56px;
+		background-position:
+			0 0,
+			0 0;
+		mask-image: linear-gradient(90deg, transparent 0%, black 46%, black 74%, transparent 100%);
+		opacity: 0.24;
+	}
+
+	:global([data-theme="dark"]) .hero-section {
+		--space-star: rgba(245, 245, 247, 0.34);
+		--space-star-soft: rgba(245, 245, 247, 0.14);
+		--space-arc: rgba(255, 255, 255, 0.09);
+		--space-arc-strong: rgba(255, 255, 255, 0.16);
+		--space-horizon: rgba(84, 136, 200, 0.16);
+		--comet-core: rgba(245, 245, 247, 0.72);
+		--comet-tail: rgba(110, 170, 255, 0.32);
+	}
+
+	.space-stars,
+	.space-stars::before,
+	.space-stars::after {
+		position: absolute;
+		inset: 0;
+		display: block;
+		pointer-events: none;
+	}
+
+	.space-stars {
+		z-index: -1;
+		mask-image: linear-gradient(90deg, transparent 0%, black 24%, black 86%, transparent 100%);
+	}
+
+	.space-stars::before,
+	.space-stars::after {
+		content: "";
+		background-repeat: repeat;
+		will-change: opacity, filter;
+	}
+
+	.space-stars::before {
+		background-image:
+			radial-gradient(circle at 16% 18%, var(--space-star) 0 1px, transparent 1.35px),
+			radial-gradient(circle at 42% 26%, var(--space-star-soft) 0 1px, transparent 1.3px),
+			radial-gradient(circle at 68% 16%, var(--space-star) 0 1px, transparent 1.35px),
+			radial-gradient(circle at 78% 62%, var(--space-star-soft) 0 1px, transparent 1.3px),
+			radial-gradient(circle at 92% 34%, var(--space-star) 0 1px, transparent 1.35px);
+		background-size: 260px 260px, 310px 310px, 230px 230px, 290px 290px, 340px 340px;
+		background-position: 0 0, 82px 46px, 34px 118px, 140px 10px, 220px 90px;
+		animation: star-twinkle-primary 7.5s ease-in-out infinite;
+		opacity: 0.9;
+	}
+
+	.space-stars::after {
+		background-image:
+			radial-gradient(circle at 8% 74%, var(--space-star-soft) 0 1px, transparent 1.25px),
+			radial-gradient(circle at 28% 52%, var(--space-star) 0 1px, transparent 1.35px),
+			radial-gradient(circle at 58% 82%, var(--space-star-soft) 0 1px, transparent 1.25px),
+			radial-gradient(circle at 86% 48%, var(--space-star) 0 1px, transparent 1.35px);
+		background-size: 360px 360px, 280px 280px, 420px 420px, 330px 330px;
+		background-position: 44px 20px, 160px 82px, 10px 150px, 220px 26px;
+		animation: star-twinkle-secondary 11s ease-in-out infinite;
+		opacity: 0.52;
+	}
+
+	.shooting-stars,
+	.shooting-star,
+	.shooting-star::before,
+	.shooting-star::after {
+		position: absolute;
+		display: block;
+		pointer-events: none;
+	}
+
+	.shooting-stars {
+		inset: 0;
+		z-index: -1;
+		overflow: hidden;
+		mask-image: linear-gradient(90deg, transparent 0%, black 26%, black 92%, transparent 100%);
+	}
+
+	.shooting-star {
+		--comet-width: 118px;
+		--comet-angle: -22deg;
+		--comet-start: -90px;
+		--comet-end: 210px;
+		width: var(--comet-width);
+		height: 9px;
+		opacity: 0;
+		transform: rotate(var(--comet-angle)) translate3d(var(--comet-start), 0, 0);
+		transform-origin: 100% 50%;
+		will-change: opacity, transform, filter;
+	}
+
+	.shooting-star::before,
+	.shooting-star::after {
+		content: "";
+	}
+
+	.shooting-star::before {
+		top: 4px;
+		right: 2px;
+		width: 100%;
+		height: 1px;
+		border-radius: 999px;
+		background:
+			linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--comet-tail) 18%, transparent) 34%, var(--comet-tail) 74%, var(--comet-core) 100%);
+		filter: blur(0.2px);
+	}
+
+	.shooting-star::after {
+		top: 2.5px;
+		right: 0;
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: var(--comet-core);
+		box-shadow:
+			0 0 8px var(--comet-tail),
+			0 0 18px color-mix(in srgb, var(--comet-tail) 70%, transparent);
+	}
+
+	.shooting-star-1 {
+		top: 18%;
+		left: 22%;
+		animation: comet-glide 12s cubic-bezier(0.22, 0.64, 0.24, 1) -9s infinite;
+	}
+
+	.shooting-star-2 {
+		top: 52%;
+		left: 70%;
+		--comet-width: 86px;
+		--comet-angle: -18deg;
+		--comet-start: -64px;
+		--comet-end: 160px;
+		animation: comet-glide 17s cubic-bezier(0.22, 0.64, 0.24, 1) -5s infinite;
+	}
+
+	.shooting-star-3 {
+		top: 74%;
+		left: 42%;
+		--comet-width: 104px;
+		--comet-angle: -24deg;
+		--comet-start: -72px;
+		--comet-end: 180px;
+		animation: comet-glide 21s cubic-bezier(0.22, 0.64, 0.24, 1) -14s infinite;
 	}
 
 	.hero-inner {
@@ -212,6 +370,35 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		padding-bottom: 80px;
 		position: relative;
 		width: 100%;
+	}
+
+	.hero-inner::before,
+	.hero-inner::after {
+		content: "";
+		position: absolute;
+		pointer-events: none;
+		border: 1px solid var(--space-arc);
+		border-radius: 50%;
+		z-index: -1;
+	}
+
+	.hero-inner::before {
+		top: 4%;
+		right: -24%;
+		width: min(740px, 74vw);
+		aspect-ratio: 1;
+		opacity: 0.78;
+		transform: rotate(-24deg) scaleY(0.56);
+	}
+
+	.hero-inner::after {
+		top: 17%;
+		right: -7%;
+		width: min(500px, 50vw);
+		aspect-ratio: 1;
+		border-color: var(--space-arc-strong);
+		opacity: 0.42;
+		transform: rotate(18deg) scaleY(0.48);
 	}
 
 	.hero-copy {
@@ -336,7 +523,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	.fibonacci-ring {
 		width: calc(var(--ring-size) * 1px);
 		height: calc(var(--ring-size) * 1px);
-		border: 1px solid var(--border);
+		border: 1px solid var(--space-arc);
 		border-radius: 50%;
 		opacity: 0.72;
 		transform: translate(-50%, -50%);
@@ -345,13 +532,16 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	.ring-34 { --ring-size: 89; }
 	.ring-55 { --ring-size: 144; }
 	.ring-89 { --ring-size: 233; }
-	.ring-144 { --ring-size: 377; }
+	.ring-144 {
+		--ring-size: 377;
+		border-color: var(--space-arc-strong);
+	}
 
 	.fibonacci-axis {
 		width: 104%;
 		height: 1px;
-		background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
-		opacity: 0.58;
+		background: linear-gradient(90deg, transparent, var(--space-arc-strong), transparent);
+		opacity: 0.46;
 		transform: translate(-50%, -50%) rotate(var(--axis-angle));
 	}
 
@@ -370,6 +560,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		height: 58px;
 		color: var(--text-primary);
 		text-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+		filter: drop-shadow(0 0 18px color-mix(in srgb, var(--text-primary) 16%, transparent));
 		transform: translate(
 			calc(-50% + (var(--cursor-x) * -0.12)),
 			calc(-50% + (var(--cursor-y) * -0.12))
@@ -521,6 +712,63 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		}
 	}
 
+	@keyframes star-twinkle-primary {
+		0%, 100% {
+			opacity: 0.72;
+			filter: brightness(0.92);
+		}
+
+		42% {
+			opacity: 1;
+			filter: brightness(1.18);
+		}
+
+		68% {
+			opacity: 0.48;
+			filter: brightness(0.84);
+		}
+	}
+
+	@keyframes star-twinkle-secondary {
+		0%, 100% {
+			opacity: 0.38;
+			filter: brightness(0.9);
+		}
+
+		36% {
+			opacity: 0.72;
+			filter: brightness(1.2);
+		}
+
+		76% {
+			opacity: 0.24;
+			filter: brightness(0.82);
+		}
+	}
+
+	@keyframes comet-glide {
+		0%, 72%, 100% {
+			opacity: 0;
+			filter: blur(0.2px);
+			transform: rotate(var(--comet-angle)) translate3d(var(--comet-start), 0, 0) scaleX(0.72);
+		}
+
+		76% {
+			opacity: 0.2;
+		}
+
+		80% {
+			opacity: 0.92;
+			filter: blur(0);
+		}
+
+		88% {
+			opacity: 0;
+			filter: blur(0.6px);
+			transform: rotate(var(--comet-angle)) translate3d(var(--comet-end), 0, 0) scaleX(1);
+		}
+	}
+
 	@keyframes planet-orbit {
 		from {
 			transform: rotate(var(--orbit-start));
@@ -542,6 +790,17 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.space-stars::before,
+		.space-stars::after,
+		.shooting-star {
+			animation: none;
+			filter: none;
+		}
+
+		.shooting-star {
+			opacity: 0;
+		}
+
 		.app-icon-stage {
 			animation: none;
 			transform: none;
@@ -567,6 +826,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		.hero-inner {
 			grid-template-columns: 1fr;
 			gap: 32px;
+		}
+
+		.hero-inner::before,
+		.hero-inner::after {
+			display: none;
 		}
 
 		.hero-visual {
@@ -631,9 +895,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		const shellCount = Math.min(4, Math.max(2, Math.ceil(itemCount / 4)));
 		const minSize = stageWidth < 340 ? 48 : 52;
 		const maxSize = stageWidth < 340 ? 68 : 80;
-		const minRadius = Math.max(stageWidth * 0.22, maxSize * 0.95);
-		const maxRadius = (stageWidth / 2) - (maxSize / 2) - 8;
-		const radiusStep = shellCount > 1 ? (maxRadius - minRadius) / (shellCount - 1) : 0;
+		const orbitRadii = [72, 116.5, 188.5, 44.5];
 		const shellIndexes = Array.from({ length: shellCount }, () => 0);
 		const shellTotals = Array.from({ length: shellCount }, (_, shell) =>
 			Math.ceil((itemCount - shell) / shellCount),
@@ -653,8 +915,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 			const jitter = Math.min(18, segment * 0.28);
 			const angle = positionInShell * segment + shell * 72 + getRandom(-jitter, jitter);
 			const size = getRandom(minSize, maxSize);
-			const maxRadiusForSize = (stageWidth / 2) - (size / 2) - 8;
-			const radius = Math.min(minRadius + shell * radiusStep + getRandom(-1.8, 1.8), maxRadiusForSize);
+			const radius = orbitRadii[shell] ?? orbitRadii[orbitRadii.length - 1];
 			const duration = shellDurations[shell];
 			const depth = getRandom(-0.34, 0.58);
 			const tilt = getRandom(-7, 7);
