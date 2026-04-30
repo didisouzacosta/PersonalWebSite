@@ -4,28 +4,66 @@ import AppTemplate from "../../../components/app/AppTemplate.astro";
 const title = "DuoTake";
 const pageTitle = "DuoTake | Dual Camera App for Reaction Videos";
 const description =
-    "DuoTake lets you record or take photos with the front and back cameras at the same time, plus CropOut to create cleaner framing that is perfect for reacts.";
+    "DuoTake is an iPhone dual camera app for recording reaction videos with the front and back cameras at the same time, plus CropOut for cleaner framing.";
 const favicon = "favicon-duotake-32x32.png";
 const appIcon = "duotake/app-icon.png";
 
 const metas = [];
+const primaryKeyword = "dual camera app";
+const secondaryKeywords = ["reaction video app", "front and back camera", "iPhone camera app"];
 
 const screenshots = [
     {
         url: "duotake/screenshots/frame-1.png",
-        alt: "Capture portrait and landscape at the same time.",
+        alt: "DuoTake dual camera capture showing portrait and landscape at the same time.",
+        caption: "Capture the scene and your reaction in one take.",
     },
     {
         url: "duotake/screenshots/frame-2.png",
-        alt: "Choose the best mode for dual-format recording.",
+        alt: "DuoTake mode selection for dual-format recording.",
+        caption: "Choose the recording mode that fits the platform you are creating for.",
     },
     {
         url: "duotake/screenshots/frame-3.png",
-        alt: "Adjust camera settings before every take.",
+        alt: "DuoTake camera settings screen before a dual-camera take.",
+        caption: "Adjust camera settings before every photo or video.",
     },
     {
         url: "duotake/screenshots/frame-4.png",
-        alt: "Shoot photos and videos ready for every platform.",
+        alt: "DuoTake photo and video capture options for social platforms.",
+        caption: "Shoot photos and videos ready for reaction-style posts.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iPhone" },
+    { label: "Best for", value: "Reaction videos" },
+    { label: "Capture", value: "Front + back cameras" },
+];
+
+const features = [
+    {
+        title: "Dual-camera capture",
+        description: "Record the scene and your reaction at the same time using the front and rear cameras.",
+    },
+    {
+        title: "CropOut framing",
+        description: "Create cleaner framing for reaction-style videos without rebuilding your setup after each take.",
+    },
+    {
+        title: "Photo and video modes",
+        description: "Capture stills or videos depending on the format you need for your post.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Reaction creators",
+        description: "Show what you are watching and your response in one ready-to-share capture.",
+    },
+    {
+        title: "Behind-the-scenes posts",
+        description: "Record the moment and the person behind the camera without switching apps.",
     },
 ];
 
@@ -62,6 +100,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="en"
     applicationCategory="MultimediaApplication"
 />

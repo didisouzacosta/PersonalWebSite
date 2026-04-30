@@ -9,6 +9,27 @@ import {
     type SeoLanguage,
 } from "../../core/seo";
 
+interface AppFeature {
+    title: string;
+    description: string;
+}
+
+interface AppUseCase {
+    title: string;
+    description: string;
+}
+
+interface AppFact {
+    label: string;
+    value: string;
+}
+
+interface AppTestimonial {
+    quote: string;
+    author: string;
+    context?: string;
+}
+
 interface Props {
     appId?: string,
     title: string,
@@ -17,11 +38,17 @@ interface Props {
     favicon: string,
     appIcon: string,
     description: string,
-    screenshots: { url: string, alt: string }[],
+    screenshots: { url: string, alt: string, caption?: string }[],
     faq: { question: string, answer: string }[],
     metas: { name: string, content: string }[],
     lang?: string,
     applicationCategory?: string,
+    features?: AppFeature[],
+    useCases?: AppUseCase[],
+    facts?: AppFact[],
+    testimonials?: AppTestimonial[],
+    primaryKeyword?: string,
+    secondaryKeywords?: string[],
 }
 
 const {
@@ -37,6 +64,12 @@ const {
     faq,
     lang,
     applicationCategory = "MobileApplication",
+    features = [],
+    useCases = [],
+    facts = [],
+    testimonials = [],
+    primaryKeyword,
+    secondaryKeywords = [],
 } = Astro.props;
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
@@ -55,6 +88,8 @@ const appJsonLd = softwareApplicationJsonLd({
     appId,
     language: seoLanguage,
     applicationCategory,
+    featureList: features.map((feature) => feature.title),
+    keywords: [primaryKeyword, ...secondaryKeywords].filter(Boolean) as string[],
 });
 const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
@@ -111,6 +146,19 @@ const breadcrumbJson = breadcrumbJsonLd([
             </div>
         </header>
 
+        {facts.length > 0 && (
+            <section class="product-facts" aria-label={seoLanguage === "pt-br" ? "Resumo do app" : "App summary"}>
+                <div class="container product-facts-inner">
+                    {facts.map((fact) => (
+                        <div class="product-fact">
+                            <span>{fact.label}</span>
+                            <strong>{fact.value}</strong>
+                        </div>
+                    ))}
+                </div>
+            </section>
+        )}
+
         <section class="screenshots-section" aria-label="Screenshots">
             <ul class="screenshots">
                 {
@@ -127,6 +175,7 @@ const breadcrumbJson = breadcrumbJsonLd([
                                     data-analytics-label={screenshot.alt}
                                     data-analytics-project={structuredAppName.toLowerCase()}
                                 />
+                                {screenshot.caption && <figcaption>{screenshot.caption}</figcaption>}
                             </figure>
                         </li>
                     ))
@@ -137,6 +186,63 @@ const breadcrumbJson = breadcrumbJsonLd([
                 <img id="lightbox-img" src="" alt="" />
             </dialog>
         </section>
+
+        {features.length > 0 && (
+            <section class="features-section section-sm" aria-labelledby="features-heading">
+                <div class="container">
+                    <h2 id="features-heading">{
+                        seoLanguage === "pt-br" ? "Recursos principais" : "Key features"
+                    }</h2>
+                    <div class="feature-grid">
+                        {features.map((feature) => (
+                            <article class="feature-card">
+                                <h3>{feature.title}</h3>
+                                <p>{feature.description}</p>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )}
+
+        {useCases.length > 0 && (
+            <section class="use-cases-section section-sm" aria-labelledby="use-cases-heading">
+                <div class="container">
+                    <h2 id="use-cases-heading">{
+                        seoLanguage === "pt-br" ? "Ideal para" : "Best for"
+                    }</h2>
+                    <div class="use-case-list">
+                        {useCases.map((useCase) => (
+                            <article class="use-case-item">
+                                <h3>{useCase.title}</h3>
+                                <p>{useCase.description}</p>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )}
+
+        {testimonials.length > 0 && (
+            <section class="testimonials-section section-sm" aria-labelledby="testimonials-heading">
+                <div class="container">
+                    <h2 id="testimonials-heading">{
+                        seoLanguage === "pt-br" ? "O que usuários dizem" : "What users say"
+                    }</h2>
+                    <div class="testimonial-list">
+                        {testimonials.map((testimonial) => (
+                            <figure class="testimonial">
+                                <blockquote>{testimonial.quote}</blockquote>
+                                <figcaption>
+                                    <strong>{testimonial.author}</strong>
+                                    {testimonial.context && <span>{testimonial.context}</span>}
+                                </figcaption>
+                            </figure>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        )}
 
         <section class="faq-section section-sm" aria-labelledby="faq-heading">
             <div class="container">
@@ -231,6 +337,38 @@ const breadcrumbJson = breadcrumbJsonLd([
         width: auto;
     }
 
+    /* Product facts */
+    .product-facts {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+    }
+
+    .product-facts-inner {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1px;
+    }
+
+    .product-fact {
+        padding: 24px 16px;
+        text-align: center;
+    }
+
+    .product-fact span {
+        display: block;
+        color: var(--text-tertiary);
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+
+    .product-fact strong {
+        color: var(--text-primary);
+        font-size: 17px;
+        line-height: 1.4;
+    }
+
     /* Screenshots */
     .screenshots-section {
         background-color: var(--bg-secondary);
@@ -266,6 +404,89 @@ const breadcrumbJson = breadcrumbJsonLd([
     .screenshots figure img:hover {
         transform: scale(1.04);
         box-shadow: var(--shadow-hover);
+    }
+
+    .screenshots figcaption {
+        color: var(--text-tertiary);
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    /* Product sections */
+    .features-section,
+    .testimonials-section {
+        border-top: 1px solid var(--border);
+    }
+
+    .use-cases-section {
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border);
+    }
+
+    .features-section h2,
+    .use-cases-section h2,
+    .testimonials-section h2 {
+        color: var(--text-primary);
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin: 0 0 24px;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+    }
+
+    .feature-card,
+    .use-case-item,
+    .testimonial {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        background: var(--bg);
+    }
+
+    .feature-card h3,
+    .use-case-item h3 {
+        color: var(--text-primary);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0 0 8px;
+    }
+
+    .feature-card p,
+    .use-case-item p,
+    .testimonial blockquote {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .use-case-list,
+    .testimonial-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .testimonial {
+        margin: 0;
+    }
+
+    .testimonial figcaption {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--text-tertiary);
+        margin-top: 16px;
+    }
+
+    .testimonial figcaption strong {
+        color: var(--text-primary);
     }
 
     /* Lightbox */
@@ -357,6 +578,14 @@ const breadcrumbJson = breadcrumbJsonLd([
 
         .screenshots li {
             width: calc(50% - 4px);
+        }
+
+        .product-fact {
+            padding: 20px 12px;
+        }
+
+        .feature-grid {
+            grid-template-columns: 1fr;
         }
     }
 </style>

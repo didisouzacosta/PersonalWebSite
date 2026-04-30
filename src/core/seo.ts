@@ -131,6 +131,11 @@ export function softwareApplicationJsonLd({
     appId,
     language,
     applicationCategory,
+    featureList,
+    keywords,
+    sameAs,
+    price,
+    priceCurrency,
 }: {
     name: string;
     description: string;
@@ -140,6 +145,11 @@ export function softwareApplicationJsonLd({
     appId?: string;
     language: SeoLanguage;
     applicationCategory: string;
+    featureList?: string[];
+    keywords?: string[];
+    sameAs?: string[];
+    price?: string;
+    priceCurrency?: string;
 }): Record<string, unknown> {
     const downloadUrl = appStoreUrl(appId);
 
@@ -155,11 +165,14 @@ export function softwareApplicationJsonLd({
         operatingSystem: "iOS",
         applicationCategory,
         inLanguage: language === "pt-br" ? "pt-BR" : "en",
+        ...(featureList && featureList.length > 0 ? { featureList } : {}),
+        ...(keywords && keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
+        ...(sameAs && sameAs.length > 0 ? { sameAs } : {}),
         ...(downloadUrl ? { downloadUrl } : {}),
         offers: {
             "@type": "Offer",
-            price: "0",
-            priceCurrency: "USD",
+            price: price ?? "0",
+            priceCurrency: priceCurrency ?? "USD",
         },
         author: {
             "@id": `${siteUrl}/#person`,

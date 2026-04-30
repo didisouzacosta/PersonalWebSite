@@ -3,30 +3,68 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const appId = "id6757385646";
 const title = "KuboRush - Quebra-Cabeça de Blocos";
-const pageTitle = "KuboRush | Jogo Puzzle de Blocos para iOS";
+const pageTitle = "KuboRush | Jogo de Quebra-Cabeça de Blocos para iOS";
 const description =
     "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu próprio ritmo. Perfeito para seus 2 minutos livres — sem pressão, só diversão.";
 const favicon = "favicon-kuborush-32x32.png";
 const appIcon = "kuborush/app-icon.png";
 
 const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
+const primaryKeyword = "jogo de quebra-cabeça de blocos";
+const secondaryKeywords = ["jogo puzzle para iOS", "jogo casual de blocos", "desafios semanais de puzzle"];
 
 const screenshots = [
     {
         url: "kuborush/screenshots/frame-1.png",
-        alt: "Os 2 minutos mais divertidos do seu dia!",
+        alt: "Tela inicial do KuboRush para uma partida casual rápida de blocos.",
+        caption: "Comece uma partida curta sempre que tiver alguns minutos.",
     },
     {
         url: "kuborush/screenshots/frame-2.png",
-        alt: "Controle total dos seus movimentos!",
+        alt: "Tabuleiro do KuboRush com controles de posicionamento das peças.",
+        caption: "Planeje cada jogada e mantenha o controle do tabuleiro.",
     },
     {
         url: "kuborush/screenshots/frame-3.png",
-        alt: "Combine, planeje e faça combos incríveis.",
+        alt: "Tela de combo do KuboRush com peças combinadas no quebra-cabeça.",
+        caption: "Combine peças, libere espaço e crie combos melhores.",
     },
     {
         url: "kuborush/screenshots/frame-4.png",
-        alt: "Suba no Hall da Fama ou vença o Rush Semanal.",
+        alt: "Modos competitivos do KuboRush com Hall da Fama e Rush Semanal.",
+        caption: "Compita no Hall da Fama e nos desafios do Rush Semanal.",
+    },
+];
+
+const facts = [
+    { label: "Plataforma", value: "iOS" },
+    { label: "Sessões", value: "Partidas rápidas" },
+    { label: "Modos", value: "Hall da Fama + Rush Semanal" },
+];
+
+const features = [
+    {
+        title: "Puzzle sem pressão",
+        description: "Encaixe blocos e limpe o tabuleiro no seu ritmo, sem um cronômetro pressionando cada movimento.",
+    },
+    {
+        title: "Power-ups úteis",
+        description: "Use Dica, Embaralhar, Girar e Desfazer quando quiser uma ajuda ou uma segunda chance.",
+    },
+    {
+        title: "Desafios competitivos",
+        description: "Suba nos rankings do Hall da Fama e volte para eventos semanais com novos objetivos.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Intervalos curtos",
+        description: "Jogue uma rodada satisfatória em poucos minutos, sem precisar começar uma sessão longa.",
+    },
+    {
+        title: "Treino de estratégia",
+        description: "Experimente posicionamento, rotação e desfazer para aprender padrões melhores de limpeza do tabuleiro.",
     },
 ];
 
@@ -64,6 +102,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="pt-br"
     applicationCategory="GameApplication"
 />

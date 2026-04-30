@@ -3,22 +3,80 @@ import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const appId = 'id6749704116'
 const title = 'LoopSize - Ring Size Converter'
-const pageTitle = 'LoopSize | Ring Size Converter for iOS'
-const description = 'LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.'
+const pageTitle = 'LoopSize | Ring Size Converter for iPhone'
+const description = 'LoopSize is an iPhone ring size converter for BR, US, UK, EU/ISO, JP, CN, and IN sizes, with saved measurements and PDF export.'
 const favicon = "favicon-loopsize-32x32.png"
 const appIcon = "loopsize/app-icon.png"
 
 const metas = [
     { name: "apple-itunes-app", content: `app-id=6749704116` }
 ]
+const primaryKeyword = "ring size converter"
+const secondaryKeywords = ["iPhone ring size app", "ring measurement", "ring size PDF export"]
 
 const screenshots = [
-    { url: 'loopsize/screenshots/frame-1.png', alt: 'Easy find the perfect ring size' },
-    { url: 'loopsize/screenshots/frame-2.png', alt: 'Ring dimension' },
-    { url: 'loopsize/screenshots/frame-3.png', alt: 'Finger dimension' },
-    { url: 'loopsize/screenshots/frame-4.png', alt: 'Save measurements' },
-    { url: 'loopsize/screenshots/frame-5.png', alt: 'mm to inches switch' },
-    { url: 'loopsize/screenshots/frame-6.png', alt: 'export with PDF' }
+    {
+        url: 'loopsize/screenshots/frame-1.png',
+        alt: 'LoopSize home screen for finding the perfect ring size.',
+        caption: 'Start from a simple ring size workflow on iPhone.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-2.png',
+        alt: 'LoopSize ring dimension screen for measuring a ring.',
+        caption: 'Measure ring dimensions and compare international sizes.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-3.png',
+        alt: 'LoopSize finger dimension screen for measuring finger size.',
+        caption: 'Use finger dimensions when you do not have a ring nearby.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-4.png',
+        alt: 'LoopSize saved measurements screen.',
+        caption: 'Save measurements so you can return to them later.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-5.png',
+        alt: 'LoopSize unit switch between millimeters and inches.',
+        caption: 'Switch between millimeters and inches for familiar measurements.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-6.png',
+        alt: 'LoopSize PDF export screen for saved ring measurements.',
+        caption: 'Export a measurement sheet when you need a printable reference.',
+    }
+]
+
+const facts = [
+    { label: "Platform", value: "iPhone" },
+    { label: "Standards", value: "BR, US, UK, EU/ISO, JP, CN, IN" },
+    { label: "Export", value: "Printable PDF" },
+]
+
+const features = [
+    {
+        title: "International size conversion",
+        description: "Convert ring sizes across BR, US, UK, EU/ISO, JP, CN, and IN standards from one place.",
+    },
+    {
+        title: "Saved measurements",
+        description: "Keep important measurements organized so you can compare or share them later.",
+    },
+    {
+        title: "PDF export",
+        description: "Generate a printable measurement reference with true-to-scale guidance for A4 output.",
+    },
+]
+
+const useCases = [
+    {
+        title: "Buying rings online",
+        description: "Compare regional sizing systems before ordering from an international store.",
+    },
+    {
+        title: "Gifts and shared measurements",
+        description: "Save and export measurements when you need a clean reference for a jeweler or gift.",
+    },
 ]
 
 const faq = [
@@ -55,6 +113,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="en"
     applicationCategory="UtilitiesApplication"
  />

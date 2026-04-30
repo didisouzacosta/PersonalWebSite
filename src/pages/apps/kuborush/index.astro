@@ -10,23 +10,61 @@ const favicon = "favicon-kuborush-32x32.png";
 const appIcon = "kuborush/app-icon.png";
 
 const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
+const primaryKeyword = "block puzzle game";
+const secondaryKeywords = ["iOS puzzle game", "casual puzzle game", "weekly puzzle challenges"];
 
 const screenshots = [
     {
         url: "kuborush/screenshots/frame-1.png",
-        alt: "The most fun 2 minutes of your day!",
+        alt: "KuboRush block puzzle start screen for a quick casual game session.",
+        caption: "Start a short block puzzle session whenever you have a few minutes.",
     },
     {
         url: "kuborush/screenshots/frame-2.png",
-        alt: "Take full control of your move!",
+        alt: "KuboRush board showing piece placement controls.",
+        caption: "Plan each move and keep control of the board.",
     },
     {
         url: "kuborush/screenshots/frame-3.png",
-        alt: "Match, plan, and make amazing combos.",
+        alt: "KuboRush combo screen with matched block puzzle pieces.",
+        caption: "Match pieces, clear space, and build stronger combos.",
     },
     {
         url: "kuborush/screenshots/frame-4.png",
-        alt: "Climb the Hall of Fame or win the Weekly Rush.",
+        alt: "KuboRush competitive modes with Hall of Fame and Weekly Rush.",
+        caption: "Compete through Hall of Fame rankings and Weekly Rush challenges.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iOS" },
+    { label: "Session length", value: "Quick play" },
+    { label: "Modes", value: "Hall of Fame + Weekly Rush" },
+];
+
+const features = [
+    {
+        title: "No-pressure puzzle play",
+        description: "Fit blocks and clear the board at your own pace, without a timer pushing every move.",
+    },
+    {
+        title: "Helpful power-ups",
+        description: "Use Hint, Shuffle, Rotate, and Undo when you want a nudge or a second chance.",
+    },
+    {
+        title: "Competitive challenges",
+        description: "Climb Hall of Fame leaderboards and return for Weekly Rush events with fresh goals.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Short breaks",
+        description: "Play a satisfying puzzle round during spare minutes without committing to a long session.",
+    },
+    {
+        title: "Strategy practice",
+        description: "Experiment with placement, rotation, and undo to learn better board-clearing patterns.",
     },
 ];
 
@@ -64,6 +102,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="en"
     applicationCategory="GameApplication"
 />

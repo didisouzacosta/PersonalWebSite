@@ -3,22 +3,80 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const appId = 'id6749704116'
 const title = 'LoopSize - Conversor de Tamanho de Anel'
-const pageTitle = 'LoopSize | Conversor de Tamanho de Anel para iOS'
-const description = 'O LoopSize facilita a medição e conversão de tamanhos de anéis em BR, US, UK, EU/ISO, JP, CN e IN. Salve, compartilhe e exporte medidas precisas em PDF.'
+const pageTitle = 'LoopSize | Conversor de Tamanho de Anéis para iPhone'
+const description = 'LoopSize é um conversor de tamanho de anéis para iPhone com padrões BR, US, UK, EU/ISO, JP, CN e IN, medidas salvas e exportação em PDF.'
 const favicon = "favicon-loopsize-32x32.png"
 const appIcon = "loopsize/app-icon.png"
 
 const metas = [
     { name: "apple-itunes-app", content: `app-id=6749704116` }
 ]
+const primaryKeyword = "conversor de tamanho de anéis"
+const secondaryKeywords = ["app de tamanho de anel para iPhone", "medição de anel", "exportar tamanho de anel em PDF"]
 
 const screenshots = [
-    { url: 'loopsize/screenshots/frame-1.png', alt: 'Encontre o tamanho de anel perfeito facilmente' },
-    { url: 'loopsize/screenshots/frame-2.png', alt: 'Dimensão do anel' },
-    { url: 'loopsize/screenshots/frame-3.png', alt: 'Dimensão do dedo' },
-    { url: 'loopsize/screenshots/frame-4.png', alt: 'Salvar medidas' },
-    { url: 'loopsize/screenshots/frame-5.png', alt: 'Alternar entre mm e polegadas' },
-    { url: 'loopsize/screenshots/frame-6.png', alt: 'Exportar em PDF' }
+    {
+        url: 'loopsize/screenshots/frame-1.png',
+        alt: 'Tela inicial do LoopSize para encontrar o tamanho de anel ideal.',
+        caption: 'Comece por um fluxo simples de medição no iPhone.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-2.png',
+        alt: 'Tela de dimensão do anel no LoopSize.',
+        caption: 'Meça dimensões do anel e compare padrões internacionais.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-3.png',
+        alt: 'Tela de dimensão do dedo no LoopSize.',
+        caption: 'Use a medida do dedo quando não tiver um anel por perto.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-4.png',
+        alt: 'Tela de medidas salvas no LoopSize.',
+        caption: 'Salve medidas para consultar novamente depois.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-5.png',
+        alt: 'Alternância de unidade entre milímetros e polegadas no LoopSize.',
+        caption: 'Alterne entre milímetros e polegadas conforme sua referência.',
+    },
+    {
+        url: 'loopsize/screenshots/frame-6.png',
+        alt: 'Tela de exportação em PDF do LoopSize para medidas de anel.',
+        caption: 'Exporte uma folha de medição quando precisar de uma referência impressa.',
+    }
+]
+
+const facts = [
+    { label: "Plataforma", value: "iPhone" },
+    { label: "Padrões", value: "BR, US, UK, EU/ISO, JP, CN, IN" },
+    { label: "Exportação", value: "PDF imprimível" },
+]
+
+const features = [
+    {
+        title: "Conversão internacional",
+        description: "Converta tamanhos de anéis entre BR, US, UK, EU/ISO, JP, CN e IN em um só lugar.",
+    },
+    {
+        title: "Medidas salvas",
+        description: "Mantenha medidas importantes organizadas para comparar ou compartilhar depois.",
+    },
+    {
+        title: "Exportação em PDF",
+        description: "Gere uma referência imprimível com orientação de escala real para saída em A4.",
+    },
+]
+
+const useCases = [
+    {
+        title: "Comprar anéis online",
+        description: "Compare sistemas de tamanho regionais antes de comprar em uma loja internacional.",
+    },
+    {
+        title: "Presentes e medidas compartilhadas",
+        description: "Salve e exporte medidas quando precisar de uma referência limpa para joalheria ou presente.",
+    },
 ]
 
 const faq = [
@@ -55,6 +113,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="pt-br"
     applicationCategory="UtilitiesApplication"
  />

@@ -4,28 +4,66 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 const title = "DuoTake";
 const pageTitle = "DuoTake | App de Câmera Dupla para Reacts";
 const description =
-    "O DuoTake permite gravar e fotografar com a câmera frontal e traseira ao mesmo tempo, com o plus do CropOut para um enquadramento ideal em reacts.";
+    "DuoTake é um app de câmera dupla para iPhone que grava reacts com as câmeras frontal e traseira ao mesmo tempo, com CropOut para enquadramento mais limpo.";
 const favicon = "favicon-duotake-32x32.png";
 const appIcon = "duotake/app-icon.png";
 
 const metas = [];
+const primaryKeyword = "app de câmera dupla";
+const secondaryKeywords = ["app para reacts", "câmera frontal e traseira", "app de câmera para iPhone"];
 
 const screenshots = [
     {
         url: "duotake/screenshots/frame-1.png",
-        alt: "Capture retrato e paisagem ao mesmo tempo.",
+        alt: "Captura de câmera dupla do DuoTake em retrato e paisagem ao mesmo tempo.",
+        caption: "Capture a cena e sua reação em uma única tomada.",
     },
     {
         url: "duotake/screenshots/frame-2.png",
-        alt: "Escolha o melhor modo para gravar em dois formatos.",
+        alt: "Seleção de modo do DuoTake para gravação em dois formatos.",
+        caption: "Escolha o modo de gravação ideal para a plataforma do seu conteúdo.",
     },
     {
         url: "duotake/screenshots/frame-3.png",
-        alt: "Ajuste as configurações da câmera antes de cada gravação.",
+        alt: "Tela de configurações de câmera do DuoTake antes da captura dupla.",
+        caption: "Ajuste a câmera antes de cada foto ou vídeo.",
     },
     {
         url: "duotake/screenshots/frame-4.png",
-        alt: "Faça fotos e vídeos prontos para qualquer plataforma.",
+        alt: "Opções de foto e vídeo do DuoTake para redes sociais.",
+        caption: "Faça fotos e vídeos prontos para posts no estilo react.",
+    },
+];
+
+const facts = [
+    { label: "Plataforma", value: "iPhone" },
+    { label: "Ideal para", value: "Vídeos de react" },
+    { label: "Captura", value: "Câmeras frontal + traseira" },
+];
+
+const features = [
+    {
+        title: "Captura com duas câmeras",
+        description: "Grave a cena e sua reação ao mesmo tempo usando as câmeras frontal e traseira.",
+    },
+    {
+        title: "Enquadramento com CropOut",
+        description: "Crie um enquadramento mais limpo para reacts sem refazer sua configuração a cada tomada.",
+    },
+    {
+        title: "Modos de foto e vídeo",
+        description: "Capture imagens ou vídeos conforme o formato que você precisa publicar.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Criadores de reacts",
+        description: "Mostre o que você está assistindo e sua reação em uma captura pronta para compartilhar.",
+    },
+    {
+        title: "Bastidores e comentários",
+        description: "Grave o momento e a pessoa por trás da câmera sem alternar entre apps.",
     },
 ];
 
@@ -62,6 +100,11 @@ const faq = [
     description={description}
     screenshots={screenshots}
     faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
     lang="pt-br"
     applicationCategory="MultimediaApplication"
 />
