@@ -20,6 +20,7 @@ Guia enxuto para agentes que trabalharem neste projeto.
 ## Padrões do Projeto
 
 - Preserve a arquitetura simples: prefira `.astro` para UI, TypeScript em `src/core` para dados/tipos e CSS local dentro dos componentes quando o estilo for específico.
+- Sempre utilize `@build-web-apps` para tarefas neste projeto, especialmente alterações de frontend, UI, rotas, componentes, estilos e conteúdo visual.
 - Use `src/layouts/Layout.astro` como base para novas páginas, mantendo `title`, `description`, `lang`, `favicon`, `ogImage` e `metas` quando aplicável.
 - Para conteúdo bilíngue, mantenha equivalentes em inglês e `pt-br`; rotas em português vivem sob `src/pages/pt-br`.
 - Para páginas de apps, reutilize `src/components/app/AppTemplate.astro` e mantenha textos, screenshots, FAQ e metadados declarados na própria página.
