@@ -16,8 +16,10 @@ export const profileContent: Record<ProjectLanguage, ProfileContent> = {
     },
     "pt-br": {
         role: "Desenvolvedor iOS & macOS • Entusiasta de IA",
-        description: "Desenvolvedor iOS/macOS e Entusiasta de IA com mais de 10 anos de experiência em Swift, SwiftUI e UIKit. Focado em UX, regras de negócio, design e arquitetura limpa, usando Codex, Claude, Agents and Skills no dia a dia.",
-        summary: "Desenvolvedor iOS/macOS e Entusiasta de IA com mais de 10 anos de experiência em Swift, SwiftUI e UIKit, criando apps escaláveis com forte foco em UX, performance e arquitetura limpa. Atualmente, Codex, Claude, Agents and Skills fazem parte do meu dia a dia, permitindo um foco ainda maior nas regras de negócio, no design do produto e na arquitetura do projeto.",
+        description: "Desenvolvedor iOS/macOS com mais de 10 anos de experiência criando apps nativos para o ecossistema Apple. Foco em Swift, SwiftUI, UIKit, UX, performance, escalabilidade e arquitetura limpa.",
+        summary: `Desenvolvedor iOS/macOS com mais de 10 anos de experiência criando apps nativos para o ecossistema Apple. Trabalho com Swift, SwiftUI e UIKit, sempre com foco em UX, performance, escalabilidade e arquitetura limpa.
+
+Uso IA de forma ativa em mais de 90% dos meus projetos, combinando Codex, GPT-5.5, Claude, Skills e agentes para acelerar a execução e manter o foco no que mais importa: produto, regras de negócio e qualidade técnica.`,
         homepageSkills: ["Swift", "SwiftUI", "UIKit", "Objective-C", "SwiftData", "CoreData", "CI/CD", "React Native", "Codex", "Claude", "Agents", "Skills"],
     },
 };

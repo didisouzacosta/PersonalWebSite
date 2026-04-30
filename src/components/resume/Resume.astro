@@ -13,11 +13,12 @@ interface Props {
 const { resume, lang } = Astro.props;
 const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
 const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
+const summaryParagraphs = resume.summary.description.split(/\n\s*\n/).filter(Boolean);
 ---
 
 <Layout
     title={resume.title}
-    description={resume.summary.description}
+    description={summaryParagraphs.join(" ")}
     lang={lang}
     metas={[]}
     canonicalPath={resumePath}
@@ -84,7 +85,11 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
 
             <section aria-labelledby="summary-heading">
                 <h2 id="summary-heading" class="section-heading">{resume.summary.title}</h2>
-                <p>{resume.summary.description}</p>
+                <div class="summary-text">
+                    {summaryParagraphs.map((paragraph) => (
+                        <p>{paragraph}</p>
+                    ))}
+                </div>
             </section>
 
             <section aria-labelledby="skills-heading">
@@ -260,6 +265,16 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
             margin-bottom: 16px;
             padding-bottom: 8px;
             border-bottom: 1px solid var(--border);
+        }
+
+        .summary-text p {
+            font-size: 15px;
+            line-height: 1.65;
+            color: var(--text-secondary);
+        }
+
+        .summary-text p + p {
+            margin-top: 10px;
         }
 
         /* Skills list */

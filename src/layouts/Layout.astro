@@ -53,8 +53,8 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 const isPtBr = lang === 'pt-br';
 const navigationItems = [
     { label: 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
-    { label: 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
     { label: isPtBr ? 'Projetos' : 'Projects', href: isPtBr ? '/pt-br/#projects' : '/#projects', match: isPtBr ? '/pt-br/apps/' : '/apps/' },
+    { label: 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
 ];
 const isActiveNavigationItem = (match: string) => {
     if (match === '/') {

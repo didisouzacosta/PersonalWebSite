@@ -14,6 +14,7 @@ const { content } = Astro.props;
 const hasProjects = hasEnabledProjects();
 const heroApps = getProjectCards(content.lang);
 const visibleOrbitRadii = [72, 116.5, 188.5, 44.5];
+const bioParagraphs = content.bio.split(/\n\s*\n/).filter(Boolean);
 
 const fallbackOrbitItems = heroApps.map((app, index, apps) => {
     const shellCount = Math.min(4, Math.max(2, Math.ceil((apps.length || 1) / 4)));
@@ -175,7 +176,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	<section id="about" aria-label="About me" class="section about-section fade-in">
 		<div class="container">
 			<h2 class="section-title">{content.aboutTitle}</h2>
-			<p class="bio">{content.bio}</p>
+			<div class="bio">
+				{bioParagraphs.map((paragraph) => (
+					<p>{paragraph}</p>
+				))}
+			</div>
 			<div class="skills tags" role="list" aria-label="Technical skills">
 				{content.skills.map((skill) => (
 					<span role="listitem" class="tag">{skill}</span>
@@ -785,6 +790,10 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		color: var(--text-secondary);
 		max-width: 620px;
 		margin-bottom: 28px;
+	}
+
+	.bio p + p {
+		margin-top: 14px;
 	}
 
 	.skills {
