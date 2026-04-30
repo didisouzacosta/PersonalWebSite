@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { HomepageContent } from "../../core/homepage";
-import { hasEnabledProjects } from "../../core/projects";
+import { getProjectCards, hasEnabledProjects } from "../../core/projects";
 
 import Projects from "./Projects.astro";
 
@@ -12,6 +12,7 @@ interface Props {
 
 const { content } = Astro.props;
 const hasProjects = hasEnabledProjects();
+const heroApps = getProjectCards(content.lang);
 ---
 
 <nav class="home-nav" aria-label="Page sections">
@@ -27,55 +28,88 @@ const hasProjects = hasEnabledProjects();
 <main>
 	<section id="hero" aria-label="Introduction" class="hero-section">
 		<div class="container hero-inner">
-			<Image
-				src="https://avatars.githubusercontent.com/u/11352503?v=4"
-				alt="Adriano Souza Costa"
-				width="140"
-				height="140"
-				loading="eager"
-				class="avatar fade-in"
-			/>
+			<div class="hero-copy">
+				<Image
+					src="https://avatars.githubusercontent.com/u/11352503?v=4"
+					alt="Adriano Souza Costa"
+					width="140"
+					height="140"
+					loading="eager"
+					class="avatar fade-in"
+				/>
 
-			<h1 class="hero-name fade-in" data-delay="1">Adriano<br />Souza Costa</h1>
+				<h1 class="hero-name fade-in" data-delay="1">Adriano<br />Souza Costa</h1>
 
-			<p class="hero-title fade-in" data-delay="1">{content.role}</p>
+				<p class="hero-title fade-in" data-delay="1">{content.role.replace(" • ", " \n")}</p>
 
-			<div class="hero-cta fade-in" data-delay="2">
-				<a href={content.resumeLink} class="btn-primary">
-					<span>{content.resumeLabel}</span>
-					<Icon name="right-arrow" width={12} height={12} />
-				</a>
+				<div class="hero-cta fade-in" data-delay="2">
+					<a href={content.resumeLink} class="btn-primary">
+						<span>{content.resumeLabel}</span>
+						<Icon name="right-arrow" width={13} height={13} />
+					</a>
+				</div>
+
+				<nav class="social-links fade-in" data-delay="3" aria-label="Social links">
+					<a
+						href="https://x.com/didisouzacosta"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="X (Twitter)"
+						class="no-ext-icon"
+					>
+						<Icon name="x" class="social-icon" />
+					</a>
+					<a
+						href="https://github.com/didisouzacosta"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="GitHub"
+						class="no-ext-icon"
+					>
+						<Icon name="github" class="social-icon" />
+					</a>
+					<a
+						href="https://www.linkedin.com/in/adrianosouzacosta"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn"
+						class="no-ext-icon"
+					>
+						<Icon name="linkedin" class="social-icon" />
+					</a>
+				</nav>
 			</div>
 
-			<nav class="social-links fade-in" data-delay="3" aria-label="Social links">
-				<a
-					href="https://x.com/didisouzacosta"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="X (Twitter)"
-					class="no-ext-icon"
-				>
-					<Icon name="x" class="social-icon" />
-				</a>
-				<a
-					href="https://github.com/didisouzacosta"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="GitHub"
-					class="no-ext-icon"
-				>
-					<Icon name="github" class="social-icon" />
-				</a>
-				<a
-					href="https://www.linkedin.com/in/adrianosouzacosta"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="LinkedIn"
-					class="no-ext-icon"
-				>
-					<Icon name="linkedin" class="social-icon" />
-				</a>
-			</nav>
+			<div class="hero-visual fade-in" data-delay="2" aria-hidden="true">
+				<div class="app-icon-stage">
+					<span class="fibonacci-ring ring-34"></span>
+					<span class="fibonacci-ring ring-55"></span>
+					<span class="fibonacci-ring ring-89"></span>
+					<span class="fibonacci-ring ring-144"></span>
+					<span class="fibonacci-axis axis-horizontal"></span>
+					<span class="fibonacci-axis axis-vertical"></span>
+					<span class="fibonacci-axis axis-golden-positive"></span>
+					<span class="fibonacci-axis axis-golden-negative"></span>
+					<svg class="apple-core" viewBox="0 0 384 512" aria-hidden="true">
+						<path
+							fill="currentColor"
+							d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9ZM262.1 104.5c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3Z"
+						/>
+					</svg>
+					{
+						heroApps.map((app, index) => (
+							<img
+								src={app.imageUrl}
+								alt=""
+								loading="eager"
+								width="84"
+								height="84"
+								class={`hero-app-icon hero-app-icon-${index + 1}`}
+							/>
+						))
+					}
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -107,28 +141,64 @@ const hasProjects = hasEnabledProjects();
 		min-height: 100svh;
 		display: flex;
 		align-items: center;
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.hero-section::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		background:
+			linear-gradient(115deg, transparent 0 34%, var(--bg-secondary) 34% 34.2%, transparent 34.2%),
+			linear-gradient(180deg, transparent 0%, var(--bg-secondary) 100%);
+		opacity: 0.5;
+	}
+
+	.hero-section::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background-image:
+			linear-gradient(var(--border) 1px, transparent 1px),
+			linear-gradient(90deg, var(--border) 1px, transparent 1px);
+		background-size: 56px 56px;
+		mask-image: linear-gradient(90deg, transparent 0%, black 54%, transparent 100%);
+		opacity: 0.28;
 	}
 
 	.hero-inner {
+		display: grid;
+		grid-template-columns: minmax(0, 560px) minmax(280px, 1fr);
+		align-items: center;
+		gap: clamp(40px, 6vw, 84px);
+		padding-top: 80px;
+		padding-bottom: 80px;
+		position: relative;
+		width: 100%;
+	}
+
+	.hero-copy {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 0;
-		padding-top: 80px;
-		padding-bottom: 80px;
 	}
 
 	.avatar {
-		width: 80px;
-		height: 80px;
+		width: 88px;
+		height: 88px;
 		border-radius: 50%;
 		object-fit: cover;
-		margin-bottom: 32px;
+		margin-bottom: 34px;
 		border: 1px solid var(--border-strong);
+		box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
 	}
 
 	.hero-name {
-		font-size: clamp(52px, 8vw, 80px);
+		font-size: clamp(54px, 8vw, 86px);
 		font-weight: 700;
 		letter-spacing: -0.04em;
 		line-height: 1.02;
@@ -141,29 +211,195 @@ const hasProjects = hasEnabledProjects();
 		font-weight: 400;
 		color: var(--text-secondary);
 		letter-spacing: -0.01em;
-		margin-bottom: 40px;
+		white-space: pre-line;
+		margin-bottom: 34px;
 	}
 
 	.hero-cta {
-		margin-bottom: 40px;
+		margin-bottom: 34px;
 	}
 
 	.btn-primary {
+		position: relative;
 		display: inline-flex;
 		align-items: center;
-		gap: 6px;
+		justify-content: center;
+		gap: 9px;
 		background-color: var(--text-primary);
 		color: var(--bg);
-		font-size: 15px;
-		font-weight: 500;
-		padding: 10px 20px;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1;
+		min-height: 48px;
+		padding: 0 24px;
 		border-radius: 980px;
-		transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+		box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+		overflow: hidden;
+		transition: box-shadow 0.2s ease-out, transform 0.2s ease-out;
+	}
+
+	.btn-primary::before {
+		content: "";
+		position: absolute;
+		inset: 1px;
+		border-radius: inherit;
+		background: linear-gradient(120deg, transparent 0 24%, rgba(255, 255, 255, 0.26) 42%, transparent 60% 100%);
+		transform: translateX(-120%);
+		transition: transform 0.6s ease-out;
+	}
+
+	.btn-primary span,
+	.btn-primary svg {
+		position: relative;
+		z-index: 1;
 	}
 
 	.btn-primary:hover {
-		opacity: 0.75;
-		transform: translateY(-1px);
+		opacity: 1;
+		transform: translateY(-2px);
+		box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+	}
+
+	.btn-primary:hover::before {
+		transform: translateX(120%);
+	}
+
+	.btn-primary:focus-visible {
+		outline: 2px solid var(--text-primary);
+		outline-offset: 4px;
+	}
+
+	.hero-visual {
+		min-height: 360px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.app-icon-stage {
+		position: relative;
+		width: clamp(280px, 32vw, 380px);
+		aspect-ratio: 1;
+		--cursor-x: 0px;
+		--cursor-y: 0px;
+		--stage-tilt-x: 0deg;
+		--stage-tilt-y: 0deg;
+		border-radius: 42px;
+		animation: app-stage-float 7s ease-in-out infinite;
+		transform: perspective(900px) rotateX(var(--stage-tilt-y)) rotateY(var(--stage-tilt-x));
+		transform-style: preserve-3d;
+		transition: transform 0.24s ease-out;
+	}
+
+	.fibonacci-ring,
+	.fibonacci-axis {
+		position: absolute;
+		inset: 50%;
+		display: block;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.fibonacci-ring {
+		width: calc(var(--ring-size) * 1px);
+		height: calc(var(--ring-size) * 1px);
+		border: 1px solid var(--border);
+		border-radius: 50%;
+		opacity: 0.72;
+		transform: translate(-50%, -50%);
+	}
+
+	.ring-34 { --ring-size: 89; }
+	.ring-55 { --ring-size: 144; }
+	.ring-89 { --ring-size: 233; }
+	.ring-144 { --ring-size: 377; }
+
+	.fibonacci-axis {
+		width: 104%;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+		opacity: 0.58;
+		transform: translate(-50%, -50%) rotate(var(--axis-angle));
+	}
+
+	.axis-horizontal { --axis-angle: 0deg; }
+	.axis-vertical { --axis-angle: 90deg; }
+	.axis-golden-positive { --axis-angle: 137.5deg; }
+	.axis-golden-negative { --axis-angle: -137.5deg; }
+
+	.apple-core {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+		display: block;
+		width: 58px;
+		height: 58px;
+		color: var(--text-primary);
+		text-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+		transform: translate(
+			calc(-50% + (var(--cursor-x) * -0.12)),
+			calc(-50% + (var(--cursor-y) * -0.12))
+		);
+		transition: transform 0.18s ease-out;
+	}
+
+	.hero-app-icon {
+		position: absolute;
+		z-index: 3;
+		--depth: 1;
+		--tilt: 0deg;
+		width: clamp(58px, 7vw, 84px);
+		height: clamp(58px, 7vw, 84px);
+		border-radius: 22%;
+		object-fit: cover;
+		background: transparent;
+		box-shadow: none;
+		transform: translate3d(
+			calc(var(--cursor-x) * var(--depth)),
+			calc(var(--cursor-y) * var(--depth)),
+			0
+		) rotate(var(--tilt));
+		transition: filter 0.2s ease-out, transform 0.18s ease-out;
+	}
+
+	.hero-app-icon-1 {
+		top: 8%;
+		left: 32%;
+		--depth: 0.5;
+		--tilt: -4deg;
+	}
+
+	.hero-app-icon-2 {
+		top: 24%;
+		right: 4%;
+		--depth: -0.34;
+		--tilt: 3deg;
+	}
+
+	.hero-app-icon-3 {
+		right: 16%;
+		bottom: 9%;
+		--depth: 0.42;
+		--tilt: -6deg;
+	}
+
+	.hero-app-icon-4 {
+		left: 12%;
+		bottom: 14%;
+		--depth: -0.28;
+		--tilt: 5deg;
+	}
+
+	.hero-app-icon-5 {
+		top: 34%;
+		left: 0;
+		--depth: 0.36;
+		--tilt: 2deg;
+	}
+
+	.app-icon-stage:hover .hero-app-icon {
+		filter: saturate(1.08) contrast(1.03);
 	}
 
 	.social-links {
@@ -252,7 +488,92 @@ const hasProjects = hasEnabledProjects();
 		user-select: none;
 	}
 
+	@keyframes app-stage-float {
+		0%, 100% {
+			translate: 0 0;
+		}
+		50% {
+			translate: 0 -10px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.app-icon-stage {
+			animation: none;
+			transform: none;
+		}
+
+		.hero-app-icon,
+		.apple-core {
+			transition: none;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.hero-inner {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.hero-visual {
+			display: none;
+		}
+	}
+
 	@media (max-width: 480px) {
 		.home-nav { display: none; }
+
+		.hero-section {
+			min-height: 92svh;
+		}
+
+		.hero-inner {
+			padding-top: 64px;
+			padding-bottom: 64px;
+		}
+
+		.avatar {
+			width: 76px;
+			height: 76px;
+			margin-bottom: 28px;
+		}
+
+		.hero-name {
+			font-size: clamp(48px, 15vw, 64px);
+		}
+
+		.btn-primary {
+			min-height: 46px;
+			padding: 0 22px;
+		}
 	}
 </style>
+
+<script>
+	const appIconStages = document.querySelectorAll<HTMLElement>(".app-icon-stage");
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	if (!prefersReducedMotion) {
+		appIconStages.forEach((stage) => {
+			const resetStage = () => {
+				stage.style.setProperty("--cursor-x", "0px");
+				stage.style.setProperty("--cursor-y", "0px");
+				stage.style.setProperty("--stage-tilt-x", "0deg");
+				stage.style.setProperty("--stage-tilt-y", "0deg");
+			};
+
+			stage.addEventListener("pointermove", (event) => {
+				const rect = stage.getBoundingClientRect();
+				const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+				const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+				stage.style.setProperty("--cursor-x", `${(x * 18).toFixed(2)}px`);
+				stage.style.setProperty("--cursor-y", `${(y * 18).toFixed(2)}px`);
+				stage.style.setProperty("--stage-tilt-x", `${(x * 4).toFixed(2)}deg`);
+				stage.style.setProperty("--stage-tilt-y", `${(y * -4).toFixed(2)}deg`);
+			});
+
+			stage.addEventListener("pointerleave", resetStage);
+		});
+	}
+</script>

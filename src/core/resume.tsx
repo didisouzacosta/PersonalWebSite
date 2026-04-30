@@ -1,4 +1,5 @@
 import { getResumeProjects } from "./projects";
+import { profileContent } from "./profile";
 import type { Resume } from "./types";
 
 function getAge(dateString: string) {
@@ -57,7 +58,7 @@ export const eng: Resume = {
     ],
     summary: {
         title: "Professional summary",
-        description: "iOS / macOS Developer with 10+ years of experience in Swift, SwiftUI, Objective-C and UIKit, working on the development of scalable apps with a strong focus on UX, performance, and clean architecture. Solid expertise in integrating REST APIs, iCloud, and Apple technologies. Seeking new challenges in impactful projects."
+        description: profileContent.en.summary
     },
     skills: {
         title: "Skills",
@@ -65,6 +66,7 @@ export const eng: Resume = {
             { title: "Languages", description: "Swift, Objective-C and React Native." },
             { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation and AudioKit." },
             { title: "Tools", description: "Xcode, Git, Fastlane, Firebase, Github Actions and Travis." },
+            { title: "AI", description: "Codex, Cloud and Gemini." },
             { title: "Architectures", description: "MV,  MVC,  MVP, MVVM, MVVMC and Clean Architecture." },
             { title: "Other", description: "Unit tests, CI/CD, Apple Store Connect, Distribute apps out of Apple Store." }
         ]
@@ -244,7 +246,7 @@ export const ptBr: Resume = {
     ],
     summary: {
         title: "Resumo Profissional",
-        description: "Desenvolvedor iOS/macOS com mais de 10 anos de experiência em Swift, SwiftUI, Objective-C e UIKit, atuando no desenvolvimento de apps escaláveis com forte foco em UX, desempenho e arquitetura limpa. Expertise sólida em integração com APIs REST, iCloud e tecnologias Apple. Em busca de novos desafios em projetos de impacto."
+        description: profileContent["pt-br"].summary
     },
     skills: {
         title: "Habilidades",
@@ -252,6 +254,7 @@ export const ptBr: Resume = {
             { title: "Linguagens", description: "Swift, Objective-C e React Native." },
             { title: "Frameworks", description: "SwiftUI, SwiftData, CoreData, Combine, DeviceActivity, Server Driven UI, Foundation e AudioKit." },
             { title: "Ferramentas", description: "Xcode, Git, Fastlane, Firebase, GitHub Actions e Travis." },
+            { title: "IA", description: "Codex, Cloud e Gemini." },
             { title: "Arquiteturas", description: "MV, MVC, MVP, MVVM, MVVMC e Clean Architecture." },
             { title: "Outros", description: "Testes unitários, CI/CD, Apple Store Connect e distribuição de apps fora da App Store." }
         ]

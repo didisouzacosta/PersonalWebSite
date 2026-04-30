@@ -1,4 +1,5 @@
 import type { ProjectLanguage } from "./projects";
+import { profileContent } from "./profile";
 
 export interface HomepageContent {
     lang: ProjectLanguage;
@@ -16,12 +17,12 @@ export interface HomepageContent {
 export const homepageEn: HomepageContent = {
     lang: 'en',
     title: 'Adriano Souza Costa • iOS/macOS Developer - Swift • SwiftUI • SwiftData/CoreData • Objective-C',
-    description: "iOS/macOS Developer with 10+ years' experience in Swift, SwiftUI, and UIKit. Focused on UX, performance, and clean architecture. Skilled in REST APIs, iCloud, and Apple technologies.",
-    role: 'iOS & macOS Developer',
-    bio: 'iOS/macOS Developer with 10+ years of experience in Swift, SwiftUI, and UIKit, working on the development of scalable apps with a strong focus on UX, performance, and clean architecture. Solid expertise in integrating REST APIs, iCloud, and Apple technologies. Seeking new challenges in impactful projects.',
-    skills: ['Swift', 'SwiftUI', 'UIKit', 'Objective-C', 'SwiftData', 'CoreData', 'CI/CD', 'React Native'],
+    description: profileContent.en.description,
+    role: profileContent.en.role,
+    bio: profileContent.en.summary,
+    skills: profileContent.en.homepageSkills,
     resumeLink: '/resume',
-    resumeLabel: 'See my resume',
+    resumeLabel: 'Resume',
     aboutTitle: 'About me',
     projectsTitle: 'Projects',
 };
@@ -29,12 +30,12 @@ export const homepageEn: HomepageContent = {
 export const homepagePtBr: HomepageContent = {
     lang: 'pt-br',
     title: 'Adriano Souza Costa • Desenvolvedor iOS/macOS - Swift • SwiftUI • SwiftData/CoreData • Objective-C',
-    description: 'Desenvolvedor iOS/macOS com mais de 10 anos de experiência em Swift, SwiftUI e UIKit. Focado em UX, performance e arquitetura limpa. Especialista em REST APIs, iCloud e tecnologias Apple.',
-    role: 'Desenvolvedor iOS & macOS',
-    bio: 'Desenvolvedor iOS/macOS com mais de 10 anos de experiência em Swift, SwiftUI e UIKit, trabalhando no desenvolvimento de apps escaláveis com forte foco em UX, performance e arquitetura limpa. Sólida expertise em integração de REST APIs, iCloud e tecnologias Apple. Em busca de novos desafios em projetos de impacto.',
-    skills: ['Swift', 'SwiftUI', 'UIKit', 'Objective-C', 'SwiftData', 'CoreData', 'CI/CD', 'React Native'],
+    description: profileContent["pt-br"].description,
+    role: profileContent["pt-br"].role,
+    bio: profileContent["pt-br"].summary,
+    skills: profileContent["pt-br"].homepageSkills,
     resumeLink: '/resume/pt-br',
-    resumeLabel: 'Ver meu currículo',
+    resumeLabel: 'Currículo',
     aboutTitle: 'Sobre mim',
     projectsTitle: 'Projetos',
 };
