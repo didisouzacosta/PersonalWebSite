@@ -9,7 +9,6 @@ const expectedEvents = [
     "resume_download_clicked",
     "resume_contact_clicked",
     "certificate_clicked",
-    "project_opened",
     "social_link_clicked",
     "app_store_clicked",
     "app_legal_link_clicked",
@@ -23,6 +22,7 @@ const expectedEvents = [
 ];
 const forbiddenEvents = [
     "page_accessed",
+    "project_opened",
 ];
 const expectedAnalyticsTitles = [
     { file: "dist/index.html", title: "Home" },

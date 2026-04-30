@@ -150,7 +150,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 									rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
 									aria-label={content.lang === "pt-br" ? `Abrir projeto ${app.name}` : `Open ${app.name} project`}
 									class="hero-app-planet hero-app-link no-ext-icon"
-									data-analytics-event="project_opened"
 									data-analytics-location="home-hero-orbit"
 									data-analytics-label={app.name}
 									data-analytics-project={app.name.toLowerCase().replace(/\s+/g, '-')}

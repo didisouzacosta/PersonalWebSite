@@ -22,7 +22,6 @@ const enabledApps = getProjectCards(lang);
                                 rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
                                 aria-label={`${app.name} — ${app.description}`}
                                 class={`card-link${app.target === "_blank" ? " no-ext-icon" : ""}`}
-                                data-analytics-event="project_opened"
                                 data-analytics-location="projects-section"
                                 data-analytics-label={app.name}
                                 data-analytics-project={app.name.toLowerCase().replace(/\s+/g, '-')}
