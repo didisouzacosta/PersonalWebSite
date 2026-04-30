@@ -1,10 +1,19 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
+import {
+    appAssetBaseUrl,
+    breadcrumbJsonLd,
+    getAppAlternates,
+    softwareApplicationJsonLd,
+    type SeoLanguage,
+} from "../../core/seo";
 
 interface Props {
     appId?: string,
     title: string,
+    pageTitle?: string,
+    appName?: string,
     favicon: string,
     appIcon: string,
     description: string,
@@ -12,23 +21,57 @@ interface Props {
     faq: { question: string, answer: string }[],
     metas: { name: string, content: string }[],
     lang?: string,
+    applicationCategory?: string,
 }
 
-const { appId, title, metas, favicon, appIcon, description, screenshots, faq, lang } = Astro.props;
+const {
+    appId,
+    title,
+    pageTitle,
+    appName,
+    metas,
+    favicon,
+    appIcon,
+    description,
+    screenshots,
+    faq,
+    lang,
+    applicationCategory = "MobileApplication",
+} = Astro.props;
 
 const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
+const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
+const structuredAppName = appName ?? title.split(/[-|]/)[0].trim();
 const legalBasePath = currentPath.startsWith('/pt-br/')
     ? currentPath.replace('/pt-br', '')
     : currentPath;
+const appJsonLd = softwareApplicationJsonLd({
+    name: structuredAppName,
+    description,
+    path: currentPath,
+    appIcon,
+    screenshots: screenshots.map((screenshot) => screenshot.url),
+    appId,
+    language: seoLanguage,
+    applicationCategory,
+});
+const breadcrumbJson = breadcrumbJsonLd([
+    { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
+    { name: structuredAppName, path: currentPath },
+]);
 ---
 
 <Layout
-    title={title}
+    title={pageTitle ?? title}
     favicon={favicon}
     description={description}
     metas={metas}
     lang={lang}
+    canonicalPath={currentPath}
+    alternateLocales={getAppAlternates(currentPath)}
+    ogImage={`${appAssetBaseUrl}${appIcon}`}
+    jsonLd={[appJsonLd, breadcrumbJson]}
 >
     <main class="app-page">
 

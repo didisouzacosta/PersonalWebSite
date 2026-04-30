@@ -3,6 +3,7 @@ import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const appId = 'id6749704116'
 const title = 'LoopSize - Ring Size Converter'
+const pageTitle = 'LoopSize | Ring Size Converter for iOS'
 const description = 'LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.'
 const favicon = "favicon-loopsize-32x32.png"
 const appIcon = "loopsize/app-icon.png"
@@ -47,6 +48,7 @@ const faq = [
 <AppTemplate
     appId={appId}
     title={title}
+    pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
@@ -54,4 +56,5 @@ const faq = [
     screenshots={screenshots}
     faq={faq}
     lang="en"
+    applicationCategory="UtilitiesApplication"
  />

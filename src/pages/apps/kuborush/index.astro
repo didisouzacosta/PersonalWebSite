@@ -3,6 +3,7 @@ import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const appId = "id6757385646";
 const title = "KuboRush - Block Puzzle";
+const pageTitle = "KuboRush | Block Puzzle Game for iOS";
 const description =
     "KuboRush is a casual block puzzle game where you fit pieces, think fast, and clear the board at your own pace. Perfect for your spare 2 minutes — no pressure, just fun.";
 const favicon = "favicon-kuborush-32x32.png";
@@ -56,6 +57,7 @@ const faq = [
 <AppTemplate
     appId={appId}
     title={title}
+    pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
@@ -63,4 +65,5 @@ const faq = [
     screenshots={screenshots}
     faq={faq}
     lang="en"
+    applicationCategory="GameApplication"
 />

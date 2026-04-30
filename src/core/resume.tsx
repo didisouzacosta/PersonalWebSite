@@ -16,7 +16,7 @@ function getAge(dateString: string) {
 }
 
 export const eng: Resume = {
-    title: "Adriano Souza Costa - Resume",
+    title: "Resume | Adriano Souza Costa",
     name: "Adriano Souza Costa",
     download: {
         label: "Download in .pdf",
@@ -204,7 +204,7 @@ export const eng: Resume = {
 }
 
 export const ptBr: Resume = {
-    title: "Adriano Souza Costa - Currículo",
+    title: "Currículo | Adriano Souza Costa",
     name: "Adriano Souza Costa",
     download: {
         label: "Baixar em .pdf",

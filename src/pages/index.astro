@@ -2,6 +2,7 @@
 import AboutMe from '../components/resume/AboutMe.astro';
 import Layout from '../layouts/Layout.astro';
 import { homepageEn } from '../core/homepage';
+import { localizedAlternates, personJsonLd, websiteJsonLd } from '../core/seo';
 ---
 
 <Layout
@@ -9,6 +10,9 @@ import { homepageEn } from '../core/homepage';
 	description={homepageEn.description}
 	lang="en"
 	metas={[]}
+	canonicalPath="/"
+	alternateLocales={localizedAlternates("/", "/pt-br/")}
+	jsonLd={[personJsonLd("en"), websiteJsonLd("en")]}
 >
 	<AboutMe content={homepageEn} />
 </Layout>

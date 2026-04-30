@@ -2,6 +2,7 @@
 import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const title = "DuoTake";
+const pageTitle = "DuoTake | Dual Camera App for Reaction Videos";
 const description =
     "DuoTake lets you record or take photos with the front and back cameras at the same time, plus CropOut to create cleaner framing that is perfect for reacts.";
 const favicon = "favicon-duotake-32x32.png";
@@ -54,6 +55,7 @@ const faq = [
 
 <AppTemplate
     title={title}
+    pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
@@ -61,4 +63,5 @@ const faq = [
     screenshots={screenshots}
     faq={faq}
     lang="en"
+    applicationCategory="MultimediaApplication"
 />

@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import Layout from "../../layouts/Layout.astro";
+import { localizedAlternates, personJsonLd, profilePageJsonLd, type SeoLanguage } from "../../core/seo";
 import type { Resume } from "../../core/types";
 
 interface Props {
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const { resume, lang } = Astro.props;
+const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
+const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
 ---
 
 <Layout
@@ -17,6 +20,9 @@ const { resume, lang } = Astro.props;
     description={resume.summary.description}
     lang={lang}
     metas={[]}
+    canonicalPath={resumePath}
+    alternateLocales={localizedAlternates("/resume/", "/resume/pt-br/")}
+    jsonLd={[personJsonLd(seoLanguage), profilePageJsonLd(resumePath, seoLanguage)]}
 >
     <button onclick="window.print()" class="download-button no-print">
         {resume.download.label}

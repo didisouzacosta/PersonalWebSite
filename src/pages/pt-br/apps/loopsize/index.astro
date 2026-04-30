@@ -3,6 +3,7 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const appId = 'id6749704116'
 const title = 'LoopSize - Conversor de Tamanho de Anel'
+const pageTitle = 'LoopSize | Conversor de Tamanho de Anel para iOS'
 const description = 'O LoopSize facilita a medição e conversão de tamanhos de anéis em BR, US, UK, EU/ISO, JP, CN e IN. Salve, compartilhe e exporte medidas precisas em PDF.'
 const favicon = "favicon-loopsize-32x32.png"
 const appIcon = "loopsize/app-icon.png"
@@ -47,6 +48,7 @@ const faq = [
 <AppTemplate
     appId={appId}
     title={title}
+    pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
@@ -54,4 +56,5 @@ const faq = [
     screenshots={screenshots}
     faq={faq}
     lang="pt-br"
+    applicationCategory="UtilitiesApplication"
  />

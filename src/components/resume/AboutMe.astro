@@ -44,16 +44,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 });
 ---
 
-<nav class="home-nav" aria-label="Page sections">
-	<a href="#about">{content.aboutTitle}</a>
-	{hasProjects && (
-		<>
-			<span class="nav-sep" aria-hidden="true">•</span>
-			<a href="#projects">{content.projectsTitle}</a>
-		</>
-	)}
-</nav>
-
 <main>
 	<section id="hero" aria-label="Introduction" class="hero-section">
 		<span class="space-stars" aria-hidden="true"></span>
@@ -150,6 +140,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 				</div>
 			</div>
 		</div>
+		<span class="hero-continuity" aria-hidden="true"></span>
 	</section>
 
 	<section id="about" aria-label="About me" class="section about-section fade-in">
@@ -359,6 +350,18 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		--comet-start: -72px;
 		--comet-end: 180px;
 		animation: comet-glide 21s cubic-bezier(0.22, 0.64, 0.24, 1) -14s infinite;
+	}
+
+	.hero-continuity {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		z-index: 1;
+		height: clamp(120px, 18vh, 220px);
+		pointer-events: none;
+		background:
+			linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 86%, transparent) 62%, var(--bg) 100%);
 	}
 
 	.hero-inner {
@@ -641,10 +644,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	}
 
 	/* About */
-	.about-section {
-		border-top: 1px solid var(--border);
-	}
-
 	.section-title {
 		font-size: clamp(36px, 5vw, 48px);
 		font-weight: 700;
@@ -663,44 +662,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 
 	.skills {
 		gap: 6px;
-	}
-
-	/* Projects */
-	.projects-section {
-		border-top: 1px solid var(--border);
-	}
-
-	/* Home nav */
-	.home-nav {
-		position: fixed;
-		top: 20px;
-		left: 24px;
-		z-index: 100;
-		display: flex;
-		align-items: center;
-		gap: 2px;
-	}
-
-	.home-nav a {
-		font-size: 14px;
-		font-weight: 500;
-		color: var(--text-secondary);
-		padding: 8px 12px;
-		border-radius: 980px;
-		transition: color 0.2s ease-out, background-color 0.2s ease-out, opacity 0.2s ease-out;
-	}
-
-	.home-nav a:hover {
-		color: var(--text-primary);
-		background-color: var(--bg-secondary);
-		opacity: 1;
-	}
-
-	.nav-sep {
-		font-size: 12px;
-		color: var(--text-tertiary);
-		padding: 0 2px;
-		user-select: none;
 	}
 
 	@keyframes app-stage-float {
@@ -839,8 +800,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	}
 
 	@media (max-width: 480px) {
-		.home-nav { display: none; }
-
 		.hero-section {
 			min-height: 92svh;
 		}

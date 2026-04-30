@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Controls from '../components/Controls.astro';
+import { absoluteUrl, defaultOgImage, normalizePath, type AlternateLocale, type JsonLdValue } from '../core/seo';
 
 interface Props {
     title: string,
@@ -8,21 +9,70 @@ interface Props {
     ogImage?: string,
     favicon?: string,
     lang?: string,
-    metas?: { name: string, content: string }[]
+    metas?: { name: string, content: string }[],
+    canonicalPath?: string,
+    canonicalUrl?: string,
+    alternateLocales?: AlternateLocale[],
+    jsonLd?: JsonLdValue,
+    ogType?: string,
+    robots?: string,
 }
 
 const {
     title,
     description,
-    ogImage = 'https://avatars.githubusercontent.com/u/11352503?v=4',
+    ogImage = defaultOgImage,
     favicon,
     lang = 'en',
-    metas = []
+    metas = [],
+    canonicalPath,
+    canonicalUrl,
+    alternateLocales = [],
+    jsonLd,
+    ogType = 'website',
+    robots = 'index, follow',
 } = Astro.props;
+
+const documentLang = lang === 'pt-br' ? 'pt-BR' : lang;
+const currentPath = normalizePath(Astro.url.pathname);
+const canonical = canonicalUrl ?? absoluteUrl(canonicalPath ?? currentPath);
+const absoluteOgImage = absoluteUrl(ogImage);
+const ogLocale = documentLang === 'pt-BR' ? 'pt_BR' : 'en_US';
+const alternateOgLocales = alternateLocales
+    .filter((alternate) => alternate.lang !== 'x-default' && alternate.lang !== documentLang)
+    .map((alternate) => alternate.lang === 'pt-BR' ? 'pt_BR' : 'en_US');
+const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const isPtBr = lang === 'pt-br';
+const navigationItems = [
+    { label: isPtBr ? 'Início' : 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
+    { label: isPtBr ? 'Currículo' : 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
+    { label: 'LoopSize', href: isPtBr ? '/pt-br/apps/loopsize/' : '/apps/loopsize/', match: isPtBr ? '/pt-br/apps/loopsize/' : '/apps/loopsize/' },
+    { label: 'KuboRush', href: isPtBr ? '/pt-br/apps/kuborush/' : '/apps/kuborush/', match: isPtBr ? '/pt-br/apps/kuborush/' : '/apps/kuborush/' },
+    { label: 'DuoTake', href: isPtBr ? '/pt-br/apps/duotake/' : '/apps/duotake/', match: isPtBr ? '/pt-br/apps/duotake/' : '/apps/duotake/' },
+];
+const isActiveNavigationItem = (match: string) => {
+    if (match === '/') {
+        return currentPath === '/';
+    }
+
+    if (match === '/pt-br/') {
+        return currentPath === '/pt-br/';
+    }
+
+    return currentPath.startsWith(match);
+};
+const footerText = isPtBr
+    ? 'Desenvolvido por Adriano Souza Costa.'
+    : 'Built by Adriano Souza Costa.';
+const footerLinks = [
+    { label: 'GitHub', href: 'https://github.com/didisouzacosta' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrianosouzacosta' },
+    { label: 'X', href: 'https://x.com/didisouzacosta' },
+];
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={documentLang}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,29 +88,42 @@ const {
 
         <link rel="icon" type="image/png" href={`https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/${favicon ?? "favicon-32x32.png"}`} />
         <meta name="generator" content={Astro.generator} />
-        <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://adrianosouzacosta.com.br">
-        <meta name="description" content={description}>
+        <meta name="robots" content={robots}>
+        <link rel="canonical" href={canonical}>
+        {description && <meta name="description" content={description}>}
+        {
+            alternateLocales.map((alternate) => (
+                <link rel="alternate" hreflang={alternate.lang} href={absoluteUrl(alternate.path)} />
+            ))
+        }
 
         <!-- Open Graph -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://adrianosouzacosta.com.br" />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:url" content={canonical} />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={ogImage} />
+        {description && <meta property="og:description" content={description} />}
+        <meta property="og:image" content={absoluteOgImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content={ogLocale} />
+        {alternateOgLocales.map((locale) => <meta property="og:locale:alternate" content={locale} />)}
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={ogImage} />
+        {description && <meta name="twitter:description" content={description} />}
+        <meta name="twitter:image" content={absoluteOgImage} />
 
         {
             metas.map((meta) => <meta name={meta.name} content={meta.content}>)
         }
 
         <title>{title}</title>
+
+        {
+            jsonLdItems.map((item) => (
+                <script type="application/ld+json" set:html={JSON.stringify(item)} />
+            ))
+        }
 
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BSDWW4LMHQ"></script>
@@ -73,8 +136,38 @@ const {
         </script>
     </head>
     <body>
-        <Controls lang={lang} currentPath={Astro.url.pathname} />
+        <header class="site-header">
+            <div class="site-header-inner">
+                <nav class="site-menu" aria-label={isPtBr ? 'Navegação principal' : 'Primary navigation'}>
+                    {
+                        navigationItems.map((item) => (
+                            <a
+                                href={item.href}
+                                aria-current={isActiveNavigationItem(item.match) ? 'page' : undefined}
+                            >
+                                {item.label}
+                            </a>
+                        ))
+                    }
+                </nav>
+                <Controls lang={lang} currentPath={Astro.url.pathname} />
+            </div>
+        </header>
         <slot />
+        <footer class="site-footer">
+            <div class="site-footer-inner">
+                <p>{footerText}</p>
+                <nav aria-label={isPtBr ? 'Links sociais' : 'Social links'}>
+                    {
+                        footerLinks.map((link) => (
+                            <a href={link.href} target="_blank" rel="noopener noreferrer">
+                                {link.label}
+                            </a>
+                        ))
+                    }
+                </nav>
+            </div>
+        </footer>
         <script is:inline>
             var observer = new IntersectionObserver(
                 function(entries) {
@@ -89,5 +182,125 @@ const {
             );
             document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
         </script>
+        <style>
+            .site-header {
+                position: fixed;
+                top: 20px;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                pointer-events: none;
+            }
+
+            .site-header-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                max-width: 980px;
+                margin: 0 auto;
+                padding: 0 32px;
+            }
+
+            .site-menu {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                max-width: 100%;
+                padding: 4px;
+                overflow-x: auto;
+                border: 1px solid var(--border);
+                border-radius: 980px;
+                background-color: color-mix(in srgb, var(--bg) 78%, transparent);
+                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                pointer-events: auto;
+                scrollbar-width: none;
+            }
+
+            .site-header :global(.controls) {
+                pointer-events: auto;
+            }
+
+            .site-menu::-webkit-scrollbar {
+                display: none;
+            }
+
+            .site-menu a {
+                flex: 0 0 auto;
+                padding: 7px 12px;
+                border-radius: 980px;
+                color: var(--text-secondary);
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 1;
+                transition: background-color 0.2s ease-out, color 0.2s ease-out, opacity 0.2s ease-out;
+            }
+
+            .site-menu a:hover,
+            .site-menu a[aria-current="page"] {
+                color: var(--text-primary);
+                background-color: var(--bg-secondary);
+                opacity: 1;
+            }
+
+            .site-footer {
+                border-top: 1px solid var(--border);
+                padding: 32px 0;
+                color: var(--text-tertiary);
+            }
+
+            .site-footer-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 18px;
+                max-width: 980px;
+                margin: 0 auto;
+                padding: 0 32px;
+            }
+
+            .site-footer p,
+            .site-footer a {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            .site-footer nav {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .site-footer a {
+                color: var(--text-secondary);
+            }
+
+            .site-footer a:hover {
+                color: var(--text-primary);
+                opacity: 1;
+            }
+
+            @media (max-width: 760px) {
+                .site-header {
+                    top: 14px;
+                }
+
+                .site-header-inner {
+                    padding: 0 16px;
+                }
+
+                .site-menu {
+                    min-width: 0;
+                }
+
+                .site-footer-inner {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    padding: 0 24px;
+                }
+            }
+        </style>
     </body>
 </html>

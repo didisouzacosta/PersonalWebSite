@@ -3,6 +3,7 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const appId = "id6757385646";
 const title = "KuboRush - Quebra-Cabeça de Blocos";
+const pageTitle = "KuboRush | Jogo Puzzle de Blocos para iOS";
 const description =
     "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu próprio ritmo. Perfeito para seus 2 minutos livres — sem pressão, só diversão.";
 const favicon = "favicon-kuborush-32x32.png";
@@ -56,6 +57,7 @@ const faq = [
 <AppTemplate
     appId={appId}
     title={title}
+    pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
@@ -63,4 +65,5 @@ const faq = [
     screenshots={screenshots}
     faq={faq}
     lang="pt-br"
+    applicationCategory="GameApplication"
 />
