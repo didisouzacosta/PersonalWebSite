@@ -105,7 +105,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 				</nav>
 			</div>
 
-			<div class="hero-visual fade-in" data-delay="2" aria-hidden="true">
+			<div
+				class="hero-visual fade-in"
+				data-delay="2"
+				aria-label={content.lang === "pt-br" ? "Projetos em destaque" : "Featured projects"}
+			>
 				<div class="app-icon-stage">
 					<span class="fibonacci-ring ring-34"></span>
 					<span class="fibonacci-ring ring-55"></span>
@@ -124,7 +128,13 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 					{
 						fallbackOrbitItems.map(({ app, style }) => (
 							<span class="hero-app-orbit" data-hero-orbit-item style={style}>
-								<span class="hero-app-planet">
+								<a
+									href={app.url}
+									target={app.target}
+									rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
+									aria-label={content.lang === "pt-br" ? `Abrir projeto ${app.name}` : `Open ${app.name} project`}
+									class="hero-app-planet hero-app-link no-ext-icon"
+								>
 									<img
 										src={app.imageUrl}
 										alt=""
@@ -133,7 +143,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 										height="84"
 										class="hero-app-icon"
 									/>
-								</span>
+								</a>
 							</span>
 						))
 					}
@@ -599,6 +609,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		transform-origin: 50% 50%;
 		animation: planet-orbit var(--orbit-duration) linear infinite;
 		animation-direction: var(--orbit-direction);
+		animation-play-state: paused;
 	}
 
 	.hero-app-planet {
@@ -614,10 +625,29 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		transform: translate(-50%, -50%) rotate(var(--orbit-start-inverse));
 		animation: planet-counter-orbit var(--orbit-duration) linear infinite;
 		animation-direction: var(--orbit-direction);
+		animation-play-state: paused;
+	}
+
+	.hero-app-link {
+		border-radius: 24%;
+		color: inherit;
+		cursor: pointer;
+		pointer-events: auto;
+		text-decoration: none;
 	}
 
 	.app-icon-stage:hover .hero-app-icon {
 		filter: saturate(1.08) contrast(1.03);
+	}
+
+	.hero-app-link:hover .hero-app-icon,
+	.hero-app-link:focus-visible .hero-app-icon {
+		filter: saturate(1.16) contrast(1.06) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.16));
+	}
+
+	.hero-app-link:focus-visible {
+		outline: 2px solid var(--text-primary);
+		outline-offset: 6px;
 	}
 
 	.social-links {
