@@ -210,6 +210,11 @@ export const eng: Resume = {
                 description: "The Formidable protocol is designed for objects that manage forms composed of multiple FormField components. By conforming to this protocol, you can leverage built-in functionality to validate, reset, and check the validity of all form fields at once."
             },
             {
+                title: "VideoEditorKit",
+                url: "https://github.com/didisouzacosta/VideoEditorKit",
+                description: "VideoEditorKit is a SwiftUI video editor framework for building video editing experiences in Apple apps."
+            },
+            {
                 title: "Uncompress",
                 url: "https://github.com/didisouzacosta/uncompress-react-native",
                 description: "Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native."
@@ -426,6 +431,11 @@ export const ptBr: Resume = {
                 title: "Formidable",
                 url: "https://github.com/didisouzacosta/Formidable",
                 description: "O protocolo Formidable é projetado para objetos que gerenciam formulários compostos por múltiplos componentes FormField. Ao aderir a esse protocolo, você pode validar, resetar e verificar a validade de todos os campos de uma só vez."
+            },
+            {
+                title: "VideoEditorKit",
+                url: "https://github.com/didisouzacosta/VideoEditorKit",
+                description: "VideoEditorKit é um framework de editor de vídeo em SwiftUI para criar experiências de edição de vídeo em apps Apple."
             },
             {
                 title: "Uncompress",
