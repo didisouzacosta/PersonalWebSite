@@ -2,6 +2,9 @@
   "name": "personal-website",
   "type": "module",
   "version": "4.2.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
