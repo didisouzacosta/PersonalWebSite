@@ -44,11 +44,9 @@ const alternateOgLocales = alternateLocales
 const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 const isPtBr = lang === 'pt-br';
 const navigationItems = [
-    { label: isPtBr ? 'Início' : 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
-    { label: isPtBr ? 'Currículo' : 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
-    { label: 'LoopSize', href: isPtBr ? '/pt-br/apps/loopsize/' : '/apps/loopsize/', match: isPtBr ? '/pt-br/apps/loopsize/' : '/apps/loopsize/' },
-    { label: 'KuboRush', href: isPtBr ? '/pt-br/apps/kuborush/' : '/apps/kuborush/', match: isPtBr ? '/pt-br/apps/kuborush/' : '/apps/kuborush/' },
-    { label: 'DuoTake', href: isPtBr ? '/pt-br/apps/duotake/' : '/apps/duotake/', match: isPtBr ? '/pt-br/apps/duotake/' : '/apps/duotake/' },
+    { label: 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
+    { label: 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
+    { label: 'Apps', href: isPtBr ? '/pt-br/#apps' : '/#apps', match: isPtBr ? '/pt-br/apps/' : '/apps/' },
 ];
 const isActiveNavigationItem = (match: string) => {
     if (match === '/') {
@@ -288,7 +286,7 @@ const footerLinks = [
                 }
 
                 .site-header-inner {
-                    padding: 0 16px;
+                    padding: 0 32px;
                 }
 
                 .site-menu {

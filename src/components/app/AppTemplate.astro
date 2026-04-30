@@ -43,9 +43,9 @@ const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
 const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
 const structuredAppName = appName ?? title.split(/[-|]/)[0].trim();
-const legalBasePath = currentPath.startsWith('/pt-br/')
+const legalBasePath = (currentPath.startsWith('/pt-br/')
     ? currentPath.replace('/pt-br', '')
-    : currentPath;
+    : currentPath).replace(/\/$/, '');
 const appJsonLd = softwareApplicationJsonLd({
     name: structuredAppName,
     description,
@@ -300,16 +300,18 @@ const breadcrumbJson = breadcrumbJsonLd([
 
     /* Footer */
     .app-footer {
-        padding: 32px 0;
-        border-top: 1px solid var(--border);
+        margin-bottom: 24px;
+        padding: 32px 0 8px;
     }
 
     .app-footer nav {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 12px;
         font-size: 14px;
         color: var(--text-tertiary);
+        text-align: center;
     }
 
     .app-footer nav a {

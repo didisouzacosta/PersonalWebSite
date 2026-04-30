@@ -24,7 +24,7 @@ export const homepageEn: HomepageContent = {
     resumeLink: '/resume',
     resumeLabel: 'Resume',
     aboutTitle: 'About me',
-    projectsTitle: 'Projects',
+    projectsTitle: 'Apps',
 };
 
 export const homepagePtBr: HomepageContent = {
@@ -37,5 +37,5 @@ export const homepagePtBr: HomepageContent = {
     resumeLink: '/resume/pt-br',
     resumeLabel: 'Currículo',
     aboutTitle: 'Sobre mim',
-    projectsTitle: 'Projetos',
+    projectsTitle: 'Apps',
 };
