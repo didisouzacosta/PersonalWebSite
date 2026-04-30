@@ -1,75 +1,12 @@
 ---
-interface AppProject {
-    name: string;
-    description: string;
-    tags: string[];
-    imageUrl: string;
-    url: string;
-    isEnabled: boolean;
-    target?: "_blank";
+import { getProjectCards, type ProjectLanguage } from "../../core/projects";
+
+interface Props {
+    lang?: ProjectLanguage;
 }
 
-const apps: AppProject[] = [
-    {
-        name: "KuboRush",
-        description: "Block puzzle game",
-        tags: ["iOS App", "Free"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/kuborush/app-icon.png",
-        url: "/apps/kuborush",
-        isEnabled: true,
-    },
-    {
-        name: "LoopSize",
-        description: "Ring size converter",
-        tags: ["iOS App", "Free"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/app-icon.png",
-        url: "/apps/loopsize",
-        isEnabled: true,
-    },
-    {
-        name: "DuoTake",
-        description: "Front + back camera for reacts",
-        tags: ["iOS App", "Free", "Camera"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/duotake/app-icon.png",
-        url: "/apps/duotake",
-        isEnabled: false,
-    },
-    {
-        name: "CleanerXcode",
-        description: "Xcode cache cleaner",
-        tags: ["macOS App", "Free"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/cleanerxcode/app-icon.png",
-        url: "https://github.com/didisouzacosta/CleanerXcode",
-        target: "_blank",
-        isEnabled: true,
-    },
-    {
-        name: "Formidable",
-        description: "Swift form framework",
-        tags: ["Framework"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/formidable/app-icon.png",
-        url: "https://github.com/didisouzacosta/Formidable",
-        target: "_blank",
-        isEnabled: true,
-    },
-    {
-        name: "VideoEditorKit",
-        description: "SwiftUI video editor",
-        tags: ["Framework", "SwiftUI"],
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/videoeditorkit/app-icon.png",
-        url: "https://github.com/didisouzacosta/VideoEditorKit",
-        target: "_blank",
-        isEnabled: true,
-    },
-];
-
-const enabledApps = apps.filter((app) => app.isEnabled);
+const { lang = "en" } = Astro.props;
+const enabledApps = getProjectCards(lang);
 ---
 
 <ul class="projects-grid" role="list">
@@ -86,7 +23,7 @@ const enabledApps = apps.filter((app) => app.isEnabled);
                     >
                         <img
                             src={app.imageUrl}
-                            alt={`${app.name} app icon`}
+                            alt={lang === "pt-br" ? `Ícone do app ${app.name}` : `${app.name} app icon`}
                             loading="lazy"
                             class="app-icon"
                             width="64"

@@ -88,7 +88,7 @@ const { content } = Astro.props;
 	<section id="projects" aria-label="Projects" class="section projects-section fade-in">
 		<div class="container">
 			<h2 class="section-title">{content.projectsTitle}</h2>
-			<Projects />
+			<Projects lang={content.lang} />
 		</div>
 	</section>
 </main>
