@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "verify:analytics": "npm run build && node scripts/verify-analytics.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
