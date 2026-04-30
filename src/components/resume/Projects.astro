@@ -9,46 +9,50 @@ const { lang = "en" } = Astro.props;
 const enabledApps = getProjectCards(lang);
 ---
 
-<ul class="projects-grid" role="list">
-    {
-        enabledApps.map((app) => (
-            <li>
-                <article class="project-card">
-                    <a
-                        href={app.url}
-                        target={app.target}
-                        rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
-                        aria-label={`${app.name} — ${app.description}`}
-                        class={`card-link${app.target === "_blank" ? " no-ext-icon" : ""}`}
-                    >
-                        <img
-                            src={app.imageUrl}
-                            alt={lang === "pt-br" ? `Ícone do app ${app.name}` : `${app.name} app icon`}
-                            loading="lazy"
-                            class="app-icon"
-                            width="64"
-                            height="64"
-                        />
-                        <div class="card-info">
-                            <h3 class="app-name">
-                                {app.name}
-                                {app.target === "_blank" && (
-                                    <span class="ext-icon" aria-label="opens in new tab">↗</span>
-                                )}
-                            </h3>
-                            <p class="app-description">{app.description}</p>
-                            <div class="tags" role="list">
-                                {app.tags.map((tag) => (
-                                    <span role="listitem" class="tag">{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            </li>
-        ))
-    }
-</ul>
+{
+    enabledApps.length > 0 && (
+        <ul class="projects-grid" role="list">
+            {
+                enabledApps.map((app) => (
+                    <li>
+                        <article class="project-card">
+                            <a
+                                href={app.url}
+                                target={app.target}
+                                rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
+                                aria-label={`${app.name} — ${app.description}`}
+                                class={`card-link${app.target === "_blank" ? " no-ext-icon" : ""}`}
+                            >
+                                <img
+                                    src={app.imageUrl}
+                                    alt={lang === "pt-br" ? `Ícone do app ${app.name}` : `${app.name} app icon`}
+                                    loading="lazy"
+                                    class="app-icon"
+                                    width="64"
+                                    height="64"
+                                />
+                                <div class="card-info">
+                                    <h3 class="app-name">
+                                        {app.name}
+                                        {app.target === "_blank" && (
+                                            <span class="ext-icon" aria-label="opens in new tab">↗</span>
+                                        )}
+                                    </h3>
+                                    <p class="app-description">{app.description}</p>
+                                    <div class="tags" role="list">
+                                        {app.tags.map((tag) => (
+                                            <span role="listitem" class="tag">{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    </li>
+                ))
+            }
+        </ul>
+    )
+}
 
 <style>
     .projects-grid {

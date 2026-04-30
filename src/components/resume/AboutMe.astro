@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import type { HomepageContent } from "../../core/homepage";
+import { hasEnabledProjects } from "../../core/projects";
 
 import Projects from "./Projects.astro";
 
@@ -10,12 +11,17 @@ interface Props {
 }
 
 const { content } = Astro.props;
+const hasProjects = hasEnabledProjects();
 ---
 
 <nav class="home-nav" aria-label="Page sections">
 	<a href="#about">{content.aboutTitle}</a>
-	<span class="nav-sep" aria-hidden="true">•</span>
-	<a href="#projects">{content.projectsTitle}</a>
+	{hasProjects && (
+		<>
+			<span class="nav-sep" aria-hidden="true">•</span>
+			<a href="#projects">{content.projectsTitle}</a>
+		</>
+	)}
 </nav>
 
 <main>
@@ -85,12 +91,14 @@ const { content } = Astro.props;
 		</div>
 	</section>
 
-	<section id="projects" aria-label="Projects" class="section projects-section fade-in">
-		<div class="container">
-			<h2 class="section-title">{content.projectsTitle}</h2>
-			<Projects lang={content.lang} />
-		</div>
-	</section>
+	{hasProjects && (
+		<section id="projects" aria-label="Projects" class="section projects-section fade-in">
+			<div class="container">
+				<h2 class="section-title">{content.projectsTitle}</h2>
+				<Projects lang={content.lang} />
+			</div>
+		</section>
+	)}
 </main>
 
 <style>

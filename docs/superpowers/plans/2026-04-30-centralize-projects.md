@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Centralize portfolio project data so the home and `/resume` project lists are identical, alphabetically ordered, and maintained from one source.
+**Goal:** Centralize portfolio project data so the home and `/resume` project lists are identical, rendered in reverse array order, and maintained from one source.
 
-**Architecture:** Move project data and sorting helpers into `src/core/projects.ts`. The home project cards and resume data will consume that module instead of keeping separate hardcoded arrays. Add the `@build-web-apps` project instruction to `AGENTS.md` so future frontend/site work uses the requested plugin.
+**Architecture:** Move project data and ordering helpers into `src/core/projects.ts`. The home project cards and resume data will consume that module instead of keeping separate hardcoded arrays. Add the `@build-web-apps` project instruction to `AGENTS.md` so future frontend/site work uses the requested plugin.
 
 **Tech Stack:** Astro 5, TypeScript, existing `.astro` components, existing `npm run build` verification.
 
@@ -15,17 +15,17 @@
 - Modify: `AGENTS.md`
   - Add an explicit instruction to always use `@build-web-apps` for this project.
 - Create: `src/core/projects.ts`
-  - Own the canonical project list, localized descriptions, image URLs, tags, visibility, external targets, and alphabetical ordering helpers.
+  - Own the canonical project list, localized descriptions, image URLs, tags, visibility, external targets, and reverse array ordering helpers.
 - Modify: `src/components/resume/AboutMe.astro`
   - Pass the current homepage language into the project card component.
 - Modify: `src/components/resume/Projects.astro`
-  - Remove local project data and render the centralized, sorted list.
+  - Remove local project data and render the centralized list in reverse array order.
 - Modify: `src/core/resume.tsx`
   - Replace duplicated English and Portuguese `projects.items` arrays with `getResumeProjects("en")` and `getResumeProjects("pt-br")`.
 
 ## Expected Behavior
 
-- Home project cards are displayed alphabetically by project name.
+- Home project cards are displayed in reverse order from the enabled items in the canonical `portfolioProjects` array. The last enabled item in the array is the first project shown.
 - `/resume` and `/resume/pt-br` show the same visible project set as the home project section.
 - The resume no longer has project entries that are absent from the home project list, unless those entries are added to the shared source and enabled.
 - New projects are added once in `src/core/projects.ts`.
@@ -34,13 +34,13 @@
 
 ### Canonical Visible Project Set After This Change
 
-Alphabetical order:
+Rendered order from the planned array below, after filtering enabled projects and reversing the array order:
 
-1. CleanerXcode
+1. VideoEditorKit
 2. Formidable
-3. KuboRush
+3. CleanerXcode
 4. LoopSize
-5. VideoEditorKit
+5. KuboRush
 
 `DuoTake` can remain in the shared source with `isEnabled: false`, so it does not appear in either home or resume until enabled. `Uncompress` should be removed from the rendered resume list because it is not currently displayed on the home project list.
 
@@ -238,16 +238,10 @@ export const portfolioProjects: PortfolioProject[] = [
     },
 ];
 
-const projectNameCollator = new Intl.Collator("en", {
-    sensitivity: "base",
-    numeric: true,
-});
-
 function getEnabledProjects(): PortfolioProject[] {
     return portfolioProjects
         .filter((project) => project.isEnabled)
-        .slice()
-        .sort((first, second) => projectNameCollator.compare(first.name, second.name));
+        .reverse();
 }
 
 export function getProjectCards(language: ProjectLanguage): ProjectCardViewModel[] {
@@ -452,12 +446,12 @@ git commit -m "refactor: use shared projects in resume"
 
 ---
 
-### Task 5: Verify Alphabetical Order and Route Parity
+### Task 5: Verify Reverse Array Order and Route Parity
 
 **Files:**
 - No production code changes expected unless verification finds an issue.
 
-- [ ] **Step 1: Verify the centralized source is alphabetically rendered**
+- [ ] **Step 1: Verify the centralized source is rendered in reverse array order**
 
 Run:
 
@@ -492,11 +486,11 @@ Open `http://localhost:4321/`.
 Verify the project cards appear in this order:
 
 ```text
-CleanerXcode
-Formidable
-KuboRush
-LoopSize
 VideoEditorKit
+Formidable
+CleanerXcode
+LoopSize
+KuboRush
 ```
 
 - [ ] **Step 4: Browser-check Portuguese home**
@@ -506,11 +500,11 @@ Open `http://localhost:4321/pt-br/`.
 Verify the project cards appear in this order:
 
 ```text
-CleanerXcode
-Formidable
-KuboRush
-LoopSize
 VideoEditorKit
+Formidable
+CleanerXcode
+LoopSize
+KuboRush
 ```
 
 - [ ] **Step 5: Browser-check English resume**
@@ -520,11 +514,11 @@ Open `http://localhost:4321/resume/`.
 Verify the projects section appears in this order and contains no `DuoTake` or `Uncompress`:
 
 ```text
-CleanerXcode
-Formidable
-KuboRush
-LoopSize
 VideoEditorKit
+Formidable
+CleanerXcode
+LoopSize
+KuboRush
 ```
 
 - [ ] **Step 6: Browser-check Portuguese resume**
@@ -534,11 +528,11 @@ Open `http://localhost:4321/resume/pt-br/`.
 Verify the projects section appears in this order and contains no `DuoTake` or `Uncompress`:
 
 ```text
-CleanerXcode
-Formidable
-KuboRush
-LoopSize
 VideoEditorKit
+Formidable
+CleanerXcode
+LoopSize
+KuboRush
 ```
 
 - [ ] **Step 7: Commit any verification fixes**
@@ -557,8 +551,8 @@ If no fixes were needed, do not create an empty commit.
 ## Self-Review Checklist
 
 - Requirement 1, always use `@build-web-apps`: covered by Task 1 in `AGENTS.md`.
-- Requirement 2, alphabetical project list: covered by `Intl.Collator` sorting in `getEnabledProjects()`.
-- Requirement 3, `/resume` uses the same project list as home: covered by `getProjectCards()` and `getResumeProjects()` sharing the same filtered and sorted source.
+- Requirement 2, reverse array order project list: covered by filtering enabled projects and calling `reverse()` in `getEnabledProjects()`.
+- Requirement 3, `/resume` uses the same project list as home: covered by `getProjectCards()` and `getResumeProjects()` sharing the same filtered and reversed source.
 - No new dependencies are introduced.
 - Existing visual style is preserved because `Projects.astro` markup and CSS stay essentially the same.
 - Accessibility is preserved through existing `aria-label`, `alt`, and external link `rel` behavior.

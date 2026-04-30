@@ -3,6 +3,7 @@ export type ProjectLanguage = "en" | "pt-br";
 export interface PortfolioProject {
     name: string;
     url: string;
+    resumeUrl?: string;
     imageUrl: string;
     tags: string[];
     isEnabled: boolean;
@@ -32,6 +33,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "DuoTake",
         url: "/apps/duotake",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/duotake",
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/duotake/app-icon.png",
         tags: ["iOS App", "Free", "Camera"],
@@ -50,6 +52,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "KuboRush",
         url: "/apps/kuborush",
+        resumeUrl: "https://apps.apple.com/app/id6757385646",
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/kuborush/app-icon.png",
         tags: ["iOS App", "Free"],
@@ -68,6 +71,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "LoopSize",
         url: "/apps/loopsize",
+        resumeUrl: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/app-icon.png",
         tags: ["iOS App", "Free"],
@@ -148,6 +152,10 @@ function getEnabledProjects(): PortfolioProject[] {
         .reverse();
 }
 
+export function hasEnabledProjects(): boolean {
+    return portfolioProjects.some((project) => project.isEnabled);
+}
+
 export function getProjectCards(language: ProjectLanguage): ProjectCardViewModel[] {
     return getEnabledProjects().map((project) => ({
         name: project.name,
@@ -162,7 +170,7 @@ export function getProjectCards(language: ProjectLanguage): ProjectCardViewModel
 export function getResumeProjects(language: ProjectLanguage): ResumeProjectViewModel[] {
     return getEnabledProjects().map((project) => ({
         title: project.name,
-        url: project.url,
+        url: project.resumeUrl ?? project.url,
         description: project.descriptions[language].resume,
     }));
 }

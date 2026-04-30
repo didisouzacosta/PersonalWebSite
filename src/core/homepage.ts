@@ -1,5 +1,7 @@
+import type { ProjectLanguage } from "./projects";
+
 export interface HomepageContent {
-    lang: string;
+    lang: ProjectLanguage;
     title: string;
     description: string;
     role: string;
