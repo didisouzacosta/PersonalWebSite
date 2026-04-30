@@ -69,8 +69,8 @@ export function personJsonLd(language: SeoLanguage = "en"): Record<string, unkno
         url: siteUrl,
         image: defaultOgImage,
         jobTitle: isPortuguese
-            ? "Desenvolvedor iOS/macOS e Engenheiro de IA"
-            : "iOS/macOS Developer and AI Engineer",
+            ? "Desenvolvedor iOS/macOS e AI Enthusiast"
+            : "iOS/macOS Developer and AI Enthusiast",
         knowsAbout: [
             "iOS",
             "macOS",
@@ -81,7 +81,10 @@ export function personJsonLd(language: SeoLanguage = "en"): Record<string, unkno
             "SwiftData",
             "CoreData",
             "Clean Architecture",
-            "AI-assisted development",
+            "Codex",
+            "Claude",
+            "Agents",
+            "Skills",
         ],
         sameAs: [
             "https://github.com/didisouzacosta",
