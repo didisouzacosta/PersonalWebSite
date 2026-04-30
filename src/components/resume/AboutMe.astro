@@ -166,7 +166,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	</section>
 
 	{hasProjects && (
-		<section id="apps" aria-label="Apps" class="section projects-section fade-in">
+		<section
+			id="projects"
+			aria-label={content.lang === "pt-br" ? "Projetos" : "Projects"}
+			class="section projects-section fade-in"
+		>
 			<div class="container">
 				<h2 class="section-title">{content.projectsTitle}</h2>
 				<Projects lang={content.lang} />
@@ -179,8 +183,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	/* Hero */
 	.hero-section {
 		min-height: 100svh;
+		height: 100svh;
 		display: flex;
-		align-items: center;
+		align-items: stretch;
 		position: relative;
 		overflow: hidden;
 		isolation: isolate;
@@ -379,8 +384,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		grid-template-columns: minmax(0, 560px) minmax(280px, 1fr);
 		align-items: center;
 		gap: clamp(40px, 6vw, 84px);
-		padding-top: 80px;
-		padding-bottom: 80px;
+		min-height: 100%;
+		padding-top: clamp(72px, 8svh, 96px);
+		padding-bottom: clamp(48px, 8svh, 96px);
 		position: relative;
 		width: 100%;
 	}
@@ -609,7 +615,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		transform-origin: 50% 50%;
 		animation: planet-orbit var(--orbit-duration) linear infinite;
 		animation-direction: var(--orbit-direction);
-		animation-play-state: paused;
 	}
 
 	.hero-app-planet {
@@ -625,7 +630,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		transform: translate(-50%, -50%) rotate(var(--orbit-start-inverse));
 		animation: planet-counter-orbit var(--orbit-duration) linear infinite;
 		animation-direction: var(--orbit-direction);
-		animation-play-state: paused;
 	}
 
 	.hero-app-link {
@@ -831,12 +835,13 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 
 	@media (max-width: 480px) {
 		.hero-section {
-			min-height: 92svh;
+			min-height: 100svh;
+			height: 100svh;
 		}
 
 		.hero-inner {
-			padding-top: 64px;
-			padding-bottom: 64px;
+			padding-top: 72px;
+			padding-bottom: 48px;
 		}
 
 		.avatar {

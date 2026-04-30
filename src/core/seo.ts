@@ -69,7 +69,7 @@ export function personJsonLd(language: SeoLanguage = "en"): Record<string, unkno
         url: siteUrl,
         image: defaultOgImage,
         jobTitle: isPortuguese
-            ? "Desenvolvedor iOS/macOS e AI Enthusiast"
+            ? "Desenvolvedor iOS/macOS e Entusiasta de IA"
             : "iOS/macOS Developer and AI Enthusiast",
         knowsAbout: [
             "iOS",

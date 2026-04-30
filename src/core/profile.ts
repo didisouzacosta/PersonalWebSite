@@ -15,9 +15,9 @@ export const profileContent: Record<ProjectLanguage, ProfileContent> = {
         homepageSkills: ["Swift", "SwiftUI", "UIKit", "Objective-C", "SwiftData", "CoreData", "CI/CD", "React Native", "Codex", "Claude", "Agents", "Skills"],
     },
     "pt-br": {
-        role: "Desenvolvedor iOS & macOS • AI Enthusiast",
-        description: "Desenvolvedor iOS/macOS e AI Enthusiast com mais de 10 anos de experiência em Swift, SwiftUI e UIKit. Focado em UX, regras de negócio, design e arquitetura limpa, usando Codex, Claude, Agents and Skills no dia a dia.",
-        summary: "Desenvolvedor iOS/macOS e AI Enthusiast com mais de 10 anos de experiência em Swift, SwiftUI e UIKit, criando apps escaláveis com forte foco em UX, performance e arquitetura limpa. Atualmente, Codex, Claude, Agents and Skills fazem parte do meu dia a dia, permitindo um foco ainda maior nas regras de negócio, no design do produto e na arquitetura do projeto.",
+        role: "Desenvolvedor iOS & macOS • Entusiasta de IA",
+        description: "Desenvolvedor iOS/macOS e Entusiasta de IA com mais de 10 anos de experiência em Swift, SwiftUI e UIKit. Focado em UX, regras de negócio, design e arquitetura limpa, usando Codex, Claude, Agents and Skills no dia a dia.",
+        summary: "Desenvolvedor iOS/macOS e Entusiasta de IA com mais de 10 anos de experiência em Swift, SwiftUI e UIKit, criando apps escaláveis com forte foco em UX, performance e arquitetura limpa. Atualmente, Codex, Claude, Agents and Skills fazem parte do meu dia a dia, permitindo um foco ainda maior nas regras de negócio, no design do produto e na arquitetura do projeto.",
         homepageSkills: ["Swift", "SwiftUI", "UIKit", "Objective-C", "SwiftData", "CoreData", "CI/CD", "React Native", "Codex", "Claude", "Agents", "Skills"],
     },
 };

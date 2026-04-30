@@ -46,7 +46,7 @@ const isPtBr = lang === 'pt-br';
 const navigationItems = [
     { label: 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
     { label: 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
-    { label: 'Apps', href: isPtBr ? '/pt-br/#apps' : '/#apps', match: isPtBr ? '/pt-br/apps/' : '/apps/' },
+    { label: isPtBr ? 'Projetos' : 'Projects', href: isPtBr ? '/pt-br/#projects' : '/#projects', match: isPtBr ? '/pt-br/apps/' : '/apps/' },
 ];
 const isActiveNavigationItem = (match: string) => {
     if (match === '/') {

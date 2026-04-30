@@ -24,12 +24,12 @@ export const homepageEn: HomepageContent = {
     resumeLink: '/resume',
     resumeLabel: 'Resume',
     aboutTitle: 'About me',
-    projectsTitle: 'Apps',
+    projectsTitle: 'Projects',
 };
 
 export const homepagePtBr: HomepageContent = {
     lang: 'pt-br',
-    title: 'Adriano Souza Costa | Desenvolvedor iOS/macOS & AI Enthusiast',
+    title: 'Adriano Souza Costa | Desenvolvedor iOS/macOS & Entusiasta de IA',
     description: profileContent["pt-br"].description,
     role: profileContent["pt-br"].role,
     bio: profileContent["pt-br"].summary,
@@ -37,5 +37,5 @@ export const homepagePtBr: HomepageContent = {
     resumeLink: '/resume/pt-br',
     resumeLabel: 'Currículo',
     aboutTitle: 'Sobre mim',
-    projectsTitle: 'Apps',
+    projectsTitle: 'Projetos',
 };
