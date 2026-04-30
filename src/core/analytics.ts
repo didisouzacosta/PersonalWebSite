@@ -26,6 +26,7 @@ declare global {
         himetrica?: HimetricaGlobal;
         __SITE_ANALYTICS_CONTEXT__?: AnalyticsPageContext;
         __SITE_ANALYTICS_INITIALIZED__?: boolean;
+        __SITE_ANALYTICS_ORIGINAL_TITLE__?: string;
     }
 }
 
@@ -44,7 +45,7 @@ const getBaseProperties = (): AnalyticsProperties => {
 
     return {
         page_path: window.location.pathname,
-        page_title: document.title,
+        page_title: context?.analyticsTitle ?? document.title,
         page_type: context?.pageType,
         page_language: context?.lang,
         project_slug: context?.projectSlug,
@@ -81,19 +82,6 @@ export function trackAnalyticsEvent(name: string, props: AnalyticsProperties = {
 
     pendingEvents.push({ name, props: eventProps });
     window.setTimeout(sendPendingEvents, 250);
-}
-
-export function trackPageAccess(props: AnalyticsProperties = {}) {
-    if (typeof window === "undefined") return;
-
-    const context = getContext();
-
-    trackAnalyticsEvent("page_accessed", {
-        canonical: context?.canonical,
-        source: "analytics_initializer",
-        referrer: document.referrer,
-        ...props,
-    });
 }
 
 export function identifyAnalyticsUser(payload: AnalyticsIdentifyPayload) {
@@ -142,13 +130,34 @@ const setupGlobalClickTracking = () => {
     });
 };
 
+const restoreDocumentTitle = () => {
+    const originalTitle = window.__SITE_ANALYTICS_ORIGINAL_TITLE__;
+
+    if (originalTitle && document.title !== originalTitle) {
+        document.title = originalTitle;
+    }
+};
+
+const scheduleDocumentTitleRestore = () => {
+    const restoreDelayMs = 1200;
+
+    if (document.readyState === "complete") {
+        window.setTimeout(restoreDocumentTitle, restoreDelayMs);
+        return;
+    }
+
+    window.addEventListener("load", () => {
+        window.setTimeout(restoreDocumentTitle, restoreDelayMs);
+    }, { once: true });
+};
+
 export function initializeAnalytics() {
     if (typeof window === "undefined") return;
     if (window.__SITE_ANALYTICS_INITIALIZED__) return;
 
     window.__SITE_ANALYTICS_INITIALIZED__ = true;
     setupGlobalClickTracking();
+    scheduleDocumentTitleRestore();
 
     window.addEventListener("load", sendPendingEvents, { once: true });
-    trackPageAccess();
 }

@@ -9,12 +9,19 @@ const { context } = Astro.props;
 ---
 
 <script
+    is:inline
+    set:html={`
+        window.__SITE_ANALYTICS_CONTEXT__ = ${JSON.stringify(context)};
+        window.__SITE_ANALYTICS_ORIGINAL_TITLE__ = document.title;
+        document.title = ${JSON.stringify(context.analyticsTitle)};
+    `}
+/>
+
+<script
     defer
     src="https://cdn.himetrica.com/tracker.js"
     data-api-key="hm_9af92516047479ef85a412f32cb9fcee4d1e48b236e72a65"
 ></script>
-
-<script is:inline set:html={`window.__SITE_ANALYTICS_CONTEXT__ = ${JSON.stringify(context)};`} />
 
 <script>
     import { initializeAnalytics } from "../core/analytics";

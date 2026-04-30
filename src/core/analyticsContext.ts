@@ -10,6 +10,7 @@ export interface AnalyticsPageContext {
     path: string;
     canonical: string;
     title: string;
+    analyticsTitle: string;
     lang: "en" | "pt-BR";
     pageType: AnalyticsPageType;
     projectSlug?: string;
@@ -32,6 +33,20 @@ const extractProjectSlug = (path: string) => {
     return match?.[1];
 };
 
+const projectTitles: Record<string, string> = {
+    duotake: "Duo Take",
+    kuborush: "Kubo Rush",
+    loopsize: "Loop Size",
+};
+
+const getProjectTitle = (projectSlug?: string) => {
+    if (!projectSlug) return undefined;
+    return projectTitles[projectSlug] ?? projectSlug
+        .split("-")
+        .map((part) => `${part.charAt(0).toUpperCase()}${part.slice(1)}`)
+        .join(" ");
+};
+
 const getPageType = (path: string): AnalyticsPageType => {
     const normalizedPath = normalizePath(path);
 
@@ -44,16 +59,39 @@ const getPageType = (path: string): AnalyticsPageType => {
     return "system";
 };
 
+const getLegalTitle = (path: string) => {
+    const normalizedPath = normalizePath(path);
+
+    if (normalizedPath.endsWith("/terms-of-use/")) return "Terms of Use";
+    if (normalizedPath.endsWith("/privacy-policy/")) return "Privacy Policy";
+
+    return "Legal";
+};
+
+const getAnalyticsTitle = (path: string, pageType: AnalyticsPageType, fallbackTitle: string) => {
+    const projectTitle = getProjectTitle(extractProjectSlug(path));
+
+    if (pageType === "home") return "Home";
+    if (pageType === "resume") return "Curriculo";
+    if (pageType === "app" && projectTitle) return `Projeto / ${projectTitle}`;
+    if (pageType === "app_legal" && projectTitle) return `Projeto / ${projectTitle} / ${getLegalTitle(path)}`;
+    if (pageType === "legal") return `Legal / ${getLegalTitle(path)}`;
+
+    return fallbackTitle;
+};
+
 export function createAnalyticsPageContext(input: CreateAnalyticsPageContextInput): AnalyticsPageContext {
     const path = normalizePath(input.path);
     const lang = input.lang === "pt-br" || input.lang === "pt-BR" ? "pt-BR" : "en";
+    const pageType = getPageType(path);
 
     return {
         path,
         canonical: input.canonical,
         title: input.title,
+        analyticsTitle: getAnalyticsTitle(path, pageType, input.title),
         lang,
-        pageType: getPageType(path),
+        pageType,
         projectSlug: extractProjectSlug(path),
     };
 }

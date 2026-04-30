@@ -3,7 +3,6 @@ import { join } from "node:path";
 
 const distDir = "dist";
 const expectedEvents = [
-    "page_accessed",
     "navigation_clicked",
     "theme_changed",
     "language_changed",
@@ -21,6 +20,15 @@ const expectedEvents = [
     "internal_link_clicked",
     "external_link_clicked",
     "control_clicked",
+];
+const forbiddenEvents = [
+    "page_accessed",
+];
+const expectedAnalyticsTitles = [
+    { file: "dist/index.html", title: "Home" },
+    { file: "dist/resume/index.html", title: "Curriculo" },
+    { file: "dist/apps/kuborush/index.html", title: "Projeto / Kubo Rush" },
+    { file: "dist/pt-br/apps/kuborush/index.html", title: "Projeto / Kubo Rush" },
 ];
 
 const walk = (dir, matcher, files = []) => {
@@ -57,6 +65,25 @@ const missingEvents = expectedEvents.filter((eventName) => !bundledText.includes
 if (missingEvents.length > 0) {
     console.error("Missing expected analytics event names:");
     missingEvents.forEach((eventName) => console.error(`- ${eventName}`));
+    process.exit(1);
+}
+
+const forbiddenEventsFound = forbiddenEvents.filter((eventName) => bundledText.includes(eventName));
+
+if (forbiddenEventsFound.length > 0) {
+    console.error("Found forbidden analytics event names:");
+    forbiddenEventsFound.forEach((eventName) => console.error(`- ${eventName}`));
+    process.exit(1);
+}
+
+const missingAnalyticsTitles = expectedAnalyticsTitles.filter(({ file, title }) => {
+    const html = readFileSync(file, "utf8");
+    return !html.includes(`"analyticsTitle":"${title}"`);
+});
+
+if (missingAnalyticsTitles.length > 0) {
+    console.error("Missing expected normalized analytics titles:");
+    missingAnalyticsTitles.forEach(({ file, title }) => console.error(`- ${file}: ${title}`));
     process.exit(1);
 }
 
