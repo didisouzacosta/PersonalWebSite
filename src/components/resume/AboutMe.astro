@@ -13,6 +13,35 @@ interface Props {
 const { content } = Astro.props;
 const hasProjects = hasEnabledProjects();
 const heroApps = getProjectCards(content.lang);
+
+const fallbackOrbitItems = heroApps.map((app, index, apps) => {
+    const shellCount = Math.min(4, Math.max(2, Math.ceil((apps.length || 1) / 4)));
+    const shell = index % shellCount;
+    const positionInShell = Math.floor(index / shellCount);
+    const shellTotal = Math.ceil((apps.length - shell) / shellCount);
+    const radiusStep = shellCount > 1 ? 12 / (shellCount - 1) : 0;
+    const angle = (positionInShell * (360 / shellTotal) + shell * 72) % 360;
+    const radius = 24 + shell * radiusStep;
+    const duration = 40 + shell * 16;
+    const size = 54 + ((index * 9) % 22);
+    const depth = 0.22 + shell * 0.12;
+    const tilt = (index % 2 === 0 ? -1 : 1) * (3 + (index % 4));
+    const direction = shell % 2 === 0 ? "normal" : "reverse";
+
+    return {
+        app,
+        style: [
+            `--orbit-start: ${angle.toFixed(2)}deg`,
+            `--orbit-start-inverse: ${(-angle).toFixed(2)}deg`,
+            `--orbit-radius: ${radius.toFixed(2)}%`,
+            `--orbit-duration: ${duration.toFixed(2)}s`,
+            `--orbit-direction: ${direction}`,
+            `--planet-size: ${size.toFixed(2)}px`,
+            `--planet-depth: ${depth.toFixed(2)}`,
+            `--planet-tilt: ${tilt.toFixed(2)}deg`,
+        ].join("; "),
+    };
+});
 ---
 
 <nav class="home-nav" aria-label="Page sections">
@@ -97,15 +126,19 @@ const heroApps = getProjectCards(content.lang);
 						/>
 					</svg>
 					{
-						heroApps.map((app, index) => (
-							<img
-								src={app.imageUrl}
-								alt=""
-								loading="eager"
-								width="84"
-								height="84"
-								class={`hero-app-icon hero-app-icon-${index + 1}`}
-							/>
+						fallbackOrbitItems.map(({ app, style }) => (
+							<span class="hero-app-orbit" data-hero-orbit-item style={style}>
+								<span class="hero-app-planet">
+									<img
+										src={app.imageUrl}
+										alt=""
+										loading="eager"
+										width="84"
+										height="84"
+										class="hero-app-icon"
+									/>
+								</span>
+							</span>
 						))
 					}
 				</div>
@@ -345,57 +378,48 @@ const heroApps = getProjectCards(content.lang);
 	}
 
 	.hero-app-icon {
-		position: absolute;
+		display: block;
 		z-index: 3;
-		--depth: 1;
-		--tilt: 0deg;
-		width: clamp(58px, 7vw, 84px);
-		height: clamp(58px, 7vw, 84px);
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 1;
 		border-radius: 22%;
-		object-fit: cover;
+		object-fit: contain;
+		object-position: center;
 		background: transparent;
 		box-shadow: none;
 		transform: translate3d(
-			calc(var(--cursor-x) * var(--depth)),
-			calc(var(--cursor-y) * var(--depth)),
+			calc(var(--cursor-x) * var(--planet-depth)),
+			calc(var(--cursor-y) * var(--planet-depth)),
 			0
-		) rotate(var(--tilt));
+		) rotate(var(--planet-tilt));
 		transition: filter 0.2s ease-out, transform 0.18s ease-out;
 	}
 
-	.hero-app-icon-1 {
-		top: 8%;
-		left: 32%;
-		--depth: 0.5;
-		--tilt: -4deg;
+	.hero-app-orbit {
+		position: absolute;
+		inset: 0;
+		z-index: 3;
+		display: block;
+		pointer-events: none;
+		transform-origin: 50% 50%;
+		animation: planet-orbit var(--orbit-duration) linear infinite;
+		animation-direction: var(--orbit-direction);
 	}
 
-	.hero-app-icon-2 {
-		top: 24%;
-		right: 4%;
-		--depth: -0.34;
-		--tilt: 3deg;
-	}
-
-	.hero-app-icon-3 {
-		right: 16%;
-		bottom: 9%;
-		--depth: 0.42;
-		--tilt: -6deg;
-	}
-
-	.hero-app-icon-4 {
-		left: 12%;
-		bottom: 14%;
-		--depth: -0.28;
-		--tilt: 5deg;
-	}
-
-	.hero-app-icon-5 {
-		top: 34%;
-		left: 0;
-		--depth: 0.36;
-		--tilt: 2deg;
+	.hero-app-planet {
+		position: absolute;
+		top: 50%;
+		left: calc(50% + var(--orbit-radius));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: clamp(50px, var(--planet-size), 88px);
+		height: clamp(50px, var(--planet-size), 88px);
+		overflow: visible;
+		transform: translate(-50%, -50%) rotate(var(--orbit-start-inverse));
+		animation: planet-counter-orbit var(--orbit-duration) linear infinite;
+		animation-direction: var(--orbit-direction);
 	}
 
 	.app-icon-stage:hover .hero-app-icon {
@@ -497,10 +521,40 @@ const heroApps = getProjectCards(content.lang);
 		}
 	}
 
+	@keyframes planet-orbit {
+		from {
+			transform: rotate(var(--orbit-start));
+		}
+
+		to {
+			transform: rotate(calc(var(--orbit-start) + 360deg));
+		}
+	}
+
+	@keyframes planet-counter-orbit {
+		from {
+			transform: translate(-50%, -50%) rotate(var(--orbit-start-inverse));
+		}
+
+		to {
+			transform: translate(-50%, -50%) rotate(calc(var(--orbit-start-inverse) - 360deg));
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.app-icon-stage {
 			animation: none;
 			transform: none;
+		}
+
+		.hero-app-orbit {
+			animation: none;
+			transform: rotate(var(--orbit-start));
+		}
+
+		.hero-app-planet {
+			animation: none;
+			transform: translate(-50%, -50%) rotate(var(--orbit-start-inverse));
 		}
 
 		.hero-app-icon,
@@ -553,8 +607,75 @@ const heroApps = getProjectCards(content.lang);
 	const appIconStages = document.querySelectorAll<HTMLElement>(".app-icon-stage");
 	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	if (!prefersReducedMotion) {
-		appIconStages.forEach((stage) => {
+	const getRandom = (min: number, max: number) => Math.random() * (max - min) + min;
+
+	const shuffleItems = <Item>(items: Item[]) => {
+		const shuffled = [...items];
+
+		for (let index = shuffled.length - 1; index > 0; index -= 1) {
+			const swapIndex = Math.floor(Math.random() * (index + 1));
+			[shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+		}
+
+		return shuffled;
+	};
+
+	const organizeOrbitItems = (stage: HTMLElement) => {
+		const orbitItems = Array.from(stage.querySelectorAll<HTMLElement>("[data-hero-orbit-item]"));
+		const itemCount = orbitItems.length;
+
+		if (itemCount === 0) return;
+
+		const shuffledItems = shuffleItems(orbitItems);
+		const stageWidth = stage.getBoundingClientRect().width;
+		const shellCount = Math.min(4, Math.max(2, Math.ceil(itemCount / 4)));
+		const minSize = stageWidth < 340 ? 48 : 52;
+		const maxSize = stageWidth < 340 ? 68 : 80;
+		const minRadius = Math.max(stageWidth * 0.22, maxSize * 0.95);
+		const maxRadius = (stageWidth / 2) - (maxSize / 2) - 8;
+		const radiusStep = shellCount > 1 ? (maxRadius - minRadius) / (shellCount - 1) : 0;
+		const shellIndexes = Array.from({ length: shellCount }, () => 0);
+		const shellTotals = Array.from({ length: shellCount }, (_, shell) =>
+			Math.ceil((itemCount - shell) / shellCount),
+		);
+		const shellDurations = Array.from({ length: shellCount }, (_, shell) => getRandom(38, 46) + shell * 17);
+		const shellDirections = Array.from({ length: shellCount }, (_, shell) =>
+			shell % 2 === 0 ? "normal" : "reverse",
+		);
+
+		shuffledItems.forEach((orbitItem, shuffledIndex) => {
+			const shell = shuffledIndex % shellCount;
+			const positionInShell = shellIndexes[shell];
+			shellIndexes[shell] += 1;
+
+			const totalInShell = Math.max(shellTotals[shell], 1);
+			const segment = 360 / totalInShell;
+			const jitter = Math.min(18, segment * 0.28);
+			const angle = positionInShell * segment + shell * 72 + getRandom(-jitter, jitter);
+			const size = getRandom(minSize, maxSize);
+			const maxRadiusForSize = (stageWidth / 2) - (size / 2) - 8;
+			const radius = Math.min(minRadius + shell * radiusStep + getRandom(-1.8, 1.8), maxRadiusForSize);
+			const duration = shellDurations[shell];
+			const depth = getRandom(-0.34, 0.58);
+			const tilt = getRandom(-7, 7);
+			const direction = shellDirections[shell];
+
+			orbitItem.style.setProperty("--orbit-start", `${angle.toFixed(2)}deg`);
+			orbitItem.style.setProperty("--orbit-start-inverse", `${(-angle).toFixed(2)}deg`);
+			orbitItem.style.setProperty("--orbit-radius", `${radius.toFixed(2)}px`);
+			orbitItem.style.setProperty("--orbit-duration", `${duration.toFixed(2)}s`);
+			orbitItem.style.setProperty("--orbit-direction", direction);
+			orbitItem.style.setProperty("--planet-size", `${size.toFixed(2)}px`);
+			orbitItem.style.setProperty("--planet-depth", depth.toFixed(2));
+			orbitItem.style.setProperty("--planet-tilt", `${tilt.toFixed(2)}deg`);
+			orbitItem.style.zIndex = String(4 + shell);
+		});
+	};
+
+	appIconStages.forEach((stage) => {
+		organizeOrbitItems(stage);
+
+		if (!prefersReducedMotion) {
 			const resetStage = () => {
 				stage.style.setProperty("--cursor-x", "0px");
 				stage.style.setProperty("--cursor-y", "0px");
@@ -574,6 +695,6 @@ const heroApps = getProjectCards(content.lang);
 			});
 
 			stage.addEventListener("pointerleave", resetStage);
-		});
-	}
+		}
+	});
 </script>
