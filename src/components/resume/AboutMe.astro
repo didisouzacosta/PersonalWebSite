@@ -128,6 +128,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 				aria-label={content.lang === "pt-br" ? "Projetos em destaque" : "Featured projects"}
 			>
 				<div class="app-icon-stage">
+					<span class="orbit-comet" aria-hidden="true">
+						<span class="orbit-comet-runner">
+							<span class="orbit-comet-body"></span>
+						</span>
+					</span>
 					<span class="fibonacci-ring ring-34"></span>
 					<span class="fibonacci-ring ring-55"></span>
 					<span class="fibonacci-ring ring-89"></span>
@@ -489,35 +494,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		width: 100%;
 	}
 
-	.hero-inner::before,
-	.hero-inner::after {
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		border: 1px solid var(--space-arc);
-		border-radius: 50%;
-		z-index: -1;
-	}
-
-	.hero-inner::before {
-		top: 4%;
-		right: -24%;
-		width: min(740px, 74vw);
-		aspect-ratio: 1;
-		opacity: 0.78;
-		transform: rotate(-24deg) scaleY(0.56);
-	}
-
-	.hero-inner::after {
-		top: 17%;
-		right: -7%;
-		width: min(500px, 50vw);
-		aspect-ratio: 1;
-		border-color: var(--space-arc-strong);
-		opacity: 0.42;
-		transform: rotate(18deg) scaleY(0.48);
-	}
-
 	.hero-copy {
 		display: flex;
 		flex-direction: column;
@@ -622,19 +598,52 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		--stage-tilt-x: 0deg;
 		--stage-tilt-y: 0deg;
 		border-radius: 42px;
+		isolation: isolate;
+		perspective: 900px;
 		animation: app-stage-float 7s ease-in-out infinite;
 		transform: perspective(900px) rotateX(var(--stage-tilt-y)) rotateY(var(--stage-tilt-x));
 		transform-style: preserve-3d;
 		transition: transform 0.24s ease-out;
 	}
 
+	.app-icon-stage::before,
+	.app-icon-stage::after,
 	.fibonacci-ring,
-	.fibonacci-axis {
+	.fibonacci-axis,
+	.orbit-comet {
 		position: absolute;
 		inset: 50%;
 		display: block;
 		pointer-events: none;
+	}
+
+	.app-icon-stage::before,
+	.app-icon-stage::after {
+		content: "";
 		z-index: 0;
+		aspect-ratio: 1;
+		border: 1px solid var(--space-arc);
+		border-radius: 50%;
+		transform-origin: 50% 50%;
+		transform-style: preserve-3d;
+	}
+
+	.app-icon-stage::before {
+		width: 312%;
+		opacity: 0.42;
+		transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-10deg) translateZ(-18px);
+	}
+
+	.app-icon-stage::after {
+		width: 248%;
+		border-color: var(--space-arc-strong);
+		opacity: 0.5;
+		transform: translate(-50%, -50%) rotateX(61deg) rotateZ(-10deg) translateZ(10px);
+	}
+
+	.fibonacci-ring,
+	.fibonacci-axis {
+		z-index: 1;
 	}
 
 	.fibonacci-ring {
@@ -652,6 +661,65 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	.ring-144 {
 		--ring-size: 377;
 		border-color: var(--space-arc-strong);
+	}
+
+	.orbit-comet {
+		z-index: 2;
+		width: 312%;
+		aspect-ratio: 1;
+		transform: translate(-50%, -50%) rotateX(64deg) rotateZ(-10deg);
+		transform-style: preserve-3d;
+	}
+
+	.orbit-comet-runner {
+		position: absolute;
+		inset: 0;
+		transform-origin: 50% 50%;
+		transform-style: preserve-3d;
+		animation: orbit-comet-run 16s linear infinite;
+	}
+
+	.orbit-comet-body {
+		position: absolute;
+		top: 50%;
+		left: 100%;
+		width: clamp(54px, 10vw, 86px);
+		height: 12px;
+		transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg);
+		transform-origin: 82% 50%;
+		animation: orbit-comet-depth 16s linear infinite;
+		will-change: opacity, filter, transform;
+	}
+
+	.orbit-comet-body::before,
+	.orbit-comet-body::after {
+		content: "";
+		position: absolute;
+		display: block;
+		pointer-events: none;
+	}
+
+	.orbit-comet-body::before {
+		top: 5px;
+		right: 4px;
+		width: 100%;
+		height: 2px;
+		border-radius: 999px;
+		background:
+			linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--comet-tail) 12%, transparent) 34%, var(--comet-tail) 74%, var(--comet-core) 100%);
+		filter: blur(0.2px);
+	}
+
+	.orbit-comet-body::after {
+		top: 3px;
+		right: 0;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--comet-core);
+		box-shadow:
+			0 0 10px var(--comet-tail),
+			0 0 22px color-mix(in srgb, var(--comet-tail) 72%, transparent);
 	}
 
 	.fibonacci-axis {
@@ -949,6 +1017,42 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		}
 	}
 
+	@keyframes orbit-comet-run {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes orbit-comet-depth {
+		0%, 100% {
+			opacity: 0.58;
+			filter: blur(0.45px);
+			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.78);
+		}
+
+		24% {
+			opacity: 1;
+			filter: blur(0);
+			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(1.12);
+		}
+
+		52% {
+			opacity: 0.34;
+			filter: blur(0.7px);
+			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.66);
+		}
+
+		76% {
+			opacity: 0.88;
+			filter: blur(0.1px);
+			transform: translate(-50%, -50%) rotate(90deg) rotateX(-64deg) scale(0.96);
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		.space-stars::before,
 		.space-stars::after,
@@ -966,6 +1070,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 
 		.shooting-star {
 			opacity: 0;
+		}
+
+		.orbit-comet-runner,
+		.orbit-comet-body {
+			animation: none;
 		}
 
 		.app-icon-stage {
@@ -1001,11 +1110,6 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		.hero-inner {
 			grid-template-columns: 1fr;
 			gap: 32px;
-		}
-
-		.hero-inner::before,
-		.hero-inner::after {
-			display: none;
 		}
 
 		.hero-visual {
