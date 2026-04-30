@@ -94,6 +94,10 @@ const breadcrumbJson = breadcrumbJsonLd([
                         target="_blank"
                         rel="noopener noreferrer"
                         class="app-store-link no-ext-icon"
+                        data-analytics-event="app_store_clicked"
+                        data-analytics-location="app-header"
+                        data-analytics-label={structuredAppName}
+                        data-analytics-project={structuredAppName.toLowerCase()}
                     >
                         <img
                             src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
@@ -117,6 +121,11 @@ const breadcrumbJson = breadcrumbJsonLd([
                                     src=`${baseAssetsURL}apps/${screenshot.url}`
                                     alt={screenshot.alt}
                                     loading="lazy"
+                                    data-analytics-ignore="true"
+                                    data-analytics-event="screenshot_opened"
+                                    data-analytics-location="app-screenshots"
+                                    data-analytics-label={screenshot.alt}
+                                    data-analytics-project={structuredAppName.toLowerCase()}
                                 />
                             </figure>
                         </li>
@@ -124,7 +133,7 @@ const breadcrumbJson = breadcrumbJsonLd([
                 }
             </ul>
             <dialog id="screenshot-lightbox" aria-label="Screenshot preview">
-                <button id="lightbox-close" aria-label="Close preview">&#x2715;</button>
+                <button id="lightbox-close" aria-label="Close preview" data-analytics-ignore="true">&#x2715;</button>
                 <img id="lightbox-img" src="" alt="" />
             </dialog>
         </section>
@@ -139,9 +148,25 @@ const breadcrumbJson = breadcrumbJsonLd([
         <footer class="app-footer">
             <div class="container">
                 <nav aria-label="Legal links">
-                    <a href={`${legalBasePath}/terms-of-use`}>Terms of use</a>
+                    <a
+                        href={`${legalBasePath}/terms-of-use`}
+                        data-analytics-event="app_legal_link_clicked"
+                        data-analytics-location="app-footer"
+                        data-analytics-label="Terms of use"
+                        data-analytics-project={structuredAppName.toLowerCase()}
+                    >
+                        Terms of use
+                    </a>
                     <span aria-hidden="true">&bull;</span>
-                    <a href={`${legalBasePath}/privacy-policy`}>Privacy policy</a>
+                    <a
+                        href={`${legalBasePath}/privacy-policy`}
+                        data-analytics-event="app_legal_link_clicked"
+                        data-analytics-location="app-footer"
+                        data-analytics-label="Privacy policy"
+                        data-analytics-project={structuredAppName.toLowerCase()}
+                    >
+                        Privacy policy
+                    </a>
                 </nav>
             </div>
         </footer>
@@ -337,6 +362,8 @@ const breadcrumbJson = breadcrumbJsonLd([
 </style>
 
 <script>
+    import { trackAnalyticsEvent } from "../../core/analytics";
+
     const dialog = document.getElementById('screenshot-lightbox') as HTMLDialogElement;
     const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
     const closeBtn = document.getElementById('lightbox-close');
@@ -347,12 +374,26 @@ const breadcrumbJson = breadcrumbJsonLd([
             lightboxImg.src = image.src;
             lightboxImg.alt = image.alt;
             dialog.showModal();
+
+            trackAnalyticsEvent("screenshot_opened", {
+                label: image.alt,
+                location: "app-screenshots",
+                project_slug: image.dataset.analyticsProject,
+            });
         });
     });
 
-    closeBtn?.addEventListener('click', () => dialog.close());
+    const closeLightbox = (source: string) => {
+        dialog.close();
+        trackAnalyticsEvent("screenshot_closed", {
+            source,
+            location: "app-screenshots",
+        });
+    };
+
+    closeBtn?.addEventListener('click', () => closeLightbox("close-button"));
 
     dialog.addEventListener('click', (e) => {
-        if (e.target === dialog) dialog.close();
+        if (e.target === dialog) closeLightbox("backdrop");
     });
 </script>

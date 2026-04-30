@@ -9,8 +9,13 @@ const { items } = Astro.props;
 <div class="faq-list">
   {
     items.map((item, i) => (
-      <details class="faq-item" {...{ open: i === 0 }}>
-        <summary class="faq-summary">
+      <details
+        class="faq-item"
+        data-analytics-faq
+        data-analytics-label={item.question}
+        {...{ open: i === 0 }}
+      >
+        <summary class="faq-summary" data-analytics-ignore="true">
           <h3 class="faq-question">{item.question}</h3>
 
           <svg class="faq-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -96,3 +101,17 @@ const { items } = Astro.props;
     }
   }
 </style>
+
+<script>
+  import { trackAnalyticsEvent } from "../core/analytics";
+
+  document.querySelectorAll<HTMLDetailsElement>("[data-analytics-faq]").forEach((details) => {
+    details.addEventListener("toggle", () => {
+      trackAnalyticsEvent("faq_toggled", {
+        label: details.dataset.analyticsLabel,
+        state: details.open ? "opened" : "closed",
+        location: "app-faq",
+      });
+    });
+  });
+</script>

@@ -24,9 +24,17 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
     alternateLocales={localizedAlternates("/resume/", "/resume/pt-br/")}
     jsonLd={[personJsonLd(seoLanguage), profilePageJsonLd(resumePath, seoLanguage)]}
 >
-    <button onclick="window.print()" class="download-button no-print">
+    <a
+        href={resume.download.url}
+        class="download-button no-print"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-analytics-event="resume_download_clicked"
+        data-analytics-location="resume-page"
+        data-analytics-label={resume.download.label}
+    >
         {resume.download.label}
-    </button>
+    </a>
 
     <main class="container resume-page">
         <article aria-label={resume.name}>
@@ -60,7 +68,14 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
                         resume.contacts.map((contact) => (
                             <p>
                                 <strong>{contact.label}:</strong>{" "}
-                                <a href={contact.url}>{contact.description}</a>
+                                <a
+                                    href={contact.url}
+                                    data-analytics-event="resume_contact_clicked"
+                                    data-analytics-location="resume-contact"
+                                    data-analytics-label={contact.label}
+                                >
+                                    {contact.description}
+                                </a>
                             </p>
                         ))
                     }
@@ -130,7 +145,14 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
                         resume.certificates.items.map((certificate) => (
                             <li class="item">
                                 <h3 class="item-title">
-                                    <a href={certificate.url} target="_blank" rel="noopener noreferrer">
+                                    <a
+                                        href={certificate.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-analytics-event="certificate_clicked"
+                                        data-analytics-location="resume-certificates"
+                                        data-analytics-label={certificate.title}
+                                    >
                                         {certificate.title}
                                     </a>
                                 </h3>
@@ -147,7 +169,15 @@ const resumePath = seoLanguage === "pt-br" ? "/resume/pt-br/" : "/resume/";
                         resume.projects.items.map((project) => (
                             <li class="item">
                                 <h3 class="item-title">
-                                    <a href={project.url} target="_blank" rel="noopener noreferrer">
+                                    <a
+                                        href={project.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        data-analytics-event="project_opened"
+                                        data-analytics-location="resume-projects"
+                                        data-analytics-label={project.title}
+                                        data-analytics-project={project.title.toLowerCase().replace(/\s+/g, '-')}
+                                    >
                                         {project.title}
                                     </a>
                                 </h3>

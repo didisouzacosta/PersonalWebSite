@@ -16,7 +16,7 @@ export interface HomepageContent {
 
 export const homepageEn: HomepageContent = {
     lang: 'en',
-    title: 'Adriano Souza Costa | iOS/macOS Developer & AI Engineer',
+    title: 'Adriano Souza Costa | iOS/macOS Developer & AI Enthusiast',
     description: profileContent.en.description,
     role: profileContent.en.role,
     bio: profileContent.en.summary,
@@ -24,12 +24,12 @@ export const homepageEn: HomepageContent = {
     resumeLink: '/resume',
     resumeLabel: 'Resume',
     aboutTitle: 'About me',
-    projectsTitle: 'Apps',
+    projectsTitle: 'Projects',
 };
 
 export const homepagePtBr: HomepageContent = {
     lang: 'pt-br',
-    title: 'Adriano Souza Costa | Desenvolvedor iOS/macOS & Engenheiro de IA',
+    title: 'Adriano Souza Costa | Desenvolvedor iOS/macOS & Entusiasta de IA',
     description: profileContent["pt-br"].description,
     role: profileContent["pt-br"].role,
     bio: profileContent["pt-br"].summary,
@@ -37,5 +37,5 @@ export const homepagePtBr: HomepageContent = {
     resumeLink: '/resume/pt-br',
     resumeLabel: 'Currículo',
     aboutTitle: 'Sobre mim',
-    projectsTitle: 'Apps',
+    projectsTitle: 'Projetos',
 };

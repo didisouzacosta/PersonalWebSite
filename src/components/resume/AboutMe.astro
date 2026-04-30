@@ -47,6 +47,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 <main>
 	<section id="hero" aria-label="Introduction" class="hero-section">
 		<span class="space-stars" aria-hidden="true"></span>
+		<span class="scorpius-nebula" aria-hidden="true"></span>
 		<span class="shooting-stars" aria-hidden="true">
 			<span class="shooting-star shooting-star-1"></span>
 			<span class="shooting-star shooting-star-2"></span>
@@ -68,7 +69,13 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 				<p class="hero-title fade-in" data-delay="1">{content.role.replace(" • ", " \n")}</p>
 
 				<div class="hero-cta fade-in" data-delay="2">
-					<a href={content.resumeLink} class="btn-primary">
+					<a
+						href={content.resumeLink}
+						class="btn-primary"
+						data-analytics-event="navigation_clicked"
+						data-analytics-location="home-hero"
+						data-analytics-label={content.resumeLabel}
+					>
 						<span>{content.resumeLabel}</span>
 						<Icon name="right-arrow" width={13} height={13} />
 					</a>
@@ -81,6 +88,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 						rel="noopener noreferrer"
 						aria-label="X (Twitter)"
 						class="no-ext-icon"
+						data-analytics-event="social_link_clicked"
+						data-analytics-location="home-hero"
+						data-analytics-label="X"
 					>
 						<Icon name="x" class="social-icon" />
 					</a>
@@ -90,6 +100,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 						rel="noopener noreferrer"
 						aria-label="GitHub"
 						class="no-ext-icon"
+						data-analytics-event="social_link_clicked"
+						data-analytics-location="home-hero"
+						data-analytics-label="GitHub"
 					>
 						<Icon name="github" class="social-icon" />
 					</a>
@@ -99,13 +112,20 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 						rel="noopener noreferrer"
 						aria-label="LinkedIn"
 						class="no-ext-icon"
+						data-analytics-event="social_link_clicked"
+						data-analytics-location="home-hero"
+						data-analytics-label="LinkedIn"
 					>
 						<Icon name="linkedin" class="social-icon" />
 					</a>
 				</nav>
 			</div>
 
-			<div class="hero-visual fade-in" data-delay="2" aria-hidden="true">
+			<div
+				class="hero-visual fade-in"
+				data-delay="2"
+				aria-label={content.lang === "pt-br" ? "Projetos em destaque" : "Featured projects"}
+			>
 				<div class="app-icon-stage">
 					<span class="fibonacci-ring ring-34"></span>
 					<span class="fibonacci-ring ring-55"></span>
@@ -124,7 +144,17 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 					{
 						fallbackOrbitItems.map(({ app, style }) => (
 							<span class="hero-app-orbit" data-hero-orbit-item style={style}>
-								<span class="hero-app-planet">
+								<a
+									href={app.url}
+									target={app.target}
+									rel={app.target === "_blank" ? "noopener noreferrer" : undefined}
+									aria-label={content.lang === "pt-br" ? `Abrir projeto ${app.name}` : `Open ${app.name} project`}
+									class="hero-app-planet hero-app-link no-ext-icon"
+									data-analytics-event="project_opened"
+									data-analytics-location="home-hero-orbit"
+									data-analytics-label={app.name}
+									data-analytics-project={app.name.toLowerCase().replace(/\s+/g, '-')}
+								>
 									<img
 										src={app.imageUrl}
 										alt=""
@@ -133,7 +163,7 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 										height="84"
 										class="hero-app-icon"
 									/>
-								</span>
+								</a>
 							</span>
 						))
 					}
@@ -156,7 +186,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	</section>
 
 	{hasProjects && (
-		<section id="apps" aria-label="Apps" class="section projects-section fade-in">
+		<section
+			id="projects"
+			aria-label={content.lang === "pt-br" ? "Projetos" : "Projects"}
+			class="section projects-section fade-in"
+		>
 			<div class="container">
 				<h2 class="section-title">{content.projectsTitle}</h2>
 				<Projects lang={content.lang} />
@@ -169,8 +203,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	/* Hero */
 	.hero-section {
 		min-height: 100svh;
+		height: 100svh;
 		display: flex;
-		align-items: center;
+		align-items: stretch;
 		position: relative;
 		overflow: hidden;
 		isolation: isolate;
@@ -181,6 +216,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		--space-horizon: rgba(44, 80, 140, 0.08);
 		--comet-core: rgba(29, 29, 31, 0.22);
 		--comet-tail: rgba(44, 80, 140, 0.18);
+		--nebula-blue: rgba(78, 172, 255, 0.16);
+		--nebula-cyan: rgba(108, 218, 255, 0.12);
+		--nebula-gold: rgba(255, 171, 76, 0.14);
+		--nebula-rose: rgba(255, 90, 142, 0.11);
+		--nebula-dust: rgba(12, 15, 22, 0.32);
 	}
 
 	.hero-section::before {
@@ -221,9 +261,17 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		--space-horizon: rgba(84, 136, 200, 0.16);
 		--comet-core: rgba(245, 245, 247, 0.72);
 		--comet-tail: rgba(110, 170, 255, 0.32);
+		--nebula-blue: rgba(72, 172, 255, 0.34);
+		--nebula-cyan: rgba(120, 225, 255, 0.22);
+		--nebula-gold: rgba(255, 171, 72, 0.24);
+		--nebula-rose: rgba(255, 76, 139, 0.2);
+		--nebula-dust: rgba(0, 0, 0, 0.42);
 	}
 
 	.space-stars,
+	.scorpius-nebula,
+	.scorpius-nebula::before,
+	.scorpius-nebula::after,
 	.space-stars::before,
 	.space-stars::after {
 		position: absolute;
@@ -235,6 +283,67 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	.space-stars {
 		z-index: -1;
 		mask-image: linear-gradient(90deg, transparent 0%, black 24%, black 86%, transparent 100%);
+	}
+
+	.scorpius-nebula {
+		top: 12%;
+		left: clamp(360px, 50vw, 650px);
+		z-index: -1;
+		width: clamp(390px, 45vw, 640px);
+		height: clamp(370px, 42vw, 600px);
+		overflow: visible;
+		border-radius: 50%;
+		background:
+			radial-gradient(ellipse 32% 23% at 34% 45%, var(--nebula-gold) 0 12%, transparent 54%),
+			radial-gradient(ellipse 40% 31% at 57% 38%, var(--nebula-blue) 0 16%, transparent 58%),
+			radial-gradient(ellipse 34% 26% at 70% 61%, var(--nebula-rose) 0 14%, transparent 56%),
+			radial-gradient(ellipse 36% 28% at 49% 69%, var(--nebula-cyan) 0 12%, transparent 56%),
+			radial-gradient(ellipse 42% 34% at 54% 52%, color-mix(in srgb, var(--nebula-blue) 40%, transparent) 0 20%, transparent 62%);
+		background-size: 118% 116%, 124% 120%, 122% 118%, 126% 124%, 112% 112%;
+		background-position: 0 0, 18px -18px, -22px 14px, 12px 22px, 0 0;
+		background-repeat: no-repeat;
+		filter: blur(20px) saturate(1.18);
+		mix-blend-mode: screen;
+		opacity: 0.68;
+		transform: rotate(-12deg) scale(1);
+		transform-origin: 54% 50%;
+		will-change: transform, opacity, filter, background-position;
+		animation: nebula-drift 12s ease-in-out infinite;
+	}
+
+	.scorpius-nebula::before,
+	.scorpius-nebula::after {
+		content: "";
+		inset: -8%;
+		border-radius: inherit;
+	}
+
+	.scorpius-nebula::before {
+		background:
+			radial-gradient(ellipse 28% 18% at 43% 42%, var(--nebula-dust) 0 18%, transparent 66%),
+			radial-gradient(ellipse 32% 20% at 59% 58%, color-mix(in srgb, var(--nebula-dust) 70%, transparent) 0 16%, transparent 62%),
+			radial-gradient(ellipse 24% 18% at 37% 63%, color-mix(in srgb, var(--nebula-dust) 58%, transparent) 0 14%, transparent 64%);
+		filter: blur(18px);
+		opacity: 0.62;
+		transform: rotate(5deg);
+		transform-origin: 48% 54%;
+		will-change: transform, opacity, filter;
+		animation: nebula-dust-drift 15s ease-in-out infinite;
+	}
+
+	.scorpius-nebula::after {
+		inset: 4%;
+		background-image:
+			radial-gradient(circle at 28% 30%, rgba(255, 255, 255, 0.46) 0 1px, transparent 1.4px),
+			radial-gradient(circle at 57% 24%, rgba(255, 255, 255, 0.38) 0 1px, transparent 1.4px),
+			radial-gradient(circle at 66% 64%, rgba(255, 255, 255, 0.32) 0 1px, transparent 1.4px),
+			radial-gradient(circle at 42% 72%, rgba(255, 255, 255, 0.26) 0 1px, transparent 1.4px);
+		background-size: 170px 170px, 220px 220px, 190px 190px, 260px 260px;
+		filter: blur(0.2px);
+		opacity: 0.38;
+		mix-blend-mode: screen;
+		will-change: transform, opacity, filter, background-position;
+		animation: nebula-sparkle 6s ease-in-out infinite;
 	}
 
 	.space-stars::before,
@@ -369,8 +478,9 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		grid-template-columns: minmax(0, 560px) minmax(280px, 1fr);
 		align-items: center;
 		gap: clamp(40px, 6vw, 84px);
-		padding-top: 80px;
-		padding-bottom: 80px;
+		min-height: 100%;
+		padding-top: clamp(72px, 8svh, 96px);
+		padding-bottom: clamp(48px, 8svh, 96px);
 		position: relative;
 		width: 100%;
 	}
@@ -616,8 +726,26 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		animation-direction: var(--orbit-direction);
 	}
 
+	.hero-app-link {
+		border-radius: 24%;
+		color: inherit;
+		cursor: pointer;
+		pointer-events: auto;
+		text-decoration: none;
+	}
+
 	.app-icon-stage:hover .hero-app-icon {
 		filter: saturate(1.08) contrast(1.03);
+	}
+
+	.hero-app-link:hover .hero-app-icon,
+	.hero-app-link:focus-visible .hero-app-icon {
+		filter: saturate(1.16) contrast(1.06) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.16));
+	}
+
+	.hero-app-link:focus-visible {
+		outline: 2px solid var(--text-primary);
+		outline-offset: 6px;
 	}
 
 	.social-links {
@@ -707,6 +835,69 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 		}
 	}
 
+	@keyframes nebula-drift {
+		0%, 100% {
+			opacity: 0.56;
+			transform: rotate(-12deg) translate3d(0, 0, 0) scale(1);
+			filter: blur(20px) saturate(1.12);
+			background-position: 0 0, 18px -18px, -22px 14px, 12px 22px, 0 0;
+		}
+
+		45% {
+			opacity: 0.68;
+			transform: rotate(-6deg) translate3d(-28px, 16px, 0) scale(1.055);
+			filter: blur(22px) saturate(1.32);
+			background-position: 34px -26px, -28px 20px, 24px -16px, -20px -26px, 7px 10px;
+		}
+
+		72% {
+			opacity: 0.52;
+			transform: rotate(-16deg) translate3d(22px, -14px, 0) scale(0.99);
+			background-position: -26px 24px, 28px -18px, -34px 22px, 30px 14px, -5px -7px;
+		}
+	}
+
+	@keyframes nebula-dust-drift {
+		0%, 100% {
+			opacity: 0.62;
+			transform: rotate(5deg) translate3d(0, 0, 0) scale(1);
+			filter: blur(18px);
+		}
+
+		40% {
+			opacity: 0.84;
+			transform: rotate(-1deg) translate3d(22px, -16px, 0) scale(1.035);
+			filter: blur(20px);
+		}
+
+		72% {
+			opacity: 0.68;
+			transform: rotate(10deg) translate3d(-18px, 14px, 0) scale(0.99);
+		}
+	}
+
+	@keyframes nebula-sparkle {
+		0%, 100% {
+			opacity: 0.28;
+			filter: blur(0.2px) brightness(0.92);
+			background-position: 0 0, 0 0, 0 0, 0 0;
+		}
+
+		42% {
+			opacity: 0.62;
+			filter: blur(0.15px) brightness(1.2);
+			transform: translate3d(12px, -9px, 0) scale(1.02);
+			background-position: 18px -14px, -14px 18px, 12px 10px, -18px -16px;
+		}
+
+		70% {
+			opacity: 0.34;
+			filter: blur(0.25px) brightness(1.02);
+			transform: translate3d(-10px, 12px, 0) scale(0.99);
+			background-position: -12px 16px, 18px -10px, -14px 18px, 16px 12px;
+		}
+	}
+
 	@keyframes comet-glide {
 		0%, 72%, 100% {
 			opacity: 0;
@@ -753,9 +944,16 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	@media (prefers-reduced-motion: reduce) {
 		.space-stars::before,
 		.space-stars::after,
+		.scorpius-nebula,
+		.scorpius-nebula::before,
+		.scorpius-nebula::after,
 		.shooting-star {
 			animation: none;
 			filter: none;
+		}
+
+		.scorpius-nebula {
+			filter: blur(22px) saturate(1.1);
 		}
 
 		.shooting-star {
@@ -784,6 +982,14 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 	}
 
 	@media (max-width: 760px) {
+		.scorpius-nebula {
+			top: 18%;
+			left: 44%;
+			width: 82vw;
+			height: 82vw;
+			opacity: 0.26;
+		}
+
 		.hero-inner {
 			grid-template-columns: 1fr;
 			gap: 32px;
@@ -801,12 +1007,13 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 
 	@media (max-width: 480px) {
 		.hero-section {
-			min-height: 92svh;
+			min-height: 100svh;
+			height: 100svh;
 		}
 
 		.hero-inner {
-			padding-top: 64px;
-			padding-bottom: 64px;
+			padding-top: 72px;
+			padding-bottom: 48px;
 		}
 
 		.avatar {
@@ -827,8 +1034,11 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 </style>
 
 <script>
+	import { trackAnalyticsEvent } from "../../core/analytics";
+
 	const appIconStages = document.querySelectorAll<HTMLElement>(".app-icon-stage");
 	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+	let hasTrackedOrbitInteraction = false;
 
 	const getRandom = (min: number, max: number) => Math.random() * (max - min) + min;
 
@@ -904,6 +1114,14 @@ const fallbackOrbitItems = heroApps.map((app, index, apps) => {
 			};
 
 			stage.addEventListener("pointermove", (event) => {
+				if (!hasTrackedOrbitInteraction) {
+					hasTrackedOrbitInteraction = true;
+					trackAnalyticsEvent("hero_orbit_interacted", {
+						interaction: "pointermove",
+						location: "home-hero-orbit",
+					});
+				}
+
 				const rect = stage.getBoundingClientRect();
 				const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
 				const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
