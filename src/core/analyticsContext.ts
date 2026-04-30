@@ -2,8 +2,7 @@ export type AnalyticsPageType =
     | "home"
     | "resume"
     | "app"
-    | "app_legal"
-    | "legal"
+    | "page"
     | "system";
 
 export interface AnalyticsPageContext {
@@ -52,9 +51,9 @@ const getPageType = (path: string): AnalyticsPageType => {
 
     if (normalizedPath === "/" || normalizedPath === "/pt-br/") return "home";
     if (normalizedPath === "/resume/" || normalizedPath === "/resume/pt-br/") return "resume";
-    if (/^\/(?:pt-br\/)?apps\/[^/]+\/(?:terms-of-use|privacy-policy)\/$/.test(normalizedPath)) return "app_legal";
+    if (/^\/(?:pt-br\/)?apps\/[^/]+\/(?:terms-of-use|privacy-policy)\/$/.test(normalizedPath)) return "page";
     if (/^\/(?:pt-br\/)?apps\/[^/]+\/$/.test(normalizedPath)) return "app";
-    if (normalizedPath.endsWith("/terms-of-use/") || normalizedPath.endsWith("/privacy-policy/")) return "legal";
+    if (normalizedPath.endsWith("/terms-of-use/") || normalizedPath.endsWith("/privacy-policy/")) return "page";
 
     return "system";
 };
@@ -74,8 +73,8 @@ const getAnalyticsTitle = (path: string, pageType: AnalyticsPageType, fallbackTi
     if (pageType === "home") return "Home";
     if (pageType === "resume") return "Curriculo";
     if (pageType === "app" && projectTitle) return `Projeto / ${projectTitle}`;
-    if (pageType === "app_legal" && projectTitle) return `Projeto / ${projectTitle} / ${getLegalTitle(path)}`;
-    if (pageType === "legal") return `Legal / ${getLegalTitle(path)}`;
+    if (pageType === "page" && projectTitle) return `Projeto / ${projectTitle} / ${getLegalTitle(path)}`;
+    if (pageType === "page") return `Legal / ${getLegalTitle(path)}`;
 
     return fallbackTitle;
 };

@@ -28,7 +28,21 @@ const expectedAnalyticsTitles = [
     { file: "dist/index.html", title: "Home" },
     { file: "dist/resume/index.html", title: "Curriculo" },
     { file: "dist/apps/kuborush/index.html", title: "Projeto / Kubo Rush" },
+    { file: "dist/apps/kuborush/terms-of-use/index.html", title: "Projeto / Kubo Rush / Terms of Use" },
+    { file: "dist/apps/kuborush/privacy-policy/index.html", title: "Projeto / Kubo Rush / Privacy Policy" },
     { file: "dist/pt-br/apps/kuborush/index.html", title: "Projeto / Kubo Rush" },
+];
+const expectedPageTypes = [
+    { file: "dist/apps/kuborush/terms-of-use/index.html", pageType: "page" },
+    { file: "dist/apps/kuborush/privacy-policy/index.html", pageType: "page" },
+    { file: "dist/apps/loopsize/terms-of-use/index.html", pageType: "page" },
+    { file: "dist/apps/loopsize/privacy-policy/index.html", pageType: "page" },
+    { file: "dist/apps/duotake/terms-of-use/index.html", pageType: "page" },
+    { file: "dist/apps/duotake/privacy-policy/index.html", pageType: "page" },
+];
+const forbiddenPageTypes = [
+    "app_legal",
+    "legal",
 ];
 
 const walk = (dir, matcher, files = []) => {
@@ -84,6 +98,25 @@ const missingAnalyticsTitles = expectedAnalyticsTitles.filter(({ file, title }) 
 if (missingAnalyticsTitles.length > 0) {
     console.error("Missing expected normalized analytics titles:");
     missingAnalyticsTitles.forEach(({ file, title }) => console.error(`- ${file}: ${title}`));
+    process.exit(1);
+}
+
+const missingPageTypes = expectedPageTypes.filter(({ file, pageType }) => {
+    const html = readFileSync(file, "utf8");
+    return !html.includes(`"pageType":"${pageType}"`);
+});
+
+if (missingPageTypes.length > 0) {
+    console.error("Missing expected analytics page types:");
+    missingPageTypes.forEach(({ file, pageType }) => console.error(`- ${file}: ${pageType}`));
+    process.exit(1);
+}
+
+const forbiddenPageTypesFound = forbiddenPageTypes.filter((pageType) => bundledText.includes(`"pageType":"${pageType}"`));
+
+if (forbiddenPageTypesFound.length > 0) {
+    console.error("Found forbidden analytics page types:");
+    forbiddenPageTypesFound.forEach((pageType) => console.error(`- ${pageType}`));
     process.exit(1);
 }
 
