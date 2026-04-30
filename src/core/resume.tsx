@@ -1,3 +1,4 @@
+import { getResumeProjects } from "./projects";
 import type { Resume } from "./types";
 
 function getAge(dateString: string) {
@@ -183,43 +184,7 @@ export const eng: Resume = {
     },
     projects: {
         title: "Projects",
-        items: [
-            {
-                title: "DuoTake",
-                url: "https://adrianosouzacosta.com.br/apps/duotake",
-                description: "DuoTake lets you record or take photos with the front and back cameras at the same time, with CropOut for cleaner framing that is ideal for reacts.",
-            },
-            {
-                title: "LoopSize",
-                url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
-                description: "LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF."
-            },
-            {
-                title: "KuboRush",
-                url: "https://apps.apple.com/app/id6757385646",
-                description: "KuboRush is a casual block puzzle game for iOS where you fit pieces, think fast, and clear the board at your own pace. Includes competitive leaderboards and weekly challenges."
-            },
-            {
-                title: "CleanerXcode",
-                url: "https://github.com/didisouzacosta/CleanerXcode",
-                description: "CleanerXcode is a macOS tool designed to remove unnecessary Xcode files, such as Derived Data, build caches, device support files and simulator data."
-            },
-            {
-                title: "Formidable",
-                url: "https://github.com/didisouzacosta/Formidable",
-                description: "The Formidable protocol is designed for objects that manage forms composed of multiple FormField components. By conforming to this protocol, you can leverage built-in functionality to validate, reset, and check the validity of all form fields at once."
-            },
-            {
-                title: "VideoEditorKit",
-                url: "https://github.com/didisouzacosta/VideoEditorKit",
-                description: "VideoEditorKit is a SwiftUI video editor framework for building video editing experiences in Apple apps."
-            },
-            {
-                title: "Uncompress",
-                url: "https://github.com/didisouzacosta/uncompress-react-native",
-                description: "Simple library to decompress files .zip, .rar, .cbz, .cbr in React Native."
-            }
-        ]
+        items: getResumeProjects("en")
     },
     languages: {
         title: "Languages",
@@ -406,43 +371,7 @@ export const ptBr: Resume = {
     },
     projects: {
         title: "Projetos",
-        items: [
-            {
-                title: "DuoTake",
-                url: "https://adrianosouzacosta.com.br/apps/duotake",
-                description: "O DuoTake permite gravar e fotografar com a câmera frontal e traseira ao mesmo tempo, com CropOut para um enquadramento mais limpo e ideal para reacts."
-            },
-            {
-                title: "LoopSize",
-                url: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
-                description: "O LoopSize facilita a medição e a conversão de tamanhos de anéis nos seguintes países: Brasil, EUA, Reino Unido, UE/ISO, Japão, China e Índia. Salve, compartilhe e exporte medidas precisas em PDF."
-            },
-            {
-                title: "KuboRush",
-                url: "https://apps.apple.com/app/id6757385646",
-                description: "KuboRush é um jogo casual de quebra-cabeça de blocos para iOS. Encaixe peças, pense rápido e limpe o tabuleiro no seu ritmo. Inclui ranking global e desafios semanais."
-            },
-            {
-                title: "CleanerXcode",
-                url: "https://github.com/didisouzacosta/CleanerXcode",
-                description: "CleanerXcode é uma ferramenta para macOS projetada para remover arquivos desnecessários do Xcode, como Derived Data, caches de build, arquivos de suporte de dispositivo e dados de simulador."
-            },
-            {
-                title: "Formidable",
-                url: "https://github.com/didisouzacosta/Formidable",
-                description: "O protocolo Formidable é projetado para objetos que gerenciam formulários compostos por múltiplos componentes FormField. Ao aderir a esse protocolo, você pode validar, resetar e verificar a validade de todos os campos de uma só vez."
-            },
-            {
-                title: "VideoEditorKit",
-                url: "https://github.com/didisouzacosta/VideoEditorKit",
-                description: "VideoEditorKit é um framework de editor de vídeo em SwiftUI para criar experiências de edição de vídeo em apps Apple."
-            },
-            {
-                title: "Uncompress",
-                url: "https://github.com/didisouzacosta/uncompress-react-native",
-                description: "Biblioteca simples para descompactar arquivos .zip, .rar, .cbz e .cbr em React Native."
-            }
-        ]
+        items: getResumeProjects("pt-br")
     },
     languages: {
         title: "Idiomas",
