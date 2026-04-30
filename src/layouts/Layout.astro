@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css'
+import Analytics from '../components/Analytics.astro';
 import Controls from '../components/Controls.astro';
+import { createAnalyticsPageContext } from '../core/analyticsContext';
 import { absoluteUrl, defaultOgImage, normalizePath, type AlternateLocale, type JsonLdValue } from '../core/seo';
 
 interface Props {
@@ -36,6 +38,12 @@ const {
 const documentLang = lang === 'pt-br' ? 'pt-BR' : lang;
 const currentPath = normalizePath(Astro.url.pathname);
 const canonical = canonicalUrl ?? absoluteUrl(canonicalPath ?? currentPath);
+const analyticsContext = createAnalyticsPageContext({
+    path: currentPath,
+    canonical,
+    title,
+    lang,
+});
 const absoluteOgImage = absoluteUrl(ogImage);
 const ogLocale = documentLang === 'pt-BR' ? 'pt_BR' : 'en_US';
 const alternateOgLocales = alternateLocales
@@ -123,6 +131,8 @@ const footerLinks = [
             ))
         }
 
+        <Analytics context={analyticsContext} />
+
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-BSDWW4LMHQ"></script>
         <script>
@@ -142,6 +152,9 @@ const footerLinks = [
                             <a
                                 href={item.href}
                                 aria-current={isActiveNavigationItem(item.match) ? 'page' : undefined}
+                                data-analytics-event="navigation_clicked"
+                                data-analytics-location="site-header"
+                                data-analytics-label={item.label}
                             >
                                 {item.label}
                             </a>
@@ -158,7 +171,14 @@ const footerLinks = [
                 <nav aria-label={isPtBr ? 'Links sociais' : 'Social links'}>
                     {
                         footerLinks.map((link) => (
-                            <a href={link.href} target="_blank" rel="noopener noreferrer">
+                            <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                data-analytics-event="social_link_clicked"
+                                data-analytics-location="site-footer"
+                                data-analytics-label={link.label}
+                            >
                                 {link.label}
                             </a>
                         ))

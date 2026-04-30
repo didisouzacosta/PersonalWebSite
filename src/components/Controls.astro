@@ -38,6 +38,7 @@ const altLangLabel = isPtBr ? 'EN' : 'PT';
         class="ctrl-btn"
         aria-label="Toggle theme"
         title="Toggle dark/light mode"
+        data-analytics-ignore="true"
     >
         <span class="icon-sun" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -63,6 +64,12 @@ const altLangLabel = isPtBr ? 'EN' : 'PT';
         href={altLangUrl}
         class="ctrl-btn lang-btn"
         aria-label={`Switch to ${altLangLabel}`}
+        data-analytics-event="language_changed"
+        data-analytics-ignore="true"
+        data-analytics-from-language={isPtBr ? 'pt-BR' : 'en'}
+        data-analytics-to-language={isPtBr ? 'en' : 'pt-BR'}
+        data-analytics-location="site-controls"
+        data-analytics-label={altLangLabel}
     >
         {altLangLabel}
     </a>
@@ -110,16 +117,35 @@ const altLangLabel = isPtBr ? 'EN' : 'PT';
     :global([data-theme="dark"]) .icon-moon { display: none; }
 </style>
 
-<script is:inline>
-    const themeBtn = document.getElementById('theme-toggle');
+<script>
+    import { trackAnalyticsEvent } from "../core/analytics";
 
-    function applyTheme(theme) {
+    const themeBtn = document.getElementById('theme-toggle');
+    const languageLink = document.querySelector<HTMLAnchorElement>('[data-analytics-event="language_changed"]');
+
+    function applyTheme(theme: string) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
     }
 
     themeBtn?.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        applyTheme(current === 'dark' ? 'light' : 'dark');
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+
+        applyTheme(next);
+        trackAnalyticsEvent('theme_changed', {
+            from_theme: current,
+            to_theme: next,
+            location: 'site-controls',
+        });
+    });
+
+    languageLink?.addEventListener('click', () => {
+        trackAnalyticsEvent('language_changed', {
+            from_language: languageLink.dataset.analyticsFromLanguage,
+            to_language: languageLink.dataset.analyticsToLanguage,
+            href: languageLink.href,
+            location: 'site-controls',
+        });
     });
 </script>
