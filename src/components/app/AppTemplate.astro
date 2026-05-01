@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import {
+    absoluteUrl,
     appAssetBaseUrl,
     breadcrumbJsonLd,
     getAppAlternates,
@@ -28,6 +29,12 @@ interface AppTestimonial {
     quote: string;
     author: string;
     context?: string;
+}
+
+interface AppVideo {
+    youtubeUrl: string;
+    title?: string;
+    caption?: string;
 }
 
 type LocalizedScreenshotUrl = string | {
@@ -59,6 +66,7 @@ interface Props {
     useCases?: AppUseCase[],
     facts?: AppFact[],
     testimonials?: AppTestimonial[],
+    video?: AppVideo,
     primaryKeyword?: string,
     secondaryKeywords?: string[],
 }
@@ -80,6 +88,7 @@ const {
     useCases = [],
     facts = [],
     testimonials = [],
+    video,
     primaryKeyword,
     secondaryKeywords = [],
 } = Astro.props;
@@ -98,10 +107,42 @@ const resolveScreenshotUrl = (url: LocalizedScreenshotUrl, language: SeoLanguage
         ? url.ptBr ?? url["pt-br"] ?? url.en
         : url.en;
 };
+const getYouTubeVideoId = (youtubeUrl: string) => {
+    try {
+        const url = new URL(youtubeUrl);
+        const hostname = url.hostname.replace(/^www\./, "");
+        let candidate: string | null | undefined;
+
+        if (hostname === "youtu.be") {
+            candidate = url.pathname.split("/").filter(Boolean)[0];
+        }
+
+        if (hostname === "youtube.com" || hostname.endsWith(".youtube.com") || hostname === "youtube-nocookie.com") {
+            if (url.pathname === "/watch") {
+                candidate = url.searchParams.get("v");
+            } else {
+                const pathParts = url.pathname.split("/").filter(Boolean);
+                const videoPathIndex = pathParts.findIndex((part) => ["embed", "shorts", "live"].includes(part));
+                candidate = videoPathIndex >= 0 ? pathParts[videoPathIndex + 1] : undefined;
+            }
+        }
+
+        return candidate && /^[a-zA-Z0-9_-]{6,}$/.test(candidate) ? candidate : undefined;
+    } catch {
+        return undefined;
+    }
+};
 const localizedScreenshots = screenshots.map((screenshot) => ({
     ...screenshot,
     url: resolveScreenshotUrl(screenshot.url, seoLanguage),
 }));
+const youtubeVideoId = video?.youtubeUrl ? getYouTubeVideoId(video.youtubeUrl) : undefined;
+const youtubeEmbedUrl = youtubeVideoId ? `https://www.youtube-nocookie.com/embed/${youtubeVideoId}` : undefined;
+const videoTitle = video?.title ?? (
+    seoLanguage === "pt-br"
+        ? `Vídeo do ${structuredAppName}`
+        : `${structuredAppName} video`
+);
 const appJsonLd = softwareApplicationJsonLd({
     name: structuredAppName,
     description,
@@ -118,6 +159,19 @@ const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
     { name: structuredAppName, path: currentPath },
 ]);
+const videoJsonLd = youtubeEmbedUrl ? {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${absoluteUrl(currentPath)}#app-video`,
+    name: videoTitle,
+    description: video?.caption ?? description,
+    url: video?.youtubeUrl,
+    embedUrl: youtubeEmbedUrl,
+    inLanguage: seoLanguage === "pt-br" ? "pt-BR" : "en",
+    about: {
+        "@id": `${absoluteUrl(currentPath)}#software-application`,
+    },
+} : undefined;
 ---
 
 <Layout
@@ -129,7 +183,7 @@ const breadcrumbJson = breadcrumbJsonLd([
     canonicalPath={currentPath}
     alternateLocales={getAppAlternates(currentPath)}
     ogImage={`${appAssetBaseUrl}${appIcon}`}
-    jsonLd={[appJsonLd, breadcrumbJson]}
+    jsonLd={[appJsonLd, breadcrumbJson, ...(videoJsonLd ? [videoJsonLd] : [])]}
 >
     <main class="app-page">
 
@@ -178,6 +232,27 @@ const breadcrumbJson = breadcrumbJsonLd([
                             <strong>{fact.value}</strong>
                         </div>
                     ))}
+                </div>
+            </section>
+        )}
+
+        {youtubeEmbedUrl && (
+            <section class="app-video-section" aria-labelledby="app-video-heading">
+                <div class="container app-video-inner">
+                    <div class="app-video-copy">
+                        <h2 id="app-video-heading">{videoTitle}</h2>
+                        {video?.caption && <p>{video.caption}</p>}
+                    </div>
+                    <div class="app-video-frame">
+                        <iframe
+                            src={youtubeEmbedUrl}
+                            title={videoTitle}
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"
+                        ></iframe>
+                    </div>
                 </div>
             </section>
         )}
@@ -432,6 +507,61 @@ const breadcrumbJson = breadcrumbJsonLd([
         font-size: 16px;
         font-weight: 650;
         line-height: 1.4;
+    }
+
+    /* Video */
+    .app-video-section {
+        padding: 28px 0 64px;
+        background: var(--bg);
+    }
+
+    .app-video-inner {
+        display: grid;
+        gap: 26px;
+        max-width: 980px;
+    }
+
+    .app-video-copy {
+        display: grid;
+        gap: 10px;
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .app-video-copy h2 {
+        color: var(--text-primary);
+        font-size: clamp(28px, 3vw, 38px);
+        font-weight: 720;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    .app-video-copy p {
+        color: var(--text-secondary);
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        text-wrap: pretty;
+    }
+
+    .app-video-frame {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--bg-secondary);
+        box-shadow: 0 10px 28px color-mix(in srgb, var(--text-primary) 5%, transparent);
+    }
+
+    .app-video-frame iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
     }
 
     /* Screenshots */
@@ -797,6 +927,26 @@ const breadcrumbJson = breadcrumbJsonLd([
 
         .product-fact {
             padding: 20px 12px;
+        }
+
+        .app-video-section {
+            padding: 22px 0 48px;
+        }
+
+        .app-video-inner {
+            gap: 20px;
+        }
+
+        .app-video-copy {
+            max-width: 320px;
+        }
+
+        .app-video-copy h2 {
+            font-size: 28px;
+        }
+
+        .app-video-frame {
+            border-radius: 18px;
         }
 
         .feature-grid {
