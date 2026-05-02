@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Analytics from '../components/Analytics.astro';
+import CookieConsentBanner from '../components/CookieConsentBanner.astro';
 import Controls from '../components/Controls.astro';
 import { createAnalyticsPageContext } from '../core/analyticsContext';
 import { absoluteUrl, defaultOgImage, normalizePath, type AlternateLocale, type JsonLdValue } from '../core/seo';
@@ -75,13 +76,14 @@ const footerLinks = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adrianosouzacosta' },
     { label: 'X', href: 'https://x.com/didisouzacosta' },
 ];
+const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy settings';
 ---
 
 <!doctype html>
 <html lang={documentLang}>
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
         <!-- Theme init (must be before CSS to avoid FOUC) -->
         <script is:inline>
@@ -173,9 +175,19 @@ const footerLinks = [
                             </a>
                         ))
                     }
+                    <button
+                        type="button"
+                        class="privacy-settings"
+                        data-analytics-ignore="true"
+                        data-consent-open
+                        onclick="document.getElementById('cookie-consent')?.removeAttribute('hidden')"
+                    >
+                        {privacySettingsLabel}
+                    </button>
                 </nav>
             </div>
         </footer>
+        <CookieConsentBanner lang={lang} />
         <script is:inline>
             var observer = new IntersectionObserver(
                 function(entries) {
@@ -193,7 +205,7 @@ const footerLinks = [
         <style>
             .site-header {
                 position: fixed;
-                top: 20px;
+                top: calc(20px + var(--safe-area-top));
                 left: 0;
                 right: 0;
                 z-index: 100;
@@ -207,7 +219,8 @@ const footerLinks = [
                 gap: 16px;
                 max-width: 980px;
                 margin: 0 auto;
-                padding: 0 32px;
+                padding-right: calc(32px + var(--safe-area-right));
+                padding-left: calc(32px + var(--safe-area-left));
             }
 
             .site-menu {
@@ -264,11 +277,13 @@ const footerLinks = [
                 gap: 18px;
                 max-width: 980px;
                 margin: 0 auto;
-                padding: 0 32px;
+                padding-right: var(--safe-page-padding-right);
+                padding-left: var(--safe-page-padding-left);
             }
 
             .site-footer p,
-            .site-footer a {
+            .site-footer a,
+            .site-footer button {
                 font-size: 14px;
                 line-height: 1.4;
             }
@@ -279,23 +294,40 @@ const footerLinks = [
                 gap: 16px;
             }
 
-            .site-footer a {
+            .site-footer a,
+            .site-footer button {
                 color: var(--text-secondary);
             }
 
-            .site-footer a:hover {
+            .site-footer a:hover,
+            .site-footer button:hover {
                 color: var(--text-primary);
                 opacity: 1;
             }
 
+            .site-footer button {
+                padding: 0;
+                border: 0;
+                background: none;
+                font: inherit;
+                cursor: pointer;
+            }
+
+            .site-footer .privacy-settings {
+                margin-left: 2px;
+                padding-left: 16px;
+                border-left: 1px solid var(--border);
+            }
+
             @media (max-width: 760px) {
                 .site-header {
-                    top: 14px;
+                    top: calc(14px + var(--safe-area-top));
                 }
 
                 .site-header-inner {
                     gap: 10px;
-                    padding: 0 16px;
+                    padding-right: calc(16px + var(--safe-area-right));
+                    padding-left: calc(16px + var(--safe-area-left));
                 }
 
                 .site-menu {
@@ -320,7 +352,21 @@ const footerLinks = [
                 .site-footer-inner {
                     align-items: flex-start;
                     flex-direction: column;
-                    padding: 0 24px;
+                    padding-right: var(--safe-page-padding-right);
+                    padding-left: var(--safe-page-padding-left);
+                }
+
+                .site-footer nav {
+                    flex-wrap: wrap;
+                    gap: 12px 16px;
+                }
+
+                .site-footer .privacy-settings {
+                    width: 100%;
+                    margin-left: 0;
+                    padding-left: 0;
+                    border-left: 0;
+                    text-align: left;
                 }
             }
         </style>

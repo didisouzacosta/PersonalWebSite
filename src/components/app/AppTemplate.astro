@@ -193,6 +193,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
                     src=`${baseAssetsURL}apps/${appIcon}`
                     alt={`${title} app icon`}
                     fetchpriority="high"
+                    decoding="async"
                     class="app-icon"
                     width="120"
                     height="120"
@@ -214,6 +215,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
                         <img
                             src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
                             alt="Download on the App Store"
+                            loading="lazy"
+                            decoding="async"
                             class="app-store-badge"
                             width="160"
                             height="54"
@@ -267,6 +270,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
                                     src=`${baseAssetsURL}apps/${screenshot.url}`
                                     alt={screenshot.alt}
                                     loading="lazy"
+                                    decoding="async"
                                     data-analytics-ignore="true"
                                     data-analytics-event="screenshot_opened"
                                     data-analytics-location="app-screenshots"
@@ -472,7 +476,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 0;
-        width: calc(100% - 64px);
+        width: calc(100% - var(--safe-page-padding-left) - var(--safe-page-padding-right));
         max-width: 916px;
         padding: 0;
         overflow: hidden;
@@ -574,6 +578,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
     }
 
     .screenshots {
+        --screenshots-padding-left: max(calc(32px + var(--safe-area-left)), calc((100vw - 1180px) / 2 + 32px + var(--safe-area-left)));
+        --screenshots-padding-right: max(calc(32px + var(--safe-area-right)), calc((100vw - 1180px) / 2 + 32px + var(--safe-area-right)));
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: minmax(216px, 252px);
@@ -584,8 +590,9 @@ const videoJsonLd = youtubeEmbedUrl ? {
         overflow-x: auto;
         overscroll-behavior-x: contain;
         list-style: none;
-        padding: 10px max(32px, calc((100vw - 1180px) / 2 + 32px)) 22px;
-        scroll-padding-inline: max(32px, calc((100vw - 1180px) / 2 + 32px));
+        padding: 10px var(--screenshots-padding-right) 22px var(--screenshots-padding-left);
+        scroll-padding-inline-start: var(--screenshots-padding-left);
+        scroll-padding-inline-end: var(--screenshots-padding-right);
         scroll-snap-type: x proximity;
         scrollbar-width: none;
     }
@@ -721,8 +728,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
         border: none;
         border-radius: 20px;
         background: transparent;
-        max-width: 92vw;
-        max-height: 92svh;
+        max-width: calc(100vw - var(--safe-area-left) - var(--safe-area-right) - 32px);
+        max-height: calc(100svh - var(--safe-area-top) - var(--safe-area-bottom) - 32px);
         overflow: visible;
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.96);
@@ -741,8 +748,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
 
     #lightbox-img {
         display: block;
-        max-width: 90vw;
-        max-height: 90vh;
+        max-width: calc(100vw - var(--safe-area-left) - var(--safe-area-right) - 32px);
+        max-height: calc(100svh - var(--safe-area-top) - var(--safe-area-bottom) - 32px);
         border-radius: 20px;
         object-fit: contain;
         transform-origin: center;
@@ -904,7 +911,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
 
         .product-facts-inner {
             grid-template-columns: 1fr;
-            width: calc(100% - 48px);
+            width: calc(100% - var(--safe-page-padding-left) - var(--safe-page-padding-right));
             border-radius: 20px;
         }
 
@@ -921,8 +928,10 @@ const videoJsonLd = youtubeEmbedUrl ? {
             grid-auto-columns: minmax(206px, 72vw);
             justify-content: start;
             gap: 14px;
-            padding-inline: 24px;
-            scroll-padding-inline: 24px;
+            padding-right: var(--safe-page-padding-right);
+            padding-left: var(--safe-page-padding-left);
+            scroll-padding-inline-start: var(--safe-page-padding-left);
+            scroll-padding-inline-end: var(--safe-page-padding-right);
         }
 
         .product-fact {
@@ -954,11 +963,11 @@ const videoJsonLd = youtubeEmbedUrl ? {
         }
 
         .lightbox-prev {
-            left: 10px;
+            left: calc(10px + var(--safe-area-left));
         }
 
         .lightbox-next {
-            right: 10px;
+            right: calc(10px + var(--safe-area-right));
         }
 
         .lightbox-nav {

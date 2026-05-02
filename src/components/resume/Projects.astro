@@ -30,6 +30,7 @@ const enabledApps = getProjectCards(lang);
                                     src={app.imageUrl}
                                     alt={lang === "pt-br" ? `Ícone do app ${app.name}` : `${app.name} app icon`}
                                     loading="lazy"
+                                    decoding="async"
                                     class="app-icon"
                                     width="64"
                                     height="64"

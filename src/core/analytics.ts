@@ -31,8 +31,19 @@ declare global {
 }
 
 const pendingEvents: Array<{ name: string; props: AnalyticsProperties }> = [];
+const analyticsConsentKey = "analytics-consent";
+const himetricaScriptUrl = "https://cdn.himetrica.com/tracker.js";
+const himetricaApiKey = "hm_9af92516047479ef85a412f32cb9fcee4d1e48b236e72a65";
 
 const getContext = () => window.__SITE_ANALYTICS_CONTEXT__;
+
+const hasAnalyticsConsent = () => {
+    try {
+        return window.localStorage.getItem(analyticsConsentKey) === "accepted";
+    } catch {
+        return false;
+    }
+};
 
 const sanitizeProperties = (props: AnalyticsProperties) => {
     return Object.fromEntries(
@@ -56,6 +67,11 @@ const getBaseProperties = (): AnalyticsProperties => {
 const getProvider = () => window.himetrica;
 
 const sendPendingEvents = () => {
+    if (!hasAnalyticsConsent()) {
+        pendingEvents.length = 0;
+        return;
+    }
+
     const provider = getProvider();
     if (!provider?.track) return;
 
@@ -67,6 +83,7 @@ const sendPendingEvents = () => {
 
 export function trackAnalyticsEvent(name: string, props: AnalyticsProperties = {}) {
     if (typeof window === "undefined") return;
+    if (!hasAnalyticsConsent()) return;
 
     const eventProps = {
         ...getBaseProperties(),
@@ -86,12 +103,33 @@ export function trackAnalyticsEvent(name: string, props: AnalyticsProperties = {
 
 export function identifyAnalyticsUser(payload: AnalyticsIdentifyPayload) {
     if (typeof window === "undefined") return;
+    if (!hasAnalyticsConsent()) return;
     getProvider()?.identify?.(payload);
 }
 
 export function resetAnalytics() {
     if (typeof window === "undefined") return;
     getProvider()?.reset?.();
+}
+
+export function loadAnalyticsProvider() {
+    if (typeof window === "undefined") return;
+    if (!hasAnalyticsConsent()) return;
+    if (document.querySelector('script[data-himetrica-tracker="true"]')) return;
+
+    const context = getContext();
+    window.__SITE_ANALYTICS_ORIGINAL_TITLE__ ||= document.title;
+
+    if (context?.analyticsTitle) {
+        document.title = context.analyticsTitle;
+    }
+
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = himetricaScriptUrl;
+    script.dataset.apiKey = himetricaApiKey;
+    script.dataset.himetricaTracker = "true";
+    document.head.appendChild(script);
 }
 
 const getText = (element: Element) => (element.textContent ?? "").trim().replace(/\s+/g, " ").slice(0, 120);

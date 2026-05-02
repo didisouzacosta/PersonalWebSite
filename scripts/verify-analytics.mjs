@@ -62,14 +62,14 @@ const walk = (dir, matcher, files = []) => {
 const htmlFiles = walk(distDir, (path) => path.endsWith(".html"));
 const searchableFiles = walk(distDir, (path) => path.endsWith(".js") || path.endsWith(".html"));
 
-const missingTracker = htmlFiles.filter((file) => {
+const directTracker = htmlFiles.filter((file) => {
     const html = readFileSync(file, "utf8");
-    return !html.includes("https://cdn.himetrica.com/tracker.js");
+    return /<script[^>]+src=["']https:\/\/cdn\.himetrica\.com\/tracker\.js["']/.test(html);
 });
 
-if (missingTracker.length > 0) {
-    console.error("Missing Himetrica tracker in:");
-    missingTracker.forEach((file) => console.error(`- ${file}`));
+if (directTracker.length > 0) {
+    console.error("Found Himetrica tracker loaded before consent in:");
+    directTracker.forEach((file) => console.error(`- ${file}`));
     process.exit(1);
 }
 

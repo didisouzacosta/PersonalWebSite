@@ -332,8 +332,8 @@ const summaryParagraphs = resume.summary.description.split(/\n\s*\n/).filter(Boo
         .download-button {
             position: fixed;
             left: 50%;
-            bottom: 0;
-            transform: translate(-50%, -50%);
+            bottom: calc(16px + var(--safe-area-bottom));
+            transform: translateX(-50%);
             padding: 10px 24px;
             background-color: #FF9F0A;
             color: #000;
@@ -349,7 +349,7 @@ const summaryParagraphs = resume.summary.description.split(/\n\s*\n/).filter(Boo
 
         .download-button:hover {
             opacity: 0.85;
-            transform: translate(-50%, -55%);
+            transform: translate(-50%, -4px);
         }
 
         @media print {

@@ -1,0 +1,207 @@
+---
+interface Props {
+    lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const isPtBr = lang === 'pt-br';
+const copy = isPtBr
+    ? {
+        title: 'Privacidade',
+        text: 'Usamos analytics com foco em privacidade para entender o uso do site. Você pode aceitar ou recusar.',
+        accept: 'Aceitar',
+        decline: 'Recusar',
+    }
+    : {
+        title: 'Privacy',
+        text: 'We use privacy-friendly analytics to understand site usage. You can accept or decline.',
+        accept: 'Accept',
+        decline: 'Decline',
+    };
+---
+
+<section
+    class="cookie-consent"
+    id="cookie-consent"
+    aria-labelledby="cookie-consent-title"
+    hidden
+>
+    <div class="cookie-consent-copy">
+        <h2 id="cookie-consent-title">{copy.title}</h2>
+        <p>{copy.text}</p>
+    </div>
+    <div class="cookie-consent-actions">
+        <button type="button" class="secondary" data-consent-choice="declined">
+            {copy.decline}
+        </button>
+        <button type="button" class="primary" data-consent-choice="accepted">
+            {copy.accept}
+        </button>
+    </div>
+</section>
+
+<script>
+    const consentKey = "analytics-consent";
+    const banner = document.getElementById("cookie-consent");
+
+    function readConsent() {
+        try {
+            return window.localStorage.getItem(consentKey);
+        } catch {
+            return null;
+        }
+    }
+
+    function writeConsent(consent: string) {
+        try {
+            window.localStorage.setItem(consentKey, consent);
+        } catch {
+            return;
+        }
+
+        window.dispatchEvent(new CustomEvent("analytics-consent-changed", {
+            detail: { consent },
+        }));
+    }
+
+    function showBanner() {
+        banner?.removeAttribute("hidden");
+    }
+
+    function hideBanner() {
+        banner?.setAttribute("hidden", "");
+    }
+
+    if (!readConsent()) {
+        showBanner();
+    }
+
+    banner?.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        const button = target.closest<HTMLButtonElement>("[data-consent-choice]");
+        const consent = button?.dataset.consentChoice;
+        if (!consent) return;
+
+        const previousConsent = readConsent();
+        writeConsent(consent);
+        hideBanner();
+
+        if (previousConsent === "accepted" && consent === "declined") {
+            window.location.reload();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        if (target.closest("[data-consent-open]")) {
+            showBanner();
+        }
+    });
+
+    window.addEventListener("analytics-consent-open", showBanner);
+</script>
+
+<style>
+    .cookie-consent {
+        position: fixed;
+        right: calc(24px + var(--safe-area-right));
+        bottom: calc(24px + var(--safe-area-bottom));
+        left: calc(24px + var(--safe-area-left));
+        z-index: 120;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 14px 14px 14px 18px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background-color: color-mix(in srgb, var(--bg) 86%, transparent);
+        box-shadow: 0 18px 56px rgba(0, 0, 0, 0.14);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+    }
+
+    .cookie-consent[hidden] {
+        display: none;
+    }
+
+    .cookie-consent-copy {
+        min-width: 0;
+    }
+
+    .cookie-consent h2 {
+        margin: 0 0 3px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0;
+    }
+
+    .cookie-consent p {
+        max-width: 440px;
+        color: var(--text-secondary);
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .cookie-consent-actions {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cookie-consent button {
+        min-height: 34px;
+        padding: 0 14px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-btn);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 650;
+        line-height: 1;
+        cursor: pointer;
+        transition: background-color var(--transition), border-color var(--transition), color var(--transition), opacity var(--transition);
+    }
+
+    .cookie-consent button:hover {
+        opacity: 0.72;
+    }
+
+    .cookie-consent .secondary {
+        border-color: var(--border);
+        background-color: transparent;
+        color: var(--text-secondary);
+    }
+
+    .cookie-consent .primary {
+        background-color: var(--text-primary);
+        color: var(--bg);
+    }
+
+    @media (max-width: 620px) {
+        .cookie-consent {
+            right: calc(14px + var(--safe-area-right));
+            bottom: calc(14px + var(--safe-area-bottom));
+            left: calc(14px + var(--safe-area-left));
+            align-items: stretch;
+            flex-direction: column;
+            gap: 12px;
+            padding: 14px;
+        }
+
+        .cookie-consent p {
+            max-width: none;
+        }
+
+        .cookie-consent-actions {
+            justify-content: flex-end;
+        }
+    }
+</style>

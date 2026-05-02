@@ -109,7 +109,7 @@ const title = 'Privacy Policy – LoopSize'
 
 <style>
     main {
-        padding: 64px 32px;
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
         max-width: 780px;
         margin: 0 auto;
     }

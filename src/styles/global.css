@@ -7,8 +7,8 @@
     --bg-secondary: #F5F5F7;
     --bg-tertiary: #E8E8ED;
     --text-primary: #1D1D1F;
-    --text-secondary: #6E6E73;
-    --text-tertiary: #86868B;
+    --text-secondary: #515154;
+    --text-tertiary: #6E6E73;
     --border: rgba(0, 0, 0, 0.08);
     --border-strong: rgba(0, 0, 0, 0.14);
     --radius-card: 18px;
@@ -16,6 +16,13 @@
     --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.06);
     --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
     --transition: 0.2s ease-out;
+    --page-gutter: 32px;
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-page-padding-left: calc(var(--page-gutter) + var(--safe-area-left));
+    --safe-page-padding-right: calc(var(--page-gutter) + var(--safe-area-right));
 }
 
 [data-theme="dark"] {
@@ -23,8 +30,8 @@
     --bg-secondary: #17181D;
     --bg-tertiary: #24262D;
     --text-primary: #F5F5F7;
-    --text-secondary: #86868B;
-    --text-tertiary: #636366;
+    --text-secondary: #A1A1A6;
+    --text-tertiary: #86868B;
     --border: rgba(255, 255, 255, 0.08);
     --border-strong: rgba(255, 255, 255, 0.14);
     --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.4);
@@ -95,7 +102,8 @@ ul, ol {
 .container {
     max-width: 980px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding-right: var(--safe-page-padding-right);
+    padding-left: var(--safe-page-padding-left);
 }
 
 .section {
@@ -171,13 +179,19 @@ a[target="_blank"]:not(.no-ext-icon):hover::after {
         --bg-secondary: #F5F5F7;
         --bg-tertiary: #E8E8ED;
         --text-primary: #1D1D1F;
-        --text-secondary: #6E6E73;
-        --text-tertiary: #86868B;
+        --text-secondary: #515154;
+        --text-tertiary: #6E6E73;
         --border: rgba(0, 0, 0, 0.08);
     }
 
     html {
         background-color: white;
         color: #1D1D1F;
+    }
+}
+
+@media (max-width: 760px) {
+    :root {
+        --page-gutter: 24px;
     }
 }
