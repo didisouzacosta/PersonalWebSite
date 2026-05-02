@@ -12,7 +12,6 @@ const { context } = Astro.props;
     is:inline
     set:html={`
         window.__SITE_ANALYTICS_CONTEXT__ = ${JSON.stringify(context)};
-        window.__SITE_ANALYTICS_ORIGINAL_TITLE__ = document.title;
     `}
 />
 

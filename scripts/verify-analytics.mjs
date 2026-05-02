@@ -6,7 +6,7 @@ const expectedEvents = [
     "navigation_clicked",
     "theme_changed",
     "language_changed",
-    "resume_download_clicked",
+    "resume_print_requested",
     "resume_contact_clicked",
     "certificate_clicked",
     "social_link_clicked",

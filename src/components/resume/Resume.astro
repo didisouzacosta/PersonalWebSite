@@ -25,17 +25,16 @@ const summaryParagraphs = resume.summary.description.split(/\n\s*\n/).filter(Boo
     alternateLocales={localizedAlternates("/resume/", "/resume/pt-br/")}
     jsonLd={[personJsonLd(seoLanguage), profilePageJsonLd(resumePath, seoLanguage)]}
 >
-    <a
-        href={resume.download.url}
+    <button
+        type="button"
         class="download-button no-print"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-analytics-event="resume_download_clicked"
+        data-resume-print
+        data-analytics-event="resume_print_requested"
         data-analytics-location="resume-page"
         data-analytics-label={resume.download.label}
     >
         {resume.download.label}
-    </a>
+    </button>
 
     <main class="container resume-page">
         <article aria-label={resume.name}>
@@ -364,4 +363,10 @@ const summaryParagraphs = resume.summary.description.split(/\n\s*\n/).filter(Boo
             }
         }
     </style>
+
+    <script>
+        document.querySelector("[data-resume-print]")?.addEventListener("click", () => {
+            window.print();
+        });
+    </script>
 </Layout>

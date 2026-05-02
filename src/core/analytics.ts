@@ -26,7 +26,6 @@ declare global {
         himetrica?: HimetricaGlobal;
         __SITE_ANALYTICS_CONTEXT__?: AnalyticsPageContext;
         __SITE_ANALYTICS_INITIALIZED__?: boolean;
-        __SITE_ANALYTICS_ORIGINAL_TITLE__?: string;
     }
 }
 
@@ -117,13 +116,6 @@ export function loadAnalyticsProvider() {
     if (!hasAnalyticsConsent()) return;
     if (document.querySelector('script[data-himetrica-tracker="true"]')) return;
 
-    const context = getContext();
-    window.__SITE_ANALYTICS_ORIGINAL_TITLE__ ||= document.title;
-
-    if (context?.analyticsTitle) {
-        document.title = context.analyticsTitle;
-    }
-
     const script = document.createElement("script");
     script.defer = true;
     script.src = himetricaScriptUrl;
@@ -168,34 +160,12 @@ const setupGlobalClickTracking = () => {
     });
 };
 
-const restoreDocumentTitle = () => {
-    const originalTitle = window.__SITE_ANALYTICS_ORIGINAL_TITLE__;
-
-    if (originalTitle && document.title !== originalTitle) {
-        document.title = originalTitle;
-    }
-};
-
-const scheduleDocumentTitleRestore = () => {
-    const restoreDelayMs = 1200;
-
-    if (document.readyState === "complete") {
-        window.setTimeout(restoreDocumentTitle, restoreDelayMs);
-        return;
-    }
-
-    window.addEventListener("load", () => {
-        window.setTimeout(restoreDocumentTitle, restoreDelayMs);
-    }, { once: true });
-};
-
 export function initializeAnalytics() {
     if (typeof window === "undefined") return;
     if (window.__SITE_ANALYTICS_INITIALIZED__) return;
 
     window.__SITE_ANALYTICS_INITIALIZED__ = true;
     setupGlobalClickTracking();
-    scheduleDocumentTitleRestore();
 
     window.addEventListener("load", sendPendingEvents, { once: true });
 }

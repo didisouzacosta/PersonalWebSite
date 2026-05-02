@@ -188,6 +188,11 @@ a[target="_blank"]:not(.no-ext-icon):hover::after {
         background-color: white;
         color: #1D1D1F;
     }
+
+    .site-header,
+    .site-footer {
+        display: none !important;
+    }
 }
 
 @media (max-width: 760px) {
