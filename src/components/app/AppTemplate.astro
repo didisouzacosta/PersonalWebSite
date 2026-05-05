@@ -353,7 +353,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
             </section>
         )}
 
-        <section class="faq-section section-sm" aria-labelledby="faq-heading">
+        <section id="faq" class="faq-section section-sm" aria-labelledby="faq-heading">
             <div class="container">
                 <h2 id="faq-heading" class="faq-heading">FAQ</h2>
                 <FaqAccordion items={faq} />
@@ -847,6 +847,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
     /* FAQ */
     .faq-section {
         background: var(--bg);
+        scroll-margin-top: 96px;
     }
 
     .faq-heading {
