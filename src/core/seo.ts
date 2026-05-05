@@ -19,6 +19,17 @@ export function absoluteUrl(pathOrUrl: string): string {
     return new URL(normalizePath(pathOrUrl), siteUrl).toString();
 }
 
+export function absoluteAssetUrl(pathOrUrl: string): string {
+    if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) {
+        return pathOrUrl;
+    }
+
+    const cleanPath = pathOrUrl.split("?")[0].split("#")[0];
+    const withLeadingSlash = cleanPath.startsWith("/") ? cleanPath : `/${cleanPath}`;
+
+    return new URL(withLeadingSlash, siteUrl).toString();
+}
+
 export function normalizePath(path: string): string {
     if (!path || path === "/") {
         return "/";
