@@ -1018,7 +1018,10 @@ const videoJsonLd = youtubeEmbedUrl ? {
     let savedDocumentOverflow = "";
 
     const restoreScrollPosition = () => {
+        const savedScrollBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = "auto";
         window.scrollTo(savedScrollPosition.x, savedScrollPosition.y);
+        document.documentElement.style.scrollBehavior = savedScrollBehavior;
     };
 
     const lockPageScroll = () => {
