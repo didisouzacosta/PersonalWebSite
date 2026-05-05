@@ -37,15 +37,15 @@ export const portfolioProjects: PortfolioProject[] = [
         imageUrl:
             "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/duotake/app-icon.png",
         tags: ["iOS App", "Free", "Camera"],
-        isEnabled: false,
+        isEnabled: true,
         descriptions: {
             en: {
-                card: "Front + back camera for reacts",
-                resume: "DuoTake lets you record or take photos with the front and back cameras at the same time, with CropOut for cleaner framing that is ideal for reacts.",
+                card: "Dual camera for reactions",
+                resume: "DuoTake records with the front and back cameras at the same time, capturing the moment and your reaction in one video ready for TikTok, Reels, and Shorts.",
             },
             "pt-br": {
-                card: "Camera frontal + traseira para reacts",
-                resume: "O DuoTake permite gravar e fotografar com a câmera frontal e traseira ao mesmo tempo, com CropOut para um enquadramento mais limpo e ideal para reacts.",
+                card: "Câmera dupla para reacts",
+                resume: "O DuoTake grava com a câmera frontal e traseira ao mesmo tempo, capturando o momento e sua reação em um único vídeo pronto para TikTok, Reels e Shorts.",
             },
         },
     },

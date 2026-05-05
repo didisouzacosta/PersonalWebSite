@@ -1,84 +1,136 @@
 ---
 import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
-const title = "DuoTake";
-const pageTitle = "DuoTake | App de Câmera Dupla para Reacts";
+const title = "DuoTake: Câmera dupla";
+const appName = "DuoTake";
+const pageTitle = "DuoTake: Câmera dupla";
 const description =
-    "DuoTake é um app de câmera dupla para iPhone que grava reacts com as câmeras frontal e traseira ao mesmo tempo, com CropOut para enquadramento mais limpo.";
+    "Grave com a câmera frontal e traseira ao mesmo tempo. Capture o momento e sua reação, sem cortes, pronto para TikTok, Reels e Shorts.";
 const favicon = "favicon-duotake-32x32.png";
 const appIcon = "duotake/app-icon.png";
 
 const metas = [];
-const primaryKeyword = "app de câmera dupla";
-const secondaryKeywords = ["app para reacts", "câmera frontal e traseira", "app de câmera para iPhone"];
+const primaryKeyword = "câmera dupla";
+const secondaryKeywords = [
+    "react video",
+    "editor video",
+    "frontal traseira",
+    "criador conteudo",
+    "gravar video",
+    "TikTok Reels Shorts",
+];
 
 const screenshots = [
     {
-        url: "duotake/screenshots/frame-1.png",
-        alt: "Captura de câmera dupla do DuoTake em retrato e paisagem ao mesmo tempo.",
-        caption: "Capture a cena e sua reação em uma única tomada.",
+        url: {
+            en: "duotake/screenshots/en/frame-1.png",
+            ptBr: "duotake/screenshots/ptBR/frame-1.png",
+        },
+        alt: "Exemplos do DuoTake mostrando gravação com câmera frontal e traseira ao mesmo tempo.",
+        caption: "Capture as câmeras frontal e traseira juntas no layout ideal para o momento.",
     },
     {
-        url: "duotake/screenshots/frame-2.png",
-        alt: "Seleção de modo do DuoTake para gravação em dois formatos.",
-        caption: "Escolha o modo de gravação ideal para a plataforma do seu conteúdo.",
+        url: {
+            en: "duotake/screenshots/en/frame-2.png",
+            ptBr: "duotake/screenshots/ptBR/frame-2.png",
+        },
+        alt: "Tela de gravação do DuoTake em um estádio com janela de reação sobre a câmera traseira.",
+        caption: "Mantenha a cena e sua reação juntas em uma única gravação.",
     },
     {
-        url: "duotake/screenshots/frame-3.png",
-        alt: "Tela de configurações de câmera do DuoTake antes da captura dupla.",
-        caption: "Ajuste a câmera antes de cada foto ou vídeo.",
+        url: {
+            en: "duotake/screenshots/en/frame-3.png",
+            ptBr: "duotake/screenshots/ptBR/frame-3.png",
+        },
+        alt: "Prévia de recorte automático do DuoTake mantendo a pessoa bem enquadrada sobre o fundo.",
+        caption: "Use o recorte automático para deixar os reacts mais limpos e focados.",
     },
     {
-        url: "duotake/screenshots/frame-4.png",
-        alt: "Opções de foto e vídeo do DuoTake para redes sociais.",
-        caption: "Faça fotos e vídeos prontos para posts no estilo react.",
+        url: {
+            en: "duotake/screenshots/en/frame-4.png",
+            ptBr: "duotake/screenshots/ptBR/frame-4.png",
+        },
+        alt: "Layouts de câmera dupla do DuoTake com exemplos de gravação em aquário e ao ar livre com pet.",
+        caption: "Mostre o momento e sua expressão por dois ângulos ao mesmo tempo.",
+    },
+    {
+        url: {
+            en: "duotake/screenshots/en/frame-5.png",
+            ptBr: "duotake/screenshots/ptBR/frame-5.png",
+        },
+        alt: "Tela de presets do editor do DuoTake com formatos social, quadrado, retrato e paisagem.",
+        caption: "Escolha formatos prontos para Reels, TikTok, Shorts e outros canais.",
+    },
+    {
+        url: {
+            en: "duotake/screenshots/en/frame-6.png",
+            ptBr: "duotake/screenshots/ptBR/frame-6.png",
+        },
+        alt: "Tela de exportação do DuoTake com opções de qualidade para o vídeo final.",
+        caption: "Exporte vídeos finalizados em alta qualidade, até a resolução original.",
     },
 ];
 
 const facts = [
     { label: "Plataforma", value: "iPhone" },
-    { label: "Ideal para", value: "Vídeos de react" },
-    { label: "Captura", value: "Câmeras frontal + traseira" },
+    { label: "Ideal para", value: "Creators, reviews e reacts" },
+    { label: "Pronto para", value: "TikTok, Reels e Shorts" },
 ];
 
 const features = [
     {
-        title: "Captura com duas câmeras",
-        description: "Grave a cena e sua reação ao mesmo tempo usando as câmeras frontal e traseira.",
+        title: "Gravação com duas câmeras",
+        description: "Use a câmera frontal e traseira ao mesmo tempo para manter a história e sua reação no mesmo vídeo.",
     },
     {
-        title: "Enquadramento com CropOut",
-        description: "Crie um enquadramento mais limpo para reacts sem refazer sua configuração a cada tomada.",
+        title: "Reações em tempo real",
+        description: "Capture o que está acontecendo e como você reage em um único vídeo, sem cortes entre clipes.",
     },
     {
-        title: "Modos de foto e vídeo",
-        description: "Capture imagens ou vídeos conforme o formato que você precisa publicar.",
+        title: "Remoção de fundo",
+        description: "Deixe o foco em você com remoção de fundo para vídeos de react mais limpos.",
+    },
+    {
+        title: "Dois ângulos em um vídeo",
+        description: "Mostre o momento por uma câmera e sua expressão pela outra em uma tomada pronta para compartilhar.",
+    },
+    {
+        title: "Pronto para redes sociais",
+        description: "Prepare vídeos para TikTok, Instagram Reels, YouTube Shorts e outros canais de creators.",
+    },
+    {
+        title: "Exportação em alta qualidade",
+        description: "Exporte vídeos finalizados em alta qualidade, prontos para publicar sem etapas extras de edição.",
     },
 ];
 
 const useCases = [
     {
-        title: "Criadores de reacts",
-        description: "Mostre o que você está assistindo e sua reação em uma captura pronta para compartilhar.",
+        title: "Registre tudo. Inclusive sua reação.",
+        description: "Com o DuoTake, você grava usando a câmera frontal e traseira ao mesmo tempo, mostrando o que está acontecendo e como você reage em um único vídeo.",
     },
     {
-        title: "Bastidores e comentários",
-        description: "Grave o momento e a pessoa por trás da câmera sem alternar entre apps.",
+        title: "Mostre tudo",
+        description: "Pare de gravar só metade da história. Capture o momento, seu ponto de vista e sua reação juntos.",
     },
 ];
 
 const faq = [
     {
         question: "O que é DuoTake?",
-        answer: "DuoTake é um app de câmera criado para capturar com a câmera frontal e traseira ao mesmo tempo, tanto em foto quanto em vídeo. Ele também inclui o <strong>CropOut</strong>, que ajuda a criar um enquadramento ideal para reacts e conteúdos de reação.",
+        answer: "DuoTake é um app de câmera dupla para gravar com a câmera frontal e traseira ao mesmo tempo. Ele ajuda você a capturar o momento e sua reação em um único vídeo, sem cortes entre clipes.",
     },
     {
         question: "Para quem o DuoTake foi feito?",
-        answer: "O DuoTake é ideal para criadores, social media, vloggers e qualquer pessoa que produz reacts, comentários ou bastidores e quer mostrar ao mesmo tempo a cena e a própria reação.",
+        answer: "O DuoTake é perfeito para creators, reviews, reacts, comentários, bastidores e qualquer pessoa que quer mostrar o que está acontecendo e como reage ao mesmo tempo.",
     },
     {
-        question: "Posso tirar fotos e gravar vídeos?",
-        answer: "Sim. O DuoTake suporta fotos e vídeos usando simultaneamente a câmera frontal e a traseira, facilitando capturar sua reação e o que você está vendo em uma única tomada.",
+        question: "O DuoTake é pronto para TikTok, Reels e Shorts?",
+        answer: "Sim. O DuoTake inclui formatos prontos para redes sociais, ajudando você a preparar vídeos para TikTok, Instagram Reels, YouTube Shorts e outros canais.",
+    },
+    {
+        question: "O DuoTake tem remoção de fundo?",
+        answer: "Sim. O DuoTake inclui remoção de fundo para deixar sua reação mais limpa, focada e fácil de combinar com o momento que você está gravando.",
     },
     {
         question: "O DuoTake funciona offline?",
@@ -93,6 +145,7 @@ const faq = [
 
 <AppTemplate
     title={title}
+    appName={appName}
     pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}

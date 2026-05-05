@@ -13,7 +13,7 @@ export function GET() {
             `- [Curriculo](${absoluteUrl("/resume/pt-br/")}): Portuguese resume.`,
             "",
             "## Apps",
-            `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Dual-camera iPhone app for reaction videos and front plus back camera capture.`,
+            `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Dual-camera iPhone app that records front and back cameras at the same time for reactions, reviews, TikTok, Reels, and Shorts.`,
             `- [KuboRush](${absoluteUrl("/apps/kuborush/")}): Casual block puzzle game for iOS with power-ups and weekly competition.`,
             `- [LoopSize](${absoluteUrl("/apps/loopsize/")}): Ring size converter for iPhone with multiple international standards and PDF export.`,
             "",
