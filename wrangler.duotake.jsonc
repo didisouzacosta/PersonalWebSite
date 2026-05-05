@@ -1,0 +1,22 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "duotake-domain",
+    "main": "cloudflare/duotake-domain-worker.js",
+    "compatibility_date": "2026-05-05",
+    "compatibility_flags": [
+        "nodejs_compat"
+    ],
+    "observability": {
+        "enabled": true
+    },
+    "routes": [
+        {
+            "pattern": "duotake.app/*",
+            "zone_name": "duotake.app"
+        },
+        {
+            "pattern": "www.duotake.app/*",
+            "zone_name": "duotake.app"
+        }
+    ]
+}

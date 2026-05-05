@@ -578,22 +578,17 @@ const videoJsonLd = youtubeEmbedUrl ? {
     }
 
     .screenshots {
-        --screenshots-padding-left: max(calc(32px + var(--safe-area-left)), calc((100vw - 1180px) / 2 + 32px + var(--safe-area-left)));
-        --screenshots-padding-right: max(calc(32px + var(--safe-area-right)), calc((100vw - 1180px) / 2 + 32px + var(--safe-area-right)));
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(216px, 252px);
+        --screenshots-padding-left: calc(32px + var(--safe-area-left));
+        --screenshots-padding-right: calc(32px + var(--safe-area-right));
+        display: flex;
+        align-items: flex-start;
         justify-content: center;
         gap: 18px;
         max-width: 100%;
-        margin: 0;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
+        margin: 0 auto;
+        overflow-x: clip;
         list-style: none;
         padding: 10px var(--screenshots-padding-right) 22px var(--screenshots-padding-left);
-        scroll-padding-inline-start: var(--screenshots-padding-left);
-        scroll-padding-inline-end: var(--screenshots-padding-right);
-        scroll-snap-type: x proximity;
         scrollbar-width: none;
     }
 
@@ -602,15 +597,21 @@ const videoJsonLd = youtubeEmbedUrl ? {
     }
 
     .screenshots li {
+        flex: 0 0 clamp(170px, calc((100vw - 154px) / 6), 252px);
         scroll-snap-align: center;
     }
 
     .screenshots figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin: 0;
     }
 
     .screenshots figure img {
+        display: block;
         width: 100%;
+        margin: 0 auto;
         border: 1px solid color-mix(in srgb, var(--border-strong) 48%, transparent);
         border-radius: 24px;
         cursor: pointer;
@@ -925,13 +926,19 @@ const videoJsonLd = youtubeEmbedUrl ? {
         }
 
         .screenshots {
-            grid-auto-columns: minmax(206px, 72vw);
-            justify-content: start;
+            justify-content: flex-start;
             gap: 14px;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
             padding-right: var(--safe-page-padding-right);
             padding-left: var(--safe-page-padding-left);
             scroll-padding-inline-start: var(--safe-page-padding-left);
             scroll-padding-inline-end: var(--safe-page-padding-right);
+            scroll-snap-type: x proximity;
+        }
+
+        .screenshots li {
+            flex-basis: clamp(206px, 72vw, 252px);
         }
 
         .product-fact {
