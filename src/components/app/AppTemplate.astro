@@ -56,6 +56,9 @@ interface Props {
     appName?: string,
     favicon: string,
     appIcon: string,
+    socialImage?: string,
+    socialImageAlt?: string,
+    socialImageType?: string,
     description: string,
     screenshots: AppScreenshot[],
     faq: { question: string, answer: string }[],
@@ -79,6 +82,9 @@ const {
     metas,
     favicon,
     appIcon,
+    socialImage,
+    socialImageAlt,
+    socialImageType = "image/jpeg",
     description,
     screenshots,
     faq,
@@ -182,7 +188,11 @@ const videoJsonLd = youtubeEmbedUrl ? {
     lang={lang}
     canonicalPath={currentPath}
     alternateLocales={getAppAlternates(currentPath)}
-    ogImage={`${appAssetBaseUrl}${appIcon}`}
+    ogImage={socialImage ?? `${appAssetBaseUrl}${appIcon}`}
+    ogImageAlt={socialImageAlt ?? `${structuredAppName} app icon`}
+    ogImageWidth={1200}
+    ogImageHeight={630}
+    ogImageType={socialImageType}
     jsonLd={[appJsonLd, breadcrumbJson, ...(videoJsonLd ? [videoJsonLd] : [])]}
 >
     <main class="app-page">
