@@ -4,7 +4,7 @@ import Analytics from '../components/Analytics.astro';
 import CookieConsentBanner from '../components/CookieConsentBanner.astro';
 import Controls from '../components/Controls.astro';
 import { createAnalyticsPageContext } from '../core/analyticsContext';
-import { absoluteUrl, defaultOgImage, normalizePath, type AlternateLocale, type JsonLdValue } from '../core/seo';
+import { absoluteUrl, defaultOgImage, normalizePath, siteUrl, type AlternateLocale, type JsonLdValue } from '../core/seo';
 
 interface Props {
     title: string,
@@ -159,8 +159,16 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
         <slot />
         <footer class="site-footer">
             <div class="site-footer-inner">
-                <p>{footerText}</p>
-                <nav aria-label={isPtBr ? 'Links sociais' : 'Social links'}>
+                <p>
+                    <a
+                        href={siteUrl}
+                        class="footer-credit"
+                        data-preserve-host
+                    >
+                        {footerText}
+                    </a>
+                </p>
+                <nav class="site-footer-actions" aria-label={isPtBr ? 'Links sociais' : 'Social links'}>
                     {
                         footerLinks.map((link) => (
                             <a
@@ -297,6 +305,10 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
             .site-footer a,
             .site-footer button {
                 color: var(--text-secondary);
+            }
+
+            .site-footer .footer-credit {
+                color: var(--text-tertiary);
             }
 
             .site-footer a:hover,

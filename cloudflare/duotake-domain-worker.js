@@ -1,9 +1,8 @@
-const APP_DOMAIN = "duotake.app";
-const APP_ORIGIN = `https://${APP_DOMAIN}`;
 const PORTFOLIO_ORIGIN = "https://adrianosouzacosta.com.br";
+const PORTFOLIO_HOSTNAME = new URL(PORTFOLIO_ORIGIN).hostname;
 const APP_BASE_PATH = "/apps/duotake";
 const PT_BR_APP_BASE_PATH = "/pt-br/apps/duotake";
-const APP_DOMAIN_STYLE = `
+const EXTERNAL_DOMAIN_STYLE = `
     .screenshots {
         --screenshots-padding-left: calc(32px + var(--safe-area-left)) !important;
         --screenshots-padding-right: calc(32px + var(--safe-area-right)) !important;
@@ -101,15 +100,16 @@ function mapUpstreamPathToPublic(pathname) {
     return pathname;
 }
 
-function rewriteUrlValue(value) {
+function rewriteUrlValue(value, publicOrigin) {
     if (!value || value.startsWith("#") || value.startsWith("mailto:") || value.startsWith("tel:")) {
         return value;
     }
 
     if (value.startsWith(PORTFOLIO_ORIGIN)) {
         const url = new URL(value);
-        url.protocol = "https:";
-        url.hostname = APP_DOMAIN;
+        const publicUrl = new URL(publicOrigin);
+        url.protocol = publicUrl.protocol;
+        url.hostname = publicUrl.hostname;
         url.pathname = mapUpstreamPathToPublic(url.pathname);
         return url.toString();
     }
@@ -122,20 +122,25 @@ function rewriteUrlValue(value) {
 }
 
 class UrlAttributeRewriter {
-    constructor(attributeName) {
+    constructor(attributeName, publicOrigin) {
         this.attributeName = attributeName;
+        this.publicOrigin = publicOrigin;
     }
 
     element(element) {
+        if (element.hasAttribute("data-preserve-host")) {
+            return;
+        }
+
         const value = element.getAttribute(this.attributeName);
 
         if (value) {
-            element.setAttribute(this.attributeName, rewriteUrlValue(value));
+            element.setAttribute(this.attributeName, rewriteUrlValue(value, this.publicOrigin));
         }
     }
 }
 
-class AppDomainNavigationRewriter {
+class ExternalDomainNavigationRewriter {
     element(element) {
         const href = element.getAttribute("href");
 
@@ -145,23 +150,23 @@ class AppDomainNavigationRewriter {
     }
 }
 
-class SiteFooterSocialRewriter {
+class SiteFooterActionsRewriter {
     element(element) {
         element.remove();
     }
 }
 
-class AppDomainHeadRewriter {
+class ExternalDomainHeadRewriter {
     element(element) {
-        element.append(`<style id="duotake-domain-style">${APP_DOMAIN_STYLE}</style>`, { html: true });
+        element.append(`<style id="external-domain-style">${EXTERNAL_DOMAIN_STYLE}</style>`, { html: true });
     }
 }
 
-function appRobotsTxt() {
+function appRobotsTxt(publicOrigin) {
     return new Response([
         "User-agent: *",
         "Allow: /",
-        `Sitemap: ${APP_ORIGIN}/sitemap.xml`,
+        `Sitemap: ${publicOrigin}/sitemap.xml`,
         "",
     ].join("\n"), {
         headers: {
@@ -171,13 +176,13 @@ function appRobotsTxt() {
     });
 }
 
-function appSitemapXml() {
+function appSitemapXml(publicOrigin) {
     return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>${APP_ORIGIN}/</loc></url>
-    <url><loc>${APP_ORIGIN}/pt-br/</loc></url>
-    <url><loc>${APP_ORIGIN}/terms-of-use/</loc></url>
-    <url><loc>${APP_ORIGIN}/privacy-policy/</loc></url>
+    <url><loc>${publicOrigin}/</loc></url>
+    <url><loc>${publicOrigin}/pt-br/</loc></url>
+    <url><loc>${publicOrigin}/terms-of-use/</loc></url>
+    <url><loc>${publicOrigin}/privacy-policy/</loc></url>
 </urlset>
 `, {
         headers: {
@@ -188,6 +193,8 @@ function appSitemapXml() {
 }
 
 async function fetchFromPortfolio(request, url) {
+    const publicOrigin = url.origin;
+    const isExternalDomain = url.hostname !== PORTFOLIO_HOSTNAME;
     const upstreamUrl = new URL(url);
     const portfolioUrl = new URL(PORTFOLIO_ORIGIN);
     upstreamUrl.protocol = portfolioUrl.protocol;
@@ -202,14 +209,18 @@ async function fetchFromPortfolio(request, url) {
         return response;
     }
 
+    if (!isExternalDomain) {
+        return response;
+    }
+
     return new HTMLRewriter()
-        .on("head", new AppDomainHeadRewriter())
-        .on(".site-menu a", new AppDomainNavigationRewriter())
-        .on(".site-footer a", new SiteFooterSocialRewriter())
-        .on("a[href]", new UrlAttributeRewriter("href"))
-        .on("link[href]", new UrlAttributeRewriter("href"))
-        .on("form[action]", new UrlAttributeRewriter("action"))
-        .on("meta[content]", new UrlAttributeRewriter("content"))
+        .on("head", new ExternalDomainHeadRewriter())
+        .on(".site-menu a", new ExternalDomainNavigationRewriter())
+        .on(".site-footer nav", new SiteFooterActionsRewriter())
+        .on("a[href]", new UrlAttributeRewriter("href", publicOrigin))
+        .on("link[href]", new UrlAttributeRewriter("href", publicOrigin))
+        .on("form[action]", new UrlAttributeRewriter("action", publicOrigin))
+        .on("meta[content]", new UrlAttributeRewriter("content", publicOrigin))
         .transform(response);
 }
 
@@ -217,17 +228,17 @@ export default {
     async fetch(request) {
         const url = new URL(request.url);
 
-        if (url.hostname === `www.${APP_DOMAIN}`) {
-            url.hostname = APP_DOMAIN;
+        if (url.hostname.startsWith("www.") && url.hostname !== `www.${PORTFOLIO_HOSTNAME}`) {
+            url.hostname = url.hostname.slice(4);
             return Response.redirect(url.toString(), 301);
         }
 
         if (url.pathname === "/robots.txt") {
-            return appRobotsTxt();
+            return appRobotsTxt(url.origin);
         }
 
         if (url.pathname === "/sitemap.xml") {
-            return appSitemapXml();
+            return appSitemapXml(url.origin);
         }
 
         return fetchFromPortfolio(request, url);
