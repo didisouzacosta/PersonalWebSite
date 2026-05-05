@@ -150,7 +150,7 @@ class ExternalDomainNavigationRewriter {
     }
 }
 
-class SiteFooterActionsRewriter {
+class SiteFooterSocialLinkRewriter {
     element(element) {
         element.remove();
     }
@@ -216,7 +216,7 @@ async function fetchFromPortfolio(request, url) {
     return new HTMLRewriter()
         .on("head", new ExternalDomainHeadRewriter())
         .on(".site-menu a", new ExternalDomainNavigationRewriter())
-        .on(".site-footer nav", new SiteFooterActionsRewriter())
+        .on(".site-footer nav a", new SiteFooterSocialLinkRewriter())
         .on("a[href]", new UrlAttributeRewriter("href", publicOrigin))
         .on("link[href]", new UrlAttributeRewriter("href", publicOrigin))
         .on("form[action]", new UrlAttributeRewriter("action", publicOrigin))
