@@ -1006,9 +1006,55 @@ const videoJsonLd = youtubeEmbedUrl ? {
     const screenshotImages = Array.from(document.querySelectorAll<HTMLImageElement>('.screenshots figure img'));
     let currentScreenshotIndex = 0;
     let savedScrollPosition = { x: 0, y: 0 };
+    let isPageScrollLocked = false;
+    const savedBodyStyles = {
+        left: "",
+        overflowY: "",
+        position: "",
+        right: "",
+        top: "",
+        width: "",
+    };
+    let savedDocumentOverflow = "";
 
     const restoreScrollPosition = () => {
         window.scrollTo(savedScrollPosition.x, savedScrollPosition.y);
+    };
+
+    const lockPageScroll = () => {
+        if (isPageScrollLocked) return;
+
+        savedScrollPosition = { x: window.scrollX, y: window.scrollY };
+        savedDocumentOverflow = document.documentElement.style.overflow;
+        savedBodyStyles.left = document.body.style.left;
+        savedBodyStyles.overflowY = document.body.style.overflowY;
+        savedBodyStyles.position = document.body.style.position;
+        savedBodyStyles.right = document.body.style.right;
+        savedBodyStyles.top = document.body.style.top;
+        savedBodyStyles.width = document.body.style.width;
+
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${savedScrollPosition.y}px`;
+        document.body.style.left = `-${savedScrollPosition.x}px`;
+        document.body.style.right = "0";
+        document.body.style.width = "100%";
+        document.body.style.overflowY = "scroll";
+        isPageScrollLocked = true;
+    };
+
+    const unlockPageScroll = () => {
+        if (!isPageScrollLocked) return;
+
+        document.documentElement.style.overflow = savedDocumentOverflow;
+        document.body.style.position = savedBodyStyles.position;
+        document.body.style.top = savedBodyStyles.top;
+        document.body.style.left = savedBodyStyles.left;
+        document.body.style.right = savedBodyStyles.right;
+        document.body.style.width = savedBodyStyles.width;
+        document.body.style.overflowY = savedBodyStyles.overflowY;
+        isPageScrollLocked = false;
+        restoreScrollPosition();
     };
 
     const updateLightboxControls = () => {
@@ -1051,8 +1097,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
     screenshotImages.forEach((img, index) => {
         img.addEventListener('click', () => {
             const image = img as HTMLImageElement;
-            savedScrollPosition = { x: window.scrollX, y: window.scrollY };
             showScreenshot(index, "open");
+            lockPageScroll();
             dialog.showModal();
             closeBtn?.focus({ preventScroll: true });
             requestAnimationFrame(restoreScrollPosition);
@@ -1067,7 +1113,6 @@ const videoJsonLd = youtubeEmbedUrl ? {
 
     const closeLightbox = (source: string) => {
         dialog.close();
-        restoreScrollPosition();
         trackAnalyticsEvent("screenshot_closed", {
             source,
             location: "app-screenshots",
@@ -1086,6 +1131,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
         e.preventDefault();
         closeLightbox("escape");
     });
+
+    dialog.addEventListener("close", unlockPageScroll);
 
     dialog.addEventListener('keydown', (e) => {
         if (e.key === "ArrowLeft") {
