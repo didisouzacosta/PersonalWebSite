@@ -34,6 +34,12 @@ const EXTERNAL_DOMAIN_STYLE = `
         margin-left: auto !important;
     }
 
+    .site-footer .privacy-settings {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        border-left: 0 !important;
+    }
+
     @media (max-width: 760px) {
         .screenshots {
             justify-content: flex-start !important;
