@@ -5,79 +5,104 @@ const appId = "id6757385646";
 const title = "KuboRush - Block Puzzle";
 const pageTitle = "KuboRush | Block Puzzle Game for iOS";
 const description =
-    "KuboRush is a casual block puzzle game where you fit pieces, think fast, and clear the board at your own pace. Perfect for your spare 2 minutes — no pressure, just fun.";
-const favicon = "favicon-kuborush-32x32.png";
+    "KuboRush is a smart and relaxing block puzzle game for quick 2-minute breaks. Place your pieces, think strategically, and clear the board at your own pace.";
+const favicon = "apps/kuborush/favicon.png";
 const appIcon = "kuborush/app-icon.png";
 const socialImage = "/social/apps/kuborush-share-en.jpg";
 const socialImageAlt = "KuboRush app icon with block puzzle app summary.";
 
 const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
-const primaryKeyword = "block puzzle game";
-const secondaryKeywords = ["iOS puzzle game", "casual puzzle game", "weekly puzzle challenges"];
+const primaryKeyword = "puzzle";
+const secondaryKeywords = [
+    "relax",
+    "quick",
+    "blocks",
+    "cube",
+    "challenge",
+    "logic",
+    "board",
+    "competitive",
+    "pastime",
+    "brain",
+    "casual",
+];
 
 const screenshots = [
     {
-        url: "kuborush/screenshots/frame-1.png",
-        alt: "KuboRush block puzzle start screen for a quick casual game session.",
-        caption: "Start a short block puzzle session whenever you have a few minutes.",
+        url: {
+            en: "kuborush/screenshots/en/frame-1.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-1.png",
+        },
+        alt: "KuboRush start screen introducing quick, relaxing block puzzle breaks.",
+        caption: "Open KuboRush whenever you want a smart 2-minute puzzle break.",
     },
     {
-        url: "kuborush/screenshots/frame-2.png",
-        alt: "KuboRush board showing piece placement controls.",
-        caption: "Plan each move and keep control of the board.",
+        url: {
+            en: "kuborush/screenshots/en/frame-2.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-2.png",
+        },
+        alt: "KuboRush board with pieces ready to place, rotate, shuffle, or solve with a hint.",
+        caption: "Place pieces strategically and use Hint, Shuffle, or Rotate when you need control.",
     },
     {
-        url: "kuborush/screenshots/frame-3.png",
-        alt: "KuboRush combo screen with matched block puzzle pieces.",
-        caption: "Match pieces, clear space, and build stronger combos.",
+        url: {
+            en: "kuborush/screenshots/en/frame-3.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-3.png",
+        },
+        alt: "KuboRush gameplay showing cleared blocks, board strategy, and undo-friendly moves.",
+        caption: "Clear the board at your pace and undo up to your last 3 moves if you change your mind.",
     },
     {
-        url: "kuborush/screenshots/frame-4.png",
-        alt: "KuboRush competitive modes with Hall of Fame and Weekly Rush.",
-        caption: "Compete through Hall of Fame rankings and Weekly Rush challenges.",
+        url: {
+            en: "kuborush/screenshots/en/frame-4.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-4.png",
+        },
+        alt: "KuboRush competitive screens for Hall of Fame rankings and Weekly Rush events.",
+        caption: "Show your skills in the Hall of Fame or join the Weekly Rush event.",
     },
 ];
 
 const facts = [
     { label: "Platform", value: "iOS" },
-    { label: "Session length", value: "Quick play" },
-    { label: "Modes", value: "Hall of Fame + Weekly Rush" },
+    { label: "Break length", value: "2-minute sessions" },
+    { label: "Play style", value: "Relaxed strategy" },
+    { label: "Competition", value: "Hall of Fame + Weekly Rush" },
 ];
 
 const features = [
     {
-        title: "No-pressure puzzle play",
-        description: "Fit blocks and clear the board at your own pace, without a timer pushing every move.",
+        title: "Full Move Control",
+        description: "Stuck? Use Hint for the best move, Shuffle for new pieces, or Rotate for the perfect fit.",
     },
     {
-        title: "Helpful power-ups",
-        description: "Use Hint, Shuffle, Rotate, and Undo when you want a nudge or a second chance.",
+        title: "Play Fearlessly",
+        description: "Made a mistake? Undo lets you reverse up to your last 3 moves so you can keep experimenting.",
     },
     {
-        title: "Competitive challenges",
-        description: "Climb Hall of Fame leaderboards and return for Weekly Rush events with fresh goals.",
+        title: "Friendly Competition",
+        description: "Show off your skills with friends in the Hall of Fame or join the exciting Weekly Rush event.",
     },
 ];
 
 const useCases = [
     {
-        title: "Short breaks",
-        description: "Play a satisfying puzzle round during spare minutes without committing to a long session.",
+        title: "Quick breaks",
+        description: "Turn short pauses into smart, relaxing puzzle moments that recharge your mind.",
     },
     {
-        title: "Strategy practice",
-        description: "Experiment with placement, rotation, and undo to learn better board-clearing patterns.",
+        title: "Relaxed strategy",
+        description: "Place pieces, plan ahead, and clear the board at your own pace with no stress.",
     },
 ];
 
 const faq = [
     {
         question: "What is KuboRush?",
-        answer: "KuboRush is a casual block puzzle game where you fit pieces, think fast, and clear the board at your own pace — no time limits, no pressure. It’s designed to be the most fun 2 minutes of your day.",
+        answer: "KuboRush is a smart and relaxing block puzzle game made for quick 2-minute breaks. Place your pieces, think strategically, and clear the board at your own pace.",
     },
     {
         question: "What power-ups are available?",
-        answer: "KuboRush has four power-ups to keep you going: <strong>Hint</strong> gives you a nudge when you’re stuck, <strong>Shuffle</strong> brings a fresh set of pieces, <strong>Rotate</strong> lets you spin a piece to find the perfect fit, and <strong>Undo</strong> lets you take back up to 3 moves so you can experiment freely.",
+        answer: "KuboRush gives you full move control: <strong>Hint</strong> shows the best move when you are stuck, <strong>Shuffle</strong> brings new pieces, <strong>Rotate</strong> helps you find the perfect fit, and <strong>Undo</strong> reverses up to your last 3 moves.",
     },
     {
         question: "What are the competitive modes?",

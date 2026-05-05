@@ -63,6 +63,20 @@ const alternateOgLocales = alternateLocales
     .filter((alternate) => alternate.lang !== 'x-default' && alternate.lang !== documentLang)
     .map((alternate) => alternate.lang === 'pt-BR' ? 'pt_BR' : 'en_US');
 const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const remoteAssetBaseUrl = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/";
+const resolveFaviconUrl = (faviconPath?: string) => {
+    const path = faviconPath ?? "favicon/favicon-32x32.png";
+
+    if (path.startsWith("http://") || path.startsWith("https://")) {
+        return path;
+    }
+
+    const cleanPath = path.replace(/^\/+/, "");
+    const bucketPath = cleanPath.includes("/") ? cleanPath : `favicon/${cleanPath}`;
+
+    return new URL(bucketPath, remoteAssetBaseUrl).toString();
+};
+const faviconUrl = resolveFaviconUrl(favicon);
 const isPtBr = lang === 'pt-br';
 const navigationItems = [
     { label: 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
@@ -106,7 +120,7 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
             })();
         </script>
 
-        <link rel="icon" type="image/png" href={`https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/favicon/${favicon ?? "favicon-32x32.png"}`} />
+        <link rel="icon" type="image/png" href={faviconUrl} />
         <meta name="generator" content={Astro.generator} />
         <meta name="robots" content={robots}>
         <link rel="canonical" href={canonical}>

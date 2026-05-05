@@ -14,8 +14,8 @@ export function GET() {
             "",
             "## Apps",
             `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Dual-camera iPhone app that records front and back cameras at the same time for reactions, reviews, TikTok, Reels, and Shorts.`,
-            `- [KuboRush](${absoluteUrl("/apps/kuborush/")}): Casual block puzzle game for iOS with power-ups and weekly competition.`,
-            `- [LoopSize](${absoluteUrl("/apps/loopsize/")}): Ring size converter for iPhone with multiple international standards and PDF export.`,
+            `- [KuboRush](${absoluteUrl("/apps/kuborush/")}): Smart and relaxing block puzzle game for quick 2-minute breaks, with Hint, Shuffle, Rotate, Undo, Hall of Fame, and Weekly Rush.`,
+            `- [LoopSize](${absoluteUrl("/apps/loopsize/")}): Ring size finder and converter for BR, US, UK, EU/ISO, JP, CN, and IN standards, with precise dimensions, iCloud-synced saved sizes, and PDF sharing.`,
             "",
         ].join("\n"),
         {

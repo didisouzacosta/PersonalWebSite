@@ -4,8 +4,8 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 const appId = 'id6749704116'
 const title = 'LoopSize - Conversor de Tamanho de Anel'
 const pageTitle = 'LoopSize | Conversor de Tamanho de Anéis para iPhone'
-const description = 'LoopSize é um conversor de tamanho de anéis para iPhone com padrões BR, US, UK, EU/ISO, JP, CN e IN, medidas salvas e exportação em PDF.'
-const favicon = "favicon-loopsize-32x32.png"
+const description = 'LoopSize facilita encontrar e compartilhar seu tamanho de anel ideal com conversões instantâneas, dimensões precisas, tamanhos salvos, sincronização com iCloud e PDF.'
+const favicon = "apps/loopsize/favicon.png"
 const appIcon = "loopsize/app-icon.png"
 const socialImage = "/social/apps/loopsize-share-pt-br.jpg"
 const socialImageAlt = "Ícone do app LoopSize com resumo do conversor de tamanho de anéis."
@@ -13,86 +13,128 @@ const socialImageAlt = "Ícone do app LoopSize com resumo do conversor de tamanh
 const metas = [
     { name: "apple-itunes-app", content: `app-id=6749704116` }
 ]
-const primaryKeyword = "conversor de tamanho de anéis"
-const secondaryKeywords = ["app de tamanho de anel para iPhone", "medição de anel", "exportar tamanho de anel em PDF"]
+const primaryKeyword = "tamanho de anel"
+const secondaryKeywords = [
+    "medidor de anel",
+    "medição de anel",
+    "conversor de anel",
+    "ferramenta para joias",
+    "tabela de anéis",
+    "descobrir tamanho de anel",
+]
 
 const screenshots = [
     {
-        url: 'loopsize/screenshots/frame-1.png',
-        alt: 'Tela inicial do LoopSize para encontrar o tamanho de anel ideal.',
-        caption: 'Comece por um fluxo simples de medição no iPhone.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-1.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-1.png',
+        },
+        alt: 'Tela inicial do LoopSize para encontrar e compartilhar o tamanho de anel ideal.',
+        caption: 'Comece por um fluxo simples para encontrar seu tamanho de anel ideal.',
     },
     {
-        url: 'loopsize/screenshots/frame-2.png',
-        alt: 'Tela de dimensão do anel no LoopSize.',
-        caption: 'Meça dimensões do anel e compare padrões internacionais.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-2.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-2.png',
+        },
+        alt: 'Tela de conversão do LoopSize com padrões BR, US, UK, EU/ISO, JP, CN e IN.',
+        caption: 'Converta instantaneamente entre os padrões BR, US, UK, EU/ISO, JP, CN e IN.',
     },
     {
-        url: 'loopsize/screenshots/frame-3.png',
-        alt: 'Tela de dimensão do dedo no LoopSize.',
-        caption: 'Use a medida do dedo quando não tiver um anel por perto.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-3.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-3.png',
+        },
+        alt: 'Tela de dimensões do LoopSize com valores precisos de diâmetro e circunferência.',
+        caption: 'Confira diâmetro e circunferência com alta precisão.',
     },
     {
-        url: 'loopsize/screenshots/frame-4.png',
-        alt: 'Tela de medidas salvas no LoopSize.',
-        caption: 'Salve medidas para consultar novamente depois.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-4.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-4.png',
+        },
+        alt: 'Tela de tamanhos de anel salvos no LoopSize com medidas sincronizadas pelo iCloud.',
+        caption: 'Salve seus tamanhos de anel e mantenha tudo sincronizado com o iCloud.',
     },
     {
-        url: 'loopsize/screenshots/frame-5.png',
-        alt: 'Alternância de unidade entre milímetros e polegadas no LoopSize.',
-        caption: 'Alterne entre milímetros e polegadas conforme sua referência.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-5.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-5.png',
+        },
+        alt: 'Tela de padrões de dimensão do LoopSize para comparar detalhes de tamanhos de anel.',
+        caption: 'Veja todos os padrões de dimensão quando precisar de uma comparação completa.',
     },
     {
-        url: 'loopsize/screenshots/frame-6.png',
-        alt: 'Tela de exportação em PDF do LoopSize para medidas de anel.',
-        caption: 'Exporte uma folha de medição quando precisar de uma referência impressa.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-6.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-6.png',
+        },
+        alt: 'Tela de compartilhamento em PDF do LoopSize com personalização de marca para medidas de anel.',
+        caption: 'Compartilhe medidas em PDF e personalize o arquivo com sua marca.',
     }
 ]
 
 const facts = [
     { label: "Plataforma", value: "iPhone" },
     { label: "Padrões", value: "BR, US, UK, EU/ISO, JP, CN, IN" },
-    { label: "Exportação", value: "PDF imprimível" },
+    { label: "Dimensões", value: "Diâmetro + circunferência" },
+    { label: "Compartilhamento", value: "PDF personalizado" },
 ]
 
 const features = [
     {
-        title: "Conversão internacional",
-        description: "Converta tamanhos de anéis entre BR, US, UK, EU/ISO, JP, CN e IN em um só lugar.",
+        title: "Conversão instantânea",
+        description: "Converta instantaneamente entre os padrões BR, US, UK, EU/ISO, JP, CN e IN.",
     },
     {
-        title: "Medidas salvas",
-        description: "Mantenha medidas importantes organizadas para comparar ou compartilhar depois.",
+        title: "Dimensões precisas",
+        description: "Confira diâmetro e circunferência com alta precisão ao comparar medidas.",
     },
     {
-        title: "Exportação em PDF",
-        description: "Gere uma referência imprimível com orientação de escala real para saída em A4.",
+        title: "Compartilhamento em PDF",
+        description: "Compartilhe suas medidas em um PDF limpo quando precisar de referência para você, uma joalheria ou um presente.",
+    },
+    {
+        title: "Pro: PDFs com marca",
+        description: "Personalize o PDF exportado com sua marca para uma entrega mais profissional.",
+    },
+    {
+        title: "Pro: tamanhos salvos",
+        description: "Salve seus tamanhos de anel e sincronize tudo com o iCloud nos seus dispositivos.",
+    },
+    {
+        title: "Pro: padrões de dimensão",
+        description: "Veja todos os padrões de dimensão em um só lugar para comparar tamanhos internacionais mais rápido.",
     },
 ]
 
 const useCases = [
     {
-        title: "Comprar anéis online",
-        description: "Compare sistemas de tamanho regionais antes de comprar em uma loja internacional.",
+        title: "Encontrar seu tamanho",
+        description: "Identifique o tamanho de anel correto no seu padrão preferido e compare com tabelas internacionais.",
     },
     {
-        title: "Presentes e medidas compartilhadas",
-        description: "Salve e exporte medidas quando precisar de uma referência limpa para joalheria ou presente.",
+        title: "Compartilhar medidas",
+        description: "Envie um PDF com suas medidas ao comprar joias, planejar um presente ou conversar com uma joalheria.",
     },
 ]
 
 const faq = [
     {
         question: "Quais padrões de tamanho de anel o LoopSize suporta?",
-        answer: "Suportamos BR, US, UK, EU/ISO, JP, CN e IN. Você pode alternar entre eles a qualquer momento.",
+        answer: "LoopSize converte instantaneamente entre os padrões BR, US, UK, EU/ISO, JP, CN e IN.",
     },
     {
         question: "Posso salvar minhas medidas?",
-        answer: "Sim! Com o plano <strong>Pro</strong>, você pode salvar medidas e exportá-las como PDF personalizado.",
+        answer: "Sim. Com o <strong>LoopSize Pro</strong>, você pode salvar seus tamanhos de anel e sincronizar tudo com o iCloud.",
     },
     {
-        question: "Os tamanhos impressos correspondem ao tamanho real?",
-        answer: "Sim. O PDF utiliza uma conversão mm→pt em escala real para A4. Recomendamos <em>verificar</em> com um cartão de crédito para confirmar a escala na primeira impressão.",
+        question: "Posso compartilhar meu tamanho de anel?",
+        answer: "Sim. LoopSize permite compartilhar suas medidas em PDF, e usuários Pro podem personalizar o PDF com a própria marca.",
+    },
+    {
+        question: "LoopSize mostra as dimensões do anel?",
+        answer: "Sim. Você pode conferir diâmetro e circunferência com alta precisão, além de todos os padrões de dimensão com LoopSize Pro.",
     },
     {
         question: "Funciona offline?",

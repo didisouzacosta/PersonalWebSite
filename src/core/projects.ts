@@ -59,12 +59,12 @@ export const portfolioProjects: PortfolioProject[] = [
         isEnabled: true,
         descriptions: {
             en: {
-                card: "Block puzzle game",
-                resume: "KuboRush is a casual block puzzle game for iOS where you fit pieces, think fast, and clear the board at your own pace. Includes competitive leaderboards and weekly challenges.",
+                card: "Quick relaxing block puzzle",
+                resume: "KuboRush is a smart and relaxing block puzzle game for quick 2-minute breaks. Place pieces, use Hint, Shuffle, Rotate, and Undo, then compete in Hall of Fame and Weekly Rush.",
             },
             "pt-br": {
-                card: "Jogo puzzle de blocos",
-                resume: "KuboRush é um jogo casual de quebra-cabeça de blocos para iOS. Encaixe peças, pense rápido e limpe o tabuleiro no seu ritmo. Inclui ranking global e desafios semanais.",
+                card: "Puzzle de blocos relaxante",
+                resume: "KuboRush é um jogo inteligente e relaxante de quebra-cabeça de blocos para pausas rápidas de 2 minutos. Encaixe peças, use Dica, Embaralhar, Girar e Desfazer, e compita no Hall da Fama e no Rush Semanal.",
             },
         },
     },
@@ -79,11 +79,11 @@ export const portfolioProjects: PortfolioProject[] = [
         descriptions: {
             en: {
                 card: "Ring size converter",
-                resume: "LoopSize makes it easy to measure and convert ring sizes in BR, US, UK, EU/ISO, JP, CN & IN. Save, share, and export precise measurements in PDF.",
+                resume: "LoopSize makes it easy to find and share your perfect ring size with instant BR, US, UK, EU/ISO, JP, CN, and IN conversion, precise dimensions, iCloud-synced saved sizes, and PDF sharing.",
             },
             "pt-br": {
                 card: "Conversor de tamanho de anéis",
-                resume: "O LoopSize facilita a medição e a conversão de tamanhos de anéis nos seguintes países: Brasil, EUA, Reino Unido, UE/ISO, Japão, China e Índia. Salve, compartilhe e exporte medidas precisas em PDF.",
+                resume: "LoopSize facilita encontrar e compartilhar seu tamanho de anel ideal com conversão instantânea entre BR, US, UK, EU/ISO, JP, CN e IN, dimensões precisas, tamanhos salvos com iCloud e PDF.",
             },
         },
     },

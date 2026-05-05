@@ -4,8 +4,8 @@ import AppTemplate from "../../../components/app/AppTemplate.astro";
 const appId = 'id6749704116'
 const title = 'LoopSize - Ring Size Converter'
 const pageTitle = 'LoopSize | Ring Size Converter for iPhone'
-const description = 'LoopSize is an iPhone ring size converter for BR, US, UK, EU/ISO, JP, CN, and IN sizes, with saved measurements and PDF export.'
-const favicon = "favicon-loopsize-32x32.png"
+const description = 'LoopSize makes it easy to find and share your perfect ring size with instant conversions, precise dimensions, saved sizes, iCloud sync, and PDF sharing.'
+const favicon = "apps/loopsize/favicon.png"
 const appIcon = "loopsize/app-icon.png"
 const socialImage = "/social/apps/loopsize-share-en.jpg"
 const socialImageAlt = "LoopSize app icon with ring size converter app summary."
@@ -13,86 +13,128 @@ const socialImageAlt = "LoopSize app icon with ring size converter app summary."
 const metas = [
     { name: "apple-itunes-app", content: `app-id=6749704116` }
 ]
-const primaryKeyword = "ring size converter"
-const secondaryKeywords = ["iPhone ring size app", "ring measurement", "ring size PDF export"]
+const primaryKeyword = "ring size"
+const secondaryKeywords = [
+    "ring sizer",
+    "ring measurement",
+    "ring converter",
+    "jewelry tool",
+    "ring chart",
+    "ring size finder",
+]
 
 const screenshots = [
     {
-        url: 'loopsize/screenshots/frame-1.png',
-        alt: 'LoopSize home screen for finding the perfect ring size.',
-        caption: 'Start from a simple ring size workflow on iPhone.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-1.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-1.png',
+        },
+        alt: 'LoopSize home screen for finding and sharing the perfect ring size.',
+        caption: 'Start from a simple workflow to find your perfect ring size.',
     },
     {
-        url: 'loopsize/screenshots/frame-2.png',
-        alt: 'LoopSize ring dimension screen for measuring a ring.',
-        caption: 'Measure ring dimensions and compare international sizes.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-2.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-2.png',
+        },
+        alt: 'LoopSize conversion screen showing BR, US, UK, EU/ISO, JP, CN, and IN ring standards.',
+        caption: 'Convert instantly between BR, US, UK, EU/ISO, JP, CN, and IN standards.',
     },
     {
-        url: 'loopsize/screenshots/frame-3.png',
-        alt: 'LoopSize finger dimension screen for measuring finger size.',
-        caption: 'Use finger dimensions when you do not have a ring nearby.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-3.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-3.png',
+        },
+        alt: 'LoopSize dimensions screen with precise diameter and circumference values.',
+        caption: 'Check diameter and circumference with high precision.',
     },
     {
-        url: 'loopsize/screenshots/frame-4.png',
-        alt: 'LoopSize saved measurements screen.',
-        caption: 'Save measurements so you can return to them later.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-4.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-4.png',
+        },
+        alt: 'LoopSize saved ring sizes screen with iCloud-synced measurements.',
+        caption: 'Save your ring sizes and keep them synced with iCloud.',
     },
     {
-        url: 'loopsize/screenshots/frame-5.png',
-        alt: 'LoopSize unit switch between millimeters and inches.',
-        caption: 'Switch between millimeters and inches for familiar measurements.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-5.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-5.png',
+        },
+        alt: 'LoopSize dimension standards screen for comparing ring size details.',
+        caption: 'See all dimension standards when you need a complete comparison.',
     },
     {
-        url: 'loopsize/screenshots/frame-6.png',
-        alt: 'LoopSize PDF export screen for saved ring measurements.',
-        caption: 'Export a measurement sheet when you need a printable reference.',
+        url: {
+            en: 'loopsize/screenshots/en/frame-6.png',
+            ptBr: 'loopsize/screenshots/ptBR/frame-6.png',
+        },
+        alt: 'LoopSize PDF sharing screen with brand personalization for ring measurements.',
+        caption: 'Share measurements in PDF and personalize the file with your brand.',
     }
 ]
 
 const facts = [
     { label: "Platform", value: "iPhone" },
     { label: "Standards", value: "BR, US, UK, EU/ISO, JP, CN, IN" },
-    { label: "Export", value: "Printable PDF" },
+    { label: "Dimensions", value: "Diameter + circumference" },
+    { label: "Sharing", value: "Personalized PDF" },
 ]
 
 const features = [
     {
-        title: "International size conversion",
-        description: "Convert ring sizes across BR, US, UK, EU/ISO, JP, CN, and IN standards from one place.",
+        title: "Instant size conversion",
+        description: "Convert instantly between BR, US, UK, EU/ISO, JP, CN, and IN ring size standards.",
     },
     {
-        title: "Saved measurements",
-        description: "Keep important measurements organized so you can compare or share them later.",
+        title: "Precise dimensions",
+        description: "Check diameter and circumference with high precision when comparing measurements.",
     },
     {
-        title: "PDF export",
-        description: "Generate a printable measurement reference with true-to-scale guidance for A4 output.",
+        title: "PDF sharing",
+        description: "Share your measurements in a clean PDF whenever you need a reference for yourself, a jeweler, or a gift.",
+    },
+    {
+        title: "Pro branded PDFs",
+        description: "Personalize the exported PDF with your own brand for a more professional handoff.",
+    },
+    {
+        title: "Pro saved sizes",
+        description: "Save your ring sizes and keep them synced with iCloud across your devices.",
+    },
+    {
+        title: "Pro dimension standards",
+        description: "See all dimension standards in one place for faster international comparisons.",
     },
 ]
 
 const useCases = [
     {
-        title: "Buying rings online",
-        description: "Compare regional sizing systems before ordering from an international store.",
+        title: "Finding your size",
+        description: "Identify the right ring size from your preferred standard and compare it against international charts.",
     },
     {
-        title: "Gifts and shared measurements",
-        description: "Save and export measurements when you need a clean reference for a jeweler or gift.",
+        title: "Sharing measurements",
+        description: "Send a PDF with your measurements when buying jewelry, planning a gift, or working with a jeweler.",
     },
 ]
 
 const faq = [
     {
         question: "Which ring size standards does LoopSize support?",
-        answer: "We support BR, US, UK, EU/ISO, JP, CN, and IN. You can switch between them at any time.",
+        answer: "LoopSize converts instantly between BR, US, UK, EU/ISO, JP, CN, and IN ring size standards.",
     },
     {
         question: "Can I save my measurements?",
-        answer: "Yes! With the <strong>Pro</strong> plan, you can save measurements and export them as a custom PDF.",
+        answer: "Yes. With <strong>LoopSize Pro</strong>, you can save your ring sizes and sync them with iCloud.",
     },
     {
-        question: "Do the printed sizes match the real size?",
-        answer: "Yes. The PDF uses a true-to-scale mm→pt conversion for A4. We recommend <em>checking</em> with a credit card to confirm the scale on your first print.",
+        question: "Can I share my ring size?",
+        answer: "Yes. LoopSize lets you share your measurements in PDF, and Pro users can personalize the PDF with their brand.",
+    },
+    {
+        question: "Does LoopSize show ring dimensions?",
+        answer: "Yes. You can check diameter and circumference with high precision, plus all dimension standards with LoopSize Pro.",
     },
     {
         question: "Does it work offline?",

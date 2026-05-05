@@ -5,79 +5,104 @@ const appId = "id6757385646";
 const title = "KuboRush - Quebra-Cabeça de Blocos";
 const pageTitle = "KuboRush | Jogo de Quebra-Cabeça de Blocos para iOS";
 const description =
-    "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu próprio ritmo. Perfeito para seus 2 minutos livres — sem pressão, só diversão.";
-const favicon = "favicon-kuborush-32x32.png";
+    "KuboRush é um jogo inteligente e relaxante de quebra-cabeça de blocos para pausas rápidas de 2 minutos. Encaixe peças, pense com estratégia e limpe o tabuleiro no seu ritmo.";
+const favicon = "apps/kuborush/favicon.png";
 const appIcon = "kuborush/app-icon.png";
 const socialImage = "/social/apps/kuborush-share-pt-br.jpg";
 const socialImageAlt = "Ícone do app KuboRush com resumo do jogo de blocos.";
 
 const metas = [{ name: "apple-itunes-app", content: `app-id=6757385646` }];
-const primaryKeyword = "jogo de quebra-cabeça de blocos";
-const secondaryKeywords = ["jogo puzzle para iOS", "jogo casual de blocos", "desafios semanais de puzzle"];
+const primaryKeyword = "puzzle";
+const secondaryKeywords = [
+    "relaxar",
+    "rápido",
+    "blocos",
+    "cubo",
+    "desafio",
+    "lógica",
+    "tabuleiro",
+    "competitivo",
+    "passatempo",
+    "cérebro",
+    "casual",
+];
 
 const screenshots = [
     {
-        url: "kuborush/screenshots/frame-1.png",
-        alt: "Tela inicial do KuboRush para uma partida casual rápida de blocos.",
-        caption: "Comece uma partida curta sempre que tiver alguns minutos.",
+        url: {
+            en: "kuborush/screenshots/en/frame-1.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-1.png",
+        },
+        alt: "Tela inicial do KuboRush apresentando pausas rápidas e relaxantes de puzzle de blocos.",
+        caption: "Abra o KuboRush sempre que quiser uma pausa inteligente de 2 minutos.",
     },
     {
-        url: "kuborush/screenshots/frame-2.png",
-        alt: "Tabuleiro do KuboRush com controles de posicionamento das peças.",
-        caption: "Planeje cada jogada e mantenha o controle do tabuleiro.",
+        url: {
+            en: "kuborush/screenshots/en/frame-2.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-2.png",
+        },
+        alt: "Tabuleiro do KuboRush com peças prontas para encaixar, girar, embaralhar ou resolver com dica.",
+        caption: "Encaixe peças com estratégia e use Dica, Embaralhar ou Girar quando precisar de controle.",
     },
     {
-        url: "kuborush/screenshots/frame-3.png",
-        alt: "Tela de combo do KuboRush com peças combinadas no quebra-cabeça.",
-        caption: "Combine peças, libere espaço e crie combos melhores.",
+        url: {
+            en: "kuborush/screenshots/en/frame-3.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-3.png",
+        },
+        alt: "Jogabilidade do KuboRush com blocos limpos, estratégia de tabuleiro e jogadas com desfazer.",
+        caption: "Limpe o tabuleiro no seu ritmo e desfaça até seus 3 últimos movimentos quando mudar de ideia.",
     },
     {
-        url: "kuborush/screenshots/frame-4.png",
-        alt: "Modos competitivos do KuboRush com Hall da Fama e Rush Semanal.",
-        caption: "Compita no Hall da Fama e nos desafios do Rush Semanal.",
+        url: {
+            en: "kuborush/screenshots/en/frame-4.png",
+            ptBr: "kuborush/screenshots/ptBR/frame-4.png",
+        },
+        alt: "Telas competitivas do KuboRush com rankings do Hall da Fama e eventos Rush Semanal.",
+        caption: "Mostre suas habilidades no Hall da Fama ou participe do evento Rush Semanal.",
     },
 ];
 
 const facts = [
     { label: "Plataforma", value: "iOS" },
-    { label: "Sessões", value: "Partidas rápidas" },
-    { label: "Modos", value: "Hall da Fama + Rush Semanal" },
+    { label: "Pausas", value: "Sessões de 2 minutos" },
+    { label: "Estilo", value: "Estratégia relaxante" },
+    { label: "Competição", value: "Hall da Fama + Rush Semanal" },
 ];
 
 const features = [
     {
-        title: "Puzzle sem pressão",
-        description: "Encaixe blocos e limpe o tabuleiro no seu ritmo, sem um cronômetro pressionando cada movimento.",
+        title: "Controle total das jogadas",
+        description: "Travou? Use Dica para a melhor jogada, Embaralhar para novas peças ou Girar para o encaixe perfeito.",
     },
     {
-        title: "Power-ups úteis",
-        description: "Use Dica, Embaralhar, Girar e Desfazer quando quiser uma ajuda ou uma segunda chance.",
+        title: "Jogue sem medo",
+        description: "Errou? Desfazer permite reverter até seus 3 últimos movimentos para você continuar experimentando.",
     },
     {
-        title: "Desafios competitivos",
-        description: "Suba nos rankings do Hall da Fama e volte para eventos semanais com novos objetivos.",
+        title: "Competição amigável",
+        description: "Mostre suas habilidades com amigos no Hall da Fama ou participe do evento Rush Semanal.",
     },
 ];
 
 const useCases = [
     {
-        title: "Intervalos curtos",
-        description: "Jogue uma rodada satisfatória em poucos minutos, sem precisar começar uma sessão longa.",
+        title: "Pausas rápidas",
+        description: "Transforme pausas curtas em momentos de puzzle inteligentes e relaxantes para recarregar a mente.",
     },
     {
-        title: "Treino de estratégia",
-        description: "Experimente posicionamento, rotação e desfazer para aprender padrões melhores de limpeza do tabuleiro.",
+        title: "Estratégia tranquila",
+        description: "Encaixe peças, planeje à frente e limpe o tabuleiro no seu próprio ritmo, sem estresse.",
     },
 ];
 
 const faq = [
     {
         question: "O que é KuboRush?",
-        answer: "KuboRush é um jogo casual de quebra-cabeça de blocos onde você encaixa peças, pensa rápido e limpa o tabuleiro no seu ritmo — sem limite de tempo, sem pressão. Feito para ser os 2 minutos mais divertidos do seu dia.",
+        answer: "KuboRush é um jogo inteligente e relaxante de quebra-cabeça de blocos feito para pausas rápidas de 2 minutos. Encaixe peças, pense com estratégia e limpe o tabuleiro no seu ritmo.",
     },
     {
         question: "Quais power-ups estão disponíveis?",
-        answer: "KuboRush tem quatro power-ups: <strong>Dica</strong> te ajuda quando você está travado, <strong>Embaralhar</strong> traz um novo conjunto de peças, <strong>Girar</strong> permite rotacionar uma peça para o encaixe perfeito, e <strong>Desfazer</strong> permite reverter até 3 movimentos.",
+        answer: "KuboRush dá controle total das jogadas: <strong>Dica</strong> mostra a melhor jogada quando você está travado, <strong>Embaralhar</strong> traz novas peças, <strong>Girar</strong> ajuda a encontrar o encaixe perfeito e <strong>Desfazer</strong> reverte até seus 3 últimos movimentos.",
     },
     {
         question: "Quais são os modos competitivos?",
