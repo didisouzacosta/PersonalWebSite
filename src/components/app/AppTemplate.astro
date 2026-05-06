@@ -51,6 +51,7 @@ interface AppScreenshot {
 
 interface Props {
     appId?: string,
+    testFlightUrl?: string,
     title: string,
     pageTitle?: string,
     appName?: string,
@@ -76,6 +77,7 @@ interface Props {
 
 const {
     appId,
+    testFlightUrl,
     title,
     pageTitle,
     appName,
@@ -103,6 +105,10 @@ const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
 const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
 const structuredAppName = appName ?? title.split(/[-|]/)[0].trim();
+const testFlightLabel = seoLanguage === "pt-br" ? "Entrar no TestFlight" : "Join TestFlight";
+const testFlightAriaLabel = seoLanguage === "pt-br"
+    ? `Entrar no beta do ${structuredAppName} pelo TestFlight`
+    : `Join the ${structuredAppName} TestFlight beta`;
 const legalBasePath = (currentPath.startsWith('/pt-br/')
     ? currentPath.replace('/pt-br', '')
     : currentPath).replace(/\/$/, '');
@@ -210,28 +216,53 @@ const videoJsonLd = youtubeEmbedUrl ? {
                 />
                 <h1 class="app-title">{title}</h1>
                 <p class="app-subtitle">{description}</p>
-                {appId && (
-                    <a
-                        href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
-                        aria-label=`Download ${title} on the App Store`
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="app-store-link no-ext-icon"
-                        data-analytics-event="app_store_clicked"
-                        data-analytics-location="app-header"
-                        data-analytics-label={structuredAppName}
-                        data-analytics-project={structuredAppName.toLowerCase()}
-                    >
-                        <img
-                            src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
-                            alt="Download on the App Store"
-                            loading="lazy"
-                            decoding="async"
-                            class="app-store-badge"
-                            width="160"
-                            height="54"
-                        />
-                    </a>
+                {(appId || testFlightUrl) && (
+                    <div class="app-download-actions">
+                        {appId && (
+                            <a
+                                href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+                                aria-label=`Download ${title} on the App Store`
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="app-store-link no-ext-icon"
+                                data-analytics-event="app_store_clicked"
+                                data-analytics-location="app-header"
+                                data-analytics-label={structuredAppName}
+                                data-analytics-project={structuredAppName.toLowerCase()}
+                            >
+                                <img
+                                    src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1687219200"
+                                    alt="Download on the App Store"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="app-store-badge"
+                                    width="160"
+                                    height="54"
+                                />
+                            </a>
+                        )}
+                        {testFlightUrl && (
+                            <a
+                                href={testFlightUrl}
+                                aria-label={testFlightAriaLabel}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="testflight-link no-ext-icon"
+                                data-analytics-event="testflight_clicked"
+                                data-analytics-location="app-header"
+                                data-analytics-label={structuredAppName}
+                                data-analytics-project={structuredAppName.toLowerCase()}
+                            >
+                                <span class="testflight-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false">
+                                        <path d="M12 4.4a7.6 7.6 0 1 0 7.6 7.6A7.61 7.61 0 0 0 12 4.4Zm0 12.32A4.72 4.72 0 1 1 16.72 12 4.72 4.72 0 0 1 12 16.72Z" />
+                                        <path d="M12 1.9a1.35 1.35 0 1 1-1.35 1.35A1.35 1.35 0 0 1 12 1.9Zm0 17.5a1.35 1.35 0 1 1-1.35 1.35A1.35 1.35 0 0 1 12 19.4Zm-8.75-8.75A1.35 1.35 0 1 1 1.9 12a1.35 1.35 0 0 1 1.35-1.35Zm17.5 0A1.35 1.35 0 1 1 19.4 12a1.35 1.35 0 0 1 1.35-1.35Z" />
+                                    </svg>
+                                </span>
+                                <span>{testFlightLabel}</span>
+                            </a>
+                        )}
+                    </div>
                 )}
             </div>
         </header>
@@ -458,15 +489,25 @@ const videoJsonLd = youtubeEmbedUrl ? {
         text-wrap: pretty;
     }
 
-    .app-store-link {
+    .app-download-actions {
         position: relative;
         z-index: 1;
-        display: inline-flex;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
         margin-top: 6px;
+    }
+
+    .app-store-link {
+        position: relative;
+        display: inline-flex;
         transition: opacity 0.2s ease-out, transform 0.2s ease-out;
     }
 
-    .app-store-link:hover {
+    .app-store-link:hover,
+    .testflight-link:hover {
         opacity: 0.75;
         transform: translateY(-1px);
     }
@@ -474,6 +515,49 @@ const videoJsonLd = youtubeEmbedUrl ? {
     .app-store-badge {
         height: 44px;
         width: auto;
+    }
+
+    .testflight-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid color-mix(in srgb, #0a84ff 82%, var(--border));
+        border-radius: var(--radius-btn);
+        background: #0a84ff;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0;
+        box-shadow: 0 10px 24px color-mix(in srgb, #0a84ff 24%, transparent);
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    }
+
+    .testflight-link:focus-visible {
+        outline: 2px solid color-mix(in srgb, #0a84ff 72%, white);
+        outline-offset: 4px;
+    }
+
+    .testflight-link:hover {
+        box-shadow: 0 12px 28px color-mix(in srgb, #0a84ff 30%, transparent);
+    }
+
+    .testflight-icon {
+        display: inline-flex;
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        color: currentColor;
+    }
+
+    .testflight-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
     }
 
     /* Product facts */
