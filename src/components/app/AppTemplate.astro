@@ -171,6 +171,13 @@ const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
     { name: structuredAppName, path: currentPath },
 ]);
+const resolveSocialImageUrl = (image?: string) => {
+    if (!image) return `${appAssetBaseUrl}${appIcon}`;
+    if (image.startsWith("http://") || image.startsWith("https://") || image.startsWith("/")) return image;
+
+    return `${appAssetBaseUrl}${image}`;
+};
+const resolvedSocialImage = resolveSocialImageUrl(socialImage);
 const videoJsonLd = youtubeEmbedUrl ? {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -194,7 +201,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
     lang={lang}
     canonicalPath={currentPath}
     alternateLocales={getAppAlternates(currentPath)}
-    ogImage={socialImage ?? `${appAssetBaseUrl}${appIcon}`}
+    ogImage={resolvedSocialImage}
     ogImageAlt={socialImageAlt ?? `${structuredAppName} app icon`}
     ogImageWidth={1200}
     ogImageHeight={630}
