@@ -2,17 +2,18 @@
 import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const title = "DuoTake: Dual Camera";
+const appId = "id6761627384";
+const appStoreUrl = "https://apps.apple.com/us/app/dual-cam-duotake/id6761627384";
 const appName = "DuoTake";
 const pageTitle = "DuoTake: Dual Camera";
 const description =
     "Record with the front and back cameras at the same time. Capture the moment and your reaction in one take, ready for TikTok, Reels, and Shorts.";
 const favicon = "apps/duotake/favicon.png";
 const appIcon = "duotake/app-icon.png";
-const testFlightUrl = "https://testflight.apple.com/join/2pGeFVPg";
 const socialImage = "duotake/duotake-share-en.jpg";
 const socialImageAlt = "DuoTake app icon with dual camera app summary.";
 
-const metas = [];
+const metas = [{ name: "apple-itunes-app", content: "app-id=6761627384" }];
 const primaryKeyword = "dual camera app";
 const secondaryKeywords = [
     "reaction video app",
@@ -148,12 +149,13 @@ const faq = [
 
 <AppTemplate
     title={title}
+    appId={appId}
+    appStoreUrl={appStoreUrl}
     appName={appName}
     pageTitle={pageTitle}
     metas={metas}
     favicon={favicon}
     appIcon={appIcon}
-    testFlightUrl={testFlightUrl}
     socialImage={socialImage}
     socialImageAlt={socialImageAlt}
     description={description}

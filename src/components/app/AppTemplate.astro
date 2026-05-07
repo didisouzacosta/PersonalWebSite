@@ -51,6 +51,7 @@ interface AppScreenshot {
 
 interface Props {
     appId?: string,
+    appStoreUrl?: string,
     testFlightUrl?: string,
     title: string,
     pageTitle?: string,
@@ -77,6 +78,7 @@ interface Props {
 
 const {
     appId,
+    appStoreUrl,
     testFlightUrl,
     title,
     pageTitle,
@@ -155,6 +157,9 @@ const videoTitle = video?.title ?? (
         ? `Vídeo do ${structuredAppName}`
         : `${structuredAppName} video`
 );
+const appStoreHref = appStoreUrl ?? (appId
+    ? `https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+    : undefined);
 const appJsonLd = softwareApplicationJsonLd({
     name: structuredAppName,
     description,
@@ -223,11 +228,11 @@ const videoJsonLd = youtubeEmbedUrl ? {
                 />
                 <h1 class="app-title">{title}</h1>
                 <p class="app-subtitle">{description}</p>
-                {(appId || testFlightUrl) && (
+                {(appStoreHref || testFlightUrl) && (
                     <div class="app-download-actions">
-                        {appId && (
+                        {appStoreHref && (
                             <a
-                                href=`https://apps.apple.com/us/app/video-ai-art-generator-maker/${appId}?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697`
+                                href={appStoreHref}
                                 aria-label=`Download ${title} on the App Store`
                                 target="_blank"
                                 rel="noopener noreferrer"
