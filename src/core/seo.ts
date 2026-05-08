@@ -145,6 +145,7 @@ export function softwareApplicationJsonLd({
     featureList,
     keywords,
     sameAs,
+    downloadUrl,
     price,
     priceCurrency,
 }: {
@@ -159,10 +160,11 @@ export function softwareApplicationJsonLd({
     featureList?: string[];
     keywords?: string[];
     sameAs?: string[];
+    downloadUrl?: string;
     price?: string;
     priceCurrency?: string;
 }): Record<string, unknown> {
-    const downloadUrl = appStoreUrl(appId);
+    const resolvedDownloadUrl = downloadUrl ?? appStoreUrl(appId);
 
     return {
         "@context": "https://schema.org",
@@ -179,7 +181,7 @@ export function softwareApplicationJsonLd({
         ...(featureList && featureList.length > 0 ? { featureList } : {}),
         ...(keywords && keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
         ...(sameAs && sameAs.length > 0 ? { sameAs } : {}),
-        ...(downloadUrl ? { downloadUrl } : {}),
+        ...(resolvedDownloadUrl ? { downloadUrl: resolvedDownloadUrl } : {}),
         offers: {
             "@type": "Offer",
             price: price ?? "0",

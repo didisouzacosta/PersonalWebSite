@@ -171,6 +171,7 @@ const appJsonLd = softwareApplicationJsonLd({
     applicationCategory,
     featureList: features.map((feature) => feature.title),
     keywords: [primaryKeyword, ...secondaryKeywords].filter(Boolean) as string[],
+    downloadUrl: appStoreHref,
 });
 const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
