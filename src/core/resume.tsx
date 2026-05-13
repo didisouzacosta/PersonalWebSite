@@ -163,6 +163,10 @@ export const eng: Resume = {
         title: "Licenses & Certificates",
         items: [
             {
+                title: "Apple Ads Certified",
+                url: "https://certification-ads.apple.com/certificate/IvYNlwY9iI"
+            },
+            {
                 title: "Building a Reminders App Clone with SwiftUI & Core Data",
                 url: "https://www.udemy.com/certificate/UC-883808bb-a2a9-49a3-bff4-987b78d6f063"
             },
@@ -350,6 +354,10 @@ export const ptBr: Resume = {
     certificates: {
         title: "Licenças e Certificados",
         items: [
+            {
+                title: "Apple Ads Certified",
+                url: "https://certification-ads.apple.com/certificate/IvYNlwY9iI"
+            },
             {
                 title: "Building a Reminders App Clone with SwiftUI & Core Data",
                 url: "https://www.udemy.com/certificate/UC-883808bb-a2a9-49a3-bff4-987b78d6f063"
