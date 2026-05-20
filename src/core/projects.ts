@@ -1,3 +1,5 @@
+import { appAssetBaseUrl } from "./seo";
+
 export type ProjectLanguage = "en" | "pt-br";
 
 export interface PortfolioProject {
@@ -29,13 +31,14 @@ export interface ResumeProjectViewModel {
     description: string;
 }
 
+const appIconUrl = (slug: string) => `${appAssetBaseUrl}${slug}/app-icon.png`;
+
 export const portfolioProjects: PortfolioProject[] = [
     {
         name: "DuoTake",
         url: "/apps/duotake",
         resumeUrl: "https://adrianosouzacosta.com.br/apps/duotake",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/duotake/app-icon.png",
+        imageUrl: appIconUrl("duotake"),
         tags: ["iOS App", "Free", "Camera"],
         isEnabled: true,
         descriptions: {
@@ -53,8 +56,7 @@ export const portfolioProjects: PortfolioProject[] = [
         name: "KuboRush",
         url: "/apps/kuborush",
         resumeUrl: "https://apps.apple.com/app/id6757385646",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/kuborush/app-icon.png",
+        imageUrl: appIconUrl("kuborush"),
         tags: ["iOS App", "Free"],
         isEnabled: true,
         descriptions: {
@@ -72,8 +74,7 @@ export const portfolioProjects: PortfolioProject[] = [
         name: "LoopSize",
         url: "/apps/loopsize",
         resumeUrl: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/loopsize/app-icon.png",
+        imageUrl: appIconUrl("loopsize"),
         tags: ["iOS App", "Free"],
         isEnabled: true,
         descriptions: {
@@ -90,8 +91,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "CleanerXcode",
         url: "https://github.com/didisouzacosta/CleanerXcode",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/cleanerxcode/app-icon.png",
+        imageUrl: appIconUrl("cleanerxcode"),
         tags: ["macOS App", "Free"],
         target: "_blank",
         isEnabled: true,
@@ -109,8 +109,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "Formidable",
         url: "https://github.com/didisouzacosta/Formidable",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/formidable/app-icon.png",
+        imageUrl: appIconUrl("formidable"),
         tags: ["Framework"],
         target: "_blank",
         isEnabled: true,
@@ -128,8 +127,7 @@ export const portfolioProjects: PortfolioProject[] = [
     {
         name: "VideoEditorKit",
         url: "https://github.com/didisouzacosta/VideoEditorKit",
-        imageUrl:
-            "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/videoeditorkit/app-icon.png",
+        imageUrl: appIconUrl("videoeditorkit"),
         tags: ["Framework", "SwiftUI"],
         target: "_blank",
         isEnabled: true,
@@ -141,6 +139,24 @@ export const portfolioProjects: PortfolioProject[] = [
             "pt-br": {
                 card: "Editor de vídeo em SwiftUI",
                 resume: "VideoEditorKit é um framework de editor de vídeo em SwiftUI para criar experiências de edição de vídeo em apps Apple.",
+            },
+        },
+    },
+    {
+        name: "WhatsNewKit",
+        url: "https://github.com/didisouzacosta/WhatsNewKit",
+        imageUrl: appIconUrl("whatsnewkit"),
+        tags: ["Framework", "SwiftUI"],
+        target: "_blank",
+        isEnabled: true,
+        descriptions: {
+            en: {
+                card: "What's new feature sheets",
+                resume: "WhatsNewKit is a SwiftUI framework for presenting what's new screens and feature announcements in Apple apps.",
+            },
+            "pt-br": {
+                card: "Telas de novidades no app",
+                resume: "WhatsNewKit é um framework SwiftUI para apresentar telas de novidades e anúncios de recursos em apps Apple.",
             },
         },
     },

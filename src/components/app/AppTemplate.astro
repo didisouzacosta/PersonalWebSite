@@ -103,7 +103,6 @@ const {
     secondaryKeywords = [],
 } = Astro.props;
 
-const baseAssetsURL = 'https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/'
 const currentPath = Astro.url.pathname;
 const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
 const structuredAppName = appName ?? title.split(/[-|]/)[0].trim();
@@ -219,7 +218,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
         <header class="app-header">
             <div class="container app-header-inner">
                 <img
-                    src=`${baseAssetsURL}apps/${appIcon}`
+                    src=`${appAssetBaseUrl}${appIcon}`
                     alt={`${title} app icon`}
                     fetchpriority="high"
                     decoding="async"
@@ -321,7 +320,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
                         <li>
                             <figure>
                                 <img
-                                    src=`${baseAssetsURL}apps/${screenshot.url}`
+                                    src=`${appAssetBaseUrl}${screenshot.url}`
                                     alt={screenshot.alt}
                                     loading="lazy"
                                     decoding="async"
