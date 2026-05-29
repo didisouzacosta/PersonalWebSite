@@ -43,12 +43,12 @@ export const portfolioProjects: PortfolioProject[] = [
         isEnabled: true,
         descriptions: {
             en: {
-                card: "Dual camera for reactions",
-                resume: "DuoTake records with the front and back cameras at the same time, capturing the moment and your reaction in one video ready for TikTok, Reels, and Shorts.",
+                card: "Reaction dual cam",
+                resume: "DuoTake records with the front and rear cameras at the same time, combining the moment, your reaction, creator layouts, CropOut, and a premium Teleprompter in one video.",
             },
             "pt-br": {
-                card: "Câmera dupla para reacts",
-                resume: "O DuoTake grava com a câmera frontal e traseira ao mesmo tempo, capturando o momento e sua reação em um único vídeo pronto para TikTok, Reels e Shorts.",
+                card: "Câmera de reação",
+                resume: "O DuoTake grava com a câmera frontal e traseira ao mesmo tempo, combinando o momento, sua reação, layouts de creator, CropOut e Teleprompter premium em um vídeo.",
             },
         },
     },

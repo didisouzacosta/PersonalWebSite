@@ -13,7 +13,7 @@ export function GET() {
             `- [Curriculo](${absoluteUrl("/resume/pt-br/")}): Portuguese resume.`,
             "",
             "## Apps",
-            `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Dual-camera iPhone app that records front and back cameras at the same time for reactions, reviews, TikTok, Reels, and Shorts.`,
+            `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Reaction dual cam iPhone app that records front and rear cameras together with creator layouts, CropOut background removal, and a premium Teleprompter.`,
             `- [KuboRush](${absoluteUrl("/apps/kuborush/")}): Smart and relaxing block puzzle game for quick 2-minute breaks, with Hint, Shuffle, Rotate, Undo, Hall of Fame, and Weekly Rush.`,
             `- [LoopSize](${absoluteUrl("/apps/loopsize/")}): Ring size finder and converter for BR, US, UK, EU/ISO, JP, CN, and IN standards, with precise dimensions, iCloud-synced saved sizes, and PDF sharing.`,
             "",
