@@ -2,13 +2,14 @@
 import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const appId = 'id6749704116'
-const title = 'LoopSize - Ring Size Converter'
-const pageTitle = 'LoopSize | Ring Size Converter for iPhone'
-const description = 'LoopSize makes it easy to find and share your perfect ring size with instant conversions, precise dimensions, saved sizes, iCloud sync, and PDF sharing.'
+const title = 'LoopSize - Ring Sizer Chart'
+const pageTitle = 'LoopSize | Ring Sizer Chart for iPhone'
+const appStoreUrl = "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116";
+const description = 'Measure, convert, save, and share ring sizes with precise diameter and circumference tools, international standards, iCloud sync, history, and branded PDF export.'
 const favicon = "apps/loopsize/favicon.png"
 const appIcon = "loopsize/app-icon.png"
 const socialImage = "loopsize/loopsize-share-en.jpg"
-const socialImageAlt = "LoopSize app icon with ring size converter app summary."
+const socialImageAlt = "LoopSize app icon with ring measurement and ring sizer chart summary."
 
 const metas = [
     { name: "apple-itunes-app", content: `app-id=6749704116` }
@@ -18,9 +19,10 @@ const secondaryKeywords = [
     "ring sizer",
     "ring measurement",
     "ring converter",
+    "ring size chart",
     "jewelry tool",
-    "ring chart",
     "ring size finder",
+    "ring size PDF",
 ]
 
 const screenshots = [
@@ -53,69 +55,62 @@ const screenshots = [
             en: 'loopsize/screenshots/en/frame-4.png',
             ptBr: 'loopsize/screenshots/ptBR/frame-4.png',
         },
-        alt: 'LoopSize saved ring sizes screen with iCloud-synced measurements.',
-        caption: 'Save your ring sizes and keep them synced with iCloud.',
+        alt: 'LoopSize saved measurements screen with iCloud-synced ring sizes and preferences.',
+        caption: 'Save measurements, preferences, and ring sizes with iCloud sync.',
     },
     {
         url: {
             en: 'loopsize/screenshots/en/frame-5.png',
             ptBr: 'loopsize/screenshots/ptBR/frame-5.png',
         },
-        alt: 'LoopSize dimension standards screen for comparing ring size details.',
-        caption: 'See all dimension standards when you need a complete comparison.',
-    },
-    {
-        url: {
-            en: 'loopsize/screenshots/en/frame-6.png',
-            ptBr: 'loopsize/screenshots/ptBR/frame-6.png',
-        },
         alt: 'LoopSize PDF sharing screen with brand personalization for ring measurements.',
-        caption: 'Share measurements in PDF and personalize the file with your brand.',
+        caption: 'Share a clear PDF and personalize it with your brand.',
     }
 ]
 
 const facts = [
     { label: "Platform", value: "iPhone" },
+    { label: "Version", value: "1.2.0" },
     { label: "Standards", value: "BR, US, UK, EU/ISO, JP, CN, IN" },
     { label: "Dimensions", value: "Diameter + circumference" },
-    { label: "Sharing", value: "Personalized PDF" },
+    { label: "Pro", value: "iCloud + branded PDF" },
 ]
 
 const features = [
     {
-        title: "Instant size conversion",
-        description: "Convert instantly between BR, US, UK, EU/ISO, JP, CN, and IN ring size standards.",
+        title: "Ring and finger measurement",
+        description: "Start from diameter or circumference, then compare the real measurement behind each ring size.",
+    },
+    {
+        title: "International conversion",
+        description: "Convert instantly between BR, US, UK, EU/ISO, JP, CN, and IN standards when shopping online, traveling, or helping a customer.",
     },
     {
         title: "Precise dimensions",
-        description: "Check diameter and circumference with high precision when comparing measurements.",
+        description: "Keep diameter and circumference visible so ring decisions are based on exact measurements, not only a chart.",
     },
     {
         title: "PDF sharing",
-        description: "Share your measurements in a clean PDF whenever you need a reference for yourself, a jeweler, or a gift.",
+        description: "Share a clear measurement PDF with a jeweler, customer, partner, family member, or your future self.",
     },
     {
-        title: "Pro branded PDFs",
-        description: "Personalize the exported PDF with your own brand for a more professional handoff.",
+        title: "Branded PDF export",
+        description: "Pro users can personalize exported PDFs with their brand for a more professional customer handoff.",
     },
     {
-        title: "Pro saved sizes",
-        description: "Save your ring sizes and keep them synced with iCloud across your devices.",
-    },
-    {
-        title: "Pro dimension standards",
-        description: "See all dimension standards in one place for faster international comparisons.",
+        title: "iCloud sync and history",
+        description: "Pro users can sync measurements and preferences with iCloud, then revisit saved history for repeat customers, future purchases, or adjustments.",
     },
 ]
 
 const useCases = [
     {
-        title: "Finding your size",
-        description: "Identify the right ring size from your preferred standard and compare it against international charts.",
+        title: "Buying online or choosing a gift",
+        description: "Check a ring size before purchasing, compare international charts, and save possible measurements with more confidence.",
     },
     {
-        title: "Sharing measurements",
-        description: "Send a PDF with your measurements when buying jewelry, planning a gift, or working with a jeweler.",
+        title: "Jewelry consultations",
+        description: "Measure rings or fingers, explain conversions, and send polished PDFs to customers after a sizing conversation.",
     },
 ]
 
@@ -126,7 +121,7 @@ const faq = [
     },
     {
         question: "Can I save my measurements?",
-        answer: "Yes. With <strong>LoopSize Pro</strong>, you can save your ring sizes and sync them with iCloud.",
+        answer: "Yes. With <strong>LoopSize Pro</strong>, you can keep a history of measurements, save ring sizes, and sync measurements and preferences with iCloud.",
     },
     {
         question: "Can I share my ring size?",
@@ -134,7 +129,11 @@ const faq = [
     },
     {
         question: "Does LoopSize show ring dimensions?",
-        answer: "Yes. You can check diameter and circumference with high precision, plus all dimension standards with LoopSize Pro.",
+        answer: "Yes. You can measure by diameter or circumference, keep both values visible, and compare the equivalent size across supported standards.",
+    },
+    {
+        question: "What changed in the latest version?",
+        answer: "Version 1.2.0 adds branded PDF customization, iCloud sync for measurements and preferences, accessibility improvements, and an enhanced ring and finger size marker.",
     },
     {
         question: "Does it work offline?",
@@ -149,6 +148,7 @@ const faq = [
 
 <AppTemplate
     appId={appId}
+    appStoreUrl={appStoreUrl}
     title={title}
     pageTitle={pageTitle}
     metas={metas}

@@ -79,12 +79,12 @@ export const portfolioProjects: PortfolioProject[] = [
         isEnabled: true,
         descriptions: {
             en: {
-                card: "Ring size converter",
-                resume: "LoopSize makes it easy to find and share your perfect ring size with instant BR, US, UK, EU/ISO, JP, CN, and IN conversion, precise dimensions, iCloud-synced saved sizes, and PDF sharing.",
+                card: "Ring measurement tool",
+                resume: "LoopSize measures, converts, saves, and shares ring sizes with BR, US, UK, EU/ISO, JP, CN, and IN standards, precise dimensions, iCloud sync, history, and branded PDF export.",
             },
             "pt-br": {
-                card: "Conversor de tamanho de anéis",
-                resume: "LoopSize facilita encontrar e compartilhar seu tamanho de anel ideal com conversão instantânea entre BR, US, UK, EU/ISO, JP, CN e IN, dimensões precisas, tamanhos salvos com iCloud e PDF.",
+                card: "Tamanho e medidor de anéis",
+                resume: "LoopSize mede, converte, salva e compartilha tamanhos de anéis com padrões BR, US, UK, EU/ISO, JP, CN e IN, dimensões precisas, iCloud, histórico e PDF com marca.",
             },
         },
     },
