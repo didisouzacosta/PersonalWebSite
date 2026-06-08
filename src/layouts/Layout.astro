@@ -116,7 +116,17 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
             (function() {
                 var saved = localStorage.getItem('theme');
                 var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var params = new URLSearchParams(window.location.search);
+                var contentOnly = params.get('contentOnly') === '1'
+                    || params.get('contentOnly') === 'true'
+                    || params.get('chrome') === 'content'
+                    || params.get('chrome') === 'none'
+                    || params.get('embedded') === '1'
+                    || params.get('embed') === '1';
                 document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+                if (contentOnly) {
+                    document.documentElement.setAttribute('data-content-only', 'true');
+                }
             })();
         </script>
 
@@ -280,6 +290,16 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
 
             .site-header :global(.controls) {
                 pointer-events: auto;
+            }
+
+            :global(html[data-content-only="true"] .site-header-inner) {
+                justify-content: flex-end;
+            }
+
+            :global(html[data-content-only="true"] .site-menu),
+            :global(html[data-content-only="true"] .site-footer),
+            :global(html[data-content-only="true"] #cookie-consent) {
+                display: none !important;
             }
 
             .site-menu::-webkit-scrollbar {

@@ -122,6 +122,21 @@ const altLangLabel = isPtBr ? 'EN' : 'PT';
 
     const themeBtn = document.getElementById('theme-toggle');
     const languageLink = document.querySelector<HTMLAnchorElement>('[data-analytics-event="language_changed"]');
+    const contentOnlyParams = new URLSearchParams(window.location.search);
+    const isContentOnly = contentOnlyParams.get('contentOnly') === '1'
+        || contentOnlyParams.get('contentOnly') === 'true'
+        || contentOnlyParams.get('chrome') === 'content'
+        || contentOnlyParams.get('chrome') === 'none'
+        || contentOnlyParams.get('embedded') === '1'
+        || contentOnlyParams.get('embed') === '1';
+
+    if (languageLink && isContentOnly) {
+        const url = new URL(languageLink.getAttribute('href') ?? '/', window.location.origin);
+        contentOnlyParams.forEach((value, key) => {
+            url.searchParams.set(key, value);
+        });
+        languageLink.href = `${url.pathname}${url.search}${url.hash}`;
+    }
 
     function applyTheme(theme: string) {
         document.documentElement.setAttribute('data-theme', theme);
