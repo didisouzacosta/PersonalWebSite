@@ -161,8 +161,8 @@ export const portfolioProjects: PortfolioProject[] = [
         },
     },
     {
-        name: "GlowEffectSDK",
-        url: "https://github.com/didisouzacosta/GlowEffectSDK",
+        name: "GlowEffectKit",
+        url: "https://github.com/didisouzacosta/GlowEffectKit",
         imageUrl: appIconUrl("gloweffectkit"),
         tags: ["SDK", "SwiftUI"],
         target: "_blank",
@@ -170,11 +170,11 @@ export const portfolioProjects: PortfolioProject[] = [
         descriptions: {
             en: {
                 card: "SwiftUI glow effects SDK",
-                resume: "GlowEffectSDK is a SwiftUI SDK for adding polished glow-style visual effects and interactions to Apple app interfaces.",
+                resume: "GlowEffectKit is a SwiftUI SDK for adding polished glow-style visual effects and interactions to Apple app interfaces.",
             },
             "pt-br": {
                 card: "SDK de efeitos em SwiftUI",
-                resume: "GlowEffectSDK é um SDK SwiftUI para adicionar efeitos visuais e interações de brilho refinadas a interfaces de apps Apple.",
+                resume: "GlowEffectKit é um SDK SwiftUI para adicionar efeitos visuais e interações de brilho refinadas a interfaces de apps Apple.",
             },
         },
     },
