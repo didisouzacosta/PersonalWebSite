@@ -160,6 +160,24 @@ export const portfolioProjects: PortfolioProject[] = [
             },
         },
     },
+    {
+        name: "GrowEffectKit",
+        url: "https://github.com/didisouzacosta/GrowEffectKit",
+        imageUrl: appIconUrl("groweffectkit"),
+        tags: ["SDK", "SwiftUI"],
+        target: "_blank",
+        isEnabled: true,
+        descriptions: {
+            en: {
+                card: "SwiftUI grow effects SDK",
+                resume: "GrowEffectKit is a SwiftUI SDK for adding polished grow-style visual effects and interactions to Apple app interfaces.",
+            },
+            "pt-br": {
+                card: "SDK de efeitos em SwiftUI",
+                resume: "GrowEffectKit é um SDK SwiftUI para adicionar efeitos visuais e interações de crescimento refinadas a interfaces de apps Apple.",
+            },
+        },
+    },
 ];
 
 function getEnabledProjects(): PortfolioProject[] {
