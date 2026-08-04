@@ -16,6 +16,7 @@ export function GET() {
             `- [DuoTake](${absoluteUrl("/apps/duotake/")}): Reaction dual cam iPhone app that records front and rear cameras together with creator layouts, CropOut background removal, and a premium Teleprompter.`,
             `- [KuboRush](${absoluteUrl("/apps/kuborush/")}): Smart and relaxing block puzzle game for quick 2-minute breaks, with Hint, Shuffle, Rotate, Undo, Hall of Fame, and Weekly Rush.`,
             `- [LoopSize](${absoluteUrl("/apps/loopsize/")}): Ring measurement and size chart app for BR, US, UK, EU/ISO, JP, CN, and IN standards, with precise dimensions, iCloud sync, history, and branded PDF export.`,
+            `- [GiggleFace](${absoluteUrl("/apps/giggleface/")}): Offline real-time face mask app for iPhone and Mac with custom masks, 60 fps recording with audio, mask sharing, and a virtual camera for compatible macOS video apps.`,
             "",
         ].join("\n"),
         {

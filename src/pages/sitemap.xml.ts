@@ -61,6 +61,18 @@ const pages = [
         changefreq: "monthly",
         alternates: localizedAlternates("/apps/duotake/", "/pt-br/apps/duotake/"),
     },
+    {
+        path: "/apps/giggleface/",
+        priority: "0.7",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/giggleface/", "/pt-br/apps/giggleface/"),
+    },
+    {
+        path: "/pt-br/apps/giggleface/",
+        priority: "0.7",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/giggleface/", "/pt-br/apps/giggleface/"),
+    },
 ];
 
 function escapeXml(value: string): string {

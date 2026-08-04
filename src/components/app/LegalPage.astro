@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { AlternateLocale } from "../../core/seo";
+
+interface Props {
+    title: string;
+    description: string;
+    lang: "en" | "pt-br";
+    favicon: string;
+    canonicalPath: string;
+    alternateLocales: AlternateLocale[];
+}
+
+const {
+    title,
+    description,
+    lang,
+    favicon,
+    canonicalPath,
+    alternateLocales,
+} = Astro.props;
+---
+
+<Layout
+    title={title}
+    favicon={favicon}
+    description={description}
+    lang={lang}
+    canonicalPath={canonicalPath}
+    alternateLocales={alternateLocales}
+    robots="noindex, follow"
+>
+    <main>
+        <article>
+            <slot />
+        </article>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+
+    article :global(p) {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+
+    article :global(h1) {
+        margin-bottom: 32px;
+    }
+
+    article :global(h3),
+    article :global(h4) {
+        margin-top: 32px;
+        margin-bottom: 12px;
+    }
+
+    article :global(ul) {
+        padding-left: 20px;
+        list-style: disc;
+        margin-bottom: 16px;
+    }
+
+    article :global(li) {
+        margin-bottom: 8px;
+        color: var(--text-secondary);
+    }
+
+    article :global(a) {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+</style>

@@ -178,6 +178,24 @@ export const portfolioProjects: PortfolioProject[] = [
             },
         },
     },
+    {
+        name: "GiggleFace",
+        url: "/apps/giggleface",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/giggleface",
+        imageUrl: "/apps/giggleface/app-icon.jpg",
+        tags: ["iOS App", "macOS App", "Premium", "Offline"],
+        isEnabled: true,
+        descriptions: {
+            en: {
+                card: "Offline real-time face masks",
+                resume: "GiggleFace creates and adjusts custom masks from any image, applies them to the front camera on-device in real time, records at up to 60 fps with audio, and provides a virtual camera for compatible macOS video apps.",
+            },
+            "pt-br": {
+                card: "Máscaras offline em tempo real",
+                resume: "O GiggleFace cria e ajusta máscaras personalizadas a partir de qualquer imagem, aplica-as localmente à câmera frontal em tempo real, grava em até 60 fps com áudio e oferece câmera virtual para apps de vídeo compatíveis no macOS.",
+            },
+        },
+    },
 ];
 
 function getEnabledProjects(): PortfolioProject[] {

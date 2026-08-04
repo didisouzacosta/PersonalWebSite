@@ -36,6 +36,7 @@ const projectTitles: Record<string, string> = {
     duotake: "Duo Take",
     kuborush: "Kubo Rush",
     loopsize: "Loop Size",
+    giggleface: "GiggleFace",
 };
 
 const getProjectTitle = (projectSlug?: string) => {

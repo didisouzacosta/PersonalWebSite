@@ -3,9 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import {
     absoluteUrl,
-    appAssetBaseUrl,
     breadcrumbJsonLd,
     getAppAlternates,
+    resolveAppAssetUrl,
     softwareApplicationJsonLd,
     type SeoLanguage,
 } from "../../core/seo";
@@ -43,11 +43,20 @@ type LocalizedScreenshotUrl = string | {
     "pt-br"?: string;
 };
 
-interface AppScreenshot {
+interface AppScreenshotImage {
     url: LocalizedScreenshotUrl;
     alt: string;
     caption?: string;
+    placeholder?: false;
 }
+
+interface AppScreenshotPlaceholder {
+    placeholder: true;
+    alt: string;
+    caption?: string;
+}
+
+type AppScreenshot = AppScreenshotImage | AppScreenshotPlaceholder;
 
 interface Props {
     appId?: string,
@@ -61,12 +70,15 @@ interface Props {
     socialImage?: string,
     socialImageAlt?: string,
     socialImageType?: string,
+    termsOfUseUrl?: string,
+    privacyPolicyUrl?: string,
     description: string,
     screenshots: AppScreenshot[],
     faq: { question: string, answer: string }[],
     metas: { name: string, content: string }[],
     lang?: string,
     applicationCategory?: string,
+    operatingSystem?: string,
     features?: AppFeature[],
     useCases?: AppUseCase[],
     facts?: AppFact[],
@@ -89,11 +101,14 @@ const {
     socialImage,
     socialImageAlt,
     socialImageType = "image/jpeg",
+    termsOfUseUrl,
+    privacyPolicyUrl,
     description,
     screenshots,
     faq,
     lang,
     applicationCategory = "MobileApplication",
+    operatingSystem = "iOS",
     features = [],
     useCases = [],
     facts = [],
@@ -113,6 +128,10 @@ const testFlightAriaLabel = seoLanguage === "pt-br"
 const legalBasePath = (currentPath.startsWith('/pt-br/')
     ? currentPath.replace('/pt-br', '')
     : currentPath).replace(/\/$/, '');
+const termsOfUseHref = termsOfUseUrl ?? `${legalBasePath}/terms-of-use`;
+const privacyPolicyHref = privacyPolicyUrl ?? `${legalBasePath}/privacy-policy`;
+const termsOfUseLabel = seoLanguage === "pt-br" ? "Termos de Uso" : "Terms of use";
+const privacyPolicyLabel = seoLanguage === "pt-br" ? "Política de Privacidade" : "Privacy policy";
 const resolveScreenshotUrl = (url: LocalizedScreenshotUrl, language: SeoLanguage) => {
     if (typeof url === "string") return url;
 
@@ -145,10 +164,15 @@ const getYouTubeVideoId = (youtubeUrl: string) => {
         return undefined;
     }
 };
-const localizedScreenshots = screenshots.map((screenshot) => ({
-    ...screenshot,
-    url: resolveScreenshotUrl(screenshot.url, seoLanguage),
-}));
+const localizedScreenshots = screenshots.map((screenshot) => screenshot.placeholder
+    ? screenshot
+    : {
+        ...screenshot,
+        url: resolveScreenshotUrl(screenshot.url, seoLanguage),
+    });
+const realScreenshots = localizedScreenshots.filter(
+    (screenshot): screenshot is AppScreenshotImage & { url: string } => !screenshot.placeholder,
+);
 const youtubeVideoId = video?.youtubeUrl ? getYouTubeVideoId(video.youtubeUrl) : undefined;
 const youtubeEmbedUrl = youtubeVideoId ? `https://www.youtube-nocookie.com/embed/${youtubeVideoId}` : undefined;
 const videoTitle = video?.title ?? (
@@ -164,10 +188,11 @@ const appJsonLd = softwareApplicationJsonLd({
     description,
     path: currentPath,
     appIcon,
-    screenshots: localizedScreenshots.map((screenshot) => screenshot.url),
+    screenshots: realScreenshots.map((screenshot) => screenshot.url),
     appId,
     language: seoLanguage,
     applicationCategory,
+    operatingSystem,
     featureList: features.map((feature) => feature.title),
     keywords: [primaryKeyword, ...secondaryKeywords].filter(Boolean) as string[],
     downloadUrl: appStoreHref,
@@ -176,12 +201,8 @@ const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
     { name: structuredAppName, path: currentPath },
 ]);
-const resolveSocialImageUrl = (image?: string) => {
-    if (!image) return `${appAssetBaseUrl}${appIcon}`;
-    if (image.startsWith("http://") || image.startsWith("https://") || image.startsWith("/")) return image;
-
-    return `${appAssetBaseUrl}${image}`;
-};
+const resolvedAppIcon = resolveAppAssetUrl(appIcon);
+const resolveSocialImageUrl = (image?: string) => resolveAppAssetUrl(image ?? appIcon);
 const resolvedSocialImage = resolveSocialImageUrl(socialImage);
 const videoJsonLd = youtubeEmbedUrl ? {
     "@context": "https://schema.org",
@@ -218,7 +239,7 @@ const videoJsonLd = youtubeEmbedUrl ? {
         <header class="app-header">
             <div class="container app-header-inner">
                 <img
-                    src=`${appAssetBaseUrl}${appIcon}`
+                    src={resolvedAppIcon}
                     alt={`${title} app icon`}
                     fetchpriority="high"
                     decoding="async"
@@ -319,18 +340,26 @@ const videoJsonLd = youtubeEmbedUrl ? {
                     localizedScreenshots.map((screenshot, index) => (
                         <li>
                             <figure>
-                                <img
-                                    src=`${appAssetBaseUrl}${screenshot.url}`
-                                    alt={screenshot.alt}
-                                    loading="lazy"
-                                    decoding="async"
-                                    data-analytics-ignore="true"
-                                    data-analytics-event="screenshot_opened"
-                                    data-analytics-location="app-screenshots"
-                                    data-analytics-label={screenshot.alt}
-                                    data-analytics-project={structuredAppName.toLowerCase()}
-                                    data-lightbox-index={index}
-                                />
+                                {screenshot.placeholder ? (
+                                    <div
+                                        class="screenshot-placeholder"
+                                        role="img"
+                                        aria-label={screenshot.alt}
+                                    ></div>
+                                ) : (
+                                    <img
+                                        src={resolveAppAssetUrl(screenshot.url)}
+                                        alt={screenshot.alt}
+                                        loading="lazy"
+                                        decoding="async"
+                                        data-analytics-ignore="true"
+                                        data-analytics-event="screenshot_opened"
+                                        data-analytics-location="app-screenshots"
+                                        data-analytics-label={screenshot.alt}
+                                        data-analytics-project={structuredAppName.toLowerCase()}
+                                        data-lightbox-index={index}
+                                    />
+                                )}
                                 {screenshot.caption && <figcaption>{screenshot.caption}</figcaption>}
                             </figure>
                         </li>
@@ -417,23 +446,23 @@ const videoJsonLd = youtubeEmbedUrl ? {
             <div class="container">
                 <nav aria-label="Legal links">
                     <a
-                        href={`${legalBasePath}/terms-of-use`}
+                        href={termsOfUseHref}
                         data-analytics-event="app_legal_link_clicked"
                         data-analytics-location="app-footer"
-                        data-analytics-label="Terms of use"
+                        data-analytics-label={termsOfUseLabel}
                         data-analytics-project={structuredAppName.toLowerCase()}
                     >
-                        Terms of use
+                        {termsOfUseLabel}
                     </a>
                     <span aria-hidden="true">&bull;</span>
                     <a
-                        href={`${legalBasePath}/privacy-policy`}
+                        href={privacyPolicyHref}
                         data-analytics-event="app_legal_link_clicked"
                         data-analytics-location="app-footer"
-                        data-analytics-label="Privacy policy"
+                        data-analytics-label={privacyPolicyLabel}
                         data-analytics-project={structuredAppName.toLowerCase()}
                     >
-                        Privacy policy
+                        {privacyPolicyLabel}
                     </a>
                 </nav>
             </div>
@@ -473,6 +502,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
         width: 120px;
         height: 120px;
         object-fit: cover;
+        border-radius: 27px;
+        box-shadow: 0 8px 24px color-mix(in srgb, var(--text-primary) 10%, transparent);
     }
 
     .app-title {
@@ -723,6 +754,15 @@ const videoJsonLd = youtubeEmbedUrl ? {
         cursor: pointer;
         box-shadow: 0 10px 28px color-mix(in srgb, var(--text-primary) 7%, transparent);
         transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .screenshot-placeholder {
+        width: 100%;
+        aspect-ratio: 9 / 19.5;
+        border: 1px solid color-mix(in srgb, var(--border-strong) 48%, transparent);
+        border-radius: 24px;
+        background: var(--bg-tertiary);
+        box-shadow: 0 10px 28px color-mix(in srgb, var(--text-primary) 5%, transparent);
     }
 
     .screenshots figure img:hover {

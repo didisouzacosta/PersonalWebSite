@@ -31,6 +31,8 @@ const expectedAnalyticsTitles = [
     { file: "dist/apps/kuborush/terms-of-use/index.html", title: "Projeto / Kubo Rush / Terms of Use" },
     { file: "dist/apps/kuborush/privacy-policy/index.html", title: "Projeto / Kubo Rush / Privacy Policy" },
     { file: "dist/pt-br/apps/kuborush/index.html", title: "Projeto / Kubo Rush" },
+    { file: "dist/apps/giggleface/index.html", title: "Projeto / GiggleFace" },
+    { file: "dist/pt-br/apps/giggleface/index.html", title: "Projeto / GiggleFace" },
 ];
 const expectedPageTypes = [
     { file: "dist/apps/kuborush/terms-of-use/index.html", pageType: "page" },
@@ -39,6 +41,10 @@ const expectedPageTypes = [
     { file: "dist/apps/loopsize/privacy-policy/index.html", pageType: "page" },
     { file: "dist/apps/duotake/terms-of-use/index.html", pageType: "page" },
     { file: "dist/apps/duotake/privacy-policy/index.html", pageType: "page" },
+    { file: "dist/apps/giggleface/terms-of-use/index.html", pageType: "page" },
+    { file: "dist/apps/giggleface/privacy-policy/index.html", pageType: "page" },
+    { file: "dist/pt-br/apps/giggleface/terms-of-use/index.html", pageType: "page" },
+    { file: "dist/pt-br/apps/giggleface/privacy-policy/index.html", pageType: "page" },
 ];
 const forbiddenPageTypes = [
     "app_legal",

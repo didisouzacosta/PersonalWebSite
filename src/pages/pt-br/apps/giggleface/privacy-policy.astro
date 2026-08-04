@@ -1,0 +1,190 @@
+---
+import LegalPage from "../../../../components/app/LegalPage.astro";
+import { localizedAlternates } from "../../../../core/seo";
+
+const title = "Política de Privacidade – GiggleFace";
+const canonicalPath = "/pt-br/apps/giggleface/privacy-policy/";
+const alternateLocales = localizedAlternates(
+    "/apps/giggleface/privacy-policy/",
+    canonicalPath,
+);
+---
+
+<LegalPage
+    title={title}
+    description="Política de privacidade do GiggleFace."
+    lang="pt-br"
+    favicon="/apps/giggleface/favicon.png"
+    canonicalPath={canonicalPath}
+    alternateLocales={alternateLocales}
+>
+    <h1>{title}</h1>
+
+    <h4>Última atualização: 4 de agosto de 2026</h4>
+
+    <p>
+        O GiggleFace respeita sua privacidade e foi desenvolvido para manter o
+        processamento da câmera, máscaras, pontos faciais, áudio e vídeo no seu
+        dispositivo. Esta política explica as informações limitadas utilizadas para
+        operar e melhorar o app.
+    </p>
+
+    <h3>1. Contas e Informações Pessoais</h3>
+
+    <p>
+        O GiggleFace não exige conta e não solicita que você forneça nome, email,
+        telefone, contatos ou localização precisa a servidores controlados pelo
+        desenvolvedor.
+    </p>
+
+    <h3>2. Câmera, Microfone, Fototeca e Arquivos</h3>
+
+    <p>O GiggleFace pode solicitar permissões do sistema somente quando necessárias:</p>
+
+    <ul>
+        <li><strong>Câmera:</strong> para capturar e processar a imagem da câmera frontal em tempo real.</li>
+        <li><strong>Microfone:</strong> para incluir áudio quando você escolhe gravar um vídeo.</li>
+        <li><strong>Fototeca:</strong> para importar imagens selecionadas e salvar gravações quando solicitado.</li>
+        <li><strong>Arquivos e compartilhamento:</strong> para importar ou exportar máscaras pelas interfaces do sistema que você controla.</li>
+    </ul>
+
+    <p>
+        Essas permissões são gerenciadas pelo iOS ou macOS e podem ser alteradas nos
+        Ajustes do sistema. Negar uma permissão pode impedir o funcionamento do recurso
+        correspondente.
+    </p>
+
+    <h3>3. Processamento Local de Mídia e Rosto</h3>
+
+    <p>
+        Quadros da câmera, imagens importadas, máscaras, áudio e gravações são
+        processados localmente no seu dispositivo. O GiggleFace não envia essa mídia
+        para servidores operados pelo desenvolvedor.
+    </p>
+
+    <p>
+        O GiggleFace usa pontos e contornos faciais temporários para posicionar as
+        máscaras. Eles são utilizados somente durante o processamento, não identificam
+        você, não são armazenados como modelo de identidade facial e não são enviados
+        ao desenvolvedor nem à Himetrica.
+    </p>
+
+    <h3>4. Armazenamento Local</h3>
+
+    <p>
+        Máscaras, ajustes do editor, arquivos exportados e gravações permanecem sob seu
+        controle no dispositivo e nos locais escolhidos por você, como Fotos, Arquivos,
+        iCloud ou outro serviço selecionado pelo menu de compartilhamento. A retenção e
+        exclusão desses arquivos são controladas por você e pelo provedor selecionado.
+    </p>
+
+    <h3>5. Analytics Anônimo e Diagnósticos de Erros</h3>
+
+    <p>
+        O GiggleFace usa a Himetrica para compreender o uso dos recursos e diagnosticar
+        erros técnicos. A integração é configurada sem a função de identificação da
+        Himetrica e não envia seu nome, email, imagem da câmera, imagens importadas,
+        máscaras, áudio, vídeo, gravações ou pontos faciais.
+    </p>
+
+    <p>As informações limitadas de diagnóstico podem incluir:</p>
+
+    <ul>
+        <li>Identificadores de visitante e sessão gerados aleatoriamente;</li>
+        <li>Telas ou recursos utilizados e duração da sessão;</li>
+        <li>Versões do app, sistema operacional e dispositivo;</li>
+        <li>Mensagens de erro, stack traces e contexto técnico sem conteúdo de mídia.</li>
+    </ul>
+
+    <p>
+        Quando o dispositivo está offline, eventos de diagnóstico podem ficar em uma
+        fila local e ser enviados quando a conexão retornar. Informações de rede,
+        incluindo o endereço IP, podem ser processadas pela Himetrica e sua
+        infraestrutura para entrega, segurança e estatísticas geográficas aproximadas,
+        conforme a política do serviço. Os dados detalhados são retidos de acordo com o
+        plano Himetrica utilizado pelo desenvolvedor.
+    </p>
+
+    <p>
+        Saiba mais na
+        <a href="https://www.himetrica.com/docs/swift" target="_blank" rel="noopener noreferrer">documentação do SDK Swift</a>
+        e na
+        <a href="https://www.himetrica.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade da Himetrica</a>.
+    </p>
+
+    <h3>6. Compras</h3>
+
+    <p>
+        O GiggleFace Premium é oferecido como compra única dentro do app. A Apple
+        processa pagamento, validação, restauração e reembolsos conforme seus próprios
+        termos. O desenvolvedor não recebe os dados completos do seu cartão.
+    </p>
+
+    <h3>7. Compartilhamento e Câmera Virtual</h3>
+
+    <p>
+        Ao exportar uma máscara ou gravação, o menu de compartilhamento envia o arquivo
+        selecionado somente ao app ou serviço escolhido por você. Esses terceiros
+        processam o arquivo de acordo com suas próprias políticas de privacidade.
+    </p>
+
+    <p>
+        Ao selecionar o GiggleFace como câmera virtual no macOS, a imagem processada
+        fica disponível ao app de comunicação escolhido. Serviços como Google Meet,
+        Microsoft Teams ou FaceTime podem transmitir, exibir ou gravar a imagem de
+        acordo com suas configurações e políticas. O GiggleFace não controla como esses
+        serviços tratam uma chamada.
+    </p>
+
+    <h3>8. Compartilhamento de Dados e Publicidade</h3>
+
+    <p>
+        Não vendemos nem alugamos informações pessoais e não usamos seus dados para
+        publicidade direcionada. Informações são fornecidas somente à Himetrica para os
+        analytics limitados descritos acima, à Apple para compras e serviços da
+        plataforma ou a um serviço que você selecionar para compartilhar, armazenar ou
+        se comunicar.
+    </p>
+
+    <h3>9. Retenção de Dados e Suas Escolhas</h3>
+
+    <p>
+        O desenvolvedor não mantém uma biblioteca remota de mídia nem uma conta de
+        usuário identificada do GiggleFace. Você pode remover máscaras e gravações
+        locais pelo app, Fotos, Arquivos ou serviço de armazenamento utilizado. Dados
+        anônimos de diagnóstico seguem o período de retenção aplicável da Himetrica e
+        podem não ser diretamente vinculáveis a uma pessoa identificada.
+    </p>
+
+    <h3>10. Segurança</h3>
+
+    <p>
+        Minimizamos as informações enviadas para fora do dispositivo e aplicamos
+        medidas técnicas razoáveis. Nenhum método de armazenamento ou transmissão é
+        completamente seguro, e serviços terceiros continuam responsáveis por seus
+        próprios sistemas.
+    </p>
+
+    <h3>11. Privacidade de Crianças</h3>
+
+    <p>
+        O GiggleFace não foi projetado para coletar intencionalmente informações
+        pessoais de crianças. Se você acredita que uma informação foi tratada em
+        conflito com esta política, entre em contato para que o caso seja analisado.
+    </p>
+
+    <h3>12. Alterações nesta Política</h3>
+
+    <p>
+        Podemos atualizar esta Política de Privacidade para refletir mudanças no
+        produto, na tecnologia ou na legislação. A versão mais recente e sua data de
+        vigência permanecerão disponíveis nesta página.
+    </p>
+
+    <h3>13. Contato</h3>
+
+    <p>
+        Para dúvidas sobre esta Política de Privacidade ou o GiggleFace, escreva para:
+        <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>
+    </p>
+</LegalPage>

@@ -71,6 +71,10 @@ const resolveFaviconUrl = (faviconPath?: string) => {
         return path;
     }
 
+    if (path.startsWith("/")) {
+        return path;
+    }
+
     const cleanPath = path.replace(/^\/+/, "");
     const bucketPath = cleanPath.includes("/") ? cleanPath : `favicon/${cleanPath}`;
 

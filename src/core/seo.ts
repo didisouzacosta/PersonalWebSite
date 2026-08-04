@@ -30,6 +30,14 @@ export function absoluteAssetUrl(pathOrUrl: string): string {
     return new URL(withLeadingSlash, siteUrl).toString();
 }
 
+export function resolveAppAssetUrl(pathOrUrl: string): string {
+    if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://") || pathOrUrl.startsWith("/")) {
+        return pathOrUrl;
+    }
+
+    return `${appAssetBaseUrl}${pathOrUrl}`;
+}
+
 export function normalizePath(path: string): string {
     if (!path || path === "/") {
         return "/";
@@ -148,6 +156,7 @@ export function softwareApplicationJsonLd({
     downloadUrl,
     price,
     priceCurrency,
+    operatingSystem = "iOS",
 }: {
     name: string;
     description: string;
@@ -163,6 +172,7 @@ export function softwareApplicationJsonLd({
     downloadUrl?: string;
     price?: string;
     priceCurrency?: string;
+    operatingSystem?: string;
 }): Record<string, unknown> {
     const resolvedDownloadUrl = downloadUrl ?? appStoreUrl(appId);
 
@@ -173,9 +183,11 @@ export function softwareApplicationJsonLd({
         name,
         description,
         url: absoluteUrl(path),
-        image: absoluteUrl(`${appAssetBaseUrl}${appIcon}`),
-        screenshot: screenshots.map((screenshot) => absoluteUrl(`${appAssetBaseUrl}${screenshot}`)),
-        operatingSystem: "iOS",
+        image: absoluteAssetUrl(resolveAppAssetUrl(appIcon)),
+        ...(screenshots.length > 0 ? {
+            screenshot: screenshots.map((screenshot) => absoluteAssetUrl(resolveAppAssetUrl(screenshot))),
+        } : {}),
+        operatingSystem,
         applicationCategory,
         inLanguage: language === "pt-br" ? "pt-BR" : "en",
         ...(featureList && featureList.length > 0 ? { featureList } : {}),
