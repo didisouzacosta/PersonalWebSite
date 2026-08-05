@@ -182,8 +182,8 @@ export const portfolioProjects: PortfolioProject[] = [
         name: "GiggleFace",
         url: "/apps/giggleface",
         resumeUrl: "https://adrianosouzacosta.com.br/apps/giggleface",
-        imageUrl: "/apps/giggleface/app-icon.jpg",
-        tags: ["iOS App", "macOS App", "Premium", "Offline"],
+        imageUrl: appIconUrl("giggleface"),
+        tags: ["iOS App", "macOS App"],
         isEnabled: true,
         descriptions: {
             en: {
