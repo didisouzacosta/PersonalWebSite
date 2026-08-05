@@ -187,12 +187,12 @@ export const portfolioProjects: PortfolioProject[] = [
         isEnabled: true,
         descriptions: {
             en: {
-                card: "Offline real-time face masks",
-                resume: "GiggleFace creates and adjusts custom masks from any image, applies them to the front camera on-device in real time, records at up to 60 fps with audio, and provides a virtual camera for compatible macOS video apps.",
+                card: "Real-time face effects",
+                resume: "GiggleFace turns any image into a custom face effect you can use live on iPhone and Mac, records video at up to 60 fps with audio, lets you share masks, and works as a virtual camera in compatible macOS apps — all with on-device processing.",
             },
             "pt-br": {
-                card: "Máscaras offline em tempo real",
-                resume: "O GiggleFace cria e ajusta máscaras personalizadas a partir de qualquer imagem, aplica-as localmente à câmera frontal em tempo real, grava em até 60 fps com áudio e oferece câmera virtual para apps de vídeo compatíveis no macOS.",
+                card: "Efeitos faciais em tempo real",
+                resume: "O GiggleFace transforma qualquer imagem em um efeito facial personalizado para usar ao vivo no iPhone e no Mac, grava vídeos em até 60 fps com áudio, permite compartilhar máscaras e funciona como câmera virtual em apps compatíveis do macOS — tudo com processamento local.",
             },
         },
     },

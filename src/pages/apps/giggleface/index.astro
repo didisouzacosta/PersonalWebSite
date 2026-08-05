@@ -2,117 +2,117 @@
 import AppTemplate from "../../../components/app/AppTemplate.astro";
 
 const appName = "GiggleFace";
-const title = "GiggleFace - Real-Time Face Masks";
-const pageTitle = "GiggleFace | Offline Real-Time Face Masks for iPhone and Mac";
+const title = "GiggleFace - Real-Time Face Effects";
+const pageTitle = "GiggleFace | Real-Time Face Effects for iPhone and Mac";
 const description =
-    "Create and adjust custom face masks from any image, apply them live with the front camera, record at 60 fps with audio, and use GiggleFace as a virtual camera on Mac.";
+    "Bring any image to life as a custom face effect. Use it live, record video at up to 60 fps with audio, and add more fun to calls on Mac — with on-device processing.";
 const favicon = "/apps/giggleface/favicon.png";
 const appIcon = "/apps/giggleface/app-icon.jpg";
 const socialImage = "/social/apps/giggleface-share-en.jpg";
-const socialImageAlt = "GiggleFace real-time face mask preview with glowing facial tracking lines.";
+const socialImageAlt = "GiggleFace showing a real-time face effect with glowing facial tracking lines.";
 const testFlightUrl = "https://testflight.apple.com/join/GjXwReZf";
 
 const screenshots = [
-    "Reserved space for the GiggleFace mask camera screenshot.",
-    "Reserved space for the GiggleFace custom mask editor screenshot.",
-    "Reserved space for the GiggleFace recording screenshot.",
-    "Reserved space for the GiggleFace macOS virtual camera screenshot.",
+    "A real-time face effect in the GiggleFace camera.",
+    "The GiggleFace custom face effect editor.",
+    "Video recording with a face effect in GiggleFace.",
+    "GiggleFace used as a virtual camera in a Mac call.",
 ].map((alt) => ({ placeholder: true as const, alt }));
 
 const facts = [
     { label: "Platforms", value: "iPhone + Mac" },
-    { label: "Requires", value: "iOS 26+ · macOS 26+" },
+    { label: "Compatibility", value: "iOS 26+ · macOS 26+" },
     { label: "Privacy", value: "On-device processing" },
     { label: "Premium", value: "One-time purchase" },
 ];
 
 const features = [
     {
-        title: "Custom masks with one-time Premium",
-        description: "A single Premium purchase unlocks custom masks: import a photo from your library or share an image from another app, then turn it into a personal face mask.",
+        title: "Create your own face effect",
+        description: "With GiggleFace Premium, turn an image from your photo library — or shared from another app — into a one-of-a-kind mask. One purchase, no subscription.",
     },
     {
-        title: "Live, on-device masking",
-        description: "Apply masks to the front camera in real time while image and facial landmark processing stays on your device.",
+        title: "Watch it come alive",
+        description: "Use masks that follow your face in real time while image and facial landmark processing stays on your device.",
     },
     {
-        title: "Simple, dynamic editor",
-        description: "Adjust the mask position, scale, and fit with a focused editor designed for quick experimentation.",
+        title: "Fine-tune it your way",
+        description: "Move, resize, and fit each mask in a simple editor built for quick, effortless experimentation.",
     },
     {
-        title: "Share masks with friends",
-        description: "Export a mask file and choose how to send it through the system Share Sheet, without uploading it to a GiggleFace server.",
+        title: "Share what you create",
+        description: "Export your masks and send them through the system Share Sheet using the app you prefer, without relying on a GiggleFace server.",
     },
     {
-        title: "60 fps recording with audio",
-        description: "Record playful masked videos with sound at up to 60 frames per second on supported devices and configurations.",
+        title: "Record smoothly with sound",
+        description: "Capture playful face-effect videos with audio at up to 60 fps on supported devices and configurations.",
     },
     {
-        title: "Virtual camera for Mac",
-        description: "Select GiggleFace as a camera in Google Meet, Microsoft Teams, FaceTime, and other macOS apps that accept virtual camera input.",
+        title: "Bring GiggleFace to your calls",
+        description: "Use GiggleFace as a virtual camera in Google Meet, Microsoft Teams, FaceTime, and other compatible apps on Mac.",
     },
 ];
 
 const useCases = [
     {
-        title: "Make video calls more fun",
-        description: "Bring a playful mask to work calls, chats with friends, and family moments through the macOS virtual camera.",
+        title: "Become any character you imagine",
+        description: "Choose an image, create your mask, fine-tune the look, and watch the effect follow your expressions live.",
     },
     {
-        title: "Record a new character",
-        description: "Create a look from an image, fine-tune it, and record a smooth clip with audio directly on your device.",
+        title: "Create videos that make people laugh",
+        description: "Record spontaneous moments with a face effect, audio, and smooth motion directly on your device.",
     },
     {
-        title: "Create and share together",
-        description: "Exchange mask files through the apps you already use and keep building a collection with friends.",
+        title: "Surprise everyone on your next call",
+        description: "Bring characters and custom effects to calls with friends, family, or coworkers through the virtual camera on Mac.",
     },
 ];
 
 const faq = [
     {
         question: "What is GiggleFace?",
-        answer: "GiggleFace is an iPhone and Mac app that applies image-based face masks to the front camera in real time. You can adjust masks, record videos, and use the processed feed as a virtual camera on macOS.",
+        answer: "GiggleFace is a creative camera app for iPhone and Mac that turns images into custom face effects. Use masks live, record videos with audio, and bring the result to video call apps on macOS.",
     },
     {
         question: "Does GiggleFace work offline?",
-        answer: "Yes. Camera, mask, facial landmark, and recording processing run locally on your device. Internet access can still be required for TestFlight, purchases and restoration, importing an online image through another service, anonymous diagnostics, sharing through online apps, and video calls.",
+        answer: "Yes. Camera, face effect, facial tracking, and recording processing run on your device. Internet access can still be required for TestFlight, purchases and restoration, content imported from online services, anonymous diagnostics, sharing through online apps, and video calls.",
     },
     {
-        question: "How do I create a custom mask?",
-        answer: "With <strong>GiggleFace Premium</strong>, choose an image from your photo library or share an image from another app into GiggleFace. Then use the editor to adjust its position, scale, and fit.",
+        question: "How do I create a custom face effect?",
+        answer: "With <strong>GiggleFace Premium</strong>, choose an image from your photo library or share one from another app. Then adjust its position, scale, and fit until the mask looks just right.",
     },
     {
         question: "Can I share masks with friends?",
-        answer: "Yes. GiggleFace exports a mask file and opens the system Share Sheet so you can choose a compatible messaging, storage, or sharing app. GiggleFace does not host the file on a developer-operated sharing server.",
+        answer: "Yes. Export the mask file and choose a compatible app from the system Share Sheet. GiggleFace does not host the file on its own sharing server.",
     },
     {
         question: "Is GiggleFace Premium a subscription?",
-        answer: "No. The app is free to download, and Premium is available as a one-time purchase with no recurring subscription.",
+        answer: "No. The app is free to download, and Premium unlocks with one purchase and no recurring charges.",
     },
     {
-        question: "Which Mac video apps support GiggleFace?",
-        answer: "GiggleFace works with macOS apps that accept virtual camera input, including Google Meet, Microsoft Teams, and FaceTime. Availability can depend on the app version, macOS permissions, and the service configuration.",
+        question: "Which Mac apps support GiggleFace?",
+        answer: "GiggleFace works with macOS apps that support virtual cameras, including Google Meet, Microsoft Teams, and FaceTime. Availability depends on the app version, permissions, and service configuration.",
     },
     {
         question: "Does recording always run at 60 fps?",
-        answer: "GiggleFace can record at up to 60 fps with audio on supported devices. Actual frame rate can vary with hardware, thermal conditions, system load, selected settings, and available storage.",
+        answer: "GiggleFace records at up to 60 fps with audio on supported devices. Actual frame rate varies with hardware, thermal conditions, system load, settings, and available storage.",
     },
     {
         question: "Does GiggleFace upload my camera or masks?",
-        answer: "No. Camera frames, photos, audio, video, masks, and facial landmarks are not uploaded to developer media servers. GiggleFace sends limited anonymous usage and error diagnostics to Himetrica without media content or personal identity fields.",
+        answer: "No. Camera frames, photos, audio, videos, masks, and facial landmarks are not uploaded to developer media servers. Himetrica receives only limited anonymous diagnostics, with no media content or personal identity fields.",
     },
 ];
 
-const primaryKeyword = "real-time face masks";
+const primaryKeyword = "real-time face effects";
 const secondaryKeywords = [
-    "offline face mask app",
-    "mac virtual camera",
-    "custom camera masks",
+    "custom face masks",
+    "live camera effects",
+    "face effects camera app",
+    "Mac virtual camera",
     "video call effects",
-    "60 fps camera recording",
-    "Google Meet virtual camera",
-    "Teams virtual camera",
-    "FaceTime camera effects",
+    "60 fps video recording",
+    "offline face mask app",
+    "custom mask creator",
 ];
 ---
 

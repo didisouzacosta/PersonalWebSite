@@ -2,117 +2,117 @@
 import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const appName = "GiggleFace";
-const title = "GiggleFace - Máscaras em Tempo Real";
-const pageTitle = "GiggleFace | Máscaras Offline em Tempo Real para iPhone e Mac";
+const title = "GiggleFace - Efeitos faciais em tempo real";
+const pageTitle = "GiggleFace | Efeitos Faciais em Tempo Real para iPhone e Mac";
 const description =
-    "Crie e ajuste máscaras personalizadas a partir de qualquer imagem, aplique-as ao vivo com a câmera frontal, grave a 60 fps com áudio e use o GiggleFace como câmera virtual no Mac.";
+    "Dê vida a qualquer imagem com efeitos faciais personalizados. Use-os ao vivo, grave vídeos em até 60 fps com áudio e leve a diversão para chamadas no Mac — com processamento local.";
 const favicon = "/apps/giggleface/favicon.png";
 const appIcon = "/apps/giggleface/app-icon.jpg";
 const socialImage = "/social/apps/giggleface-share-pt-br.jpg";
-const socialImageAlt = "Prévia do GiggleFace com máscara facial em tempo real e linhas luminosas de rastreamento.";
+const socialImageAlt = "GiggleFace exibindo um efeito facial em tempo real com linhas luminosas de rastreamento do rosto.";
 const testFlightUrl = "https://testflight.apple.com/join/GjXwReZf";
 
 const screenshots = [
-    "Espaço reservado para a captura da câmera com máscara do GiggleFace.",
-    "Espaço reservado para a captura do editor de máscaras do GiggleFace.",
-    "Espaço reservado para a captura da gravação no GiggleFace.",
-    "Espaço reservado para a captura da câmera virtual do GiggleFace no macOS.",
+    "Efeito facial em tempo real na câmera do GiggleFace.",
+    "Editor de efeitos faciais personalizados do GiggleFace.",
+    "Gravação de vídeo com efeito facial no GiggleFace.",
+    "GiggleFace como câmera virtual em uma chamada no Mac.",
 ].map((alt) => ({ placeholder: true as const, alt }));
 
 const facts = [
     { label: "Plataformas", value: "iPhone + Mac" },
-    { label: "Requer", value: "iOS 26+ · macOS 26+" },
+    { label: "Compatibilidade", value: "iOS 26+ · macOS 26+" },
     { label: "Privacidade", value: "Processamento local" },
     { label: "Premium", value: "Compra única" },
 ];
 
 const features = [
     {
-        title: "Máscaras personalizadas com Premium único",
-        description: "Uma única compra Premium libera máscaras personalizadas: importe uma foto da galeria ou compartilhe uma imagem de outro app e transforme-a em uma máscara pessoal.",
+        title: "Crie seu próprio efeito facial",
+        description: "Com o GiggleFace Premium, transforme uma imagem da fototeca — ou compartilhada por outro app — em uma máscara exclusiva. Uma compra, sem assinatura.",
     },
     {
-        title: "Máscaras ao vivo no dispositivo",
-        description: "Aplique máscaras à câmera frontal em tempo real enquanto o processamento da imagem e dos pontos faciais permanece no aparelho.",
+        title: "Veja tudo ganhar vida ao vivo",
+        description: "Use máscaras que acompanham seu rosto em tempo real enquanto a imagem e os pontos faciais são processados diretamente no dispositivo.",
     },
     {
-        title: "Editor simples e dinâmico",
-        description: "Ajuste posição, escala e encaixe da máscara em um editor focado em experimentações rápidas.",
+        title: "Ajuste até ficar do seu jeito",
+        description: "Posicione, redimensione e encaixe cada máscara em um editor simples, feito para experimentar sem complicação.",
     },
     {
-        title: "Compartilhe máscaras com amigos",
-        description: "Exporte um arquivo de máscara e escolha como enviá-lo pelo menu de compartilhamento do sistema, sem upload para um servidor do GiggleFace.",
+        title: "Compartilhe suas criações",
+        description: "Exporte suas máscaras e envie pelo app que preferir usando o menu de compartilhamento, sem depender de um servidor do GiggleFace.",
     },
     {
-        title: "Gravação a 60 fps com áudio",
-        description: "Grave vídeos divertidos com máscara e som em até 60 quadros por segundo nos aparelhos e configurações compatíveis.",
+        title: "Grave com fluidez e som",
+        description: "Capture vídeos divertidos com efeitos faciais e áudio em até 60 fps nos dispositivos e configurações compatíveis.",
     },
     {
-        title: "Câmera virtual para Mac",
-        description: "Selecione o GiggleFace como câmera no Google Meet, Microsoft Teams, FaceTime e outros apps do macOS que aceitam câmeras virtuais.",
+        title: "Leve o GiggleFace para as chamadas",
+        description: "Use o GiggleFace como câmera virtual no Google Meet, Microsoft Teams, FaceTime e outros apps compatíveis no Mac.",
     },
 ];
 
 const useCases = [
     {
-        title: "Deixe as videochamadas mais divertidas",
-        description: "Leve uma máscara descontraída para reuniões, conversas com amigos e momentos em família usando a câmera virtual do macOS.",
+        title: "Vire o personagem que imaginar",
+        description: "Escolha uma imagem, crie sua máscara, ajuste o visual e veja o efeito acompanhar suas expressões ao vivo.",
     },
     {
-        title: "Grave um novo personagem",
-        description: "Crie um visual a partir de uma imagem, faça os ajustes e grave um vídeo fluido com áudio diretamente no aparelho.",
+        title: "Crie vídeos que fazem rir",
+        description: "Grave momentos espontâneos com efeito facial, áudio e movimento fluido diretamente no seu dispositivo.",
     },
     {
-        title: "Crie e compartilhe em conjunto",
-        description: "Troque arquivos de máscaras pelos apps que você já usa e construa uma coleção com seus amigos.",
+        title: "Surpreenda em cada chamada",
+        description: "Leve personagens e efeitos personalizados para conversas com amigos, família ou colegas usando a câmera virtual no Mac.",
     },
 ];
 
 const faq = [
     {
-        question: "O que é GiggleFace?",
-        answer: "GiggleFace é um app para iPhone e Mac que aplica máscaras faciais baseadas em imagens à câmera frontal em tempo real. Você pode ajustar máscaras, gravar vídeos e usar a imagem processada como câmera virtual no macOS.",
+        question: "O que é o GiggleFace?",
+        answer: "O GiggleFace é um app criativo para iPhone e Mac que transforma imagens em efeitos faciais personalizados. Use máscaras ao vivo, grave vídeos com áudio e leve o resultado para apps de videochamada no macOS.",
     },
     {
         question: "O GiggleFace funciona offline?",
-        answer: "Sim. O processamento da câmera, máscaras, pontos faciais e gravações ocorre localmente no aparelho. A internet ainda pode ser necessária para TestFlight, compra e restauração, importação de uma imagem online por outro serviço, diagnósticos anônimos, compartilhamento por apps online e videochamadas.",
+        answer: "Sim. Câmera, efeitos faciais, pontos de rastreamento e gravações são processados no dispositivo. A internet ainda pode ser necessária para TestFlight, compras e restaurações, conteúdo importado de serviços online, diagnósticos anônimos, compartilhamento por apps online e videochamadas.",
     },
     {
-        question: "Como criar uma máscara personalizada?",
-        answer: "Com o <strong>GiggleFace Premium</strong>, escolha uma imagem da fototeca ou compartilhe uma imagem de outro app com o GiggleFace. Depois, use o editor para ajustar posição, escala e encaixe.",
+        question: "Como criar um efeito facial personalizado?",
+        answer: "Com o <strong>GiggleFace Premium</strong>, escolha uma imagem da fototeca ou compartilhe uma de outro app. Depois, ajuste posição, escala e encaixe até a máscara ficar do seu jeito.",
     },
     {
         question: "Posso compartilhar máscaras com amigos?",
-        answer: "Sim. O GiggleFace exporta um arquivo de máscara e abre o menu de compartilhamento do sistema para você escolher um app compatível de mensagens, armazenamento ou compartilhamento. O arquivo não é hospedado em um servidor de compartilhamento operado pelo desenvolvedor.",
+        answer: "Sim. Exporte o arquivo de máscara e escolha um app compatível pelo menu de compartilhamento do sistema. O GiggleFace não hospeda o arquivo em um servidor próprio de compartilhamento.",
     },
     {
-        question: "GiggleFace Premium é uma assinatura?",
-        answer: "Não. O app é gratuito para baixar e o Premium está disponível por uma compra única, sem cobrança recorrente.",
+        question: "O GiggleFace Premium é uma assinatura?",
+        answer: "Não. O app é gratuito para baixar e o Premium é liberado com uma única compra, sem cobranças recorrentes.",
     },
     {
-        question: "Quais apps de vídeo no Mac aceitam o GiggleFace?",
-        answer: "O GiggleFace funciona com apps do macOS que aceitam câmeras virtuais, incluindo Google Meet, Microsoft Teams e FaceTime. A disponibilidade pode depender da versão do app, das permissões do macOS e da configuração do serviço.",
+        question: "Quais apps no Mac aceitam o GiggleFace?",
+        answer: "O GiggleFace funciona com apps do macOS compatíveis com câmeras virtuais, incluindo Google Meet, Microsoft Teams e FaceTime. A disponibilidade depende da versão do app, das permissões e da configuração do serviço.",
     },
     {
         question: "A gravação sempre funciona a 60 fps?",
-        answer: "O GiggleFace pode gravar em até 60 fps com áudio nos dispositivos compatíveis. A taxa real pode variar conforme hardware, temperatura, carga do sistema, ajustes selecionados e armazenamento disponível.",
+        answer: "O GiggleFace grava em até 60 fps com áudio nos dispositivos compatíveis. A taxa real varia conforme hardware, temperatura, carga do sistema, ajustes e armazenamento disponível.",
     },
     {
         question: "O GiggleFace envia minha câmera ou minhas máscaras?",
-        answer: "Não. Quadros da câmera, fotos, áudio, vídeo, máscaras e pontos faciais não são enviados para servidores de mídia do desenvolvedor. O GiggleFace envia à Himetrica somente diagnósticos limitados e anônimos de uso e erros, sem conteúdo de mídia ou campos de identidade pessoal.",
+        answer: "Não. Quadros da câmera, fotos, áudio, vídeos, máscaras e pontos faciais não são enviados para servidores de mídia do desenvolvedor. A Himetrica recebe somente diagnósticos limitados e anônimos, sem conteúdo de mídia ou campos de identidade pessoal.",
     },
 ];
 
-const primaryKeyword = "máscaras faciais em tempo real";
+const primaryKeyword = "efeitos faciais em tempo real";
 const secondaryKeywords = [
-    "app de máscara facial offline",
+    "máscaras faciais personalizadas",
+    "app de câmera com efeitos",
+    "efeitos faciais ao vivo",
     "câmera virtual para Mac",
-    "máscaras personalizadas para câmera",
-    "efeitos para videochamada",
-    "gravação de câmera a 60 fps",
-    "câmera virtual Google Meet",
-    "câmera virtual Teams",
-    "efeitos de câmera FaceTime",
+    "efeitos para videochamadas",
+    "gravação de vídeo a 60 fps",
+    "app de máscara facial offline",
+    "criador de máscaras faciais",
 ];
 ---
 
