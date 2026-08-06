@@ -13,11 +13,47 @@ const socialImageAlt = "GiggleFace exibindo um efeito facial em tempo real com l
 const testFlightUrl = "https://testflight.apple.com/join/GjXwReZf";
 
 const screenshots = [
-    "Efeito facial em tempo real na câmera do GiggleFace.",
-    "Editor de efeitos faciais personalizados do GiggleFace.",
-    "Gravação de vídeo com efeito facial no GiggleFace.",
-    "GiggleFace como câmera virtual em uma chamada no Mac.",
-].map((alt) => ({ placeholder: true as const, alt }));
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-1.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-1.png",
+        },
+        alt: "Prévias da câmera do GiggleFace com seis máscaras faciais personalizadas criadas a partir de imagens diferentes.",
+        caption: "Transforme qualquer imagem em uma máscara personalizada que acompanha suas expressões ao vivo.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-2.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-2.png",
+        },
+        alt: "GiggleFace gravando um vídeo com uma máscara facial personalizada de palhaço.",
+        caption: "Grave expressões fluidas e naturais com áudio em até 60 fps.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-3.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-3.png",
+        },
+        alt: "GiggleFace Camera no Mac emparelhando com um iPhone e recebendo um vídeo ao vivo com máscara.",
+        caption: "Conecte-se ao GiggleFace no Mac e leve suas máscaras para videochamadas compatíveis.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-4.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-4.png",
+        },
+        alt: "Imagem sendo importada para o GiggleFace pelo menu de compartilhamento do iPhone.",
+        caption: "Importe uma imagem da fototeca ou de outro app para criar uma máscara.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-5.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-5.png",
+        },
+        alt: "GiggleFace gravando offline com um efeito personalizado de máscara de hóquei.",
+        caption: "Crie e grave offline enquanto suas imagens permanecem no dispositivo.",
+    },
+];
 
 const facts = [
     { label: "Plataformas", value: "iPhone + Mac" },

@@ -13,11 +13,47 @@ const socialImageAlt = "GiggleFace showing a real-time face effect with glowing 
 const testFlightUrl = "https://testflight.apple.com/join/GjXwReZf";
 
 const screenshots = [
-    "A real-time face effect in the GiggleFace camera.",
-    "The GiggleFace custom face effect editor.",
-    "Video recording with a face effect in GiggleFace.",
-    "GiggleFace used as a virtual camera in a Mac call.",
-].map((alt) => ({ placeholder: true as const, alt }));
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-1.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-1.png",
+        },
+        alt: "GiggleFace camera previews showing six custom face masks created from different images.",
+        caption: "Turn any image into a custom mask that follows your expressions live.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-2.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-2.png",
+        },
+        alt: "GiggleFace recording a video with a custom clown face mask.",
+        caption: "Record smooth, natural expressions with audio at up to 60 fps.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-3.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-3.png",
+        },
+        alt: "GiggleFace Camera on Mac pairing with an iPhone and receiving a live masked video feed.",
+        caption: "Connect to GiggleFace on Mac and bring your masks to compatible video calls.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-4.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-4.png",
+        },
+        alt: "An image being imported into GiggleFace through the iPhone Share Sheet.",
+        caption: "Import an image from your photo library or another app to create a mask.",
+    },
+    {
+        url: {
+            en: "giggleface/screenshots/en/frame-5.png",
+            ptBr: "giggleface/screenshots/ptBR/frame-5.png",
+        },
+        alt: "GiggleFace recording offline with a custom hockey mask effect.",
+        caption: "Create and record offline while your images stay on your device.",
+    },
+];
 
 const facts = [
     { label: "Platforms", value: "iPhone + Mac" },
