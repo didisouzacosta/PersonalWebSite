@@ -1,7 +1,7 @@
 {
   "name": "personal-website",
   "type": "module",
-  "version": "4.2.18",
+  "version": "4.2.19",
   "engines": {
     "node": ">=22.12.0"
   },
