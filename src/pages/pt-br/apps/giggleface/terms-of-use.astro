@@ -20,10 +20,10 @@ const alternateLocales = localizedAlternates(
 >
     <h1>{title}</h1>
 
-    <h4>Última atualização: 4 de agosto de 2026</h4>
+    <h4>Última atualização: 10 de setembro de 2026</h4>
 
     <p>
-        Estes Termos de Uso regem o uso do GiggleFace no iOS e do GiggleFaceCamera no macOS. Ao baixar ou
+        Estes Termos de Uso regem o uso do GiggleFace no iOS/iPadOS e do GiggleFaceCamera no macOS. Ao baixar ou
         utilizar o app, você concorda com estes termos.
     </p>
 
@@ -85,30 +85,55 @@ const alternateLocales = localizedAlternates(
         outras pessoas ao erro.
     </p>
 
-    <h3>5. Permissões e Gravação</h3>
-
+    <h3 id="permissions-and-face-data">5. Permissões, Processamento Facial e Gravação</h3>
     <p>
-        O acesso à câmera, microfone, fototeca e arquivos depende das permissões que
-        você controla pelo iOS ou macOS. Alguns recursos não funcionarão sem a permissão
-        necessária. Você é responsável por obter consentimento antes de gravar ou
-        transmitir imagem ou voz de outra pessoa e por seguir a legislação local sobre
-        gravações.
+        O acesso à câmera, microfone, fototeca, arquivos e rede local depende de
+        permissões e interfaces do sistema que você controla. Os recursos de máscaras
+        exigem um dispositivo compatível com o rastreamento facial do ARKit da Apple;
+        a disponibilidade depende do hardware e do sistema operacional. Negar uma
+        permissão necessária pode impedir o funcionamento do recurso correspondente.
+    </p>
+    <p>
+        O GiggleFace processa geometria e expressões faciais localmente para animar
+        máscaras e pontos faciais em imagens selecionadas para alinhar máscaras
+        personalizadas. É uma ferramenta criativa, não um serviço de verificação de
+        identidade, autenticação ou saúde. A <a href="/pt-br/apps/giggleface/privacy-policy/#face-data">seção 3
+        da Política de Privacidade</a> explica o tratamento de dados faciais e TrueDepth;
+        as seções 4, 7 e 9 explicam mídia salva, transferências, retenção e exclusão.
+        Aceitar estes termos não substitui as permissões do dispositivo nem o
+        consentimento exigido para um uso ou compartilhamento específico de dados pessoais.
+    </p>
+    <p>
+        Você é responsável por obter a permissão necessária antes de usar a imagem
+        de outra pessoa para criar uma máscara ou gravar ou transmitir sua imagem ou
+        voz e por seguir a legislação aplicável sobre gravações. Uma máscara não
+        garante anonimato. Não utilize o GiggleFace para contornar verificações de identidade.
     </p>
 
-    <h3>6. Câmera Virtual e Serviços de Terceiros</h3>
-
+    <h3 id="virtual-camera">6. Conexão entre iPhone e Mac e Serviços de Terceiros</h3>
     <p>
-        O GiggleFaceCamera pode fornecer uma câmera virtual para apps do macOS que aceitem
-        entradas compatíveis, incluindo Google Meet, Microsoft Teams e FaceTime. O
-        suporte pode variar conforme versão do app, macOS, hardware, permissões,
-        configurações de segurança e do serviço. Não é garantida compatibilidade com
-        todos os serviços ou versões futuras.
+        Usar máscaras em videochamadas no Mac exige o app complementar GiggleFaceCamera
+        em um Mac compatível, GiggleFace em um iPhone ou iPad compatível, ambos na mesma
+        rede local e as permissões de rede necessárias. Ative a extensão de câmera
+        no macOS, leia o QR code do Mac pelo GiggleFace, estabeleça a conexão e
+        selecione GiggleFaceCamera como câmera em um app de comunicação compatível.
+        Faça o pareamento apenas com um Mac em que confie.
     </p>
-
     <p>
-        Serviços terceiros de comunicação, compartilhamento e armazenamento são
-        independentes do GiggleFace. Sua disponibilidade, transmissão, gravação,
-        moderação e tratamento de dados seguem os próprios termos e políticas.
+        O GiggleFace envia vídeo renderizado por uma conexão local autenticada e
+        criptografada. O Mac recebe esse vídeo, não a malha facial ao vivo nem os
+        coeficientes de expressão subjacentes. Um app de comunicação pode transmitir
+        ou gravar o vídeo fora da rede local conforme suas configurações e políticas.
+        Pare a transmissão ou desconecte os dispositivos para interromper o envio de
+        novos quadros ao Mac. Isso não exclui cópias já salvas ou compartilhadas.
+    </p>
+    <p>
+        A compatibilidade varia conforme hardware, sistemas operacionais, versões dos
+        apps, suporte a extensões, permissões, ajustes de segurança e rede. Serviços
+        terceiros de comunicação, compartilhamento e armazenamento são independentes
+        e seguem os próprios termos e políticas. Não é garantida compatibilidade com
+        todos os serviços ou versões futuras. A câmera virtual fornece vídeo; a entrada
+        de áudio de uma chamada é configurada separadamente no app de comunicação.
     </p>
 
     <h3>7. GiggleFace Premium</h3>
@@ -121,21 +146,28 @@ const alternateLocales = localizedAlternates(
     </p>
 
     <p>
-        A Apple processa preço, cobrança, impostos, validação, restauração e pedidos de
-        reembolso. A restauração exige o Apple ID utilizado na compra original elegível
+        A Apple processa cobrança, impostos e pedidos de reembolso. A RevenueCat
+        auxilia na validação e restauração de compras conforme a Política de Privacidade. A restauração exige o Apple ID utilizado na compra original elegível
         e depende dos sistemas da Apple. Uma compra única não garante que todos os
         recursos, integrações de terceiros ou compatibilidades de sistema permanecerão
         inalterados indefinidamente.
     </p>
 
-    <h3>8. Funcionamento Offline e Conectividade</h3>
-
+    <h3 id="connectivity-and-storage">8. Conectividade e Conteúdo Salvo</h3>
     <p>
-        O processamento principal da câmera, máscaras, pontos faciais, editor e
-        gravações foi projetado para ocorrer localmente. A internet ainda pode ser
-        necessária para baixar o app, TestFlight, compras e restauração, importar
-        conteúdo de um serviço online, enviar analytics anônimo e diagnósticos de erro,
-        compartilhar por apps online e participar de videochamadas.
+        Câmera, rastreamento facial, edição de máscaras e gravações são processados
+        localmente. A transmissão ao Mac exige uma conexão de rede local. A internet
+        pode ser necessária para baixar o app, realizar compras e restaurações pela
+        Apple e RevenueCat, enviar analytics e diagnósticos pela Himetrica, importar
+        conteúdo online, compartilhar ou participar de videochamadas. O processamento
+        local das máscaras não exige enviar medidas faciais a um serviço na internet.
+    </p>
+    <p>
+        Você controla máscaras, imagens de origem e gravações salvas. Excluir um item
+        da biblioteca do app não exclui exportações, cópias no Fotos, backups ou
+        gravações feitas por um serviço de comunicação ou outros participantes.
+        Gerencie essas cópias separadamente. A <a href="/pt-br/apps/giggleface/privacy-policy/#retention-and-choices">seção 9
+        da Política de Privacidade</a> explica retenção e exclusão.
     </p>
 
     <h3>9. Propriedade Intelectual</h3>
@@ -165,6 +197,12 @@ const alternateLocales = localizedAlternates(
         <li>Interrupções ou mudanças feitas pela Apple ou por serviços terceiros de comunicação e compartilhamento;</li>
         <li>Reclamações, perdas ou disputas decorrentes do conteúdo criado, importado, transmitido, gravado ou compartilhado por você.</li>
     </ul>
+
+    <p>
+        Nada nestes termos exclui ou limita direitos obrigatórios do consumidor,
+        garantias legais, reembolsos ou responsabilidades que não possam ser
+        afastados pela legislação aplicável.
+    </p>
 
     <h3>11. Atualizações e Disponibilidade</h3>
 

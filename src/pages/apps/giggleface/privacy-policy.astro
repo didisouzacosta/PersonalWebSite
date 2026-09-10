@@ -20,70 +20,134 @@ const alternateLocales = localizedAlternates(
 >
     <h1>{title}</h1>
 
-    <h4>Last updated: August 4, 2026</h4>
+    <h4>Last updated: September 10, 2026</h4>
 
     <p>
-        GiggleFace for iOS and GiggleFaceCamera for macOS respect your privacy and are designed to keep camera, mask,
-        facial landmark, audio, and video processing on your device. This policy
-        explains the limited information used to operate and improve the app.
+        This policy explains which face data and other information GiggleFace and
+        GiggleFaceCamera process, why they use it, where it is stored, when it is
+        shared, and how long it is retained. Face tracking is performed on the mobile
+        device; sending rendered video to your Mac or sharing saved media is a
+        separate feature you control.
     </p>
-
-    <h3>1. Accounts and Personal Information</h3>
-
     <p>
-        GiggleFace does not require an account and does not ask you to provide your
-        name, email address, phone number, contacts, or precise location to servers
-        controlled by the developer.
+        For face data and TrueDepth, see <a href="#face-data">section 3</a>.
+        For saved media, see <a href="#local-storage">section 4</a>; for transmission
+        and recipients, <a href="#sharing-and-streaming">section 7</a>; and for
+        deletion, <a href="#retention-and-choices">section 9</a>.
     </p>
 
-    <h3>2. Camera, Microphone, Photo Library, and Files</h3>
+    <h3 id="scope">1. Scope, Developer, and Accounts</h3>
+    <p>
+        Adriano Souza Costa is responsible for the data practices of GiggleFace for
+        iOS/iPadOS and GiggleFaceCamera for macOS described here. The apps do not require
+        a user account or ask for your name, email, phone number, or contacts to use the
+        camera and mask features. If you contact support, we receive the contact details
+        and information you choose to include in your message, and use them to answer it.
+    </p>
 
-    <p>GiggleFace may request system permissions only when needed for app features:</p>
-
+    <h3 id="permissions">2. Permissions and Device Access</h3>
     <ul>
-        <li><strong>Camera:</strong> to capture and process the front-camera image in real time.</li>
-        <li><strong>Microphone:</strong> to include audio when you choose to record a video.</li>
-        <li><strong>Photo Library:</strong> to import images you select and save recordings when requested.</li>
-        <li><strong>Files and sharing:</strong> to import or export mask files through system interfaces you control.</li>
+        <li><strong>Camera:</strong> GiggleFace accesses the front camera for live masks and the camera for scanning the Mac's pairing QR code. GiggleFaceCamera receives video from the paired device; it does not capture the Mac's physical camera.</li>
+        <li><strong>Microphone:</strong> GiggleFace captures audio to include in videos you choose to record.</li>
+        <li><strong>Photos, Files, and sharing:</strong> system interfaces let you select images or mask files to import and destinations for exports. Photo Library permission is requested when needed to save a recording.</li>
+        <li><strong>Local Network:</strong> device discovery and a local connection let GiggleFace send processed video to GiggleFaceCamera after QR-code pairing. Connection information includes local network addresses, a service name, and session pairing credentials.</li>
+        <li><strong>Location on Mac:</strong> optional system authorization is used to display the current Wi-Fi network name (SSID), not to track your physical location. The app does not send that name or location to the developer for analytics.</li>
     </ul>
-
     <p>
-        These permissions are managed by iOS or macOS and can be changed in system
-        settings. Denying a permission may prevent the related feature from working.
+        You can change permissions in system settings. Denying or revoking a permission
+        prevents the related access and may make that feature unavailable. Camera
+        permission does not itself authorize uploading your media to the developer.
     </p>
 
-    <h3>3. On-Device Media and Face Processing</h3>
-
+    <h3 id="face-data">3. Face Data, ARKit, and TrueDepth</h3>
+    <h4 id="face-data-collected">3.1. Face data accessed and generated</h4>
     <p>
-        Camera frames, imported images, masks, audio, and recordings are processed
-        locally on your device. GiggleFace does not upload this media to servers
-        operated by the developer.
+        With camera permission, GiggleFace uses Apple's ARKit face tracking, including
+        TrueDepth-based tracking on supported devices, to access front-camera frames,
+        a three-dimensional face mesh (vertices and surface coordinates), the face's
+        position and orientation, tracking status, and expression coefficients
+        (blend shapes, including mouth and jaw movements). These measurements describe
+        the face's shape and movement for rendering; the app does not access Face ID
+        enrollment data or an authentication template.
+    </p>
+    <p>
+        When you import an image to make a mask, Apple's Vision framework detects
+        two-dimensional facial landmarks, such as eyes, eyebrows, nose, and lips,
+        on the device to help align the image. Imported images, mask textures, and
+        recordings may themselves show an identifiable face. They are treated as user
+        media and have the separate storage and sharing practices described below.
+    </p>
+    <h4 id="face-data-use">3.2. Purposes and limits</h4>
+    <p>
+        Face measurements are used only to fit and animate masks, align imported
+        images, and render the live preview, videos you record, and the processed
+        video you choose to send to your Mac. Face tracking and mask rendering take
+        place on the iPhone or iPad. GiggleFace does not use face data for identity
+        recognition, authentication, profiling, advertising, marketing, data mining,
+        or training machine-learning models. We do not sell or rent face data.
+    </p>
+    <h4 id="face-data-retention">3.3. Storage, retention, and deletion of face measurements</h4>
+    <p>
+        Live face meshes, tracking positions, expression coefficients, and detected
+        image landmarks are processed in device memory. The app does not write these
+        measurement sets to a persistent face database, a recording's metadata, or a
+        developer-operated server. They are replaced as processing advances and
+        released when the objects holding them are released. A last frame or rendering
+        state may remain in memory while the app process is alive, including while
+        tracking is paused; any remaining in-process data is released when that process
+        terminates. There is no persistent retention period for these measurement sets.
+    </p>
+    <p>
+        Saving a mask keeps its image, source image, thumbnail, and editor adjustments;
+        recording a video keeps the rendered image and recorded audio. These files may
+        contain a visible face even though they do not include the live ARKit mesh or
+        expression coefficients as a separate dataset. Their retention and deletion
+        are explained in <a href="#local-storage">section 4</a> and
+        <a href="#retention-and-choices">section 9</a>.
+    </p>
+    <h4 id="face-data-sharing">3.4. Disclosure and sharing of face data</h4>
+    <p>
+        The app does not transmit the live face mesh, tracking coordinates, expression
+        coefficients, or detected image landmark sets to the developer, the paired
+        Mac, Himetrica, RevenueCat, advertising networks, or data brokers. Himetrica
+        and RevenueCat do not receive your camera frames, imported images, masks, or
+        recordings from GiggleFace.
+    </p>
+    <p>
+        When you pair and start streaming, the rendered video, which may show your
+        face, is sent to your Mac over the local network. When you choose to export
+        media or use the virtual camera in a communication app, that selected app or
+        service receives the media. These user-directed transfers, recipients, and
+        storage practices are detailed in <a href="#sharing-and-streaming">section 7</a>.
+        We do not operate a cloud face-processing service or a remote media library.
     </p>
 
+    <h3 id="local-storage">4. Local Media Storage</h3>
     <p>
-        GiggleFace uses temporary facial landmarks and contours to position masks.
-        These landmarks are used only during processing, are not used to identify
-        you, are not stored as a facial identity template, and are not sent to the
-        developer or Himetrica.
+        GiggleFace saves custom mask images, copies of their source images, thumbnails,
+        editor adjustments, and recordings in app-controlled storage on the device.
+        Mask storage is shared locally between GiggleFace and its sharing extension.
+        Saving a mask allows later reuse and editing; saving a recording allows playback
+        and export. These saved items have no automatic expiration and remain until
+        removed or replaced. Temporary recording and export files can also remain in
+        the app's temporary storage until app or operating-system cleanup.
+    </p>
+    <p>
+        Exported files and copies saved to Photos, Files, iCloud, or another selected
+        service are separate from the app's library. Device backups or photo/file sync
+        may copy saved media according to your Apple or storage-provider settings.
+        GiggleFace does not upload these files to a developer-operated server. Deleting
+        an item in GiggleFace does not delete copies in Photos, backups, recipient apps,
+        or other storage services; manage those copies with the relevant provider.
     </p>
 
-    <h3>4. Local Storage</h3>
-
-    <p>
-        Masks, editor settings, exported files, and recordings remain under your
-        control on your device and in locations you choose, such as Apple Photos,
-        Files, iCloud, or another service selected through the system Share Sheet.
-        Retention and deletion of those files are controlled by you and the selected
-        storage provider.
-    </p>
-
-    <h3>5. Anonymous Analytics and Error Diagnostics</h3>
+    <h3>5. Usage Analytics and Error Diagnostics</h3>
 
     <p>
         GiggleFace uses Himetrica to understand feature usage and diagnose technical
         errors. The integration is configured without Himetrica's identify function
         and does not send your name, email address, camera image, imported images,
-        masks, audio, video, recordings, or facial landmarks.
+        masks, audio, video, recordings, facial meshes, expression coefficients, or facial landmarks.
     </p>
 
     <p>The limited diagnostic information may include:</p>
@@ -110,48 +174,87 @@ const alternateLocales = localizedAlternates(
         <a href="https://www.himetrica.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
     </p>
 
-    <h3>6. Purchases</h3>
-
+    <h3 id="purchases">6. Purchases and RevenueCat</h3>
     <p>
-        GiggleFace Premium is offered as a one-time in-app purchase. Apple processes
-        payment, purchase verification, restoration, and refunds under its own terms.
-        The developer does not receive your complete payment card information.
+        GiggleFace Premium is offered as a one-time, non-consumable in-app purchase.
+        Apple handles payment and refunds. GiggleFace also uses RevenueCat to validate
+        transactions, manage and restore Premium access, present purchase offers,
+        and understand purchase activity. RevenueCat processes an app-generated user
+        identifier, purchase and transaction information, entitlement status, and
+        technical information needed to provide those services. Purchase data is
+        processed on Apple and RevenueCat infrastructure; entitlement information
+        is also cached locally so the app can determine access.
+    </p>
+    <p>
+        No face measurements or user media are sent to RevenueCat. The developer does
+        not receive your complete payment card information. Purchase records may be
+        retained for verification, restoration, fraud prevention, and applicable legal
+        requirements; deleting the app does not erase Apple's or RevenueCat's records.
+        See <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener noreferrer">RevenueCat's Privacy Policy</a>
+        and <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple's Privacy Policy</a>.
     </p>
 
-    <h3>7. Sharing and Virtual Camera Use</h3>
-
+    <h3 id="sharing-and-streaming">7. Local Streaming, Virtual Camera, and Sharing</h3>
     <p>
-        When you export a mask or recording, the system Share Sheet sends the selected
-        file only to the app or service you choose. Those third parties process the
-        file under their own privacy policies.
+        To use masks on your Mac, you open GiggleFaceCamera, pair GiggleFace by scanning
+        its QR code, and start the connection with both devices on the same local
+        network. The paired connection is authenticated and encrypted. GiggleFace
+        renders the mask on the mobile device and sends encoded video to the Mac;
+        it does not send the underlying ARKit mesh or expression coefficients. The
+        local media connection does not pass through a developer-operated relay server.
+    </p>
+    <p>
+        GiggleFaceCamera decodes and temporarily buffers the video in Mac memory for
+        preview and the virtual camera. It does not automatically create a saved
+        recording of the incoming stream. Frames are replaced during playback and
+        released as buffers are replaced or the receiving components are released;
+        remaining in-process buffers are released when the process terminates.
+        Disconnecting stops delivery of new video to the Mac.
+    </p>
+    <p>
+        Selecting GiggleFaceCamera in a compatible communication app makes the rendered
+        video available to that app. Depending on the service and your settings, the
+        video may then leave the local network, reach other participants, and be
+        transmitted or recorded by that service or those participants. A mask does
+        not guarantee anonymity or hide all identifying details. Storage locations,
+        retention, and deletion of these copies follow the recipient's practices.
+    </p>
+    <p>
+        Exporting a mask or recording through the system Share Sheet sends the selected
+        file to the app or service you choose. Sharing and storage services process
+        their copies under their own privacy policies. Stop streaming, deselect the
+        virtual camera, or leave the call to stop the related ongoing use; these actions
+        cannot recall files or recordings that others already received.
     </p>
 
+    <h3 id="data-sharing">8. Service Providers and Advertising</h3>
     <p>
-        When you select GiggleFaceCamera as a macOS virtual camera, the processed camera feed
-        becomes available to the communication app you selected. Services such as
-        Google Meet, Microsoft Teams, or FaceTime may transmit, display, or record that
-        feed according to their settings and policies. GiggleFace does not control how
-        those services handle a call.
+        We do not sell or rent personal information or use face data for advertising.
+        The app's disclosures are limited to Himetrica for the usage and diagnostics
+        described in section 5, Apple and RevenueCat for section 6, and the devices,
+        apps, and services involved in the transfers you initiate in sections 4 and 7.
+        If you contact support, your message is handled by our email provider to let
+        us respond. Service providers may process these non-face operational records
+        outside your country under their policies. This does not involve sending
+        live facial measurements or user media to analytics or purchase providers.
     </p>
 
-    <h3>8. Data Sharing and Advertising</h3>
-
+    <h3 id="retention-and-choices">9. Retention, Deletion, and Your Choices</h3>
+    <ul>
+        <li><strong>Face measurements:</strong> retained only in device memory as explained in <a href="#face-data-retention">section 3.3</a>; there is no developer-held face dataset to delete.</li>
+        <li><strong>Saved masks and recordings:</strong> retained locally without automatic expiration. Use the app's deletion controls for library items. Replacing an edited item updates its local files. Deleting the app removes its app data as managed by the operating system; offloading the app may preserve data.</li>
+        <li><strong>Exports, backups, and call recordings:</strong> delete them separately in Photos, Files, backup settings, or the recipient service. Recently deleted folders and provider retention rules may apply.</li>
+        <li><strong>Analytics:</strong> detailed Himetrica events follow the retention period of the developer's plan; aggregate statistics may remain longer under Himetrica's policy. These records do not contain face measurements or user media.</li>
+        <li><strong>Purchase information:</strong> retained for the purposes described in section 6, including restoring the one-time entitlement.</li>
+        <li><strong>Support messages:</strong> retained as needed to answer and resolve the request and meet applicable legal obligations. You may request deletion using the contact below.</li>
+    </ul>
     <p>
-        We do not sell or rent personal information and do not use your data for
-        targeted advertising. Information is disclosed only to Himetrica for the
-        limited analytics described above, to Apple for purchases and platform
-        services, or to a service you intentionally select for sharing, storage, or
-        communication.
-    </p>
-
-    <h3>9. Data Retention and Your Choices</h3>
-
-    <p>
-        The developer does not maintain a remote media library or named user account
-        for GiggleFace. You can remove local masks and recordings using the app,
-        Photos, Files, or the applicable storage service. Anonymous diagnostic data is
-        retained under Himetrica's applicable retention period and may not be directly
-        linkable to a named person.
+        You can stop camera use, disconnect streaming, and revoke device permissions
+        in system settings. To request access, correction, or deletion of personal
+        information we hold, or exercise other rights available under applicable law,
+        contact us. We may need information to locate and verify the relevant record;
+        a name alone may not identify records associated with a random app identifier.
+        We do not need a face scan to handle a privacy request.
     </p>
 
     <h3>10. Security</h3>
@@ -171,12 +274,13 @@ const alternateLocales = localizedAlternates(
         policy, please contact us so the issue can be reviewed.
     </p>
 
-    <h3>12. Changes to This Policy</h3>
-
+    <h3 id="policy-changes">12. Changes to This Policy</h3>
     <p>
-        We may update this Privacy Policy to reflect product, technical, or legal
-        changes. The latest version and its effective date will remain available on
-        this page.
+        We may update this policy to reflect product, technical, or legal changes.
+        The current version and its update date remain available here. A policy
+        update alone does not authorize a new use or transfer of face data; any
+        such change must be disclosed and obtain consent where required before
+        the new processing begins.
     </p>
 
     <h3>13. Contact</h3>

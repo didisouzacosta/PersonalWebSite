@@ -59,6 +59,11 @@ const {
         margin-bottom: 12px;
     }
 
+    article :global(h3[id]),
+    article :global(h4[id]) {
+        scroll-margin-top: calc(96px + var(--safe-area-top, 0px));
+    }
+
     article :global(ul) {
         padding-left: 20px;
         list-style: disc;
