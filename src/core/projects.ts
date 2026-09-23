@@ -44,11 +44,11 @@ export const portfolioProjects: PortfolioProject[] = [
         descriptions: {
             en: {
                 card: "Reaction dual cam",
-                resume: "DuoTake records with the front and rear cameras at the same time, combining the moment, your reaction, creator layouts, CropOut, and a premium Teleprompter in one video.",
+                resume: "DuoTake records with the front and rear cameras at the same time, combining the moment, your reaction, creator layouts, Cutout, and a premium Teleprompter in one video.",
             },
             "pt-br": {
                 card: "Câmera de reação",
-                resume: "O DuoTake grava com a câmera frontal e traseira ao mesmo tempo, combinando o momento, sua reação, layouts de creator, CropOut e Teleprompter premium em um vídeo.",
+                resume: "O DuoTake grava com a câmera frontal e traseira ao mesmo tempo, combinando o momento, sua reação, layouts de creator, Cutout e Teleprompter premium em um vídeo.",
             },
         },
     },
