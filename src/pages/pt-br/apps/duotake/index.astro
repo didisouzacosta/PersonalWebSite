@@ -3,7 +3,7 @@ import AppTemplate from "../../../../components/app/AppTemplate.astro";
 
 const title = "Câmera dupla: DuoTake";
 const appId = "id6761627384";
-const appStoreUrl = "https://apps.apple.com/br/app/duotake-c%C3%A2mera-de-rea%C3%A7%C3%A3o/id6761627384";
+const appStoreUrl = "https://apps.apple.com/br/app/dual-camera-duotake/id6761627384";
 const appName = "DuoTake";
 const pageTitle = "Câmera dupla: DuoTake";
 const description =
@@ -17,7 +17,7 @@ const metas = [{ name: "apple-itunes-app", content: "app-id=6761627384" }];
 const primaryKeyword = "câmera de reação";
 const secondaryKeywords = [
     "react video",
-    "editor video",
+    "captura de fotos e vídeos",
     "frontal traseira",
     "teleprompter",
     "gravação com roteiro",
@@ -79,43 +79,35 @@ const screenshots = [
 
 const facts = [
     { label: "Plataforma", value: "iPhone" },
-    { label: "Versão", value: "1.2.2" },
+    { label: "Versão", value: "1.3.1" },
     { label: "Ideal para", value: "Creators, reviews e reacts" },
-    { label: "Pronto para", value: "TikTok, Reels e Shorts" },
+    { label: "Requer", value: "iOS 26.6 ou posterior" },
 ];
 
 const features = [
     {
-        title: "Gravação com duas câmeras",
-        description: "Use a câmera frontal e traseira ao mesmo tempo para manter a história e sua reação no mesmo vídeo.",
+        title: "Fotos e vídeos com duas visões",
+        description: "Capture a cena e sua reação juntas usando as duas câmeras do iPhone.",
     },
     {
-        title: "Reações em tempo real",
-        description: "Capture o que está acontecendo e como você reage em um único vídeo, sem cortes entre clipes.",
+        title: "Reaja a conteúdo importado com Pro",
+        description: "Substitua a visão traseira por uma imagem, vídeo ou página capturada de uma URL HTTPS.",
+    },
+    {
+        title: "Quatro estilos de layout",
+        description: "Componha sua captura com PiP, Cover, tela dividida na vertical ou horizontal ou Cutout.",
     },
     {
         title: "Teleprompter premium",
-        description: "Escreva ou cole um roteiro, acompanhe o texto na tela enquanto grava e deixe apresentações, reviews, tutoriais e vlogs mais claros.",
+        description: "Mantenha um roteiro visível durante a gravação de vídeo.",
     },
     {
-        title: "Layout Cover",
-        description: "Destaque uma câmera em tela cheia enquanto posiciona a segunda câmera em sobreposição para vídeos de reação mais criativos.",
+        title: "Galeria local",
+        description: "Revise as capturas no dispositivo, salve no Fotos ou escolha um destino no compartilhamento do sistema.",
     },
     {
-        title: "Remoção de fundo com Cutout",
-        description: "Remova o fundo ao redor do seu rosto para destacar melhor sua reação na composição.",
-    },
-    {
-        title: "Dois ângulos em um vídeo",
-        description: "Mostre o momento por uma câmera e sua expressão pela outra em uma tomada pronta para compartilhar.",
-    },
-    {
-        title: "Pronto para redes sociais",
-        description: "Prepare vídeos para TikTok, Instagram Reels, YouTube Shorts e outros canais de creators.",
-    },
-    {
-        title: "Exportação em alta qualidade",
-        description: "Exporte vídeos finalizados em alta qualidade, prontos para publicar sem etapas extras de edição.",
+        title: "Grátis e Pro",
+        description: "Grave até 60 segundos grátis. O Pro oferece gravações mais longas, salvamento automático no Fotos e compartilhamento sem a marca d’água temporária.",
     },
 ];
 
@@ -140,8 +132,8 @@ const faq = [
         answer: "O DuoTake foi feito para creators, reviews de produtos, reacts, comentários, tutoriais, vlogs, eventos, viagens e qualquer pessoa que quer mostrar o momento e sua reação ao mesmo tempo.",
     },
     {
-        question: "O DuoTake é pronto para TikTok, Reels e Shorts?",
-        answer: "Sim. O DuoTake inclui formatos prontos para redes sociais, ajudando você a preparar vídeos para TikTok, Instagram Reels, YouTube Shorts e outros canais.",
+        question: "Posso reagir a imagens, vídeos ou páginas da web?",
+        answer: "Sim. O Pro permite importar uma imagem, vídeo ou página HTTPS no lugar da visão da câmera traseira. Use apenas conteúdo que você tenha permissão para gravar e compartilhar.",
     },
     {
         question: "O DuoTake tem remoção de fundo?",
@@ -153,7 +145,7 @@ const faq = [
     },
     {
         question: "O DuoTake funciona offline?",
-        answer: "Sim. A captura principal e o processamento de mídia foram pensados para funcionar diretamente no seu dispositivo. Recursos que dependem de serviços da Apple, como validação de compra ou salvamento na fototeca, podem exigir as permissões do sistema.",
+        answer: "A captura pelas câmeras e o processamento local funcionam no dispositivo. Carregar uma página da web, comprar e restaurar compras exigem internet. Salvar no Fotos requer permissão.",
     },
     {
         question: "Como restaurar minha compra?",
@@ -181,6 +173,9 @@ const faq = [
     useCases={useCases}
     primaryKeyword={primaryKeyword}
     secondaryKeywords={secondaryKeywords}
+    termsOfUseUrl="/pt-br/apps/duotake/terms-of-use/"
+    privacyPolicyUrl="/pt-br/apps/duotake/privacy-policy/"
     lang="pt-br"
+    operatingSystem="iOS 26.6 or later"
     applicationCategory="MultimediaApplication"
 />

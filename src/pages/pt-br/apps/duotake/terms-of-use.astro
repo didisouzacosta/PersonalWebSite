@@ -1,0 +1,65 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Termos de Uso – DuoTake";
+---
+
+<Layout title={title} lang="pt-br" favicon="apps/duotake/favicon.png" description="Termos de Uso – DuoTake." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do DuoTake"><a href="/pt-br/apps/duotake/">DuoTake</a> · <a href="/pt-br/apps/duotake/privacy-policy/">Política de Privacidade</a> · <a href="/apps/duotake/terms-of-use/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 28 de setembro de 2026</p>
+
+            <h2>1. Sobre estes termos</h2>
+            <p>O DuoTake é fornecido por Adriano Souza Costa. Estes termos regem o uso de seus recursos de captura e criação de conteúdo. Os termos aplicáveis da App Store e a <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple Standard EULA</a> também regem a licença do app; nada aqui elimina direitos obrigatórios do consumidor.</p>
+
+            <h2>2. Recursos e disponibilidade</h2>
+            <p>O DuoTake combina as câmeras frontal e traseira em fotos ou vídeos. O Pro também permite importar imagens, vídeos e capturas de páginas HTTPS, e o Teleprompter premium permite acompanhar roteiros durante a gravação. Os recursos dependem do dispositivo, versão instalada, permissões, espaço e condições do sistema. Páginas da web e serviços de compra da Apple exigem conexão; páginas ou formatos externos podem não funcionar em todos os casos.</p>
+
+            <h2>3. Recursos gratuitos e Pro</h2>
+            <p>O plano gratuito atual inclui gravações de até 60 segundos. O Pro inclui gravações mais longas, salvamento automático no Fotos, compartilhamento sem marca d’água temporária, importação de conteúdo e Teleprompter premium. Antes de comprar, confira a oferta no app para verificar os recursos, duração, preço e eventuais condições de teste aplicáveis à compra.</p>
+
+            <h2>4. Assinaturas, cancelamento e reembolso</h2>
+            <p>As compras são cobradas na sua Conta Apple após a confirmação. Assinaturas com renovação automática continuam sendo renovadas, salvo cancelamento antes da renovação, conforme os termos exibidos pela Apple. Gerencie ou cancele em Ajustes → seu nome → Assinaturas; consulte <a href="https://support.apple.com/en-us/118428" target="_blank" rel="noopener noreferrer">Apple Support</a>. Excluir o DuoTake não cancela uma assinatura. Se houver teste gratuito, as condições de conversão e cobrança serão exibidas antes da confirmação. Restaure compras elegíveis com a mesma Conta Apple. Solicite reembolso à Apple em <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>, sujeito aos direitos aplicáveis e ao processo da Apple.</p>
+
+            <h2>5. Seu conteúdo e direitos de terceiros</h2>
+            <p>Você mantém os direitos sobre o conteúdo original que cria. É sua responsabilidade obter permissão para capturar, importar, gravar e compartilhar imagens, vozes, roteiros, vídeos e conteúdo da web de terceiros. Acesso a uma URL pública não concede direitos de reutilização. Não use o app para violar privacidade, direitos autorais ou outros direitos, contornar restrições de acesso ou criar conteúdo ilegal. Serviços de terceiros têm termos próprios; o DuoTake não endossa nem controla seus conteúdos.</p>
+
+            <h2>6. Permissões, privacidade e arquivos locais</h2>
+            <p>Conceda apenas as permissões necessárias e consulte a Política de Privacidade para saber como os dados são tratados. Revise as gravações antes de publicar e mantenha backups dos arquivos importantes. Cópias exportadas para o Fotos ou outros serviços são gerenciadas separadamente da galeria local. Remover o app ou arquivos pode causar perda de conteúdo local.</p>
+
+            <h2>7. Licença e propriedade intelectual</h2>
+            <p>O software, a marca e a interface do DuoTake pertencem ao desenvolvedor ou a seus licenciadores. Você pode usar o app conforme a licença aplicável, mas não pode copiar, redistribuir, contornar suas proteções ou realizar engenharia reversa, salvo quando permitido por lei ou pela licença. Essas restrições não transferem ao desenvolvedor a propriedade de suas gravações originais.</p>
+
+            <h2>8. Garantias e responsabilidade</h2>
+            <p>Na medida permitida pela legislação aplicável, o app é fornecido conforme disponível, sem garantia de funcionamento contínuo ou livre de erros. Aquecimento, armazenamento, interrupções e serviços externos podem afetar a captura. O desenvolvedor não responde por perdas na medida em que a licença aplicável possa legalmente excluir essa responsabilidade. Nada nestes termos exclui garantias legais, direitos do consumidor ou responsabilidades que não possam ser legalmente afastadas.</p>
+
+            <h2>9. Alterações e encerramento do uso</h2>
+            <p>Você pode parar de usar e remover o app a qualquer momento; gerencie as assinaturas separadamente com a Apple. Podemos revisar estes termos para refletir mudanças no produto ou na legislação, atualizando a data desta página. Forneceremos aviso adicional ou solicitaremos consentimento quando exigido. Alterações não eliminam direitos aplicáveis a compras já realizadas.</p>
+
+            <h2>10. Contato</h2>
+            <p>Para suporte do app ou dúvidas sobre estes termos, entre em contato com Adriano Souza Costa em <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    ul { padding-left: 20px; list-style: disc; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

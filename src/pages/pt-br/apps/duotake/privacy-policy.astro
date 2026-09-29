@@ -1,0 +1,65 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Política de Privacidade – DuoTake";
+---
+
+<Layout title={title} lang="pt-br" favicon="apps/duotake/favicon.png" description="Política de Privacidade – DuoTake." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do DuoTake"><a href="/pt-br/apps/duotake/">DuoTake</a> · <a href="/pt-br/apps/duotake/terms-of-use/">Termos de Uso</a> · <a href="/apps/duotake/privacy-policy/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 28 de setembro de 2026</p>
+
+            <h2>1. Escopo e contato</h2>
+            <p>Esta política abrange o aplicativo DuoTake para iPhone, fornecido por Adriano Souza Costa. Envie dúvidas ou solicitações sobre privacidade para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. As preferências de privacidade do site são separadas das permissões do app.</p>
+
+            <h2>2. Capturas, conteúdo importado e roteiros</h2>
+            <p>As imagens das câmeras, o áudio do microfone e a mídia importada são usados para criar fotos e vídeos compostos. O texto do Teleprompter permite exibir seu roteiro durante a gravação. As capturas ficam na galeria local do app por padrão e não são publicadas automaticamente. O armazenamento local de mídia não significa que o app nunca trate os demais dados descritos abaixo.</p>
+
+            <h2>3. Permissões e suas escolhas</h2>
+            <p>O acesso à câmera permite capturar imagens; o microfone permite gravar áudio. O acesso ao Fotos permite salvar capturas ou usar a mídia que você selecionar. Você pode alterar as permissões nos Ajustes do iOS; a recusa pode impedir o recurso correspondente. O salvamento automático do Pro no Fotos cria cópias fora da galeria do app.</p>
+
+            <h2>4. Páginas da web e serviços externos</h2>
+            <p>Ao escolher uma URL HTTPS para captura de página no Pro, o carregamento exige uma requisição de rede. O site de destino e os serviços que ele carrega podem receber seu endereço IP, a URL solicitada e informações técnicas da requisição, além de aplicar seus próprios cookies e práticas de privacidade. HTTPS criptografa a conexão, mas não torna a visita anônima. Evite inserir links privados ou capturar informações sensíveis que não queira incluir na gravação.</p>
+
+            <h2>5. Análise e personalização</h2>
+            <p>A declaração do desenvolvedor na <a href="https://apps.apple.com/us/app/dual-camera-duotake/id6761627384" target="_blank" rel="noopener noreferrer">App Store</a> informa dados que podem ser coletados sem vínculo com sua identidade: outras informações de contato do usuário, outros conteúdos do usuário e identificadores de usuário para análise e personalização; interações com o produto, dados de falhas e desempenho para análise. Essas categorias reproduzem a declaração pública da App Store e não significam que toda foto, vídeo ou roteiro seja enviado. As práticas podem variar conforme os recursos usados. Entre em contato para esclarecer um dado específico ou fazer uma solicitação.</p>
+
+            <h2>6. Preferências opcionais e suporte</h2>
+            <p>Se a apresentação inicial oferecer uma preferência opcional de gênero, você pode ignorá-la. Ela é usada para personalizar recursos, não para publicidade ou venda. Ao enviar um e-mail ao suporte, recebemos seu endereço e as informações que você decidir enviar para responder à solicitação. Não inclua gravações, roteiros ou outros materiais sensíveis, salvo quando necessários para explicar o pedido.</p>
+
+            <h2>7. Compras e compartilhamento</h2>
+            <p>A Apple processa pagamentos e restauração de compras. O desenvolvedor não recebe os dados completos do seu cartão. A Apple trata informações das transações conforme suas próprias políticas. O compartilhamento envia o conteúdo selecionado ao destino escolhido na interface do sistema; passam a valer os termos e a política desse serviço. Cópias salvas no Fotos podem ser sincronizadas ou incluídas em backups conforme seus ajustes da Apple. Não vendemos nem alugamos seus dados pessoais para publicidade.</p>
+
+            <h2>8. Retenção, exclusão e solicitações de privacidade</h2>
+            <p>Você controla as capturas da galeria local e as cópias exportadas. Excluir uma cópia do app não apaga cópias no Fotos, backups ou destinos de compartilhamento; gerencie-as separadamente. Remover o app pode apagar seus arquivos locais, portanto salve antes o que deseja manter. As mensagens de suporte são mantidas pelo tempo necessário para atender à solicitação e cumprir obrigações aplicáveis. Para acesso, correção, exclusão ou outros direitos previstos na legislação de privacidade aplicável, incluindo a LGPD quando aplicável, escreva para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Podemos precisar de informações para verificar e localizar a solicitação; dados sem vínculo com você podem não ser identificáveis.</p>
+
+            <h2>9. Segurança e crianças</h2>
+            <p>Proteja seu dispositivo e revise o conteúdo antes de compartilhar. Nenhum método de armazenamento ou transmissão garante segurança absoluta. Não solicitamos intencionalmente dados pessoais de crianças pelo suporte. Pais ou responsáveis que acreditem que uma criança enviou informações pessoais devem entrar em contato para que possamos analisar e atender ao pedido.</p>
+
+            <h2>10. Alterações</h2>
+            <p>Atualizaremos esta página e sua data de revisão quando houver mudanças nas práticas, com os avisos adicionais ou consentimentos exigidos pela legislação aplicável.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    ul { padding-left: 20px; list-style: disc; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
