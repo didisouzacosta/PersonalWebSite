@@ -7,22 +7,22 @@ const appStoreUrl = "https://apps.apple.com/us/app/dual-camera-duotake/id6761627
 const appName = "DuoTake";
 const pageTitle = "Dual Camera: DuoTake";
 const description =
-    "Split screen & teleprompter";
+    "Auto captions & teleprompter";
 const favicon = "apps/duotake/favicon.png";
 const appIcon = "duotake/app-icon.png";
-const socialImage = "duotake/duotake-share-en.jpg";
+const socialImage = "duotake/duotake-share-en.jpg?v=2";
 const socialImageAlt = "DuoTake app icon with reaction dual cam app summary.";
 
 const metas = [{ name: "apple-itunes-app", content: "app-id=6761627384" }];
 const primaryKeyword = "reaction dual cam app";
 const secondaryKeywords = [
     "reaction video app",
-    "photo and video capture",
+    "auto captions",
+    "remove silences",
     "front and back camera",
     "teleprompter app",
     "scripted video recording",
     "content creator app",
-    "record video",
     "TikTok Reels Shorts",
 ];
 
@@ -32,24 +32,24 @@ const screenshots = [
             en: "duotake/screenshots/en/frame-1.png",
             ptBr: "duotake/screenshots/ptBR/frame-1.png",
         },
-        alt: "DuoTake Cutout preview showing an automatic cutout reaction over a full-screen camera view.",
-        caption: "Use Cutout to keep your reaction clean with automatic background removal.",
+        alt: "DuoTake dual-camera capture at a gym with a smiling selfie overlay in picture-in-picture.",
+        caption: "Show the moment and your reaction in a single dual-camera take.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-2.png",
             ptBr: "duotake/screenshots/ptBR/frame-2.png",
         },
-        alt: "DuoTake dual-camera recording screen showing a mountain view with a selfie reaction overlay.",
-        caption: "Show the moment and your expression together in a single recording.",
+        alt: "DuoTake vertical split screen with a makeup video on top and a surprised reaction below.",
+        caption: "Turn any moment into a react by recording your reaction next to the content.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-3.png",
             ptBr: "duotake/screenshots/ptBR/frame-3.png",
         },
-        alt: "DuoTake Cover layout showing a full-screen picnic scene with a group selfie camera overlaid.",
-        caption: "Use Cover to highlight one camera full-screen while keeping the other view overlaid.",
+        alt: "DuoTake Remove silences screen with the cuts marked in red on the audio timeline and breathing room options.",
+        caption: "Remove pauses automatically and preview every cut before applying.",
     },
     {
         url: {
@@ -57,29 +57,21 @@ const screenshots = [
             ptBr: "duotake/screenshots/ptBR/frame-4.png",
         },
         alt: "DuoTake Teleprompter recording screen with a script overlay in front of the camera view.",
-        caption: "Follow your script on screen with the premium Teleprompter while recording.",
+        caption: "Keep your script on screen with the premium Teleprompter while recording.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-5.png",
             ptBr: "duotake/screenshots/ptBR/frame-5.png",
         },
-        alt: "DuoTake dual reaction camera layout recording front and rear cameras at the same time.",
-        caption: "Record front and rear cameras together in a dual-view creator layout.",
-    },
-    {
-        url: {
-            en: "duotake/screenshots/en/frame-6.png",
-            ptBr: "duotake/screenshots/ptBR/frame-6.png",
-        },
-        alt: "DuoTake live reaction recording at a stadium with a reaction camera overlay.",
-        caption: "Appear alongside the moment with a live reaction overlay.",
+        alt: "DuoTake media editor with framing, trim, loop and volume controls for an imported video behind a reaction.",
+        caption: "Build your review from your own media with framing, trim, loop and volume controls.",
     },
 ];
 
 const facts = [
     { label: "Platform", value: "iPhone" },
-    { label: "Version", value: "1.3.1" },
+    { label: "Version", value: "1.5.0" },
     { label: "Best for", value: "Creators, reviews, reacts" },
     { label: "Requires", value: "iOS 26.6 or later" },
 ];
@@ -90,8 +82,16 @@ const features = [
         description: "Capture the scene and your reaction together using both iPhone cameras.",
     },
     {
+        title: "Auto captions on your iPhone",
+        description: "Transcribe gallery videos on device, without uploading your audio. Choose position and size, and tap any word to fix it. Classic is free; Premium unlocks Highlighted word, Box and Single word.",
+    },
+    {
+        title: "Remove silences",
+        description: "Premium finds the pauses without speech, marks the cuts in red on the timeline and keeps your original so you can undo it later.",
+    },
+    {
         title: "React to imported content with Pro",
-        description: "Replace the rear view with an image, video or web page captured from an HTTPS URL.",
+        description: "Replace the rear view with an image, video or HTTPS web page. Fill or fit it, trim, loop and balance its volume, then pause, skip or scrub while you record.",
     },
     {
         title: "Four layout styles",
@@ -99,7 +99,7 @@ const features = [
     },
     {
         title: "Premium Teleprompter",
-        description: "Keep a script visible during video capture.",
+        description: "Write or paste a script and keep it visible during video capture.",
     },
     {
         title: "Local gallery",
@@ -107,7 +107,7 @@ const features = [
     },
     {
         title: "Free and Pro",
-        description: "Record up to 60 seconds for free. Pro adds longer recordings, automatic saving to Photos and sharing without the temporary watermark.",
+        description: "Record up to 15 seconds and caption in the Classic style for free. Pro adds longer recordings, every caption style, Remove silences, automatic saving to Photos and sharing without the temporary watermark.",
     },
 ];
 
@@ -119,6 +119,10 @@ const useCases = [
     {
         title: "Stay on script",
         description: "Use the premium Teleprompter for presentations, reviews, tutorials, vlogs, and scripted reactions without looking away from the camera.",
+    },
+    {
+        title: "Ready to post",
+        description: "Add auto captions and cut the silences from your gallery videos so they are ready for TikTok, Reels and Shorts without another editing app.",
     },
 ];
 
@@ -132,8 +136,16 @@ const faq = [
         answer: "DuoTake is made for creators, product reviews, reactions, commentary, tutorials, vlogs, events, travel videos, and anyone who wants to show the moment and their reaction at the same time.",
     },
     {
+        question: "How do auto captions work?",
+        answer: "Open a video from the gallery, choose the spoken language and tap <em>Generate captions</em>. DuoTake transcribes the speech on your iPhone, without uploading your audio, and works offline once the language's speech model is downloaded. You can place captions at the top, middle or bottom, choose the size, fix any word and show or hide them at any time.",
+    },
+    {
+        question: "Can DuoTake remove the silences from my videos?",
+        answer: "Yes. With Premium, Remove silences finds the pauses without speech in a gallery video, marks the cuts in red so you can preview them and lets you choose how much breathing room to keep. Your original is kept, so you can undo the cut later.",
+    },
+    {
         question: "Can I react to images, videos or web pages?",
-        answer: "Yes. Pro lets you import an image, video or HTTPS web page to use in place of the rear-camera view. Only use content you have permission to record and share.",
+        answer: "Yes. Pro lets you import an image, video or HTTPS web page to use in place of the rear-camera view, with framing, trim, loop and volume controls. Only use content you have permission to record and share.",
     },
     {
         question: "Does DuoTake support background removal?",
@@ -145,7 +157,7 @@ const faq = [
     },
     {
         question: "Does DuoTake work offline?",
-        answer: "Core camera capture and local media processing work on your device. Loading a web page, purchases and purchase restoration need an internet connection. Saving to Photos requires permission.",
+        answer: "Core camera capture, local media processing, Remove silences and auto captions work on your device. Downloading a language's speech model for the first time, loading a web page, purchases and purchase restoration need an internet connection. Saving to Photos requires permission.",
     },
     {
         question: "How do I restore my purchase?",

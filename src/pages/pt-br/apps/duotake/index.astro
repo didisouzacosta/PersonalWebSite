@@ -7,22 +7,22 @@ const appStoreUrl = "https://apps.apple.com/br/app/dual-camera-duotake/id6761627
 const appName = "DuoTake";
 const pageTitle = "Câmera dupla: DuoTake";
 const description =
-    "Tela dividida e teleprompter";
+    "Legendas e teleprompter";
 const favicon = "apps/duotake/favicon.png";
 const appIcon = "duotake/app-icon.png";
-const socialImage = "duotake/duotake-share-pt-br.jpg";
+const socialImage = "duotake/duotake-share-pt-br.jpg?v=2";
 const socialImageAlt = "Ícone do app DuoTake com resumo do app de câmera de reação.";
 
 const metas = [{ name: "apple-itunes-app", content: "app-id=6761627384" }];
 const primaryKeyword = "câmera de reação";
 const secondaryKeywords = [
     "react video",
-    "captura de fotos e vídeos",
+    "legenda automática",
+    "remover silêncios",
     "frontal traseira",
     "teleprompter",
     "gravação com roteiro",
     "criador conteudo",
-    "gravar video",
     "TikTok Reels Shorts",
 ];
 
@@ -32,24 +32,24 @@ const screenshots = [
             en: "duotake/screenshots/en/frame-1.png",
             ptBr: "duotake/screenshots/ptBR/frame-1.png",
         },
-        alt: "Prévia do Cutout no DuoTake mostrando uma reação com recorte automático sobre a câmera em tela cheia.",
-        caption: "Use o Cutout para manter sua reação limpa com remoção automática de fundo.",
+        alt: "Captura com câmera dupla do DuoTake em uma academia com selfie sorrindo em picture-in-picture.",
+        caption: "Mostre o momento e sua reação em uma única gravação com câmera dupla.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-2.png",
             ptBr: "duotake/screenshots/ptBR/frame-2.png",
         },
-        alt: "Tela de gravação com câmera dupla do DuoTake mostrando uma paisagem de montanha com selfie em sobreposição.",
-        caption: "Mostre o momento e sua expressão juntos em uma única gravação.",
+        alt: "Tela dividida na vertical do DuoTake com um vídeo de maquiagem em cima e uma reação surpresa embaixo.",
+        caption: "Transforme qualquer momento em um react gravando sua reação ao lado do conteúdo.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-3.png",
             ptBr: "duotake/screenshots/ptBR/frame-3.png",
         },
-        alt: "Layout Cover do DuoTake mostrando uma cena de piquenique em tela cheia com selfie de grupo em sobreposição.",
-        caption: "Use o Cover para destacar uma câmera em tela cheia mantendo a outra em sobreposição.",
+        alt: "Tela Remover silêncios do DuoTake com os cortes marcados em vermelho na linha do tempo do áudio e opções de respiro.",
+        caption: "Remova as pausas automaticamente e confira cada corte antes de aplicar.",
     },
     {
         url: {
@@ -57,29 +57,21 @@ const screenshots = [
             ptBr: "duotake/screenshots/ptBR/frame-4.png",
         },
         alt: "Tela do Teleprompter do DuoTake com roteiro sobreposto à imagem da câmera durante a gravação.",
-        caption: "Acompanhe seu roteiro na tela com o Teleprompter premium enquanto grava.",
+        caption: "Mantenha seu roteiro na tela com o Teleprompter premium enquanto grava.",
     },
     {
         url: {
             en: "duotake/screenshots/en/frame-5.png",
             ptBr: "duotake/screenshots/ptBR/frame-5.png",
         },
-        alt: "Layout de câmera de reação dupla do DuoTake gravando câmeras frontal e traseira ao mesmo tempo.",
-        caption: "Grave as câmeras frontal e traseira juntas em um layout de creator com duas visões.",
-    },
-    {
-        url: {
-            en: "duotake/screenshots/en/frame-6.png",
-            ptBr: "duotake/screenshots/ptBR/frame-6.png",
-        },
-        alt: "Gravação de reação ao vivo no DuoTake em um estádio com câmera de reação em sobreposição.",
-        caption: "Apareça junto do momento com uma sobreposição de reação ao vivo.",
+        alt: "Editor de mídia do DuoTake com controles de enquadramento, trecho, repetição e volume de um vídeo importado atrás de uma reação.",
+        caption: "Monte seu review com a sua própria mídia, com enquadramento, trecho, repetição e volume.",
     },
 ];
 
 const facts = [
     { label: "Plataforma", value: "iPhone" },
-    { label: "Versão", value: "1.3.1" },
+    { label: "Versão", value: "1.5.0" },
     { label: "Ideal para", value: "Creators, reviews e reacts" },
     { label: "Requer", value: "iOS 26.6 ou posterior" },
 ];
@@ -90,8 +82,16 @@ const features = [
         description: "Capture a cena e sua reação juntas usando as duas câmeras do iPhone.",
     },
     {
+        title: "Legenda automática no iPhone",
+        description: "Transcreva vídeos da galeria no próprio aparelho, sem enviar o áudio. Escolha posição e tamanho e toque em qualquer palavra para corrigi-la. O Clássico é grátis; o Premium libera Palavra em destaque, Caixa e Palavra única.",
+    },
+    {
+        title: "Remover silêncios",
+        description: "O Premium encontra as pausas sem fala, marca os cortes em vermelho na linha do tempo e mantém o original para você desfazer depois.",
+    },
+    {
         title: "Reaja a conteúdo importado com Pro",
-        description: "Substitua a visão traseira por uma imagem, vídeo ou página capturada de uma URL HTTPS.",
+        description: "Substitua a visão traseira por uma imagem, vídeo ou página HTTPS. Preencha ou ajuste, escolha o trecho, repita e equilibre o volume, e pause, avance ou arraste enquanto grava.",
     },
     {
         title: "Quatro estilos de layout",
@@ -99,7 +99,7 @@ const features = [
     },
     {
         title: "Teleprompter premium",
-        description: "Mantenha um roteiro visível durante a gravação de vídeo.",
+        description: "Escreva ou cole um roteiro e mantenha o texto visível durante a gravação de vídeo.",
     },
     {
         title: "Galeria local",
@@ -107,7 +107,7 @@ const features = [
     },
     {
         title: "Grátis e Pro",
-        description: "Grave até 60 segundos grátis. O Pro oferece gravações mais longas, salvamento automático no Fotos e compartilhamento sem a marca d’água temporária.",
+        description: "Grave até 15 segundos e legende no estilo Clássico de graça. O Pro oferece gravações mais longas, todos os estilos de legenda, Remover silêncios, salvamento automático no Fotos e compartilhamento sem a marca d’água temporária.",
     },
 ];
 
@@ -119,6 +119,10 @@ const useCases = [
     {
         title: "Grave com roteiro",
         description: "Use o Teleprompter premium para apresentações, reviews, tutoriais, vlogs e reações com roteiro sem desviar o olhar da câmera.",
+    },
+    {
+        title: "Pronto para postar",
+        description: "Adicione legenda automática e corte os silêncios dos vídeos da galeria para deixá-los prontos para TikTok, Reels e Shorts sem outro app de edição.",
     },
 ];
 
@@ -132,8 +136,16 @@ const faq = [
         answer: "O DuoTake foi feito para creators, reviews de produtos, reacts, comentários, tutoriais, vlogs, eventos, viagens e qualquer pessoa que quer mostrar o momento e sua reação ao mesmo tempo.",
     },
     {
+        question: "Como funciona a legenda automática?",
+        answer: "Abra um vídeo da galeria, escolha o idioma falado e toque em <em>Gerar legenda</em>. O DuoTake transcreve a fala no seu iPhone, sem enviar o áudio, e funciona offline depois que o modelo de voz do idioma é baixado. Você pode posicionar a legenda no topo, no meio ou na base, escolher o tamanho, corrigir qualquer palavra e mostrar ou ocultar quando quiser.",
+    },
+    {
+        question: "O DuoTake remove os silêncios dos meus vídeos?",
+        answer: "Sim. Com o Premium, o Remover silêncios encontra as pausas sem fala em um vídeo da galeria, marca os cortes em vermelho para você conferir e deixa você escolher quanto respiro manter. O original é mantido, então dá para desfazer o corte depois.",
+    },
+    {
         question: "Posso reagir a imagens, vídeos ou páginas da web?",
-        answer: "Sim. O Pro permite importar uma imagem, vídeo ou página HTTPS no lugar da visão da câmera traseira. Use apenas conteúdo que você tenha permissão para gravar e compartilhar.",
+        answer: "Sim. O Pro permite importar uma imagem, vídeo ou página HTTPS no lugar da visão da câmera traseira, com controles de enquadramento, trecho, repetição e volume. Use apenas conteúdo que você tenha permissão para gravar e compartilhar.",
     },
     {
         question: "O DuoTake tem remoção de fundo?",
@@ -145,7 +157,7 @@ const faq = [
     },
     {
         question: "O DuoTake funciona offline?",
-        answer: "A captura pelas câmeras e o processamento local funcionam no dispositivo. Carregar uma página da web, comprar e restaurar compras exigem internet. Salvar no Fotos requer permissão.",
+        answer: "A captura pelas câmeras, o processamento local, o Remover silêncios e a legenda automática funcionam no dispositivo. Baixar o modelo de voz de um idioma pela primeira vez, carregar uma página da web, comprar e restaurar compras exigem internet. Salvar no Fotos requer permissão.",
     },
     {
         question: "Como restaurar minha compra?",

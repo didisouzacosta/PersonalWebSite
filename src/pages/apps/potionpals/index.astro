@@ -1,0 +1,170 @@
+---
+import AppTemplate from "../../../components/app/AppTemplate.astro";
+
+const title = "PotionPals: Water Sort";
+const appName = "PotionPals";
+const pageTitle = "PotionPals | Water Sort Color Puzzle for iPhone";
+const description =
+    "The classic color sorting puzzle comes to life in a cozy potion shop. Pour, sort the colors and deliver every potion to adorable jelly customers.";
+const favicon = "apps/potionpals/favicon.png";
+const appIcon = "potionpals/app-icon.png";
+const socialImage = "potionpals/potionpals-share-en.jpg";
+const socialImageAlt = "PotionPals app icon with water sort puzzle app summary.";
+
+const metas: { name: string; content: string }[] = [];
+const primaryKeyword = "water sort";
+const secondaryKeywords = [
+    "color sort",
+    "puzzle",
+    "potion",
+    "liquid",
+    "bottle",
+    "pour",
+    "logic",
+    "relaxing",
+    "brain teaser",
+    "jelly",
+    "magic",
+    "cute",
+];
+
+const screenshots = [
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-1.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-1.png",
+        },
+        alt: "PotionPals 3D home screen with Master Pingo, the potion shop and the 12 jelly customers.",
+        caption: "Cute customers waiting for potions: 13 adorable jelly pals.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-2.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-2.png",
+        },
+        alt: "PotionPals level with jelly customers at the counter while bottles are sorted by color.",
+        caption: "Pour, match and get hooked! Sort the colors and fill every potion.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-3.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-3.png",
+        },
+        alt: "PotionPals very hard level with bottles of different sizes and the 300 levels badge.",
+        caption: "Easy to start, impossible to stop, with 300 levels that keep getting harder.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-4.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-4.png",
+        },
+        alt: "PotionPals Story mode map with floating islands, gates and stars across 7 chapters.",
+        caption: "Story mode: a magical world of floating islands, gates and stars.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-5.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-5.png",
+        },
+        alt: "PotionPals Arcade level complete screen showing the remaining moves.",
+        caption: "Arcade mode: earn moves with every potion and see how far you can go.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-6.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-6.png",
+        },
+        alt: "PotionPals night level with curtains and locks hiding the bottles.",
+        caption: "A new surprise in every chapter: curtains, locks and mysteries.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iPhone · iOS 26+" },
+    { label: "Levels", value: "300 in 7 chapters" },
+    { label: "Game modes", value: "Story, Casual, Endurance, Challenger" },
+    { label: "Colors", value: "Up to 12 to sort" },
+];
+
+const features = [
+    {
+        title: "Four Game Modes",
+        description: "Explore 300 Story levels on a 3D map, chase your best Casual run, beat your Endurance high score or solve 100 Challenger endgame puzzles.",
+    },
+    {
+        title: "A New Surprise Every Chapter",
+        description: "Collector bottles, curtains, locks, mystery colors and bottles of different sizes keep every chapter fresh.",
+    },
+    {
+        title: "Cute Jelly Customers",
+        description: "Master Pingo and 12 little friends, each with a name and a personality, wait at the counter for your potion.",
+    },
+    {
+        title: "Made With Care",
+        description: "Smooth pours with haptics and sounds, Game Center leaderboards and achievements, plus color-blind mode, Reduce Motion, Increase Contrast and Dynamic Type.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Short, relaxing breaks",
+        description: "A satisfying one-handed puzzle you can play in a few minutes, with a drop of strategy and zero rush.",
+    },
+    {
+        title: "Color sorting fans",
+        description: "The classic water sort puzzle you love, set in a colorful world with a living potion shop and a 3D world map.",
+    },
+];
+
+const faq = [
+    {
+        question: "What is PotionPals?",
+        answer: "PotionPals: Water Sort is a casual color and liquid sorting puzzle for iPhone. In a potion shop made of jelly, adorable customers line up at the counter waiting for their elixir, and it’s up to you to sort the mixed-up bottles.",
+    },
+    {
+        question: "How do I play?",
+        answer: "Tap a bottle, then another one to pour the liquid on top. You can only pour onto the same color, and only if there’s room. When a bottle holds a single color, it gets corked and flies to the customer who ordered it. Stuck? Use a <strong>Hint</strong>, <strong>Undo</strong> a move or add an <strong>extra bottle</strong>.",
+    },
+    {
+        question: "What game modes are available?",
+        answer: "<strong>Story</strong>: 300 levels across 7 chapters on a 3D map of floating islands, with a final chapter that never ends. <strong>Casual</strong>: play level after level with one pool of moves, earning moves back with every finished potion. <strong>Endurance</strong>: a board that never ends, with combos up to ×5 and a clock on every move. <strong>Challenger</strong>: 100 endgame puzzles with no Hint and no extra bottle, just 3 Undos.",
+    },
+    {
+        question: "What are energy, coins and boosters?",
+        answer: "Each level or run uses one energy, which refills over time. You earn stars and coins as you play, plus a daily reward and win streaks. Coins and boosters such as Hint, Undo and extra bottles can also be bought as optional in-app purchases, along with <strong>Infinite Energy</strong>.",
+    },
+    {
+        question: "How do I restore my purchases?",
+        answer: "<strong>Infinite Energy</strong> is a one-time purchase linked to your Apple Account. If you reinstall the app or switch devices, use <em>Restore Purchases</em> in the shop and it will be verified through your Apple Account at no extra cost. Coins and booster packs are consumable and are used up as you play.",
+    },
+    {
+        question: "Do I need Game Center?",
+        answer: "No. Game Center leaderboards and achievements are optional. Without signing in, you can keep playing normally and your progress is saved on your iPhone.",
+    },
+    {
+        question: "Is PotionPals accessible?",
+        answer: "Yes. PotionPals supports a color-blind mode, Reduce Motion, Increase Contrast and Dynamic Type.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImage={socialImage}
+    socialImageAlt={socialImageAlt}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="en"
+    applicationCategory="GameApplication"
+/>

@@ -37,6 +37,7 @@ const projectTitles: Record<string, string> = {
     kuborush: "Kubo Rush",
     loopsize: "Loop Size",
     giggleface: "GiggleFace",
+    potionpals: "PotionPals",
 };
 
 const getProjectTitle = (projectSlug?: string) => {

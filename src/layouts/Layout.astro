@@ -4,7 +4,7 @@ import Analytics from '../components/Analytics.astro';
 import CookieConsentBanner from '../components/CookieConsentBanner.astro';
 import Controls from '../components/Controls.astro';
 import { createAnalyticsPageContext } from '../core/analyticsContext';
-import { absoluteAssetUrl, absoluteUrl, defaultOgImage, normalizePath, siteUrl, type AlternateLocale, type JsonLdValue } from '../core/seo';
+import { absoluteAssetUrl, absoluteUrl, normalizePath, siteShareImages, siteUrl, type AlternateLocale, type JsonLdValue } from '../core/seo';
 
 interface Props {
     title: string,
@@ -30,8 +30,8 @@ interface Props {
 const {
     title,
     description,
-    ogImage = defaultOgImage,
-    ogImageAlt,
+    ogImage: ogImageProp,
+    ogImageAlt: ogImageAltProp,
     ogImageWidth = 1200,
     ogImageHeight = 630,
     ogImageType = "image/jpeg",
@@ -57,6 +57,9 @@ const analyticsContext = createAnalyticsPageContext({
     title,
     lang,
 });
+const siteShareImage = siteShareImages[lang === 'pt-br' ? 'pt-br' : 'en'];
+const ogImage = ogImageProp ?? siteShareImage.url;
+const ogImageAlt = ogImageAltProp ?? (ogImageProp ? undefined : siteShareImage.alt);
 const absoluteOgImage = absoluteAssetUrl(ogImage);
 const ogLocale = documentLang === 'pt-BR' ? 'pt_BR' : 'en_US';
 const alternateOgLocales = alternateLocales

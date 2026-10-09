@@ -1,0 +1,63 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Política de Privacidade – PotionPals";
+---
+
+<Layout title={title} lang="pt-br" favicon="apps/potionpals/favicon.png" description="Política de Privacidade – PotionPals." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do PotionPals"><a href="/pt-br/apps/potionpals/">PotionPals</a> · <a href="/pt-br/apps/potionpals/terms-of-use/">Termos de Uso</a> · <a href="/apps/potionpals/privacy-policy/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 9 de outubro de 2026</p>
+
+            <h2>1. Escopo e contato</h2>
+            <p>Esta política abrange o jogo PotionPals: Water Sort para iPhone, fornecido por Adriano Souza Costa. Envie dúvidas ou solicitações sobre privacidade para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. As preferências de privacidade do site são separadas do app.</p>
+
+            <h2>2. Sem conta e sem perfil pessoal</h2>
+            <p>O PotionPals não exige cadastro e não pede seu nome, e-mail, telefone, fotos, contatos ou localização. O app não inclui serviços de análise de terceiros nem rastreamento publicitário, e não criamos perfis de jogadores.</p>
+
+            <h2>3. Progresso salvo no seu aparelho</h2>
+            <p>Seu progresso, fases, estrelas, moedas, energia, boosters, ajustes e a partida em andamento ficam salvos localmente no seu iPhone para que você continue de onde parou. As dicas do app também guardam seu estado de exibição no aparelho. Esses dados não são enviados ao desenvolvedor. Apagar o app remove o progresso local, exceto as compras que podem ser restauradas pela sua Conta Apple.</p>
+
+            <h2>4. Game Center</h2>
+            <p>O Game Center é opcional. Se você estiver conectado, a Apple trata sua identidade de jogador, as pontuações dos placares e as conquistas conforme seus próprios termos e sua <a href="https://www.apple.com/br/legal/privacy/" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>. Sem login, o jogo continua funcionando normalmente.</p>
+
+            <h2>5. Notificações</h2>
+            <p>O app pode pedir, uma única vez, permissão para avisar quando sua energia estiver cheia. São notificações locais, agendadas no próprio aparelho. Você pode alterar essa permissão a qualquer momento nos Ajustes do iOS.</p>
+
+            <h2>6. Compras no app</h2>
+            <p>Moedas, boosters e a Energia Infinita são vendidos pela App Store. A Apple processa os pagamentos, e o desenvolvedor não recebe os dados completos do seu cartão. Para validar compras, entregar os itens e restaurar a Energia Infinita, o app usa o RevenueCat, que recebe um identificador anônimo do app, os dados da transação e informações técnicas básicas, como modelo do aparelho, versão do sistema e do app, região e endereço IP. O RevenueCat trata esses dados conforme sua <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>, e eles são usados apenas para operar as compras.</p>
+
+            <h2>7. Compartilhamento e publicidade</h2>
+            <p>Não vendemos nem alugamos seus dados e não os usamos para publicidade. A versão atual não inclui serviço de anúncios de terceiros. Se um for adicionado, esta política e as informações de privacidade da App Store serão atualizadas antes que a mudança entre em vigor, incluindo qualquer consentimento exigido.</p>
+
+            <h2>8. Retenção, exclusão e solicitações de privacidade</h2>
+            <p>Os dados locais ficam no aparelho até você apagar o app ou seus dados. Os registros de compra são mantidos pela Apple e pelo RevenueCat pelo tempo necessário para fornecer e restaurar compras e cumprir obrigações legais. As mensagens de suporte são mantidas pelo tempo necessário para atender à solicitação. Para acesso, correção, exclusão ou outros direitos previstos na legislação de privacidade aplicável, incluindo a LGPD, escreva para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Como não coletamos informações de identificação, podemos precisar de detalhes seus para localizar um registro de compra específico.</p>
+
+            <h2>9. Segurança e crianças</h2>
+            <p>Usamos os recursos de segurança do iOS e dos serviços acima. Nenhum método de armazenamento ou transmissão garante segurança absoluta. O PotionPals não coleta intencionalmente informações pessoais de crianças. Pais ou responsáveis que acreditem que uma criança enviou informações pessoais pelo suporte podem entrar em contato para que possamos analisar e atender ao pedido. As compras podem ser controladas pelos recursos Tempo de Uso e Pedir para Comprar da Apple.</p>
+
+            <h2>10. Alterações</h2>
+            <p>Atualizaremos esta página e sua data de revisão quando houver mudanças nas práticas, com os avisos adicionais ou consentimentos exigidos pela legislação aplicável.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

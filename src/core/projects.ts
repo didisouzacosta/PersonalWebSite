@@ -196,6 +196,24 @@ export const portfolioProjects: PortfolioProject[] = [
             },
         },
     },
+    {
+        name: "PotionPals",
+        url: "/apps/potionpals",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/potionpals",
+        imageUrl: appIconUrl("potionpals"),
+        tags: ["iOS App", "Game"],
+        isEnabled: false,
+        descriptions: {
+            en: {
+                card: "Water sort potion puzzle",
+                resume: "PotionPals: Water Sort turns the classic color sorting puzzle into a cozy jelly potion shop, with 300 levels in 7 chapters, Story, Casual, Endurance and Challenger modes, new mechanics every chapter and Game Center leaderboards.",
+            },
+            "pt-br": {
+                card: "Puzzle de separar poções",
+                resume: "PotionPals: Water Sort transforma o clássico puzzle de separar cores numa lojinha de poções de gelatina, com 300 fases em 7 capítulos, os modos História, Casual, Endurance e Challenger, mecânicas novas a cada capítulo e placares do Game Center.",
+            },
+        },
+    },
 ];
 
 function getEnabledProjects(): PortfolioProject[] {

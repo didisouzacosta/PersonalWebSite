@@ -4,6 +4,19 @@ export const appAssetBaseUrl = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.
 
 export type SeoLanguage = "en" | "pt-br";
 
+const siteAssetBaseUrl = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/site/";
+
+export const siteShareImages: Record<SeoLanguage, { url: string; alt: string }> = {
+    en: {
+        url: `${siteAssetBaseUrl}site-share-en.jpg`,
+        alt: "Adriano Souza Costa, iOS & macOS developer, alongside the PotionPals, DuoTake, KuboRush, LoopSize and GiggleFace app icons.",
+    },
+    "pt-br": {
+        url: `${siteAssetBaseUrl}site-share-pt-br.jpg`,
+        alt: "Adriano Souza Costa, desenvolvedor iOS & macOS, ao lado dos ícones dos apps PotionPals, DuoTake, KuboRush, LoopSize e GiggleFace.",
+    },
+};
+
 export interface AlternateLocale {
     lang: string;
     path: string;

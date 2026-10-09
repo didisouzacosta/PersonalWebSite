@@ -73,6 +73,18 @@ const pages = [
         changefreq: "monthly",
         alternates: localizedAlternates("/apps/giggleface/", "/pt-br/apps/giggleface/"),
     },
+    {
+        path: "/apps/potionpals/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/potionpals/", "/pt-br/apps/potionpals/"),
+    },
+    {
+        path: "/pt-br/apps/potionpals/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/potionpals/", "/pt-br/apps/potionpals/"),
+    },
 ];
 
 function escapeXml(value: string): string {

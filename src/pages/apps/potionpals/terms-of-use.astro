@@ -1,0 +1,60 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const title = "Terms of Use – PotionPals";
+---
+
+<Layout title={title} lang="en" favicon="apps/potionpals/favicon.png" description="Terms of Use – PotionPals." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="PotionPals documents"><a href="/apps/potionpals/">PotionPals</a> · <a href="/apps/potionpals/privacy-policy/">Privacy Policy</a> · <a href="/pt-br/apps/potionpals/terms-of-use/" lang="pt-BR">Português</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Last updated: October 9, 2026</p>
+
+            <h2>1. About these terms</h2>
+            <p>PotionPals: Water Sort is provided by Adriano Souza Costa. These terms govern your use of the game. The applicable App Store terms and the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple Standard EULA</a> also govern the app license; nothing here removes mandatory consumer rights.</p>
+
+            <h2>2. The game and availability</h2>
+            <p>PotionPals is a color sorting puzzle game with Story, Casual, Endurance and Challenger modes. Levels, modes, mechanics, rewards and balance may change between versions. Features depend on your device, installed version and system conditions. Game Center and App Store purchases require an internet connection and the corresponding Apple services.</p>
+
+            <h2>3. Energy, coins and boosters</h2>
+            <p>Energy, coins, stars, boosters and other in-game items are part of the game and have no monetary value. They cannot be exchanged for money, transferred to other players or sold outside the app. Energy refills over time and some items can be earned by playing or through daily rewards. Item amounts, prices and rules are shown in the app and may change in future versions.</p>
+
+            <h2>4. In-app purchases and refunds</h2>
+            <p>Coin and booster packs are consumable and are used up as you play. Infinite Energy is a one-time, non-consumable purchase linked to your Apple Account and can be restored with Restore purchases in the app. Purchases are billed to your Apple Account after confirmation. Consumable items lost by deleting the app or its data cannot be restored. Refund requests can be submitted to Apple at <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>, subject to applicable rights and Apple’s process. Parents and guardians can manage purchases with Screen Time and Ask to Buy.</p>
+
+            <h2>5. Game Center</h2>
+            <p>Leaderboards and achievements are provided by Apple’s Game Center and are optional. Do not manipulate scores or exploit bugs to gain an unfair advantage. We may disregard results that appear to be obtained improperly.</p>
+
+            <h2>6. Acceptable use</h2>
+            <p>Do not modify, reverse engineer, copy, redistribute or resell the app, except where the law expressly allows. Do not interfere with the game, its purchases or the services it depends on. The characters, art, sounds, names and other content of PotionPals belong to the developer or its licensors.</p>
+
+            <h2>7. Progress and data</h2>
+            <p>Game progress is stored on your device. Deleting the app or its data, changing devices or restoring a backup may cause progress loss. Review the Privacy Policy for how data is handled.</p>
+
+            <h2>8. Disclaimers and liability</h2>
+            <p>The app is provided as available. We work to keep it stable but do not guarantee uninterrupted or error-free operation. To the extent permitted by law, the developer is not liable for indirect losses arising from the use of the app. This does not limit liability that cannot be excluded by law.</p>
+
+            <h2>9. Changes and contact</h2>
+            <p>We may update these terms when the app or the law changes. The revision date above shows the latest version. Questions can be sent to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

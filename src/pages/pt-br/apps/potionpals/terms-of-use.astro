@@ -1,0 +1,60 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Termos de Uso – PotionPals";
+---
+
+<Layout title={title} lang="pt-br" favicon="apps/potionpals/favicon.png" description="Termos de Uso – PotionPals." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do PotionPals"><a href="/pt-br/apps/potionpals/">PotionPals</a> · <a href="/pt-br/apps/potionpals/privacy-policy/">Política de Privacidade</a> · <a href="/apps/potionpals/terms-of-use/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 9 de outubro de 2026</p>
+
+            <h2>1. Sobre estes termos</h2>
+            <p>O PotionPals: Water Sort é fornecido por Adriano Souza Costa. Estes termos regem o uso do jogo. Os termos aplicáveis da App Store e o <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">EULA padrão da Apple</a> também regem a licença do app; nada aqui remove direitos obrigatórios do consumidor.</p>
+
+            <h2>2. O jogo e a disponibilidade</h2>
+            <p>O PotionPals é um quebra-cabeça de separar cores com os modos História, Casual, Endurance e Challenger. Fases, modos, mecânicas, recompensas e balanceamento podem mudar entre versões. Os recursos dependem do aparelho, da versão instalada e das condições do sistema. O Game Center e as compras na App Store exigem conexão com a internet e os serviços correspondentes da Apple.</p>
+
+            <h2>3. Energia, moedas e boosters</h2>
+            <p>Energia, moedas, estrelas, boosters e outros itens do jogo fazem parte da experiência e não têm valor monetário. Eles não podem ser trocados por dinheiro, transferidos para outros jogadores nem vendidos fora do app. A energia se recarrega com o tempo, e alguns itens podem ser ganhos jogando ou pela recompensa diária. Quantidades, preços e regras dos itens aparecem no app e podem mudar em versões futuras.</p>
+
+            <h2>4. Compras no app e reembolsos</h2>
+            <p>Os pacotes de moedas e boosters são consumíveis e se esgotam conforme você joga. A Energia Infinita é uma compra única e não consumível, vinculada à sua Conta Apple, e pode ser recuperada em Restaurar compras no app. As compras são cobradas na sua Conta Apple após a confirmação. Itens consumíveis perdidos ao apagar o app ou seus dados não podem ser restaurados. Pedidos de reembolso podem ser enviados à Apple em <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>, conforme os direitos aplicáveis e o processo da Apple. Pais e responsáveis podem gerenciar as compras com Tempo de Uso e Pedir para Comprar.</p>
+
+            <h2>5. Game Center</h2>
+            <p>Os placares e as conquistas são fornecidos pelo Game Center da Apple e são opcionais. Não manipule pontuações nem explore falhas para obter vantagem indevida. Podemos desconsiderar resultados que pareçam obtidos de forma irregular.</p>
+
+            <h2>6. Uso aceitável</h2>
+            <p>Não modifique, faça engenharia reversa, copie, redistribua ou revenda o app, exceto quando a lei permitir expressamente. Não interfira no jogo, nas compras ou nos serviços dos quais ele depende. Os personagens, artes, sons, nomes e demais conteúdos do PotionPals pertencem ao desenvolvedor ou a seus licenciantes.</p>
+
+            <h2>7. Progresso e dados</h2>
+            <p>O progresso do jogo fica salvo no seu aparelho. Apagar o app ou seus dados, trocar de aparelho ou restaurar um backup pode causar perda de progresso. Consulte a Política de Privacidade para saber como os dados são tratados.</p>
+
+            <h2>8. Isenções e responsabilidade</h2>
+            <p>O app é fornecido conforme disponível. Trabalhamos para mantê-lo estável, mas não garantimos funcionamento ininterrupto ou livre de erros. Na medida permitida pela lei, o desenvolvedor não se responsabiliza por perdas indiretas decorrentes do uso do app. Isso não limita responsabilidades que a lei não permite excluir.</p>
+
+            <h2>9. Alterações e contato</h2>
+            <p>Podemos atualizar estes termos quando o app ou a legislação mudarem. A data de revisão acima indica a versão mais recente. Envie dúvidas para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

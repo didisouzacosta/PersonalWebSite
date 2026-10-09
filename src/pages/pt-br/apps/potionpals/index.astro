@@ -1,0 +1,169 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const title = "PotionPals: Water Sort";
+const appName = "PotionPals";
+const pageTitle = "PotionPals | Quebra-cabeça de separar cores para iPhone";
+const description =
+    "O clássico puzzle de separar cores ganha uma lojinha de poções cheia de vida. Despeje, separe as cores e entregue cada poção aos clientes fofinhos de gelatina.";
+const favicon = "apps/potionpals/favicon.png";
+const appIcon = "potionpals/app-icon.png";
+const socialImage = "potionpals/potionpals-share-pt-br.jpg";
+const socialImageAlt = "Ícone do app PotionPals com resumo do quebra-cabeça de separar cores.";
+
+const metas: { name: string; content: string }[] = [];
+const primaryKeyword = "separar cores";
+const secondaryKeywords = [
+    "water sort",
+    "quebra-cabeça",
+    "poção",
+    "líquido",
+    "frasco",
+    "garrafa",
+    "lógica",
+    "relaxante",
+    "puzzle",
+    "gelatina",
+    "mágico",
+];
+
+const screenshots = [
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-1.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-1.png",
+        },
+        alt: "Home 3D do PotionPals com o Mestre Pingo, a loja de poções e os 12 clientes de gelatina.",
+        caption: "Clientes fofos esperando sua poção: 13 amiguinhos de gelatina.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-2.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-2.png",
+        },
+        alt: "Nível do PotionPals com clientes de gelatina no balcão enquanto os frascos são separados por cor.",
+        caption: "Despeje, combine e vicie-se! Separe as cores e encha cada poção.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-3.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-3.png",
+        },
+        alt: "Nível muito difícil do PotionPals com frascos de tamanhos diferentes e o selo de 300 fases.",
+        caption: "Fácil de começar, impossível de parar, com 300 fases cada vez mais difíceis.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-4.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-4.png",
+        },
+        alt: "Mapa do modo História do PotionPals com ilhas flutuantes, portões e estrelas em 7 capítulos.",
+        caption: "Modo História: um mundo mágico de ilhas flutuantes, portões e estrelas.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-5.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-5.png",
+        },
+        alt: "Tela de nível concluído do modo Arcade do PotionPals com o saldo de movimentos.",
+        caption: "Modo Arcade: ganhe movimentos a cada poção e veja até onde você vai.",
+    },
+    {
+        url: {
+            en: "potionpals/screenshots/en/frame-6.png",
+            ptBr: "potionpals/screenshots/ptBR/frame-6.png",
+        },
+        alt: "Nível noturno do PotionPals com cortinas e cadeados escondendo os frascos.",
+        caption: "Uma surpresa nova a cada capítulo: cortinas, cadeados e mistérios.",
+    },
+];
+
+const facts = [
+    { label: "Plataforma", value: "iPhone · iOS 26+" },
+    { label: "Fases", value: "300 em 7 capítulos" },
+    { label: "Modos de jogo", value: "História, Casual, Endurance, Challenger" },
+    { label: "Cores", value: "Até 12 para separar" },
+];
+
+const features = [
+    {
+        title: "Quatro modos de jogo",
+        description: "Explore 300 fases da História num mapa 3D, vá o mais longe possível no Casual, bata seu recorde no Endurance ou resolva 100 desafios de final de partida no Challenger.",
+    },
+    {
+        title: "Uma surpresa nova a cada capítulo",
+        description: "Frascos colecionadores, cortinas, cadeados, cores misteriosas e frascos de tamanhos diferentes deixam cada capítulo mais desafiador.",
+    },
+    {
+        title: "Clientes fofos de gelatina",
+        description: "Mestre Pingo e 12 amiguinhos, cada um com nome e personalidade, esperam a sua poção no balcão.",
+    },
+    {
+        title: "Feito com capricho",
+        description: "Despejos fluidos com háptica e sons, placares e conquistas do Game Center, além de modo daltônico, Reduzir Movimento, Aumentar Contraste e Texto Dinâmico.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Pausas curtas e relaxantes",
+        description: "Um quebra-cabeça satisfatório para jogar com uma mão em poucos minutos, com uma gota de estratégia e zero pressa.",
+    },
+    {
+        title: "Fãs de separar cores",
+        description: "O clássico puzzle de separar líquidos num mundo colorido, com uma loja de poções viva e um mapa-mundo em 3D.",
+    },
+];
+
+const faq = [
+    {
+        question: "O que é o PotionPals?",
+        answer: "PotionPals: Water Sort é um jogo casual de separar cores e líquidos para iPhone. Numa loja de poções feita de gelatina, clientes fofinhos fazem fila no balcão esperando o seu elixir, e cabe a você arrumar os frascos misturados.",
+    },
+    {
+        question: "Como jogar?",
+        answer: "Toque num frasco e depois em outro para despejar o líquido do topo. Só dá para despejar sobre a mesma cor, e se houver espaço. Quando um frasco fica com uma cor só, ele é arrolhado e voa para quem pediu. Travou? Use a <strong>dica</strong>, <strong>desfaça</strong> a jogada ou peça um <strong>frasco extra</strong>.",
+    },
+    {
+        question: "Quais são os modos de jogo?",
+        answer: "<strong>História</strong>: 300 fases em 7 capítulos num mapa 3D de ilhas flutuantes, com um capítulo final sem fim. <strong>Casual</strong>: siga de fase em fase com um saldo de movimentos, e cada poção completa devolve movimentos. <strong>Endurance</strong>: um tabuleiro que nunca acaba, com combos de até ×5 e um relógio a cada jogada. <strong>Challenger</strong>: 100 desafios de final de partida, sem dica e sem frasco extra, só com 3 Desfazer.",
+    },
+    {
+        question: "O que são energia, moedas e boosters?",
+        answer: "Cada fase ou corrida usa uma energia, que se recarrega com o tempo. Você ganha estrelas e moedas jogando, além da recompensa diária e da sequência de vitórias. Moedas e boosters como dica, desfazer e frasco extra também podem ser comprados no app, de forma opcional, assim como a <strong>Energia Infinita</strong>.",
+    },
+    {
+        question: "Como restauro minhas compras?",
+        answer: "A <strong>Energia Infinita</strong> é uma compra única vinculada à sua Conta Apple. Se reinstalar o app ou trocar de aparelho, toque em <em>Restaurar compras</em> na loja e ela será verificada pela sua Conta Apple, sem custo adicional. Moedas e pacotes de boosters são consumíveis e se esgotam conforme você joga.",
+    },
+    {
+        question: "Preciso do Game Center?",
+        answer: "Não. Os placares e as conquistas do Game Center são opcionais. Sem fazer login, você continua jogando normalmente e o progresso fica salvo no seu iPhone.",
+    },
+    {
+        question: "O PotionPals tem acessibilidade?",
+        answer: "Sim. O PotionPals tem modo daltônico e suporta Reduzir Movimento, Aumentar Contraste e Texto Dinâmico.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImage={socialImage}
+    socialImageAlt={socialImageAlt}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="pt-br"
+    applicationCategory="GameApplication"
+/>
