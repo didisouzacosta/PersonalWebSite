@@ -202,7 +202,7 @@ export const portfolioProjects: PortfolioProject[] = [
         resumeUrl: "https://adrianosouzacosta.com.br/apps/potionpals",
         imageUrl: appIconUrl("potionpals"),
         tags: ["iOS App", "Game"],
-        isEnabled: false,
+        isEnabled: true,
         descriptions: {
             en: {
                 card: "Water sort potion puzzle",
