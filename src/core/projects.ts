@@ -206,11 +206,11 @@ export const portfolioProjects: PortfolioProject[] = [
         descriptions: {
             en: {
                 card: "Water sort potion puzzle",
-                resume: "PotionPals: Water Sort turns the classic color sorting puzzle into a cozy jelly potion shop, with 300 levels in 7 chapters, Story, Casual, Endurance and Challenger modes, new mechanics every chapter and Game Center leaderboards.",
+                resume: "PotionPals: Water Sort turns the classic color sorting puzzle into a cozy jelly potion shop, with 300 levels in 13 chapters, Story, Casual, Endurance and Challenger modes, 12 friends to rescue, new mechanics every chapter, iCloud backup and Game Center leaderboards.",
             },
             "pt-br": {
                 card: "Puzzle de separar poções",
-                resume: "PotionPals: Water Sort transforma o clássico puzzle de separar cores numa lojinha de poções de gelatina, com 300 fases em 7 capítulos, os modos História, Casual, Endurance e Challenger, mecânicas novas a cada capítulo e placares do Game Center.",
+                resume: "PotionPals: Water Sort transforma o clássico puzzle de separar cores numa lojinha de poções de gelatina, com 300 fases em 13 capítulos, os modos História, Casual, Endurance e Challenger, 12 amigos para resgatar, mecânicas novas a cada capítulo, backup no iCloud e placares do Game Center.",
             },
         },
     },
