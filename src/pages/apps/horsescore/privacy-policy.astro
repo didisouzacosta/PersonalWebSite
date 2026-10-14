@@ -1,0 +1,61 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const title = "Privacy Policy – HorseScore";
+---
+
+<Layout title={title} lang="en" favicon="/apps/horsescore/favicon.png" description="Privacy Policy – HorseScore." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="HorseScore documents"><a href="/apps/horsescore/">HorseScore</a> · <a href="/apps/horsescore/terms-of-use/">Terms of Use</a> · <a href="/pt-br/apps/horsescore/privacy-policy/" lang="pt-BR">Português</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Last updated: October 14, 2026</p>
+
+            <h2>1. Scope and contact</h2>
+            <p>This policy covers the HorseScore app for iPhone, provided by Adriano Souza Costa. Send privacy questions or requests to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Website privacy preferences are separate from the app.</p>
+
+            <h2>2. No account and no profile</h2>
+            <p>HorseScore does not require registration and does not ask for your name, email, phone number, contacts or location. The app has no ads, does not use third-party analytics, does not track you across apps and websites and does not build user profiles.</p>
+
+            <h2>3. Camera and photos</h2>
+            <p>The app asks for camera access to photograph the animal in the four assessment positions. You can also pick photos from your library through the iOS photo picker; in that case the app only receives the photos you select and cannot access the rest of your library. Before anything is sent, photos are downsized and metadata such as date, device and location is removed.</p>
+
+            <h2>4. Analysis by OpenAI</h2>
+            <p>The visual estimate is produced by the OpenAI API. Before every analysis, the app asks whether you allow the upload. Only after you confirm are the four photos, the animal type (horse or pony) and any measurements you entered sent directly from your iPhone to OpenAI, together with the atlas reference material bundled with the app. The developer does not receive or keep these photos.</p>
+            <p>Requests are made with response storage turned off. Under OpenAI’s API data policy, submitted data is not used to train models and may be retained for up to 30 days for abuse monitoring before being deleted. OpenAI handles this data under its <a href="https://openai.com/policies/row-terms-of-use/" target="_blank" rel="noopener noreferrer">Terms</a> and <a href="https://openai.com/policies/row-privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. Do not submit photos that show people or personal information.</p>
+
+            <h2>5. Data on your device</h2>
+            <p>The assessment in progress lives only in the app’s memory. Photos, measurements and results are not saved on the device and are discarded when you start a new assessment or close the app. If you use “Share result”, the result image and text go to the app or contact you choose in the iOS share sheet.</p>
+
+            <h2>6. Sharing and advertising</h2>
+            <p>We do not sell or rent data and do not use it for advertising. Apart from OpenAI, described above, no other third-party service receives data from the app. If that changes, this policy and the App Store privacy details will be updated before the change takes effect, including any consent required.</p>
+
+            <h2>7. Retention, deletion and rights</h2>
+            <p>The app keeps no data between launches. Data sent to OpenAI follows the period described in section 4. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under applicable privacy laws, including the LGPD where applicable, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+
+            <h2>8. Security and children</h2>
+            <p>Uploads to OpenAI use an encrypted connection (HTTPS). No transmission method is perfectly secure. HorseScore is not directed to children and does not knowingly collect personal information from them.</p>
+
+            <h2>9. Changes</h2>
+            <p>We will update this page and its revision date when our practices change, with any additional notice or consent required by applicable law.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

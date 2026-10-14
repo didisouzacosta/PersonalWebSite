@@ -85,6 +85,18 @@ const pages = [
         changefreq: "monthly",
         alternates: localizedAlternates("/apps/potionpals/", "/pt-br/apps/potionpals/"),
     },
+    {
+        path: "/apps/horsescore/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/horsescore/", "/pt-br/apps/horsescore/"),
+    },
+    {
+        path: "/pt-br/apps/horsescore/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/horsescore/", "/pt-br/apps/horsescore/"),
+    },
 ];
 
 function escapeXml(value: string): string {

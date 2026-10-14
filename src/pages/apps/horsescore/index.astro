@@ -1,0 +1,146 @@
+---
+import AppTemplate from "../../../components/app/AppTemplate.astro";
+
+const title = "HorseScore";
+const appName = "HorseScore";
+const pageTitle = "HorseScore | Body Condition and Adiposity in Horses";
+const description =
+    "Four guided photos and a visual estimate of the body condition score (Henneke BCS 1–9) and cresty neck score (CNS 0–5) of horses and ponies, with a risk classification. Educational screening, not a diagnosis.";
+const favicon = "/apps/horsescore/favicon.png";
+const appIcon = "/apps/horsescore/app-icon.png";
+const socialImageAlt = "HorseScore app icon.";
+
+const metas: { name: string; content: string }[] = [];
+const primaryKeyword = "horse body condition score";
+const secondaryKeywords = [
+    "Henneke",
+    "BCS",
+    "CNS",
+    "cresty neck score",
+    "equine",
+    "horse",
+    "pony",
+    "adiposity",
+    "equine obesity",
+    "laminitis",
+    "screening",
+];
+
+const screenshots = [
+    {
+        url: "/apps/horsescore/screenshots/frame-1.jpg",
+        alt: "HorseScore home screen with a horse in side view and the Start assessment button (app in Portuguese).",
+        caption: "Four guided photos and a visual BCS and CNS estimate based on the atlas.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-2.jpg",
+        alt: "Result with the Attention classification, BCS 6–7 on the risk scale and CNS 3 marked as the threshold.",
+        caption: "BCS as a range, CNS with the clinical threshold and a clear risk classification.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-3.jpg",
+        alt: "Findings by anatomical region and morphometry with heart girth and neck ratios to height.",
+        caption: "Findings in six anatomical regions and morphometry with the atlas cut-offs.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-4.jpg",
+        alt: "Completed capture with side, rear, front and neck thumbnails.",
+        caption: "Side, rear, front and neck, each photo with a guide silhouette.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-5.jpg",
+        alt: "Analysis screen reading the horse's front view, step 4 of 6.",
+        caption: "The analysis goes through every view of the animal.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-6.jpg",
+        alt: "Optional height, heart girth and neck circumference measurements in centimeters.",
+        caption: "Optional tape measurements enable the morphometric check.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iPhone · iOS 26+" },
+    { label: "Scales", value: "Henneke BCS 1–9 and CNS 0–5" },
+    { label: "Photos", value: "4 guided views" },
+    { label: "Language", value: "Portuguese (Brazil)" },
+];
+
+const features = [
+    {
+        title: "Guided capture",
+        description: "Silhouettes and instructions for the four views: full side, rear, front and neck close-up. Use the camera or your photo library.",
+    },
+    {
+        title: "Visual BCS and CNS estimate",
+        description: "AI reads the photos following the Equine Adiposity Atlas and returns a BCS range, the CNS and findings in six anatomical regions.",
+    },
+    {
+        title: "The app decides the risk",
+        description: "The classification (low visual risk, attention, high visual risk or indeterminate) comes from fixed, tested rules, not from the AI. When the photos are not enough, the app prefers not to score.",
+    },
+    {
+        title: "Optional morphometry",
+        description: "With height, heart girth and neck circumference, the app computes the atlas ratios with separate cut-offs for horses and ponies.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Owners and stables",
+        description: "Track your animals' body condition in a standard way, in the field, and know when to call the vet.",
+    },
+    {
+        title: "Veterinarians and students",
+        description: "A quick visual screening explained by region, to support the conversation with owners and the clinical exam.",
+    },
+];
+
+const faq = [
+    {
+        question: "What is HorseScore?",
+        answer: "HorseScore is an iPhone app that provides a visual screening of body condition (Henneke scale, BCS 1–9) and neck adiposity (CNS 0–5) in horses and ponies from four guided photos, with a risk classification and next steps. The app is currently in Portuguese (Brazil).",
+    },
+    {
+        question: "Does the result replace a veterinarian?",
+        answer: "No. The result is a visual, educational estimate. It does not assess the palpation described in the atlas, may be wrong and is not a diagnosis. Decisions about health, feeding and treatment should be made with a veterinarian.",
+    },
+    {
+        question: "How are the photos analyzed?",
+        answer: "After you confirm the upload, the photos, animal type and measurements go directly from your iPhone to the OpenAI API, which performs the visual reading. The app computes the risk classification and morphometry with fixed rules. Nothing is saved on the device. See the <a href=\"/apps/horsescore/privacy-policy/\">Privacy Policy</a>.",
+    },
+    {
+        question: "Do I need to enter measurements?",
+        answer: "No, measurements are optional. With height, heart girth and neck circumference, the app checks the estimate against the atlas morphometric ratios and increases the confidence of the result.",
+    },
+    {
+        question: "Why was my result indeterminate?",
+        answer: "When photos are dark, cropped, taken at the wrong angle or the findings conflict, the app prefers not to score rather than give a misleading score. It tells you which photos to retake.",
+    },
+    {
+        question: "Is the app paid?",
+        answer: "No. HorseScore is free, has no in-app purchases and requires no account.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImageAlt={socialImageAlt}
+    socialImageType="image/png"
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="en"
+    applicationCategory="ReferenceApplication"
+/>

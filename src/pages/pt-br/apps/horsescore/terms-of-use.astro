@@ -1,0 +1,57 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Termos de Uso – HorseScore";
+---
+
+<Layout title={title} lang="pt-br" favicon="/apps/horsescore/favicon.png" description="Termos de Uso – HorseScore." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do HorseScore"><a href="/pt-br/apps/horsescore/">HorseScore</a> · <a href="/pt-br/apps/horsescore/privacy-policy/">Política de Privacidade</a> · <a href="/apps/horsescore/terms-of-use/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 14 de outubro de 2026</p>
+
+            <h2>1. Sobre estes termos</h2>
+            <p>O HorseScore é oferecido por Adriano Souza Costa. Estes termos regem o uso do app. Os termos aplicáveis da App Store e o <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">EULA padrão da Apple</a> também regem a licença do app; nada aqui remove direitos obrigatórios do consumidor.</p>
+
+            <h2>2. Triagem visual, não diagnóstico</h2>
+            <p>O HorseScore faz uma triagem visual e educativa da condição corporal (escala Henneke, BCS 1–9) e da adiposidade do pescoço (CNS 0–5) de equinos a partir de fotos. A estimativa é gerada por inteligência artificial, pode conter erros e não avalia a palpação descrita no atlas. O resultado não é diagnóstico, não substitui o exame de um médico-veterinário e não deve ser a única base para decisões sobre saúde, alimentação, manejo ou tratamento do animal. Em caso de dúvida ou sinais de doença, como laminite, procure um veterinário.</p>
+
+            <h2>3. Uso do serviço de IA</h2>
+            <p>A análise depende da API da OpenAI e de conexão com a internet. Cada análise só é enviada depois da sua confirmação no app. O serviço pode ficar indisponível, lento ou mudar sem aviso, e o app pode não conseguir concluir uma análise. Quando as fotos não permitem uma estimativa segura, o app prefere não dar nota e pede para refazê-las.</p>
+
+            <h2>4. Suas fotos</h2>
+            <p>Envie somente fotos que você tirou ou que tem o direito de usar. Fotografe o animal, não pessoas, e não inclua informações pessoais ou conteúdo impróprio. Respeite o bem-estar do animal e a segurança das pessoas ao fotografar.</p>
+
+            <h2>5. Uso aceitável</h2>
+            <p>Não modifique, faça engenharia reversa, copie, redistribua ou revenda o app, exceto quando a lei permitir expressamente. Não tente extrair credenciais, sobrecarregar o serviço ou usar o app para fins diferentes da avaliação de equinos. O nome, a marca, os textos e as ilustrações do HorseScore pertencem ao desenvolvedor ou a seus licenciadores.</p>
+
+            <h2>6. Preço e disponibilidade</h2>
+            <p>O HorseScore é gratuito e não tem compras no app. Recursos, critérios e textos podem mudar entre versões.</p>
+
+            <h2>7. Isenções e responsabilidade</h2>
+            <p>O app é fornecido no estado em que se encontra. Trabalhamos para mantê-lo estável, mas não garantimos funcionamento ininterrupto, livre de erros ou a exatidão das estimativas. Na extensão permitida pela lei, o desenvolvedor não se responsabiliza por perdas indiretas ou por decisões tomadas com base no resultado. Isso não limita responsabilidades que não possam ser excluídas por lei.</p>
+
+            <h2>8. Alterações e contato</h2>
+            <p>Podemos atualizar estes termos quando o app ou a lei mudarem. A data acima mostra a versão mais recente. Dúvidas podem ser enviadas para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

@@ -1,0 +1,61 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Política de Privacidade – HorseScore";
+---
+
+<Layout title={title} lang="pt-br" favicon="/apps/horsescore/favicon.png" description="Política de Privacidade – HorseScore." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do HorseScore"><a href="/pt-br/apps/horsescore/">HorseScore</a> · <a href="/pt-br/apps/horsescore/terms-of-use/">Termos de Uso</a> · <a href="/apps/horsescore/privacy-policy/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 14 de outubro de 2026</p>
+
+            <h2>1. Escopo e contato</h2>
+            <p>Esta política cobre o app HorseScore para iPhone, oferecido por Adriano Souza Costa. Envie dúvidas ou pedidos sobre privacidade para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. As preferências de privacidade deste site são separadas do app.</p>
+
+            <h2>2. Sem conta e sem perfil</h2>
+            <p>O HorseScore não exige cadastro e não pede seu nome, e-mail, telefone, contatos ou localização. O app não tem anúncios, não usa serviços de análise de terceiros, não rastreia você entre apps e sites e não cria perfis de usuários.</p>
+
+            <h2>3. Câmera e fotos</h2>
+            <p>O app pede acesso à câmera para fotografar o animal nas quatro posições da avaliação. Você também pode escolher fotos na galeria pelo seletor do iOS; nesse caso, o app recebe apenas as fotos que você selecionar, sem acesso ao restante da sua biblioteca. Antes de qualquer envio, as fotos são reduzidas e os metadados, como data, aparelho e localização, são removidos.</p>
+
+            <h2>4. Análise pela OpenAI</h2>
+            <p>A estimativa visual é feita pela API da OpenAI. Antes de cada análise, o app pergunta se você permite o envio. Somente depois da sua confirmação, as quatro fotos, o tipo de animal (cavalo ou pônei) e as medidas que você informar são enviados diretamente do seu iPhone para a OpenAI, junto com o material de referência do atlas que acompanha o app. O desenvolvedor não recebe nem guarda essas fotos.</p>
+            <p>As requisições são feitas com a opção de não armazenar a resposta no serviço. Segundo a política da OpenAI para a API, os dados enviados não são usados para treinar modelos e podem ser retidos por até 30 dias para monitoramento de abuso, sendo depois excluídos. A OpenAI trata esses dados conforme seus <a href="https://openai.com/policies/row-terms-of-use/" target="_blank" rel="noopener noreferrer">Termos</a> e sua <a href="https://openai.com/policies/row-privacy-policy/" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>. Não envie fotos que mostrem pessoas ou informações pessoais.</p>
+
+            <h2>5. Dados no aparelho</h2>
+            <p>A avaliação em andamento fica somente na memória do app. Fotos, medidas e resultado não são gravados no aparelho e são descartados quando você inicia uma nova avaliação ou fecha o app. Se você usar "Compartilhar resultado", a imagem e o texto do resultado vão para o app ou contato que você escolher na folha de compartilhamento do iOS.</p>
+
+            <h2>6. Compartilhamento e publicidade</h2>
+            <p>Não vendemos nem alugamos dados e não os usamos para publicidade. Além da OpenAI, descrita acima, nenhum outro serviço de terceiros recebe dados do app. Se isso mudar, esta política e as informações de privacidade da App Store serão atualizadas antes da mudança, com o consentimento exigido.</p>
+
+            <h2>7. Retenção, exclusão e direitos</h2>
+            <p>O app não mantém dados entre execuções. Os dados enviados à OpenAI seguem o prazo descrito na seção 4. E-mails de suporte são guardados pelo tempo necessário para responder ao pedido. Para acesso, correção, exclusão ou outros direitos previstos nas leis de privacidade aplicáveis, incluindo a LGPD, escreva para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+
+            <h2>8. Segurança e crianças</h2>
+            <p>O envio para a OpenAI usa conexão criptografada (HTTPS). Nenhum método de transmissão é totalmente seguro. O HorseScore não é direcionado a crianças e não coleta intencionalmente informações pessoais delas.</p>
+
+            <h2>9. Alterações</h2>
+            <p>Atualizaremos esta página e sua data de revisão quando nossas práticas mudarem, com qualquer aviso ou consentimento adicional exigido pela lei aplicável.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

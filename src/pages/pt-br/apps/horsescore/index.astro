@@ -1,0 +1,147 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const title = "HorseScore";
+const appName = "HorseScore";
+const pageTitle = "HorseScore | Condição corporal e adiposidade em equinos";
+const description =
+    "Quatro fotos guiadas e uma estimativa visual do escore de condição corporal (BCS Henneke 1–9) e da crista do pescoço (CNS 0–5) de cavalos e pôneis, com classificação de risco. Triagem educativa, não diagnóstico.";
+const favicon = "/apps/horsescore/favicon.png";
+const appIcon = "/apps/horsescore/app-icon.png";
+const socialImageAlt = "Ícone do app HorseScore.";
+
+const metas: { name: string; content: string }[] = [];
+const primaryKeyword = "condição corporal equina";
+const secondaryKeywords = [
+    "escore de condição corporal",
+    "Henneke",
+    "BCS",
+    "CNS",
+    "cresty neck",
+    "crista do pescoço",
+    "cavalo",
+    "pônei",
+    "adiposidade",
+    "obesidade equina",
+    "laminite",
+    "triagem",
+];
+
+const screenshots = [
+    {
+        url: "/apps/horsescore/screenshots/frame-1.jpg",
+        alt: "Tela inicial do HorseScore com um cavalo em vista lateral e o botão Iniciar avaliação.",
+        caption: "Quatro fotos guiadas e uma estimativa visual de BCS e CNS segundo o atlas.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-2.jpg",
+        alt: "Resultado com classificação Atenção, BCS 6–7 na régua de risco e CNS 3 marcado como limiar.",
+        caption: "BCS em intervalo, CNS com o limiar clínico e uma classificação de risco clara.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-3.jpg",
+        alt: "Achados por região anatômica e morfometria com as razões do perímetro torácico e do pescoço pela altura.",
+        caption: "Achados nas seis regiões anatômicas e morfometria com os pontos de corte do atlas.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-4.jpg",
+        alt: "Captura concluída com as miniaturas lateral, posterior, frontal e do pescoço.",
+        caption: "Lateral, posterior, frontal e pescoço, cada foto com a silhueta-guia.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-5.jpg",
+        alt: "Tela de análise lendo a vista frontal do cavalo, etapa 4 de 6.",
+        caption: "A análise percorre cada vista do animal.",
+    },
+    {
+        url: "/apps/horsescore/screenshots/frame-6.jpg",
+        alt: "Medidas opcionais de altura, perímetro torácico e circunferência do pescoço em centímetros.",
+        caption: "Medidas opcionais com fita métrica ativam a confirmação morfométrica.",
+    },
+];
+
+const facts = [
+    { label: "Plataforma", value: "iPhone · iOS 26+" },
+    { label: "Escalas", value: "BCS Henneke 1–9 e CNS 0–5" },
+    { label: "Fotos", value: "4 vistas guiadas" },
+    { label: "Preço", value: "Gratuito, sem conta" },
+];
+
+const features = [
+    {
+        title: "Captura guiada",
+        description: "Silhuetas e instruções para as quatro vistas: lateral do corpo inteiro, posterior, frontal e close do pescoço. Use a câmera ou a galeria.",
+    },
+    {
+        title: "Estimativa visual de BCS e CNS",
+        description: "A IA lê as fotos seguindo o Equine Adiposity Atlas e devolve um intervalo de BCS, o CNS e os achados em seis regiões anatômicas.",
+    },
+    {
+        title: "O app decide o risco",
+        description: "A classificação (baixo risco visual, atenção, alto risco visual ou indeterminado) vem de regras fixas e testadas, não da IA. Quando as fotos não bastam, o app prefere não dar nota.",
+    },
+    {
+        title: "Morfometria opcional",
+        description: "Com altura, perímetro torácico e circunferência do pescoço, o app calcula as razões do atlas com pontos de corte próprios para cavalos e pôneis.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Tutores e haras",
+        description: "Acompanhe a condição corporal dos animais de forma padronizada, no campo, e saiba quando procurar o veterinário.",
+    },
+    {
+        title: "Veterinários e estudantes",
+        description: "Uma triagem visual rápida e explicada por região, para apoiar a conversa com o tutor e a avaliação clínica.",
+    },
+];
+
+const faq = [
+    {
+        question: "O que é o HorseScore?",
+        answer: "O HorseScore é um app para iPhone que faz uma triagem visual da condição corporal (escala Henneke, BCS 1–9) e da adiposidade do pescoço (CNS 0–5) de cavalos e pôneis a partir de quatro fotos guiadas, com classificação de risco e próximos passos.",
+    },
+    {
+        question: "O resultado substitui o veterinário?",
+        answer: "Não. O resultado é uma estimativa visual e educativa. Ele não avalia a palpação descrita no atlas, pode conter erros e não é diagnóstico. Decisões sobre saúde, alimentação e tratamento devem ser tomadas com um médico-veterinário.",
+    },
+    {
+        question: "Como as fotos são analisadas?",
+        answer: "Depois que você confirma o envio, as fotos, o tipo de animal e as medidas vão diretamente do iPhone para a API da OpenAI, que faz a leitura visual. O app calcula a classificação de risco e a morfometria com regras fixas. Nada fica salvo no aparelho. Veja a <a href=\"/pt-br/apps/horsescore/privacy-policy/\">Política de Privacidade</a>.",
+    },
+    {
+        question: "Preciso informar medidas?",
+        answer: "Não, as medidas são opcionais. Com a altura, o perímetro torácico e a circunferência do pescoço, o app confirma a estimativa com as razões morfométricas do atlas e aumenta a confiança do resultado.",
+    },
+    {
+        question: "Por que o resultado veio indeterminado?",
+        answer: "Quando as fotos estão escuras, cortadas, em ângulo errado ou os achados são conflitantes, o app prefere não dar nota a dar uma nota enganosa. Ele indica quais fotos refazer.",
+    },
+    {
+        question: "O app é pago?",
+        answer: "Não. O HorseScore é gratuito, não tem compras no app e não exige conta.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImageAlt={socialImageAlt}
+    socialImageType="image/png"
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="pt-br"
+    applicationCategory="ReferenceApplication"
+/>

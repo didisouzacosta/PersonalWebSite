@@ -38,6 +38,7 @@ const projectTitles: Record<string, string> = {
     loopsize: "Loop Size",
     giggleface: "GiggleFace",
     potionpals: "PotionPals",
+    horsescore: "HorseScore",
 };
 
 const getProjectTitle = (projectSlug?: string) => {

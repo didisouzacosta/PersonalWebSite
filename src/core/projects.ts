@@ -214,6 +214,24 @@ export const portfolioProjects: PortfolioProject[] = [
             },
         },
     },
+    {
+        name: "HorseScore",
+        url: "/apps/horsescore",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/horsescore",
+        imageUrl: "/apps/horsescore/app-icon.png",
+        tags: ["iOS App", "AI"],
+        isEnabled: false,
+        descriptions: {
+            en: {
+                card: "Body condition screening for horses",
+                resume: "HorseScore turns four guided photos into a visual estimate of the Henneke body condition score and cresty neck score of horses and ponies, with AI reading the photos and fixed, tested rules deciding the risk classification.",
+            },
+            "pt-br": {
+                card: "Triagem da condição corporal de equinos",
+                resume: "HorseScore transforma quatro fotos guiadas numa estimativa visual do escore de condição corporal Henneke e da crista do pescoço de cavalos e pôneis, com a IA lendo as fotos e regras fixas e testadas decidindo a classificação de risco.",
+            },
+        },
+    },
 ];
 
 function getEnabledProjects(): PortfolioProject[] {
