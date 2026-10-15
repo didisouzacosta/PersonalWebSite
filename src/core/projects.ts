@@ -36,8 +36,8 @@ const appIconUrl = (slug: string) => `${appAssetBaseUrl}${slug}/app-icon.png`;
 export const portfolioProjects: PortfolioProject[] = [
     {
         name: "DuoTake",
-        url: "/apps/duotake",
-        resumeUrl: "https://adrianosouzacosta.com.br/apps/duotake",
+        url: "https://duotake.app/",
+        resumeUrl: "https://duotake.app/",
         imageUrl: appIconUrl("duotake"),
         tags: ["iOS App", "Free", "Camera"],
         isEnabled: true,
@@ -54,7 +54,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     {
         name: "KuboRush",
-        url: "/apps/kuborush",
+        url: "/apps/kuborush/",
         resumeUrl: "https://apps.apple.com/app/id6757385646",
         imageUrl: appIconUrl("kuborush"),
         tags: ["iOS App", "Free"],
@@ -72,7 +72,7 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     {
         name: "LoopSize",
-        url: "/apps/loopsize",
+        url: "/apps/loopsize/",
         resumeUrl: "https://apps.apple.com/us/app/loopsize-ring-size-converter/id6749704116?itscg=30200&itsct=apps_box_badge&mttnsubad=6450398697",
         imageUrl: appIconUrl("loopsize"),
         tags: ["iOS App", "Free"],
@@ -180,8 +180,8 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     {
         name: "GiggleFace",
-        url: "/apps/giggleface",
-        resumeUrl: "https://adrianosouzacosta.com.br/apps/giggleface",
+        url: "/apps/giggleface/",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/giggleface/",
         imageUrl: appIconUrl("giggleface"),
         tags: ["iOS App", "macOS App"],
         isEnabled: true,
@@ -198,8 +198,8 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     {
         name: "PotionPals",
-        url: "/apps/potionpals",
-        resumeUrl: "https://adrianosouzacosta.com.br/apps/potionpals",
+        url: "/apps/potionpals/",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/potionpals/",
         imageUrl: appIconUrl("potionpals"),
         tags: ["iOS App", "Game"],
         isEnabled: true,
@@ -216,8 +216,8 @@ export const portfolioProjects: PortfolioProject[] = [
     },
     {
         name: "HorseScore",
-        url: "/apps/horsescore",
-        resumeUrl: "https://adrianosouzacosta.com.br/apps/horsescore",
+        url: "/apps/horsescore/",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/horsescore/",
         imageUrl: "/apps/horsescore/app-icon.png",
         tags: ["iOS App", "AI"],
         isEnabled: false,

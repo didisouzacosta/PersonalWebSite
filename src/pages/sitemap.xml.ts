@@ -50,18 +50,6 @@ const pages = [
         alternates: localizedAlternates("/apps/loopsize/", "/pt-br/apps/loopsize/"),
     },
     {
-        path: "/apps/duotake/",
-        priority: "0.6",
-        changefreq: "monthly",
-        alternates: localizedAlternates("/apps/duotake/", "/pt-br/apps/duotake/"),
-    },
-    {
-        path: "/pt-br/apps/duotake/",
-        priority: "0.6",
-        changefreq: "monthly",
-        alternates: localizedAlternates("/apps/duotake/", "/pt-br/apps/duotake/"),
-    },
-    {
         path: "/apps/giggleface/",
         priority: "0.7",
         changefreq: "monthly",

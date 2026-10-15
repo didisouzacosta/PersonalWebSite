@@ -1,4 +1,5 @@
 export const siteUrl = "https://adrianosouzacosta.com.br";
+export const duoTakeSiteUrl = "https://duotake.app";
 export const defaultOgImage = "https://avatars.githubusercontent.com/u/11352503?v=4";
 export const appAssetBaseUrl = "https://pub-81dc0daed73f4a358469301b9b80f493.r2.dev/apps/";
 

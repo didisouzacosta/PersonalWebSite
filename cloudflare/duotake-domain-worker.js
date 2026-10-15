@@ -63,7 +63,12 @@ const CLEAN_TO_UPSTREAM_PATHS = new Map([
     ["/pt-br/", `${PT_BR_APP_BASE_PATH}/`],
     ["/terms-of-use/", `${APP_BASE_PATH}/terms-of-use/`],
     ["/privacy-policy/", `${APP_BASE_PATH}/privacy-policy/`],
+    ["/pt-br/terms-of-use/", `${PT_BR_APP_BASE_PATH}/terms-of-use/`],
+    ["/pt-br/privacy-policy/", `${PT_BR_APP_BASE_PATH}/privacy-policy/`],
 ]);
+const UPSTREAM_TO_CLEAN_PATHS = new Map(
+    [...CLEAN_TO_UPSTREAM_PATHS].map(([cleanPath, upstreamPath]) => [upstreamPath, cleanPath]),
+);
 
 function normalizeCleanPath(pathname) {
     if (!pathname || pathname === "/") {
@@ -85,25 +90,45 @@ function mapRequestPath(pathname) {
 }
 
 function mapUpstreamPathToPublic(pathname) {
-    const cleanPath = normalizeCleanPath(pathname);
+    return UPSTREAM_TO_CLEAN_PATHS.get(normalizeCleanPath(pathname)) ?? pathname;
+}
 
-    if (cleanPath === `${APP_BASE_PATH}/`) {
-        return "/";
+function isPagePath(pathname) {
+    if (pathname.startsWith("/_astro/")) {
+        return false;
     }
 
-    if (cleanPath === `${PT_BR_APP_BASE_PATH}/`) {
-        return "/pt-br/";
+    const lastSegment = pathname.split("/").pop() ?? "";
+
+    return !lastSegment.includes(".");
+}
+
+// Keeps a single indexable URL per page: https, no www, trailing slash and
+// clean paths only. Portfolio pages outside DuoTake go back to the portfolio
+// so they are not duplicated under the app domain.
+function canonicalRedirect(url) {
+    const publicUrl = new URL(url);
+    publicUrl.protocol = "https:";
+
+    if (publicUrl.hostname.startsWith("www.")) {
+        publicUrl.hostname = publicUrl.hostname.slice(4);
     }
 
-    if (cleanPath === `${APP_BASE_PATH}/terms-of-use/`) {
-        return "/terms-of-use/";
+    if (isPagePath(publicUrl.pathname)) {
+        const publicPath = mapUpstreamPathToPublic(publicUrl.pathname);
+
+        if (!CLEAN_TO_UPSTREAM_PATHS.has(normalizeCleanPath(publicPath))) {
+            return Response.redirect(`${PORTFOLIO_ORIGIN}${normalizeCleanPath(publicUrl.pathname)}${publicUrl.search}`, 301);
+        }
+
+        publicUrl.pathname = normalizeCleanPath(publicPath);
     }
 
-    if (cleanPath === `${APP_BASE_PATH}/privacy-policy/`) {
-        return "/privacy-policy/";
+    if (publicUrl.toString() !== url.toString()) {
+        return Response.redirect(publicUrl.toString(), 301);
     }
 
-    return pathname;
+    return undefined;
 }
 
 function rewriteUrlValue(value, publicOrigin) {
@@ -183,12 +208,19 @@ function appRobotsTxt(publicOrigin) {
 }
 
 function appSitemapXml(publicOrigin) {
+    const alternates = [
+        ["en", `${publicOrigin}/`],
+        ["pt-BR", `${publicOrigin}/pt-br/`],
+        ["x-default", `${publicOrigin}/`],
+    ].map(([lang, href]) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${href}" />`).join("\n        ");
+    const urls = [`${publicOrigin}/`, `${publicOrigin}/pt-br/`].map((loc) => `
+    <url>
+        <loc>${loc}</loc>
+        ${alternates}
+    </url>`).join("");
+
     return new Response(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>${publicOrigin}/</loc></url>
-    <url><loc>${publicOrigin}/pt-br/</loc></url>
-    <url><loc>${publicOrigin}/terms-of-use/</loc></url>
-    <url><loc>${publicOrigin}/privacy-policy/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}
 </urlset>
 `, {
         headers: {
@@ -234,9 +266,12 @@ export default {
     async fetch(request) {
         const url = new URL(request.url);
 
-        if (url.hostname.startsWith("www.") && url.hostname !== `www.${PORTFOLIO_HOSTNAME}`) {
-            url.hostname = url.hostname.slice(4);
-            return Response.redirect(url.toString(), 301);
+        if (url.hostname !== PORTFOLIO_HOSTNAME && url.hostname !== `www.${PORTFOLIO_HOSTNAME}`) {
+            const redirect = canonicalRedirect(url);
+
+            if (redirect) {
+                return redirect;
+            }
         }
 
         if (url.pathname === "/robots.txt") {

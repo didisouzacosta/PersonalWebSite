@@ -1,4 +1,6 @@
 ---
+import { normalizePath } from '../core/seo';
+
 interface Props {
     lang?: string;
     currentPath?: string;
@@ -34,7 +36,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
 }
 
 const isPtBr = lang === 'pt-br';
-const altLangUrl = getAltLangUrl(currentPath, lang);
+const altLangUrl = normalizePath(getAltLangUrl(currentPath, lang));
 const altLangLabel = isPtBr ? 'EN' : 'PT';
 ---
 

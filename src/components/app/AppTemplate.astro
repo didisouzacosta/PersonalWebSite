@@ -7,6 +7,7 @@ import {
     getAppAlternates,
     resolveAppAssetUrl,
     softwareApplicationJsonLd,
+    type AlternateLocale,
     type SeoLanguage,
 } from "../../core/seo";
 
@@ -86,6 +87,8 @@ interface Props {
     video?: AppVideo,
     primaryKeyword?: string,
     secondaryKeywords?: string[],
+    canonicalUrl?: string,
+    alternateLocales?: AlternateLocale[],
 }
 
 const {
@@ -116,9 +119,12 @@ const {
     video,
     primaryKeyword,
     secondaryKeywords = [],
+    canonicalUrl,
+    alternateLocales,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const canonicalPage = canonicalUrl ?? currentPath;
 const seoLanguage: SeoLanguage = lang === "pt-br" ? "pt-br" : "en";
 const structuredAppName = appName ?? title.split(/[-|]/)[0].trim();
 const testFlightLabel = seoLanguage === "pt-br" ? "Entrar no TestFlight" : "Join TestFlight";
@@ -128,8 +134,8 @@ const testFlightAriaLabel = seoLanguage === "pt-br"
 const legalBasePath = (currentPath.startsWith('/pt-br/')
     ? currentPath.replace('/pt-br', '')
     : currentPath).replace(/\/$/, '');
-const termsOfUseHref = termsOfUseUrl ?? `${legalBasePath}/terms-of-use`;
-const privacyPolicyHref = privacyPolicyUrl ?? `${legalBasePath}/privacy-policy`;
+const termsOfUseHref = termsOfUseUrl ?? `${legalBasePath}/terms-of-use/`;
+const privacyPolicyHref = privacyPolicyUrl ?? `${legalBasePath}/privacy-policy/`;
 const termsOfUseLabel = seoLanguage === "pt-br" ? "Termos de Uso" : "Terms of use";
 const privacyPolicyLabel = seoLanguage === "pt-br" ? "Política de Privacidade" : "Privacy policy";
 const resolveScreenshotUrl = (url: LocalizedScreenshotUrl, language: SeoLanguage) => {
@@ -186,7 +192,7 @@ const appStoreHref = appStoreUrl ?? (appId
 const appJsonLd = softwareApplicationJsonLd({
     name: structuredAppName,
     description,
-    path: currentPath,
+    path: canonicalPage,
     appIcon,
     screenshots: realScreenshots.map((screenshot) => screenshot.url),
     appId,
@@ -199,7 +205,7 @@ const appJsonLd = softwareApplicationJsonLd({
 });
 const breadcrumbJson = breadcrumbJsonLd([
     { name: "Home", path: seoLanguage === "pt-br" ? "/pt-br/" : "/" },
-    { name: structuredAppName, path: currentPath },
+    { name: structuredAppName, path: canonicalPage },
 ]);
 const resolvedAppIcon = resolveAppAssetUrl(appIcon);
 const resolveSocialImageUrl = (image?: string) => resolveAppAssetUrl(image ?? appIcon);
@@ -207,14 +213,14 @@ const resolvedSocialImage = resolveSocialImageUrl(socialImage);
 const videoJsonLd = youtubeEmbedUrl ? {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": `${absoluteUrl(currentPath)}#app-video`,
+    "@id": `${absoluteUrl(canonicalPage)}#app-video`,
     name: videoTitle,
     description: video?.caption ?? description,
     url: video?.youtubeUrl,
     embedUrl: youtubeEmbedUrl,
     inLanguage: seoLanguage === "pt-br" ? "pt-BR" : "en",
     about: {
-        "@id": `${absoluteUrl(currentPath)}#software-application`,
+        "@id": `${absoluteUrl(canonicalPage)}#software-application`,
     },
 } : undefined;
 ---
@@ -226,7 +232,8 @@ const videoJsonLd = youtubeEmbedUrl ? {
     metas={metas}
     lang={lang}
     canonicalPath={currentPath}
-    alternateLocales={getAppAlternates(currentPath)}
+    canonicalUrl={canonicalUrl}
+    alternateLocales={alternateLocales ?? getAppAlternates(currentPath)}
     ogImage={resolvedSocialImage}
     ogImageAlt={socialImageAlt ?? `${structuredAppName} app icon`}
     ogImageWidth={1200}

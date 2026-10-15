@@ -1,5 +1,6 @@
 ---
 import AppTemplate from "../../../../components/app/AppTemplate.astro";
+import { duoTakeSiteUrl, localizedAlternates } from "../../../../core/seo";
 
 const title = "Câmera Dupla: DuoTake";
 const appId = "id6761627384";
@@ -200,6 +201,8 @@ const faq = [
     termsOfUseUrl="/pt-br/apps/duotake/terms-of-use/"
     privacyPolicyUrl="/pt-br/apps/duotake/privacy-policy/"
     lang="pt-br"
+    canonicalUrl={`${duoTakeSiteUrl}/pt-br/`}
+    alternateLocales={localizedAlternates(`${duoTakeSiteUrl}/`, `${duoTakeSiteUrl}/pt-br/`)}
     operatingSystem="iOS 26.6 or later"
     applicationCategory="MultimediaApplication"
 />
