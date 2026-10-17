@@ -1,16 +1,19 @@
 {
   "name": "personal-website",
   "type": "module",
-  "version": "4.2.33",
+  "version": "4.2.34",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:duotake": "astro dev --config astro.config.duotake.mjs",
     "build": "astro build",
+    "build:duotake": "astro build --config astro.config.duotake.mjs",
     "verify:analytics": "npm run build && node scripts/verify-analytics.mjs",
     "verify:social": "npm run build && node scripts/verify-social-previews.mjs",
     "preview": "astro preview",
+    "preview:duotake": "astro preview --config astro.config.duotake.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -18,8 +18,12 @@ Site pessoal estático de Adriano Souza Costa, construído com Astro. O projeto 
 ├── .github/workflows/deploy.yml   # Build e deploy no GitHub Pages
 ├── CNAME                          # Domínio customizado do GitHub Pages
 ├── astro.config.mjs               # Configuração do Astro e URL canônica do site
+├── astro.config.duotake.mjs       # Build separado do site https://duotake.app
+├── cloudflare/                    # Worker que serve o build do duotake.app
+├── wrangler.duotake.jsonc         # Deploy do duotake.app no Cloudflare
 ├── package.json                   # Scripts, versão, engines e dependências
 ├── scripts/                       # Utilitários de verificação do projeto
+├── sites/duotake/                 # Rotas do build do duotake.app (reusam src/)
 ├── src/
 │   ├── components/                # Componentes Astro reutilizáveis
 │   │   ├── app/                   # Template compartilhado das páginas de apps
@@ -29,10 +33,11 @@ Site pessoal estático de Adriano Souza Costa, construído com Astro. O projeto 
 │   ├── layouts/                   # Layout base com metatags, navegação e tema
 │   ├── pages/                     # Rotas públicas do site
 │   └── styles/                    # Estilos globais e variáveis de tema
-└── dist/                          # Artefato gerado pelo build
+├── dist/                          # Artefato gerado pelo build do portfólio
+└── dist-duotake/                  # Artefato gerado pelo build do duotake.app
 ```
 
-`dist/` é gerado automaticamente e não deve ser editado manualmente.
+`dist/` e `dist-duotake/` são gerados automaticamente e não devem ser editados manualmente.
 
 ## Rotas Principais
 
@@ -44,7 +49,9 @@ Site pessoal estático de Adriano Souza Costa, construído com Astro. O projeto 
 - `/pt-br/apps/{app}/`: páginas públicas de apps em português do Brasil.
 - `/robots.txt` e `/sitemap.xml`: gerados por rotas TypeScript em `src/pages`.
 
-As páginas de apps hoje seguem o padrão de `DuoTake`, `KuboRush` e `LoopSize`, com conteúdo e metadados definidos na própria página e renderização compartilhada por `src/components/app/AppTemplate.astro`.
+As páginas de apps hoje seguem o padrão de `KuboRush` e `LoopSize`, com conteúdo e metadados definidos na própria página e renderização compartilhada por `src/components/app/AppTemplate.astro`.
+
+O DuoTake é a exceção: ele também tem domínio próprio (`https://duotake.app`), então seu conteúdo fica em `src/core/apps/duotake.ts` e `src/components/app/duotake/`, renderizado pelas rotas do portfólio e pelo build em `sites/duotake`. Veja `docs/duotake-domain.md`.
 
 ## Organização do Conteúdo
 
@@ -52,6 +59,7 @@ O projeto favorece dados declarativos em `src/core` em vez de duplicar markup na
 
 - `homepage.ts`: textos da homepage em inglês e pt-BR.
 - `profile.ts`: bio, descrição, papel profissional e skills.
+- `apps/duotake.ts`: conteúdo e rotas do DuoTake, compartilhados pelo portfólio e pelo duotake.app.
 - `projects.ts`: lista de projetos exibidos na homepage e no currículo.
 - `resume.tsx`: dados estruturados do currículo.
 - `seo.ts`: URLs absolutas, alternates, JSON-LD e helpers de SEO.
@@ -84,6 +92,8 @@ Execute os comandos a partir da raiz do projeto.
 | `npm run dev` | Inicia o servidor local em `localhost:4321`. |
 | `npm run build` | Gera o site de produção em `dist/`. |
 | `npm run preview` | Pré-visualiza localmente o build gerado. |
+| `npm run dev:duotake` | Inicia o duotake.app local em `localhost:4322`. |
+| `npm run build:duotake` | Gera o duotake.app em `dist-duotake/`. |
 | `npm run verify:analytics` | Faz build e roda a verificação de analytics. |
 | `npm run astro -- ...` | Executa comandos da CLI do Astro. |
 
@@ -97,7 +107,7 @@ Execute os comandos a partir da raiz do projeto.
 
 ## Deploy
 
-O deploy é automático via `.github/workflows/deploy.yml` em pushes para `main` ou execução manual pelo GitHub Actions. O workflow usa `withastro/action@v3`, Node 22 e publica o build no GitHub Pages.
+O deploy é automático via `.github/workflows/deploy.yml` em pushes para `main` ou execução manual pelo GitHub Actions. O workflow usa `withastro/action`, Node 24 e publica o build no GitHub Pages. No mesmo push, o job `deploy-duotake` gera `dist-duotake/` e publica o duotake.app no Cloudflare com `wrangler` (secrets `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`).
 
 O domínio canônico configurado é `https://adrianosouzacosta.com.br`, definido em `astro.config.mjs` e no arquivo `CNAME`.
 

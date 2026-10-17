@@ -4,9 +4,11 @@ import { normalizePath } from '../core/seo';
 interface Props {
     lang?: string;
     currentPath?: string;
+    // Overrides the portfolio language mapping, e.g. on an app's own domain.
+    alternateLanguageHref?: string;
 }
 
-const { lang = 'en', currentPath = '/' } = Astro.props;
+const { lang = 'en', currentPath = '/', alternateLanguageHref } = Astro.props;
 
 // URL mapping for language toggle
 function getAltLangUrl(path: string, currentLang: string): string {
@@ -36,7 +38,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
 }
 
 const isPtBr = lang === 'pt-br';
-const altLangUrl = normalizePath(getAltLangUrl(currentPath, lang));
+const altLangUrl = normalizePath(alternateLanguageHref ?? getAltLangUrl(currentPath, lang));
 const altLangLabel = isPtBr ? 'EN' : 'PT';
 ---
 

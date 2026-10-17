@@ -9,10 +9,6 @@ const checks = [
     {
         file: "src/components/app/AppTemplate.astro",
         tokens: [
-            "interface AppFeature",
-            "interface AppUseCase",
-            "interface AppFact",
-            "interface AppTestimonial",
             "product-facts",
             "features-section",
             "use-cases-section",
@@ -20,6 +16,27 @@ const checks = [
             "primaryKeyword",
             "secondaryKeywords",
             "featureList: features.map",
+        ],
+    },
+    {
+        file: "src/core/appTypes.ts",
+        tokens: [
+            "interface AppFeature",
+            "interface AppUseCase",
+            "interface AppFact",
+            "interface AppTestimonial",
+        ],
+    },
+    // DuoTake content is shared by the portfolio and the duotake.app build.
+    {
+        file: "src/core/apps/duotake.ts",
+        tokens: [
+            "facts:",
+            "features:",
+            "useCases:",
+            "primaryKeyword:",
+            "secondaryKeywords:",
+            "caption:",
         ],
     },
     {
@@ -34,8 +51,6 @@ const checks = [
         ],
     },
     ...[
-        "src/pages/apps/duotake/index.astro",
-        "src/pages/pt-br/apps/duotake/index.astro",
         "src/pages/apps/kuborush/index.astro",
         "src/pages/pt-br/apps/kuborush/index.astro",
         "src/pages/apps/loopsize/index.astro",
