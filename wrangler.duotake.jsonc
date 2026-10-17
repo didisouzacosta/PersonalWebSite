@@ -3,11 +3,17 @@
     "name": "duotake-domain",
     "main": "cloudflare/duotake-domain-worker.js",
     "compatibility_date": "2026-05-05",
-    "compatibility_flags": [
-        "nodejs_compat"
-    ],
     "observability": {
         "enabled": true
+    },
+    // Static build from `npm run build:duotake`. The Worker runs first only to
+    // apply the canonical redirects, then serves these files.
+    "assets": {
+        "directory": "./dist-duotake",
+        "binding": "ASSETS",
+        "run_worker_first": true,
+        "html_handling": "auto-trailing-slash",
+        "not_found_handling": "404-page"
     },
     "routes": [
         {

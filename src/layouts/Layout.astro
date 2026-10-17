@@ -3,8 +3,9 @@ import '../styles/global.css'
 import Analytics from '../components/Analytics.astro';
 import CookieConsentBanner from '../components/CookieConsentBanner.astro';
 import Controls from '../components/Controls.astro';
-import { createAnalyticsPageContext } from '../core/analyticsContext';
+import { createAnalyticsPageContext, type AnalyticsPageType } from '../core/analyticsContext';
 import { absoluteAssetUrl, absoluteUrl, normalizePath, siteShareImages, siteUrl, type AlternateLocale, type JsonLdValue } from '../core/seo';
+import { portfolioNavigation, type SiteNavigationItem } from '../core/siteChrome';
 
 interface Props {
     title: string,
@@ -25,6 +26,11 @@ interface Props {
     jsonLd?: JsonLdValue,
     ogType?: string,
     robots?: string,
+    navigationItems?: SiteNavigationItem[],
+    showSocialLinks?: boolean,
+    alternateLanguageHref?: string,
+    analyticsPageType?: AnalyticsPageType,
+    analyticsProjectSlug?: string,
 }
 
 const {
@@ -46,6 +52,11 @@ const {
     jsonLd,
     ogType = 'website',
     robots = 'index, follow',
+    navigationItems: navigationItemsProp,
+    showSocialLinks = true,
+    alternateLanguageHref,
+    analyticsPageType,
+    analyticsProjectSlug,
 } = Astro.props;
 
 const documentLang = lang === 'pt-br' ? 'pt-BR' : lang;
@@ -56,6 +67,8 @@ const analyticsContext = createAnalyticsPageContext({
     canonical,
     title,
     lang,
+    pageType: analyticsPageType,
+    projectSlug: analyticsProjectSlug,
 });
 const siteShareImage = siteShareImages[lang === 'pt-br' ? 'pt-br' : 'en'];
 const ogImage = ogImageProp ?? siteShareImage.url;
@@ -85,11 +98,7 @@ const resolveFaviconUrl = (faviconPath?: string) => {
 };
 const faviconUrl = resolveFaviconUrl(favicon);
 const isPtBr = lang === 'pt-br';
-const navigationItems = [
-    { label: 'Home', href: isPtBr ? '/pt-br/' : '/', match: isPtBr ? '/pt-br/' : '/' },
-    { label: 'Apps', href: isPtBr ? '/pt-br/#apps' : '/#apps', match: isPtBr ? '/pt-br/apps/' : '/apps/' },
-    { label: 'Resume', href: isPtBr ? '/resume/pt-br/' : '/resume/', match: isPtBr ? '/resume/pt-br/' : '/resume/' },
-];
+const navigationItems = navigationItemsProp ?? portfolioNavigation(isPtBr);
 const isActiveNavigationItem = (match: string) => {
     if (match === '/') {
         return currentPath === '/';
@@ -110,6 +119,9 @@ const footerLinks = [
     { label: 'X', href: 'https://x.com/didisouzacosta' },
 ];
 const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy settings';
+const footerNavigationLabel = showSocialLinks
+    ? (isPtBr ? 'Links sociais' : 'Social links')
+    : (isPtBr ? 'Links do rodapé' : 'Footer links');
 ---
 
 <!doctype html>
@@ -201,7 +213,7 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
                         ))
                     }
                 </nav>
-                <Controls lang={lang} currentPath={Astro.url.pathname} />
+                <Controls lang={lang} currentPath={Astro.url.pathname} alternateLanguageHref={alternateLanguageHref} />
             </div>
         </header>
         <slot />
@@ -216,8 +228,8 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
                         {footerText}
                     </a>
                 </p>
-                <nav class="site-footer-actions" aria-label={isPtBr ? 'Links sociais' : 'Social links'}>
-                    {
+                <nav class="site-footer-actions" aria-label={footerNavigationLabel}>
+                    {showSocialLinks && (
                         footerLinks.map((link) => (
                             <a
                                 href={link.href}
@@ -230,7 +242,7 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
                                 {link.label}
                             </a>
                         ))
-                    }
+                    )}
                     <button
                         type="button"
                         class="privacy-settings"
@@ -383,7 +395,7 @@ const privacySettingsLabel = isPtBr ? 'Preferências de privacidade' : 'Privacy 
                 cursor: pointer;
             }
 
-            .site-footer .privacy-settings {
+            .site-footer .privacy-settings:not(:first-child) {
                 margin-left: 2px;
                 padding-left: 16px;
                 border-left: 1px solid var(--border);

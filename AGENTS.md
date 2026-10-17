@@ -7,13 +7,14 @@ Guia enxuto para agentes que trabalharem neste projeto.
 - Site pessoal estático feito com Astro 5.
 - Conteúdo principal em inglês e português do Brasil.
 - Páginas públicas ficam em `src/pages`; componentes reutilizáveis em `src/components`; dados e tipos em `src/core`.
-- Deploy automático para GitHub Pages via `.github/workflows/deploy.yml` em pushes para `main`.
+- Deploy automático para GitHub Pages via `.github/workflows/deploy.yml` em pushes para `main`. O mesmo workflow publica `https://duotake.app` no Cloudflare (ver `docs/duotake-domain.md`).
 
 ## Comandos
 
 - `npm install`: instala dependências.
 - `npm run dev`: servidor local em `localhost:4321`.
 - `npm run build`: gera o site em `dist/`.
+- `npm run dev:duotake` / `npm run build:duotake`: servidor local e build do duotake.app (`dist-duotake/`).
 - `npm run preview`: pré-visualiza o build localmente.
 - `npm run astro -- ...`: executa comandos da CLI do Astro.
 
@@ -23,7 +24,7 @@ Guia enxuto para agentes que trabalharem neste projeto.
 - Sempre utilize `@build-web-apps` para tarefas neste projeto, especialmente alterações de frontend, UI, rotas, componentes, estilos e conteúdo visual.
 - Use `src/layouts/Layout.astro` como base para novas páginas, mantendo `title`, `description`, `lang`, `favicon`, `ogImage` e `metas` quando aplicável.
 - Para conteúdo bilíngue, mantenha equivalentes em inglês e `pt-br`; rotas em português vivem sob `src/pages/pt-br`.
-- Para páginas de apps, reutilize `src/components/app/AppTemplate.astro` e mantenha textos, screenshots, FAQ e metadados declarados na própria página.
+- Para páginas de apps, reutilize `src/components/app/AppTemplate.astro` e mantenha textos, screenshots, FAQ e metadados declarados na própria página. Exceção: o DuoTake é publicado também em `duotake.app`; edite `src/core/apps/duotake.ts` e `src/components/app/duotake/`, que alimentam os dois sites. Nunca remova ou reescreva HTML no Worker; configure o layout por props.
 - Para currículo e homepage, prefira atualizar os objetos em `src/core/resume.tsx` e `src/core/homepage.ts` em vez de duplicar markup.
 
 ## Estilo e UI
@@ -43,6 +44,6 @@ Guia enxuto para agentes que trabalharem neste projeto.
 
 ## Verificação
 
-- Rode `npm run build` antes de concluir mudanças de UI, rotas, conteúdo estruturado ou configuração.
+- Rode `npm run build` antes de concluir mudanças de UI, rotas, conteúdo estruturado ou configuração. Se a mudança tocar o DuoTake, `Layout.astro`, `AppTemplate.astro` ou estilos globais, rode também `npm run build:duotake`.
 - Para mudanças visuais relevantes, use `npm run dev` e confira as rotas afetadas em inglês e português.
-- Não edite `dist/` manualmente; ele é artefato de build.
+- Não edite `dist/` nem `dist-duotake/` manualmente; são artefatos de build.

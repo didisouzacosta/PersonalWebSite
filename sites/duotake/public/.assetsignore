@@ -1,0 +1,2 @@
+# Files in dist-duotake that wrangler should not upload (gitignore syntax).
+# This file also keeps sites/duotake/public in git.

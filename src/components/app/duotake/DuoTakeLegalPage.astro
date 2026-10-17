@@ -1,0 +1,78 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PrivacyPolicyEn from "./PrivacyPolicyEn.astro";
+import PrivacyPolicyPtBr from "./PrivacyPolicyPtBr.astro";
+import TermsOfUseEn from "./TermsOfUseEn.astro";
+import TermsOfUsePtBr from "./TermsOfUsePtBr.astro";
+import { duoTakeFavicon, duoTakeRoutes, duoTakeSiteChrome, type DuoTakeSite } from "../../../core/apps/duotake";
+import { duoTakeSiteUrl, type SeoLanguage } from "../../../core/seo";
+
+type LegalDocument = "privacyPolicy" | "termsOfUse";
+
+interface Props {
+    site: DuoTakeSite;
+    lang: SeoLanguage;
+    document: LegalDocument;
+}
+
+const { site, lang, document } = Astro.props;
+
+const isPtBr = lang === "pt-br";
+const otherLang: SeoLanguage = isPtBr ? "en" : "pt-br";
+const otherDocument: LegalDocument = document === "privacyPolicy" ? "termsOfUse" : "privacyPolicy";
+const routes = duoTakeRoutes[site][lang];
+const documentLabels: Record<SeoLanguage, Record<LegalDocument, string>> = {
+    en: { privacyPolicy: "Privacy Policy", termsOfUse: "Terms of Use" },
+    "pt-br": { privacyPolicy: "Política de Privacidade", termsOfUse: "Termos de Uso" },
+};
+const contents: Record<SeoLanguage, Record<LegalDocument, typeof PrivacyPolicyEn>> = {
+    en: { privacyPolicy: PrivacyPolicyEn, termsOfUse: TermsOfUseEn },
+    "pt-br": { privacyPolicy: PrivacyPolicyPtBr, termsOfUse: TermsOfUsePtBr },
+};
+const Content = contents[lang][document];
+const title = `${documentLabels[lang][document]} – DuoTake`;
+const otherLangHref = duoTakeRoutes[site][otherLang][document];
+// The portfolio keeps its own canonical URLs; the app domain points to itself.
+const canonicalUrl = site === "standalone" ? `${duoTakeSiteUrl}${routes[document]}` : undefined;
+const chrome = site === "standalone" ? duoTakeSiteChrome(lang) : {};
+---
+
+<Layout
+    title={title}
+    lang={lang}
+    favicon={duoTakeFavicon}
+    description={`${title}.`}
+    robots="noindex, follow"
+    canonicalUrl={canonicalUrl}
+    alternateLanguageHref={otherLangHref}
+    analyticsProjectSlug="duotake"
+    {...chrome}
+>
+    <main>
+        <section>
+            <nav aria-label={isPtBr ? "Documentos do DuoTake" : "DuoTake documents"}><a href={routes.home}>DuoTake</a> · <a href={routes[otherDocument]}>{documentLabels[lang][otherDocument]}</a> · <a href={otherLangHref} lang={isPtBr ? "en" : "pt-BR"}>{isPtBr ? "English" : "Português"}</a></nav>
+            <h1>{title}</h1>
+            <Content />
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    main :global(p) {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    main :global(h2) { font-size: 1.25rem; }
+    main :global(a) { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    main :global(h2), main :global(.updated) { margin-top: 32px; margin-bottom: 12px; }
+    main :global(ul) { padding-left: 20px; list-style: disc; margin-bottom: 16px; }
+    main :global(li) { margin-bottom: 8px; color: var(--text-secondary); }
+    main :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+</style>

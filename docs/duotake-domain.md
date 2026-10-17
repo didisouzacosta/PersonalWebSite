@@ -1,56 +1,69 @@
 # DuoTake custom domain
 
-`duotake.app` currently returns a Cloudflare `301` redirect to
-`https://adrianosouzacosta.com.br/apps/duotake/`. That redirect happens before
-Astro or GitHub Pages can render the page, so it cannot be fixed only with page
-markup.
+`https://duotake.app` is a static site built from this repository and served
+by Cloudflare. It shares its content with the portfolio pages under
+`/apps/duotake/`, so one change updates both sites.
 
-Use `cloudflare/duotake-domain-worker.js` to keep the app domain in the browser
-address bar while serving the existing Astro pages from the portfolio site.
+## How it is built
 
-## Cloudflare setup
+- Content (texts, screenshots, FAQ, SEO) lives in `src/core/apps/duotake.ts`.
+- Legal texts live in `src/components/app/duotake/` (`PrivacyPolicyEn.astro`,
+  `TermsOfUsePtBr.astro`, ...).
+- `DuoTakeAppPage.astro` and `DuoTakeLegalPage.astro` render that content for a
+  given `site`:
+  - `portfolio`: routes `/apps/duotake/...` and `/pt-br/apps/duotake/...` in
+    `src/pages`, with the portfolio header and footer.
+  - `standalone`: routes `/`, `/pt-br/`, `/terms-of-use/`, `/privacy-policy/`
+    and their `pt-br` versions in `sites/duotake/pages`, with only a Home link
+    and no social links (`duoTakeSiteChrome`).
+- `astro.config.duotake.mjs` builds `sites/duotake` into `dist-duotake/`, with
+  its own `robots.txt`, `sitemap.xml` and `404.html`.
 
-1. In Cloudflare, remove or disable the redirect rule/page rule that sends
-   `duotake.app` and `www.duotake.app` to
-   `https://adrianosouzacosta.com.br/apps/duotake/`.
-2. Publish the Worker with:
+The header, footer and language button are configured through `Layout.astro`
+props (`navigationItems`, `showSocialLinks`, `alternateLanguageHref`), so no
+HTML is rewritten at request time.
 
-   ```sh
-   npx wrangler deploy --config wrangler.duotake.jsonc
-   ```
+## Commands
 
-3. Keep both Worker routes enabled:
+```sh
+npm run dev:duotake      # http://localhost:4322
+npm run build:duotake    # dist-duotake/
+npx wrangler deploy --config wrangler.duotake.jsonc
+```
 
-   - `duotake.app/*`
-   - `www.duotake.app/*`
+## Deploy
 
-The Worker maps:
+The `deploy-duotake` job in `.github/workflows/deploy.yml` builds and deploys
+on every push to `main`, alongside the GitHub Pages deploy. It needs these
+repository secrets:
 
-- `https://duotake.app/` to `/apps/duotake/`
-- `https://duotake.app/pt-br/` to `/pt-br/apps/duotake/`
-- `https://duotake.app/terms-of-use/` to `/apps/duotake/terms-of-use/`
-- `https://duotake.app/privacy-policy/` to `/apps/duotake/privacy-policy/`
-- `https://duotake.app/pt-br/terms-of-use/` to `/pt-br/apps/duotake/terms-of-use/`
-- `https://duotake.app/pt-br/privacy-policy/` to `/pt-br/apps/duotake/privacy-policy/`
+- `CLOUDFLARE_API_TOKEN`: token with the "Edit Cloudflare Workers" template,
+  scoped to the account and the `duotake.app` zone.
+- `CLOUDFLARE_ACCOUNT_ID`.
 
-It also rewrites internal links, canonical URLs, Open Graph URLs, `robots.txt`,
-and `sitemap.xml` so navigation remains under `duotake.app`.
+`wrangler.duotake.jsonc` keeps the Worker name `duotake-domain` and the routes
+`duotake.app/*` and `www.duotake.app/*`, and serves `dist-duotake/` as static
+assets. Roll back with:
+
+```sh
+npx wrangler rollback --config wrangler.duotake.jsonc
+```
 
 ## Indexing
 
 `duotake.app` is the canonical domain for DuoTake. The portfolio pages
 `/apps/duotake/` and `/pt-br/apps/duotake/` declare `https://duotake.app/` and
 `https://duotake.app/pt-br/` as canonical and are left out of the portfolio
-sitemap.
+sitemap. The app sitemap lists only `/` and `/pt-br/`; the legal pages are
+`noindex`.
 
-To keep a single indexable URL per page, the Worker answers with `301`:
+`cloudflare/duotake-domain-worker.js` runs before the assets only to keep a
+single indexable URL per page, answering with `301`:
 
 - `http://` to `https://`, and `www.duotake.app` to `duotake.app`.
-- Clean paths without a trailing slash (`/privacy-policy`) to the slash version.
-- Portfolio paths on the app domain (`/apps/duotake/...`) to the clean path.
-- Any other page (`/resume/`, `/apps/kuborush/`, ...) to the same path on
-  `https://adrianosouzacosta.com.br`, so the portfolio is not duplicated under
-  `duotake.app`. Assets (`/_astro/*` and files with an extension) are still
-  proxied.
+- Paths without a trailing slash (`/privacy-policy`) to the slash version.
+- Old portfolio paths on the app domain (`/apps/duotake/...`) to the clean path.
+- Other portfolio sections (`/apps/...`, `/resume/...`) to the same path on
+  `https://adrianosouzacosta.com.br`.
 
-The app sitemap lists only `/` and `/pt-br/`; the legal pages are `noindex`.
+Anything else is served from `dist-duotake/`, with `404.html` for unknown pages.

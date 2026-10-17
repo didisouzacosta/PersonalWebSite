@@ -7,88 +7,18 @@ import {
     getAppAlternates,
     resolveAppAssetUrl,
     softwareApplicationJsonLd,
-    type AlternateLocale,
     type SeoLanguage,
 } from "../../core/seo";
+import type { AppPageContent, AppScreenshotImage, LocalizedScreenshotUrl } from "../../core/appTypes";
+import type { SiteNavigationItem } from "../../core/siteChrome";
 
-interface AppFeature {
-    title: string;
-    description: string;
-}
-
-interface AppUseCase {
-    title: string;
-    description: string;
-}
-
-interface AppFact {
-    label: string;
-    value: string;
-}
-
-interface AppTestimonial {
-    quote: string;
-    author: string;
-    context?: string;
-}
-
-interface AppVideo {
-    youtubeUrl: string;
-    title?: string;
-    caption?: string;
-}
-
-type LocalizedScreenshotUrl = string | {
-    en: string;
-    ptBr?: string;
-    "pt-br"?: string;
-};
-
-interface AppScreenshotImage {
-    url: LocalizedScreenshotUrl;
-    alt: string;
-    caption?: string;
-    placeholder?: false;
-}
-
-interface AppScreenshotPlaceholder {
-    placeholder: true;
-    alt: string;
-    caption?: string;
-}
-
-type AppScreenshot = AppScreenshotImage | AppScreenshotPlaceholder;
-
-interface Props {
-    appId?: string,
-    appStoreUrl?: string,
-    testFlightUrl?: string,
-    title: string,
-    pageTitle?: string,
-    appName?: string,
-    favicon: string,
-    appIcon: string,
-    socialImage?: string,
-    socialImageAlt?: string,
-    socialImageType?: string,
+interface Props extends AppPageContent {
     termsOfUseUrl?: string,
     privacyPolicyUrl?: string,
-    description: string,
-    screenshots: AppScreenshot[],
-    faq: { question: string, answer: string }[],
-    metas: { name: string, content: string }[],
-    lang?: string,
-    applicationCategory?: string,
-    operatingSystem?: string,
-    features?: AppFeature[],
-    useCases?: AppUseCase[],
-    facts?: AppFact[],
-    testimonials?: AppTestimonial[],
-    video?: AppVideo,
-    primaryKeyword?: string,
-    secondaryKeywords?: string[],
-    canonicalUrl?: string,
-    alternateLocales?: AlternateLocale[],
+    navigationItems?: SiteNavigationItem[],
+    showSocialLinks?: boolean,
+    alternateLanguageHref?: string,
+    analyticsProjectSlug?: string,
 }
 
 const {
@@ -121,6 +51,10 @@ const {
     secondaryKeywords = [],
     canonicalUrl,
     alternateLocales,
+    navigationItems,
+    showSocialLinks,
+    alternateLanguageHref,
+    analyticsProjectSlug,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -240,6 +174,11 @@ const videoJsonLd = youtubeEmbedUrl ? {
     ogImageHeight={630}
     ogImageType={socialImageType}
     jsonLd={[appJsonLd, breadcrumbJson, ...(videoJsonLd ? [videoJsonLd] : [])]}
+    navigationItems={navigationItems}
+    showSocialLinks={showSocialLinks}
+    alternateLanguageHref={alternateLanguageHref}
+    analyticsProjectSlug={analyticsProjectSlug}
+    analyticsPageType="app"
 >
     <main class="app-page">
 

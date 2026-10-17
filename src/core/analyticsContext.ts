@@ -20,6 +20,9 @@ interface CreateAnalyticsPageContextInput {
     canonical: string;
     title: string;
     lang: string;
+    // Overrides for pages whose path does not follow /apps/<slug>/, e.g. on an app domain.
+    pageType?: AnalyticsPageType;
+    projectSlug?: string;
 }
 
 const normalizePath = (path: string) => {
@@ -70,8 +73,8 @@ const getLegalTitle = (path: string) => {
     return "Legal";
 };
 
-const getAnalyticsTitle = (path: string, pageType: AnalyticsPageType, fallbackTitle: string) => {
-    const projectTitle = getProjectTitle(extractProjectSlug(path));
+const getAnalyticsTitle = (path: string, pageType: AnalyticsPageType, projectSlug: string | undefined, fallbackTitle: string) => {
+    const projectTitle = getProjectTitle(projectSlug);
 
     if (pageType === "home") return "Home";
     if (pageType === "resume") return "Curriculo";
@@ -85,15 +88,16 @@ const getAnalyticsTitle = (path: string, pageType: AnalyticsPageType, fallbackTi
 export function createAnalyticsPageContext(input: CreateAnalyticsPageContextInput): AnalyticsPageContext {
     const path = normalizePath(input.path);
     const lang = input.lang === "pt-br" || input.lang === "pt-BR" ? "pt-BR" : "en";
-    const pageType = getPageType(path);
+    const pageType = input.pageType ?? getPageType(path);
+    const projectSlug = input.projectSlug ?? extractProjectSlug(path);
 
     return {
         path,
         canonical: input.canonical,
         title: input.title,
-        analyticsTitle: getAnalyticsTitle(path, pageType, input.title),
+        analyticsTitle: getAnalyticsTitle(path, pageType, projectSlug, input.title),
         lang,
         pageType,
-        projectSlug: extractProjectSlug(path),
+        projectSlug,
     };
 }

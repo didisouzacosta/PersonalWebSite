@@ -1,0 +1,26 @@
+---
+import AppTemplate from "../AppTemplate.astro";
+import { duoTakeContent, duoTakeRoutes, duoTakeSiteChrome, type DuoTakeSite } from "../../../core/apps/duotake";
+import type { SeoLanguage } from "../../../core/seo";
+
+interface Props {
+    site: DuoTakeSite;
+    lang: SeoLanguage;
+}
+
+const { site, lang } = Astro.props;
+
+const routes = duoTakeRoutes[site][lang];
+const otherLangRoutes = duoTakeRoutes[site][lang === "pt-br" ? "en" : "pt-br"];
+const chrome = site === "standalone"
+    ? { ...duoTakeSiteChrome(lang), alternateLanguageHref: otherLangRoutes.home }
+    : {};
+---
+
+<AppTemplate
+    {...duoTakeContent[lang]}
+    {...chrome}
+    termsOfUseUrl={routes.termsOfUse}
+    privacyPolicyUrl={routes.privacyPolicy}
+    analyticsProjectSlug="duotake"
+/>
