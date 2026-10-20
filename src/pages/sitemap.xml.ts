@@ -86,6 +86,18 @@ const pages = [
         alternates: localizedAlternates("/apps/telepro/", "/pt-br/apps/telepro/"),
     },
     {
+        path: "/apps/pillo/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/pillo/", "/pt-br/apps/pillo/"),
+    },
+    {
+        path: "/pt-br/apps/pillo/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/pillo/", "/pt-br/apps/pillo/"),
+    },
+    {
         path: "/apps/horsescore/",
         priority: "0.6",
         changefreq: "monthly",

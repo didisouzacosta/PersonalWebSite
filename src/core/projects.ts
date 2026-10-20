@@ -233,6 +233,24 @@ export const portfolioProjects: PortfolioProject[] = [
         },
     },
     {
+        name: "Pillo",
+        url: "/apps/pillo/",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/pillo/",
+        imageUrl: appIconUrl("pillo"),
+        tags: ["iOS App", "Health"],
+        isEnabled: true,
+        descriptions: {
+            en: {
+                card: "Medicine expiry reminders",
+                resume: "Pillo keeps track of the expiry dates of the medicines at home: it reads the box with the camera on the device, reminds you before each one expires and summarizes the official leaflet from ANVISA in plain words, without an account.",
+            },
+            "pt-br": {
+                card: "Validade e lembrete de remédios",
+                resume: "O Pillo organiza a validade dos remédios da casa: lê a caixa com a câmera no próprio aparelho, avisa antes de cada remédio vencer e resume a bula oficial da ANVISA em palavras simples, sem conta.",
+            },
+        },
+    },
+    {
         name: "HorseScore",
         url: "/apps/horsescore/",
         resumeUrl: "https://adrianosouzacosta.com.br/apps/horsescore/",

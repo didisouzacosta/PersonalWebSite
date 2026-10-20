@@ -1,0 +1,69 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+
+const title = "Política de Privacidade – Pillo";
+---
+
+<Layout title={title} lang="pt-br" favicon="apps/pillo/favicon.png" description="Política de Privacidade – Pillo." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Documentos do Pillo"><a href="/pt-br/apps/pillo/">Pillo</a> · <a href="/pt-br/apps/pillo/terms-of-use/">Termos de Uso</a> · <a href="/apps/pillo/privacy-policy/" lang="en">English</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Última atualização: 20 de outubro de 2026</p>
+
+            <h2>1. Escopo e contato</h2>
+            <p>Esta política cobre o app Pillo: Validade de Remédios para iPhone, inclusive as versões de teste distribuídas pelo TestFlight, fornecido por Adriano Souza Costa. Envie dúvidas ou pedidos sobre privacidade para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. As preferências de privacidade do site são separadas das do app.</p>
+
+            <h2>2. Sem conta</h2>
+            <p>O Pillo não exige cadastro e não pede seu nome, e-mail, telefone, contatos ou localização.</p>
+
+            <h2>3. Seus remédios ficam no seu iPhone</h2>
+            <p>O nome, a validade, o lote, o registro e o código de barras de cada remédio, a foto da caixa, o resumo da bula e os avisos que você escolhe ficam salvos só no seu aparelho. A foto é reduzida e salva sem dados de localização. Essas informações não são enviadas para nenhum servidor do Pillo.</p>
+
+            <h2>4. Câmera</h2>
+            <p>A câmera é usada só para ler a caixa enquanto você escaneia um remédio. O reconhecimento do texto e do código de barras acontece no próprio iPhone, com os recursos da Apple, e a foto da caixa só é guardada quando você salva o remédio. Se você não permitir o acesso à câmera, pode digitar os dados à mão.</p>
+
+            <h2>5. Busca das informações do remédio</h2>
+            <p>Para mostrar para que serve o remédio e o resumo da bula, o Pillo busca as informações públicas da ANVISA no serviço de informações do Pillo. Cada busca envia só um destes dados: o código de barras, o número de registro ou o nome do remédio. Fotos, validades, lotes e qualquer informação que identifique você não são enviados. Como em qualquer conexão com a internet, o serviço recebe dados técnicos necessários para responder, como o endereço IP, que não são usados para identificar você. Ao tocar em <em>Ver bula completa</em>, o site do Bulário Eletrônico da ANVISA abre dentro do app e segue as regras de privacidade desse site.</p>
+
+            <h2>6. Avisos</h2>
+            <p>Os avisos de vencimento são notificações locais, agendadas no seu aparelho, não enviadas por um servidor. O Pillo pede permissão para enviar notificações, e você pode mudar essa permissão a qualquer momento nos Ajustes do iOS; sem ela, os avisos não aparecem.</p>
+
+            <h2>7. Mapas</h2>
+            <p>Ao tocar em <em>Encontrar ponto de coleta</em>, o Pillo abre uma busca no app Mapas da Apple. O Mapas pode usar a sua localização conforme os seus ajustes e a política de privacidade da Apple; o Pillo não recebe essa localização.</p>
+
+            <h2>8. Sem estatísticas, anúncios ou rastreamento</h2>
+            <p>O Pillo não usa serviços de estatísticas de uso, não exibe anúncios, não usa o identificador de publicidade (IDFA) e não rastreia você em apps ou sites de outras empresas.</p>
+
+            <h2>9. Compartilhamento</h2>
+            <p>Não vendemos nem alugamos seus dados. Os únicos dados que saem do aparelho são os da busca descrita no item 5, usados só para responder a ela.</p>
+
+            <h2>10. Retenção, exclusão e pedidos de privacidade</h2>
+            <p>Seus remédios ficam no aparelho até você descartá-los no app, o que apaga o remédio e os avisos dele, ou até apagar o app. Os backups do iPhone, no iCloud ou no computador, podem incluir os dados do app conforme os seus ajustes. Os e-mails de suporte ficam guardados pelo tempo necessário para responder ao pedido. Para acesso, correção, exclusão ou outros direitos previstos nas leis de privacidade, inclusive a LGPD, escreva para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Como não coletamos dados que identifiquem você, talvez precisemos de algumas informações para entender o pedido.</p>
+
+            <h2>11. Segurança e crianças</h2>
+            <p>Usamos os recursos de segurança do iOS. Nenhum meio de armazenamento ou transmissão é totalmente seguro, então proteja seu aparelho com um código. O Pillo não coleta de propósito informações pessoais de crianças. Pais ou responsáveis que acreditem que uma criança enviou informações pessoais pelo suporte podem entrar em contato para analisarmos e atendermos o pedido.</p>
+
+            <h2>12. Alterações</h2>
+            <p>Vamos atualizar esta página e a data de revisão quando nossas práticas mudarem, com qualquer aviso ou consentimento adicional exigido pela lei aplicável.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

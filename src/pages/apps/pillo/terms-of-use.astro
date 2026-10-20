@@ -1,0 +1,63 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const title = "Terms of Use – Pillo";
+---
+
+<Layout title={title} lang="en" favicon="apps/pillo/favicon.png" description="Terms of Use – Pillo." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="Pillo documents"><a href="/apps/pillo/">Pillo</a> · <a href="/apps/pillo/privacy-policy/">Privacy Policy</a> · <a href="/pt-br/apps/pillo/terms-of-use/" lang="pt-BR">Português</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Last updated: October 20, 2026</p>
+
+            <h2>1. About these terms</h2>
+            <p>Pillo: Medicine Expiry Dates (Pillo: Validade de Remédios on the App Store) is provided by Adriano Souza Costa. These terms govern your use of the app. The applicable App Store terms and the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple Standard EULA</a> also govern the app license; nothing here removes mandatory consumer rights.</p>
+
+            <h2>2. The app and availability</h2>
+            <p>Pillo keeps track of your medicines' expiry dates, reads the details on the box with the camera, schedules reminders before they expire and shows a summary of public information from ANVISA, Brazil's health agency. Reading the box may get something wrong or miss a detail, so check the name, expiry date and batch before saving. Reminders depend on notification permission and on iOS working on your device. Looking up medicine information needs an internet connection and may not find every medicine. Features depend on your device, the installed version, permissions and system conditions.</p>
+
+            <h2>3. Health information</h2>
+            <p>Pillo is not a medical or pharmacy service. The summary is based on the official leaflet and may be incomplete or out of date; the full leaflet and advice from a health professional always prevail. Pillo does not recommend medicines, doses or treatments, does not replace a doctor or pharmacist and must not be used in emergencies. Do not use expired medicines and follow official guidance for disposal. Pillo is not affiliated with ANVISA.</p>
+
+            <h2>4. Price</h2>
+            <p>Pillo is free and has no ads or in-app purchases. If that changes in future versions, the conditions will appear in the app before any charge.</p>
+
+            <h2>5. Local data and backups</h2>
+            <p>Your medicines, photos and reminders are stored in the app on your device. Removing the app or its data can delete them. iPhone backups may include the app's data according to your settings. See the <a href="/apps/pillo/privacy-policy/">Privacy Policy</a> for how data is handled.</p>
+
+            <h2>6. Third-party services</h2>
+            <p>Medicine information comes from ANVISA's public data, and the leaflet link opens the Electronic Leaflet Library website. The drop-off point search opens Apple Maps. These services have their own terms, and Pillo does not control their content or availability.</p>
+
+            <h2>7. License and intellectual property</h2>
+            <p>Pillo's software, name, icon and interface belong to the developer or their licensors. You may use the app within the applicable license, but may not copy, redistribute, circumvent its protections or reverse engineer it except where the law or the license allows. Medicine names and brands belong to their owners.</p>
+
+            <h2>8. Test versions (TestFlight)</h2>
+            <p>Versions distributed through TestFlight are for testing and may have bugs, incomplete features or changes before release. TestFlight use also follows Apple's terms, and the feedback you send through it may be used to improve the app.</p>
+
+            <h2>9. Warranties and liability</h2>
+            <p>To the extent permitted by applicable law, the app is provided as available, without a guarantee of uninterrupted or error-free operation, that every reminder will be delivered or that all information will be complete. The developer is not liable for losses to the extent lawfully excluded by the applicable license. Nothing in these terms excludes statutory warranties, consumer remedies or liability that cannot legally be excluded.</p>
+
+            <h2>10. Changes and contact</h2>
+            <p>We may update these terms when the app or the law changes; the date above shows the latest version. Additional notice or consent will be given when required. Send questions to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

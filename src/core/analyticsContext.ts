@@ -42,6 +42,7 @@ const projectTitles: Record<string, string> = {
     giggleface: "GiggleFace",
     potionpals: "PotionPals",
     telepro: "TelePro",
+    pillo: "Pillo",
     horsescore: "HorseScore",
 };
 

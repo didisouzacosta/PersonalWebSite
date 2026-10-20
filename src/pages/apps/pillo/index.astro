@@ -1,0 +1,167 @@
+---
+import AppTemplate from "../../../components/app/AppTemplate.astro";
+
+const title = "Pillo: Medicine Expiry Dates";
+const appName = "Pillo";
+const pageTitle = "Pillo | Medicine expiry dates and reminders for iPhone";
+const description =
+    "Take a photo of the box and Pillo keeps your medicines' expiry dates and reminds you before they expire. A simple list, large text and a summary of the official leaflet from ANVISA, Brazil's health agency.";
+const favicon = "apps/pillo/favicon.png";
+const appIcon = "pillo/app-icon.png";
+const socialImage = "pillo/pillo-share-en.jpg";
+const socialImageAlt = "Pillo app icon next to the medicine list and the expiry reminder screens.";
+
+const metas: { name: string; content: string }[] = [];
+const primaryKeyword = "medicine expiry date";
+const secondaryKeywords = [
+    "medication reminder",
+    "expired medicine",
+    "medicine cabinet",
+    "expiry tracker",
+    "drug leaflet",
+    "medicine disposal",
+    "ANVISA",
+    "Brazil",
+    "app for seniors",
+];
+
+const screenshots = [
+    {
+        url: "pillo/screenshots/ptBR/frame-1.jpg",
+        alt: "Pillo list with expired medicines first, then the ones expiring soon and the ones in date, each with the days left (app in Portuguese).",
+        caption: "Medicines always in date: what has expired comes first.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-2.jpg",
+        alt: "Pillo notification on the Lock Screen saying the dipyrone expires in 7 days (app in Portuguese).",
+        caption: "A reminder before it expires: 30 and 7 days before and on the day.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-3.jpg",
+        alt: "Pillo camera reading a medicine box, with the name, barcode and registration number highlighted (app in Portuguese).",
+        caption: "Take a photo of the box and Pillo reads the name, code and expiry date.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-4.jpg",
+        alt: "Dipyrone detail with the expiry date, what it is for and how it works, in plain words (app in Portuguese).",
+        caption: "What is it for? A plain-words summary of the official leaflet.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-5.jpg",
+        alt: "Check the details screen with the medicine found at ANVISA, the expiry date read from the box and the reminder (app in Portuguese).",
+        caption: "Check the details and save with one tap.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-6.jpg",
+        alt: "Expired medicine in Pillo with disposal guidance and the button to find a drop-off point (app in Portuguese).",
+        caption: "Expired? Pillo shows how to dispose of it the right way.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-7.jpg",
+        alt: "Pillo cards: no account and no ads, everything on your iPhone, works offline, reminders your way, large text and ANVISA information (app in Portuguese).",
+        caption: "Simple and private: no account, no ads, everything on your iPhone.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iPhone · iOS 26+" },
+    { label: "Account", value: "Not needed" },
+    { label: "Reminders", value: "30 and 7 days before" },
+    { label: "Language", value: "Portuguese (Brazil)" },
+    { label: "App Store", value: "Coming soon" },
+];
+
+const features = [
+    {
+        title: "Everything in date, in one list",
+        description: "Expired medicines come first, then the ones expiring soon and the ones still in date. Each one shows how many days are left, and you can search any medicine by name.",
+    },
+    {
+        title: "Take a photo of the box",
+        description: "Point the camera at the box: Pillo reads the name, barcode, registration number and expiry date. Check the details and save with one tap, or type them in if you prefer.",
+    },
+    {
+        title: "A reminder before it expires",
+        description: "Get reminders 30 days before, 7 days before and on the expiry day, at the time you choose. If a medicine expires, Pillo reminds you once a week until you dispose of it.",
+    },
+    {
+        title: "Understand what it is for",
+        description: "A plain-words summary of the official leaflet from ANVISA, Brazil's health agency: what it is for, how it works, how to take it and how to store it, with a link to the full leaflet.",
+    },
+    {
+        title: "Dispose of it the right way",
+        description: "Expired medicine does not belong in the trash or down the sink. Pillo explains what to do and opens Maps so you can find a drop-off point.",
+    },
+    {
+        title: "Simple and private",
+        description: "No account and no ads. Photos, dates and reminders stay on your iPhone, and Pillo follows the text size you use on your device.",
+    },
+];
+
+const useCases = [
+    {
+        title: "The home medicine cabinet",
+        description: "That medicine kept for when you need it no longer catches anyone by surprise: you know what is still good and what needs replacing.",
+    },
+    {
+        title: "Caring for parents and grandparents",
+        description: "Keep the family's medicines in a clear list, with large text and a reminder before each one expires.",
+    },
+];
+
+const faq = [
+    {
+        question: "What is Pillo?",
+        answer: "Pillo is an iPhone app that keeps track of the expiry dates of the medicines in your home. You take a photo of the box, check the details and Pillo reminds you before each medicine expires. The app is in Portuguese and made for Brazil.",
+    },
+    {
+        question: "How does Pillo read the box?",
+        answer: "The camera recognizes the text and the barcode on the box on the iPhone itself. Pillo finds the name, registration number and expiry date and shows everything for you to check before saving. If reading does not work, you can type the details in.",
+    },
+    {
+        question: "When do I get reminders?",
+        answer: "By default, 30 days before, 7 days before and on the expiry day, at the time you choose in Settings. Expired medicines can get a weekly reminder until you dispose of them. Reminders arrive as notifications, even with the app closed.",
+    },
+    {
+        question: "Does Pillo work offline?",
+        answer: "Mostly, yes. Reading the box, the list and the reminders work without internet. Looking up the medicine information at ANVISA uses the connection; offline, the medicine is saved and Pillo completes the information when you are back online.",
+    },
+    {
+        question: "Where does the medicine information come from?",
+        answer: "From ANVISA's public data: the medicine list, Open Data and the Electronic Leaflet Library. The summary is based on the official leaflet, does not recommend doses or treatments and does not replace advice from a health professional. Pillo is not affiliated with ANVISA.",
+    },
+    {
+        question: "Where is my data kept?",
+        answer: "On your iPhone. Pillo has no account, shows no ads and does not collect usage analytics. To look up information, it sends only the barcode, registration number or name of the medicine, with nothing that identifies you. See the <a href=\"/apps/pillo/privacy-policy/\">Privacy Policy</a> for details.",
+    },
+    {
+        question: "What should I do with an expired medicine?",
+        answer: "Do not throw it in the trash, the sink or the toilet. Take the box to a pharmacy or health center with a drop-off point. In Pillo, tap <em>Encontrar ponto de coleta</em> to open the search in Maps.",
+    },
+    {
+        question: "How much does it cost and when is it coming?",
+        answer: "Pillo is free and has no ads. It is coming soon to the App Store in Brazil, for iPhone with iOS 26 or later.",
+    },
+];
+---
+
+<AppTemplate
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImage={socialImage}
+    socialImageAlt={socialImageAlt}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="en"
+    applicationCategory="HealthApplication"
+/>
