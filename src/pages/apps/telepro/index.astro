@@ -1,0 +1,187 @@
+---
+import AppTemplate from "../../../components/app/AppTemplate.astro";
+
+const appId = "id6818517120";
+const title = "TelePro: Teleprompter Camera";
+const appName = "TelePro";
+const pageTitle = "TelePro | Teleprompter Camera for iPhone";
+const appStoreUrl = "https://apps.apple.com/app/id6818517120";
+const description =
+    "Read your script right next to the lens while you record. TelePro cuts the pauses and adds auto captions on your iPhone, fully offline.";
+const favicon = "apps/telepro/favicon.png";
+const appIcon = "telepro/app-icon.png";
+const socialImage = "telepro/telepro-share-en.jpg";
+const socialImageAlt = "TelePro app icon next to the teleprompter and remove silences screens.";
+
+const metas = [
+    { name: "apple-itunes-app", content: "app-id=6818517120" },
+];
+const primaryKeyword = "teleprompter";
+const secondaryKeywords = [
+    "teleprompter app",
+    "teleprompter camera",
+    "autocue",
+    "script reader",
+    "remove silences",
+    "auto captions",
+    "video captions",
+    "vlog",
+    "presentation",
+    "offline video editor",
+];
+
+const screenshots = [
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-1.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-1.jpg",
+        },
+        alt: "TelePro recording with the script scrolling over the front camera, plus the countdown and auto-stop controls.",
+        caption: "Never lose your line: the script scrolls right next to the lens.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-2.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-2.jpg",
+        },
+        alt: "TelePro remove silences screen with the pauses marked in red on the timeline and the before and after duration.",
+        caption: "Cut the pauses in one tap and keep the original to undo anytime.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-3.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-3.jpg",
+        },
+        alt: "Video with large auto captions burned in and the words you can tap to fix, transcribed on the iPhone.",
+        caption: "Instant captions, transcribed on your iPhone. Tap any word to fix it.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-4.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-4.jpg",
+        },
+        alt: "TelePro auto captions editor with four caption styles, highlight colors, size and position.",
+        caption: "Any style, any color: pick a caption look, size and position.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-5.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-5.jpg",
+        },
+        alt: "Five steps from script to post: write the script, record at the lens, cut the silences, add auto captions and share.",
+        caption: "From script to post: write, record, cut, caption and share.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-6.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-6.jpg",
+        },
+        alt: "TelePro teleprompter settings with the script, speed, font size, visible lines, countdown and automatic stop.",
+        caption: "Your pace, your way: speed, font size and visible lines.",
+    },
+];
+
+const facts = [
+    { label: "Platform", value: "iPhone · iOS 26+" },
+    { label: "Works", value: "Offline" },
+    { label: "Editing", value: "Silences + captions" },
+    { label: "Languages", value: "6 languages" },
+    { label: "Pro", value: "3-day free trial" },
+];
+
+const features = [
+    {
+        title: "A teleprompter on the camera",
+        description: "Write or paste your script and read it right next to the lens. You keep eye contact, never lose your line and finish in one take.",
+    },
+    {
+        title: "Your pace, your way",
+        description: "Choose slow, normal or fast, set the font size and how many lines stay visible. A countdown starts the take and the recording can stop by itself when the script ends.",
+    },
+    {
+        title: "Remove silences in one tap",
+        description: "TelePro finds the pauses in your take and marks them on the timeline. Choose the pause length, breathing room and sensitivity, preview the cut and undo whenever you want.",
+    },
+    {
+        title: "Auto captions on your iPhone",
+        description: "Speech is transcribed on the device, so your audio never leaves your iPhone. Tap any word to fix it, pick a style and color, then share the video with the captions burned in.",
+    },
+    {
+        title: "Fully offline and private",
+        description: "Recording, the teleprompter, silence removal and captions all run on your iPhone, without an account. Your videos stay in the app gallery until you choose to share them.",
+    },
+    {
+        title: "Ready for social video",
+        description: "Vertical video, a safe-area guide that keeps your face clear of social app buttons, and saving to Photos or sharing in one tap.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Creators and social video",
+        description: "Record Reels, TikToks and Shorts looking at the lens, cut the dead air and post with captions people can read without sound.",
+    },
+    {
+        title: "Teachers, coaches and founders",
+        description: "Tutorials, lessons, product demos, pitches and presentations recorded in one take, with your script always in sight.",
+    },
+];
+
+const faq = [
+    {
+        question: "What is TelePro?",
+        answer: "TelePro is a teleprompter camera for iPhone. Your script scrolls right next to the lens while you record, and then you can cut the silences and add auto captions without leaving the app.",
+    },
+    {
+        question: "Does TelePro work offline?",
+        answer: "Yes. Recording, the teleprompter, silence removal and auto captions run on your iPhone with no internet connection and no account. The only exceptions are the first download of a language’s speech model by iOS, purchases through the App Store and sharing your videos.",
+    },
+    {
+        question: "How does the teleprompter work?",
+        answer: "Write or paste your script, choose the speed, font size and visible lines, then record. The text scrolls next to the front camera, with an optional countdown and an automatic stop when the script ends.",
+    },
+    {
+        question: "How does Remove silences work?",
+        answer: "TelePro analyzes the audio of your take on the device, marks the pauses on the timeline and lets you set the pause length, breathing room and sensitivity. You can preview with and without the cuts, and the original is kept so you can undo anytime.",
+    },
+    {
+        question: "Are the captions uploaded anywhere?",
+        answer: "No. Auto captions use Apple’s on-device speech recognition, so your audio is transcribed on your iPhone. You can fix any word, change the style, color, size and position, and share the video with the captions burned in.",
+    },
+    {
+        question: "What is free and what is in Pro?",
+        answer: "The free version records videos up to 15 seconds, previews silence removal and adds captions in the classic style. <strong>TelePro Pro</strong> unlocks recording without a time limit, the teleprompter while you record, saving your scripts, applying silence cuts and every caption style.",
+    },
+    {
+        question: "How much is TelePro Pro?",
+        answer: "TelePro Pro is a yearly auto-renewing subscription with a 3-day free trial for eligible new subscribers. The price in your currency appears in the app before you confirm. You can cancel anytime in your Apple Account settings, at least 24 hours before the renewal.",
+    },
+    {
+        question: "How do I restore my purchase?",
+        answer: "In the app, open Settings, tap the subscription card and then <em>Restore purchases</em> on the subscription screen. TelePro checks your Apple Account and unlocks Pro again at no extra cost, on a new iPhone or after reinstalling the app.",
+    },
+];
+---
+
+<AppTemplate
+    appId={appId}
+    appStoreUrl={appStoreUrl}
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImage={socialImage}
+    socialImageAlt={socialImageAlt}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="en"
+    applicationCategory="MultimediaApplication"
+/>

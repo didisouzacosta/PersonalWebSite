@@ -1,0 +1,187 @@
+---
+import AppTemplate from "../../../../components/app/AppTemplate.astro";
+
+const appId = "id6818517120";
+const title = "TelePro: Teleprompter com Câmera";
+const appName = "TelePro";
+const pageTitle = "TelePro | Teleprompter com câmera para iPhone";
+const appStoreUrl = "https://apps.apple.com/br/app/id6818517120";
+const description =
+    "Leia o roteiro ao lado da lente enquanto grava. O TelePro corta as pausas e cria legendas automáticas no seu iPhone, totalmente offline.";
+const favicon = "apps/telepro/favicon.png";
+const appIcon = "telepro/app-icon.png";
+const socialImage = "telepro/telepro-share-pt-br.jpg";
+const socialImageAlt = "Ícone do app TelePro ao lado das telas de teleprompter e de remover silêncios.";
+
+const metas = [
+    { name: "apple-itunes-app", content: "app-id=6818517120" },
+];
+const primaryKeyword = "teleprompter";
+const secondaryKeywords = [
+    "app de teleprompter",
+    "teleprompter para celular",
+    "ponto eletrônico",
+    "leitor de roteiro",
+    "remover silêncios",
+    "legendas automáticas",
+    "legenda em vídeo",
+    "vlog",
+    "apresentação",
+    "editor de vídeo offline",
+];
+
+const screenshots = [
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-1.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-1.jpg",
+        },
+        alt: "TelePro gravando com o roteiro rolando sobre a câmera frontal, com a contagem e a parada automática.",
+        caption: "Nunca perca o texto: o roteiro rola bem ao lado da lente.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-2.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-2.jpg",
+        },
+        alt: "Tela de remover silêncios do TelePro com as pausas marcadas em vermelho na linha do tempo e a duração antes e depois.",
+        caption: "Corte as pausas num toque e guarde o original para desfazer quando quiser.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-3.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-3.jpg",
+        },
+        alt: "Vídeo com legendas automáticas grandes gravadas na imagem e as palavras que você toca para corrigir, transcritas no iPhone.",
+        caption: "Legendas na hora, transcritas no seu iPhone. Toque numa palavra para corrigir.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-4.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-4.jpg",
+        },
+        alt: "Editor de legendas automáticas do TelePro com quatro estilos, cores de destaque, tamanho e posição.",
+        caption: "Do seu jeito, da sua cor: escolha estilo, tamanho e posição da legenda.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-5.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-5.jpg",
+        },
+        alt: "Cinco passos do roteiro ao post: escrever o roteiro, gravar olhando a lente, cortar os silêncios, legendar e compartilhar.",
+        caption: "Do roteiro ao post: escreva, grave, corte, legende e compartilhe.",
+    },
+    {
+        url: {
+            en: "telepro/screenshots/en/frame-6.jpg",
+            ptBr: "telepro/screenshots/ptBR/frame-6.jpg",
+        },
+        alt: "Ajustes do teleprompter do TelePro com o roteiro, velocidade, tamanho da fonte, linhas visíveis, contagem e parada automática.",
+        caption: "No seu ritmo: velocidade, tamanho da fonte e linhas visíveis.",
+    },
+];
+
+const facts = [
+    { label: "Plataforma", value: "iPhone · iOS 26+" },
+    { label: "Funciona", value: "Offline" },
+    { label: "Edição", value: "Silêncios + legendas" },
+    { label: "Idiomas", value: "6 idiomas" },
+    { label: "Pro", value: "3 dias grátis" },
+];
+
+const features = [
+    {
+        title: "Teleprompter na câmera",
+        description: "Escreva ou cole o roteiro e leia bem ao lado da lente. Você mantém o olhar na câmera, não esquece o texto e grava de primeira.",
+    },
+    {
+        title: "No seu ritmo",
+        description: "Escolha lento, normal ou rápido, ajuste o tamanho da fonte e quantas linhas ficam visíveis. Uma contagem abre a gravação, e ela pode parar sozinha quando o roteiro termina.",
+    },
+    {
+        title: "Remova os silêncios num toque",
+        description: "O TelePro encontra as pausas da gravação e marca na linha do tempo. Escolha a duração da pausa, a folga e a sensibilidade, veja o corte antes e desfaça quando quiser.",
+    },
+    {
+        title: "Legendas automáticas no iPhone",
+        description: "A fala é transcrita no aparelho, então o áudio nunca sai do seu iPhone. Toque numa palavra para corrigir, escolha estilo e cor e compartilhe o vídeo com a legenda gravada na imagem.",
+    },
+    {
+        title: "Totalmente offline e privado",
+        description: "Gravação, teleprompter, remoção de silêncios e legendas funcionam no seu iPhone, sem conta. Seus vídeos ficam na galeria do app até você decidir compartilhar.",
+    },
+    {
+        title: "Pronto para as redes",
+        description: "Vídeo vertical, um guia de área segura que mantém o rosto longe dos botões das redes sociais, e salvar nas Fotos ou compartilhar num toque.",
+    },
+];
+
+const useCases = [
+    {
+        title: "Criadores e vídeos para as redes",
+        description: "Grave Reels, TikToks e Shorts olhando para a lente, corte o tempo morto e publique com legendas que dá para ler sem som.",
+    },
+    {
+        title: "Professores, mentores e empreendedores",
+        description: "Tutoriais, aulas, demonstrações de produto, pitches e apresentações gravados de primeira, com o roteiro sempre à vista.",
+    },
+];
+
+const faq = [
+    {
+        question: "O que é o TelePro?",
+        answer: "O TelePro é um teleprompter com câmera para iPhone. O roteiro rola bem ao lado da lente enquanto você grava e, depois, você corta os silêncios e adiciona legendas automáticas sem sair do app.",
+    },
+    {
+        question: "O TelePro funciona offline?",
+        answer: "Sim. Gravação, teleprompter, remoção de silêncios e legendas automáticas funcionam no seu iPhone, sem internet e sem conta. As exceções são o primeiro download do modelo de fala de um idioma pelo iOS, as compras pela App Store e o compartilhamento dos vídeos.",
+    },
+    {
+        question: "Como funciona o teleprompter?",
+        answer: "Escreva ou cole o roteiro, escolha a velocidade, o tamanho da fonte e as linhas visíveis e grave. O texto rola ao lado da câmera frontal, com contagem opcional e parada automática quando o roteiro termina.",
+    },
+    {
+        question: "Como funciona o Remover silêncios?",
+        answer: "O TelePro analisa o áudio da gravação no aparelho, marca as pausas na linha do tempo e deixa você ajustar a duração da pausa, a folga e a sensibilidade. Dá para ver com e sem os cortes, e o original fica guardado para você desfazer quando quiser.",
+    },
+    {
+        question: "As legendas são enviadas para algum lugar?",
+        answer: "Não. As legendas automáticas usam o reconhecimento de fala da Apple no aparelho, então o áudio é transcrito no seu iPhone. Você corrige qualquer palavra, muda estilo, cor, tamanho e posição e compartilha o vídeo com a legenda gravada na imagem.",
+    },
+    {
+        question: "O que é grátis e o que vem no Pro?",
+        answer: "A versão grátis grava vídeos de até 15 segundos, mostra a prévia da remoção de silêncios e legenda no estilo clássico. O <strong>TelePro Pro</strong> libera gravação sem limite de tempo, o teleprompter durante a gravação, salvar seus roteiros, aplicar os cortes de silêncio e todos os estilos de legenda.",
+    },
+    {
+        question: "Quanto custa o TelePro Pro?",
+        answer: "O TelePro Pro é uma assinatura anual com renovação automática e 3 dias grátis para novos assinantes elegíveis. O preço na sua moeda aparece no app antes de você confirmar. Você pode cancelar quando quiser nos ajustes da sua Conta Apple, pelo menos 24 horas antes da renovação.",
+    },
+    {
+        question: "Como restauro minha compra?",
+        answer: "No app, abra os Ajustes, toque no card da assinatura e depois em <em>Restaurar compras</em> na tela da assinatura. O TelePro confere sua Conta Apple e libera o Pro de novo sem custo extra, num iPhone novo ou depois de reinstalar o app.",
+    },
+];
+---
+
+<AppTemplate
+    appId={appId}
+    appStoreUrl={appStoreUrl}
+    title={title}
+    appName={appName}
+    pageTitle={pageTitle}
+    metas={metas}
+    favicon={favicon}
+    appIcon={appIcon}
+    socialImage={socialImage}
+    socialImageAlt={socialImageAlt}
+    description={description}
+    screenshots={screenshots}
+    faq={faq}
+    facts={facts}
+    features={features}
+    useCases={useCases}
+    primaryKeyword={primaryKeyword}
+    secondaryKeywords={secondaryKeywords}
+    lang="pt-br"
+    applicationCategory="MultimediaApplication"
+/>

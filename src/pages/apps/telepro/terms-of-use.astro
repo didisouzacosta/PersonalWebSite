@@ -1,0 +1,63 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const title = "Terms of Use – TelePro";
+---
+
+<Layout title={title} lang="en" favicon="apps/telepro/favicon.png" description="Terms of Use – TelePro." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="TelePro documents"><a href="/apps/telepro/">TelePro</a> · <a href="/apps/telepro/privacy-policy/">Privacy Policy</a> · <a href="/pt-br/apps/telepro/terms-of-use/" lang="pt-BR">Português</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Last updated: October 20, 2026</p>
+
+            <h2>1. About these terms</h2>
+            <p>TelePro: Teleprompter Camera is provided by Adriano Souza Costa. These terms govern your use of the app. The applicable App Store terms and the <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Apple Standard EULA</a> also govern the app license; nothing here removes mandatory consumer rights.</p>
+
+            <h2>2. The app and availability</h2>
+            <p>TelePro shows your script next to the camera while you record, and lets you remove silences and add auto captions to the videos in its local gallery. Captions are generated automatically and may contain mistakes, and silence detection may cut or keep moments you did not expect, so review the result before publishing. Caption languages depend on what iOS supports on your device. Features depend on your device, the installed version, permissions, storage and system conditions. The first download of a language’s speech model and the App Store purchase services require an internet connection.</p>
+
+            <h2>3. Free features and Pro</h2>
+            <p>The free version records videos up to 15 seconds, previews silence removal and adds captions in the classic style. TelePro Pro unlocks recording without a time limit, the teleprompter while you record, saving your scripts, applying silence cuts and every caption style. Features, limits and prices may change in future versions; review the offer in the app before buying.</p>
+
+            <h2>4. Subscriptions, trial, cancellation and refunds</h2>
+            <p>TelePro Pro is a yearly auto-renewing subscription. Eligible new subscribers may get a 3-day free trial, and the app may occasionally show a discounted yearly offer; the price, duration and conditions of each offer appear before you confirm. Payment is charged to your Apple Account when you confirm the purchase or when the trial ends. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. Manage or cancel it in Settings → your name → Subscriptions, or from Settings in the app; see <a href="https://support.apple.com/en-us/118428" target="_blank" rel="noopener noreferrer">Apple Support</a>. Deleting TelePro does not cancel a subscription. Restore eligible purchases with the same Apple Account. Refund requests can be sent to Apple at <a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>, under applicable rights and Apple’s process.</p>
+
+            <h2>5. Your content and third-party rights</h2>
+            <p>You keep your rights to the scripts and videos you create. You are responsible for having permission to record, read and share other people’s images, voices and texts. Do not use the app to violate privacy, copyright or other rights, or to create unlawful content. Services you share to have their own terms; TelePro does not control their content.</p>
+
+            <h2>6. Local files and backups</h2>
+            <p>Videos, scripts and captions are stored in the app on your device. Removing the app or its data can delete them, so save to Photos or share anything you want to keep. Copies exported to Photos or other services are managed separately from the app gallery. See the <a href="/apps/telepro/privacy-policy/">Privacy Policy</a> for how data is handled.</p>
+
+            <h2>7. License and intellectual property</h2>
+            <p>TelePro’s software, name, icon and interface belong to the developer or their licensors. You may use the app within the applicable license, but may not copy, redistribute, circumvent its protections or reverse engineer it except where the law or the license allows. These restrictions do not transfer ownership of your recordings to the developer.</p>
+
+            <h2>8. Test versions (TestFlight)</h2>
+            <p>Versions distributed through TestFlight are for testing and may have bugs, incomplete features or changes before release. In them, purchases use Apple’s test environment, are not charged and do not carry over to the App Store version. TestFlight use also follows Apple’s terms, and the feedback you send through it may be used to improve the app.</p>
+
+            <h2>9. Warranties and liability</h2>
+            <p>To the extent permitted by applicable law, the app is provided as available, without a guarantee of uninterrupted or error-free operation. Device heat, storage, interruptions and system conditions may affect recording. The developer is not liable for losses to the extent lawfully excluded by the applicable license. Nothing in these terms excludes statutory warranties, consumer remedies or liability that cannot legally be excluded.</p>
+
+            <h2>10. Changes and contact</h2>
+            <p>We may update these terms when the app or the law changes; the date above shows the latest version. Additional notice or consent will be given when required. Send questions to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

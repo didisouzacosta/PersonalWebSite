@@ -1,0 +1,78 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+const title = "Privacy Policy – TelePro";
+---
+
+<Layout title={title} lang="en" favicon="apps/telepro/favicon.png" description="Privacy Policy – TelePro." robots="noindex, follow">
+    <main>
+        <section>
+            <nav aria-label="TelePro documents"><a href="/apps/telepro/">TelePro</a> · <a href="/apps/telepro/terms-of-use/">Terms of Use</a> · <a href="/pt-br/apps/telepro/privacy-policy/" lang="pt-BR">Português</a></nav>
+            <h1>{title}</h1>
+            <p class="updated">Last updated: October 20, 2026</p>
+
+            <h2>1. Scope and contact</h2>
+            <p>This policy covers the TelePro: Teleprompter Camera app for iPhone, including the test versions distributed through TestFlight, provided by Adriano Souza Costa. Send privacy questions or requests to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Website privacy preferences are separate from the app.</p>
+
+            <h2>2. No account</h2>
+            <p>TelePro does not require registration and does not ask for your name, email, phone number, contacts or location.</p>
+
+            <h2>3. Recordings, scripts, silences and captions stay on your iPhone</h2>
+            <p>The camera and the microphone are used only to record your videos. Your teleprompter scripts are stored on your device to show them while you record. Remove silences analyzes the audio of the video you choose on your iPhone, and the original is kept so you can undo the cut. Auto captions transcribe the speech of the video you choose with Apple’s on-device speech recognition; TelePro does not upload that audio. The first time you caption in a language, iOS may download that language’s speech model from Apple. Videos, scripts, captions and edited versions are kept in the app’s local gallery and are never uploaded or published automatically.</p>
+
+            <h2>4. Permissions and notifications</h2>
+            <p>TelePro asks for camera access to record, microphone access to record audio and, the first time you save a video, permission to add it to Photos. Copies saved to Photos are managed by Apple under your iCloud settings. The app may also ask to send you reminders; these are local notifications scheduled on your device, not sent from a server. You can change any of these permissions at any time in iOS Settings; denying one may stop the related feature from working.</p>
+
+            <h2>5. In-app purchases</h2>
+            <p>TelePro Pro is sold through the App Store. Apple processes payments, and the developer does not receive your card details. To check your subscription, apply offers and restore purchases, the app uses RevenueCat, which receives an anonymous app user identifier, transaction details and basic technical information such as device model, system and app version, region and IP address. RevenueCat handles this data under its <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, and the data is used only to operate purchases. In TestFlight versions, purchases use Apple’s test environment and are not charged.</p>
+
+            <h2>6. Usage statistics</h2>
+            <p>To understand how the app is used and to improve it, TelePro sends usage statistics to Himetrica, an analytics service. The data is linked to the same anonymous identifier used for purchases, never to your name or email, and never includes your videos, audio, scripts or captions. It includes:</p>
+            <ul>
+                <li>screens opened and app events, such as recordings started and finished, teleprompter settings, silence removal and captions applied, videos saved or shared and the destination you chose;</li>
+                <li>summaries in ranges, such as the length of a recording or the number of words in a script, never the text itself;</li>
+                <li>offers shown and purchases made, with the product and where it was offered, without payment details, plus your subscription status;</li>
+                <li>the answers you choose to give in onboarding, such as the optional gender preference (you can pick “Prefer not to say”) and the reason you picked when closing the subscription offer;</li>
+                <li>the state of permissions, the app version and basic technical information about the device, such as model, system version and language.</li>
+            </ul>
+            <p>Himetrica uses the IP address to estimate an approximate location (country, region or city) and, according to <a href="https://himetrica.com/privacy" target="_blank" rel="noopener noreferrer">its policy</a>, does not keep the IP address in its analytics database. TelePro does not use the advertising identifier (IDFA), shows no ads and does not track you across other companies’ apps or websites. These statistics are not used for advertising.</p>
+
+            <h2>7. Sharing</h2>
+            <p>We do not sell or rent your data. Data is handled only by the services described in this policy, for the purposes stated. When you share a video, it goes to the destination you choose through the iOS share sheet, and that service’s terms and privacy policy then apply.</p>
+
+            <h2>8. Retention, deletion and privacy requests</h2>
+            <p>Videos, scripts and captions stay on your device until you delete them or the app. Deleting a video in TelePro does not delete copies saved to Photos or shared elsewhere; manage those separately. Purchase records are kept by Apple and RevenueCat as needed to provide and restore purchases and to meet legal obligations. Usage statistics are kept for Himetrica’s retention period. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under applicable privacy laws, including the LGPD where applicable, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Because we do not collect identifying information, we may need details from you to locate a specific record.</p>
+
+            <h2>9. Security and children</h2>
+            <p>We use the security features provided by iOS and by the services above. No storage or transmission method is perfectly secure, so protect your device and review your videos before sharing them. TelePro does not knowingly collect personal information from children. Parents or guardians who believe a child sent personal information through support can contact us so we can review and handle the request.</p>
+
+            <h2>10. Changes</h2>
+            <p>We will update this page and its revision date when our practices change, with any additional notice or consent required by applicable law.</p>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    main {
+        padding: calc(64px + var(--safe-area-top)) var(--safe-page-padding-right) calc(64px + var(--safe-area-bottom)) var(--safe-page-padding-left);
+        max-width: 780px;
+        margin: 0 auto;
+    }
+    p {
+        margin-bottom: 16px;
+        color: var(--text-secondary);
+    }
+    ul {
+        margin: 0 0 16px;
+        padding-left: 24px;
+        list-style: disc;
+        color: var(--text-secondary);
+    }
+    li { margin-bottom: 8px; }
+    nav { margin-bottom: 24px; color: var(--text-secondary); }
+    h2 { font-size: 1.25rem; }
+    a { overflow-wrap: anywhere; }
+    h1 { margin-bottom: 32px; }
+    h2, .updated { margin-top: 32px; margin-bottom: 12px; }
+    a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

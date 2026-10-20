@@ -20,6 +20,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
         if (path.startsWith('/apps/duotake')) return '/pt-br/apps/duotake';
         if (path.startsWith('/apps/giggleface')) return path.replace('/apps/giggleface', '/pt-br/apps/giggleface');
         if (path.startsWith('/apps/potionpals')) return path.replace('/apps/potionpals', '/pt-br/apps/potionpals');
+        if (path.startsWith('/apps/telepro')) return path.replace('/apps/telepro', '/pt-br/apps/telepro');
         if (path.startsWith('/apps/horsescore')) return path.replace('/apps/horsescore', '/pt-br/apps/horsescore');
         if (path.startsWith('/resume')) return '/resume/pt-br';
         return path;
@@ -31,6 +32,7 @@ function getAltLangUrl(path: string, currentLang: string): string {
         if (path.startsWith('/pt-br/apps/duotake')) return '/apps/duotake';
         if (path.startsWith('/pt-br/apps/giggleface')) return path.replace('/pt-br/apps/giggleface', '/apps/giggleface');
         if (path.startsWith('/pt-br/apps/potionpals')) return path.replace('/pt-br/apps/potionpals', '/apps/potionpals');
+        if (path.startsWith('/pt-br/apps/telepro')) return path.replace('/pt-br/apps/telepro', '/apps/telepro');
         if (path.startsWith('/pt-br/apps/horsescore')) return path.replace('/pt-br/apps/horsescore', '/apps/horsescore');
         if (path.startsWith('/resume/pt-br')) return '/resume';
         return path;

@@ -74,6 +74,18 @@ const pages = [
         alternates: localizedAlternates("/apps/potionpals/", "/pt-br/apps/potionpals/"),
     },
     {
+        path: "/apps/telepro/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/telepro/", "/pt-br/apps/telepro/"),
+    },
+    {
+        path: "/pt-br/apps/telepro/",
+        priority: "0.6",
+        changefreq: "monthly",
+        alternates: localizedAlternates("/apps/telepro/", "/pt-br/apps/telepro/"),
+    },
+    {
         path: "/apps/horsescore/",
         priority: "0.6",
         changefreq: "monthly",

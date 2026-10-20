@@ -215,6 +215,24 @@ export const portfolioProjects: PortfolioProject[] = [
         },
     },
     {
+        name: "TelePro",
+        url: "/apps/telepro/",
+        resumeUrl: "https://adrianosouzacosta.com.br/apps/telepro/",
+        imageUrl: appIconUrl("telepro"),
+        tags: ["iOS App", "Video"],
+        isEnabled: true,
+        descriptions: {
+            en: {
+                card: "Teleprompter camera",
+                resume: "TelePro turns the iPhone into a teleprompter camera: the script scrolls next to the lens while you record, then it removes silences and adds auto captions on the device, fully offline and without an account.",
+            },
+            "pt-br": {
+                card: "Teleprompter com câmera",
+                resume: "O TelePro transforma o iPhone num teleprompter com câmera: o roteiro rola ao lado da lente enquanto você grava e, depois, o app remove os silêncios e cria legendas automáticas no próprio aparelho, totalmente offline e sem conta.",
+            },
+        },
+    },
+    {
         name: "HorseScore",
         url: "/apps/horsescore/",
         resumeUrl: "https://adrianosouzacosta.com.br/apps/horsescore/",

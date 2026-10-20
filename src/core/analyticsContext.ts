@@ -41,6 +41,7 @@ const projectTitles: Record<string, string> = {
     loopsize: "Loop Size",
     giggleface: "GiggleFace",
     potionpals: "PotionPals",
+    telepro: "TelePro",
     horsescore: "HorseScore",
 };
 
