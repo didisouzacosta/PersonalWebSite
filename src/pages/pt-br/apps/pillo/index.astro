@@ -5,7 +5,7 @@ const title = "Pillo: Validade de Remédios";
 const appName = "Pillo";
 const pageTitle = "Pillo | Validade e lembrete de remédios para iPhone";
 const description =
-    "Fotografe a caixa e o Pillo guarda a validade dos seus remédios e avisa antes de vencer. Lista simples, letras grandes e resumo da bula oficial da ANVISA.";
+    "Aponte a câmera para a caixa e o Pillo guarda a validade dos seus remédios e avisa antes de vencer. Lista simples, letras grandes, resumo da bula em palavras simples e preço médio.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-pt-br.jpg";
@@ -21,7 +21,7 @@ const secondaryKeywords = [
     "farmacinha de casa",
     "bula",
     "descarte de medicamentos",
-    "ANVISA",
+    "preço de remédio",
     "app para idosos",
 ];
 
@@ -39,12 +39,12 @@ const screenshots = [
     {
         url: "pillo/screenshots/ptBR/frame-3.jpg",
         alt: "Câmera do Pillo lendo a caixa de um remédio, com o nome, o código de barras e o registro marcados.",
-        caption: "Fotografe a caixa e o Pillo lê o nome, o código e a validade.",
+        caption: "Aponte a câmera para a caixa: o Pillo lê o nome, o código e a validade, um passo de cada vez.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-4.jpg",
         alt: "Detalhe da dipirona com a validade, para que serve e como funciona, em palavras simples.",
-        caption: "Para que serve? Resumo da bula oficial, em palavras simples.",
+        caption: "Para que serve? Um resumo em palavras simples, com as fontes.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-5.jpg",
@@ -67,7 +67,7 @@ const facts = [
     { label: "Plataforma", value: "iPhone · iOS 26+" },
     { label: "Conta", value: "Não precisa" },
     { label: "Avisos", value: "30 e 7 dias antes" },
-    { label: "Informações", value: "ANVISA" },
+    { label: "Informações", value: "Resumo por IA" },
     { label: "App Store", value: "Em breve" },
 ];
 
@@ -77,8 +77,8 @@ const features = [
         description: "Os remédios vencidos aparecem primeiro, depois os que vencem em breve e os que estão em dia. Cada um mostra quantos dias faltam, e você busca qualquer remédio pelo nome.",
     },
     {
-        title: "Fotografe a caixa",
-        description: "Aponte a câmera para a caixa: o Pillo lê o nome, o código de barras, o registro e a validade. Você confere os dados e salva com um toque, ou digita à mão se preferir.",
+        title: "Leia a caixa em 3 passos",
+        description: "Aponte a câmera para o nome, depois para o código de barras e por fim para a validade, o lote e a fabricação. O Pillo mostra o que leu em cada passo, você apaga e lê de novo se precisar, confere o resumo e salva com um toque. Se preferir, digite à mão.",
     },
     {
         title: "Aviso antes de vencer",
@@ -86,7 +86,7 @@ const features = [
     },
     {
         title: "Entenda para que serve",
-        description: "Um resumo da bula oficial da ANVISA em palavras simples: para que serve, como funciona, como usar e como guardar, com o link para a bula completa.",
+        description: "Depois de salvar, o Pillo busca as informações do remédio em segundo plano: para que serve, como funciona, como usar e como guardar, em palavras simples, com a imagem da caixa, as fontes consultadas e o preço médio em farmácias online.",
     },
     {
         title: "Descarte do jeito certo",
@@ -94,7 +94,7 @@ const features = [
     },
     {
         title: "Simples e privado",
-        description: "Sem conta e sem anúncios. Fotos, datas e avisos ficam no seu iPhone, e o Pillo acompanha o tamanho de texto que você usa no aparelho.",
+        description: "Sem conta e sem anúncios. O Pillo não tira nem guarda fotos: os remédios, as datas e os avisos ficam no seu iPhone, e o app acompanha o tamanho de texto que você usa no aparelho.",
     },
 ];
 
@@ -112,11 +112,11 @@ const useCases = [
 const faq = [
     {
         question: "O que é o Pillo?",
-        answer: "O Pillo é um app para iPhone que organiza a validade dos remédios da sua casa. Você fotografa a caixa, confere os dados e o Pillo avisa antes de cada remédio vencer.",
+        answer: "O Pillo é um app para iPhone que organiza a validade dos remédios da sua casa. Você aponta a câmera para a caixa, confere os dados e o Pillo avisa antes de cada remédio vencer.",
     },
     {
         question: "Como o Pillo lê a caixa?",
-        answer: "A câmera reconhece o texto e o código de barras da caixa no próprio iPhone. O Pillo encontra o nome, o registro e a validade e mostra tudo para você conferir antes de salvar. Se a leitura não der certo, dá para digitar os dados à mão.",
+        answer: "Em 3 passos, com a câmera reconhecendo o texto e o código de barras no próprio iPhone: primeiro o nome, depois o código de barras (ou o código 2D ou o registro) e por fim a validade, o lote e a fabricação. Cada passo mostra o que foi lido, e você toca em Continuar quando estiver certo. O Pillo não tira foto. Se a leitura não der certo, dá para digitar os dados à mão.",
     },
     {
         question: "Quando recebo os avisos?",
@@ -124,15 +124,19 @@ const faq = [
     },
     {
         question: "O Pillo funciona sem internet?",
-        answer: "Sim, em grande parte. A leitura da caixa, a lista e os avisos funcionam sem internet. A busca das informações do remédio na ANVISA usa a conexão; sem internet, o remédio fica salvo e o Pillo completa as informações quando a conexão voltar.",
+        answer: "Sim, em grande parte. A leitura da caixa, a lista e os avisos funcionam sem internet. A busca das informações do remédio usa a conexão e acontece depois de salvar: o remédio aparece em Analisando, no topo da lista, e vai para o lugar certo quando a busca termina. Sem internet, ele fica salvo, com a opção de tentar de novo, e o Pillo tenta outra vez quando você volta ao app.",
     },
     {
         question: "De onde vêm as informações dos remédios?",
-        answer: "Da base pública da ANVISA: a lista de medicamentos, os Dados Abertos e o Bulário Eletrônico. O resumo é feito a partir da bula oficial, não indica dose nem tratamento e não substitui a orientação de um profissional de saúde. O Pillo não é afiliado à ANVISA.",
+        answer: "De fontes públicas na internet, como a bula do fabricante e o Bulário Eletrônico da ANVISA. Uma inteligência artificial pesquisa essas páginas e escreve o resumo em palavras simples; o Pillo mostra as fontes usadas em cada remédio. O resumo pode conter erros, não indica dose nem tratamento e não substitui a orientação de um profissional de saúde. A imagem da caixa é ilustrativa. O Pillo não é afiliado à ANVISA.",
+    },
+    {
+        question: "O que é o preço médio?",
+        answer: "É a média do preço da mesma apresentação do remédio em farmácias online do Brasil, com o número de farmácias e a data da consulta. Serve só como referência: o preço varia por farmácia e região, e o Pillo não vende remédios. A consulta é refeita quando o preço tem mais de 30 dias.",
     },
     {
         question: "Meus dados ficam onde?",
-        answer: "No seu iPhone. O Pillo não tem conta, não exibe anúncios e não usa estatísticas de uso. Para buscar as informações, ele envia só o código de barras, o registro ou o nome do remédio, sem nada que identifique você. Veja os detalhes na <a href=\"/pt-br/apps/pillo/privacy-policy/\">Política de Privacidade</a>.",
+        answer: "No seu iPhone. O Pillo não tem conta, não tira nem guarda fotos, não exibe anúncios e não usa estatísticas de uso. Para buscar as informações, ele envia só o código de barras, o registro ou o nome do remédio, sem nada que identifique você. Veja os detalhes na <a href=\"/pt-br/apps/pillo/privacy-policy/\">Política de Privacidade</a>.",
     },
     {
         question: "O que faço com um remédio vencido?",

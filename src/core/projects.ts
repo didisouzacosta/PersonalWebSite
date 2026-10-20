@@ -242,11 +242,11 @@ export const portfolioProjects: PortfolioProject[] = [
         descriptions: {
             en: {
                 card: "Medicine expiry reminders",
-                resume: "Pillo keeps track of the expiry dates of the medicines at home: it reads the box with the camera on the device, reminds you before each one expires and summarizes the official leaflet from ANVISA in plain words, without an account.",
+                resume: "Pillo keeps track of the expiry dates of the medicines at home: it reads the box with the camera on the device in 3 steps, reminds you before each one expires and, after saving, summarizes public sources in plain words with AI, with an image of the box and the average price, without an account or photos.",
             },
             "pt-br": {
                 card: "Validade e lembrete de remédios",
-                resume: "O Pillo organiza a validade dos remédios da casa: lê a caixa com a câmera no próprio aparelho, avisa antes de cada remédio vencer e resume a bula oficial da ANVISA em palavras simples, sem conta.",
+                resume: "O Pillo organiza a validade dos remédios da casa: lê a caixa com a câmera no próprio aparelho em 3 passos, avisa antes de cada remédio vencer e, depois de salvar, resume fontes públicas em palavras simples com IA, com a imagem da caixa e o preço médio, sem conta e sem fotos.",
             },
         },
     },

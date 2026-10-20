@@ -5,7 +5,7 @@ const title = "Pillo: Medicine Expiry Dates";
 const appName = "Pillo";
 const pageTitle = "Pillo | Medicine expiry dates and reminders for iPhone";
 const description =
-    "Take a photo of the box and Pillo keeps your medicines' expiry dates and reminds you before they expire. A simple list, large text and a summary of the official leaflet from ANVISA, Brazil's health agency.";
+    "Point the camera at the box and Pillo keeps your medicines' expiry dates and reminds you before they expire. A simple list, large text, a plain-words leaflet summary and the average price.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-en.jpg";
@@ -20,7 +20,7 @@ const secondaryKeywords = [
     "expiry tracker",
     "drug leaflet",
     "medicine disposal",
-    "ANVISA",
+    "medicine price",
     "Brazil",
     "app for seniors",
 ];
@@ -39,12 +39,12 @@ const screenshots = [
     {
         url: "pillo/screenshots/ptBR/frame-3.jpg",
         alt: "Pillo camera reading a medicine box, with the name, barcode and registration number highlighted (app in Portuguese).",
-        caption: "Take a photo of the box and Pillo reads the name, code and expiry date.",
+        caption: "Point the camera at the box: Pillo reads the name, code and expiry date, one step at a time.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-4.jpg",
         alt: "Dipyrone detail with the expiry date, what it is for and how it works, in plain words (app in Portuguese).",
-        caption: "What is it for? A plain-words summary of the official leaflet.",
+        caption: "What is it for? A plain-words summary, with its sources.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-5.jpg",
@@ -77,8 +77,8 @@ const features = [
         description: "Expired medicines come first, then the ones expiring soon and the ones still in date. Each one shows how many days are left, and you can search any medicine by name.",
     },
     {
-        title: "Take a photo of the box",
-        description: "Point the camera at the box: Pillo reads the name, barcode, registration number and expiry date. Check the details and save with one tap, or type them in if you prefer.",
+        title: "Read the box in 3 steps",
+        description: "Point the camera at the name, then at the barcode and finally at the expiry date, batch and manufacturing date. Pillo shows what it read at each step, you can clear it and read again, then check the summary and save with one tap. Or type the details in if you prefer.",
     },
     {
         title: "A reminder before it expires",
@@ -86,7 +86,7 @@ const features = [
     },
     {
         title: "Understand what it is for",
-        description: "A plain-words summary of the official leaflet from ANVISA, Brazil's health agency: what it is for, how it works, how to take it and how to store it, with a link to the full leaflet.",
+        description: "After you save, Pillo looks up the medicine in the background: what it is for, how it works, how to take it and how to store it, in plain words, with an image of the box, the sources it used and the average price in online pharmacies.",
     },
     {
         title: "Dispose of it the right way",
@@ -94,7 +94,7 @@ const features = [
     },
     {
         title: "Simple and private",
-        description: "No account and no ads. Photos, dates and reminders stay on your iPhone, and Pillo follows the text size you use on your device.",
+        description: "No account and no ads. Pillo never takes or keeps photos: your medicines, dates and reminders stay on your iPhone, and the app follows the text size you use on your device.",
     },
 ];
 
@@ -112,11 +112,11 @@ const useCases = [
 const faq = [
     {
         question: "What is Pillo?",
-        answer: "Pillo is an iPhone app that keeps track of the expiry dates of the medicines in your home. You take a photo of the box, check the details and Pillo reminds you before each medicine expires. The app is in Portuguese and made for Brazil.",
+        answer: "Pillo is an iPhone app that keeps track of the expiry dates of the medicines in your home. You point the camera at the box, check the details and Pillo reminds you before each medicine expires. The app is in Portuguese and made for Brazil.",
     },
     {
         question: "How does Pillo read the box?",
-        answer: "The camera recognizes the text and the barcode on the box on the iPhone itself. Pillo finds the name, registration number and expiry date and shows everything for you to check before saving. If reading does not work, you can type the details in.",
+        answer: "In 3 steps, with the camera recognizing text and barcodes on the iPhone itself: first the name, then the barcode (or the 2D code or the registration number) and finally the expiry date, batch and manufacturing date. Each step shows what was read, and you tap Continue when it is right. Pillo does not take photos. If reading does not work, you can type the details in.",
     },
     {
         question: "When do I get reminders?",
@@ -124,15 +124,19 @@ const faq = [
     },
     {
         question: "Does Pillo work offline?",
-        answer: "Mostly, yes. Reading the box, the list and the reminders work without internet. Looking up the medicine information at ANVISA uses the connection; offline, the medicine is saved and Pillo completes the information when you are back online.",
+        answer: "Mostly, yes. Reading the box, the list and the reminders work without internet. Looking up the medicine information uses the connection and happens after you save: the medicine shows under Analyzing, at the top of the list, and moves to its place when the lookup ends. Offline, it stays saved with a Try again option, and Pillo tries again when you come back to the app.",
     },
     {
         question: "Where does the medicine information come from?",
-        answer: "From ANVISA's public data: the medicine list, Open Data and the Electronic Leaflet Library. The summary is based on the official leaflet, does not recommend doses or treatments and does not replace advice from a health professional. Pillo is not affiliated with ANVISA.",
+        answer: "From public sources on the web, such as the manufacturer's leaflet and ANVISA's Electronic Leaflet Library (ANVISA is Brazil's health agency). An AI researches these pages and writes the summary in plain words; Pillo shows the sources used for each medicine. The summary may contain mistakes, does not recommend doses or treatments and does not replace advice from a health professional. The box image is illustrative. Pillo is not affiliated with ANVISA.",
+    },
+    {
+        question: "What is the average price?",
+        answer: "The average price of the same presentation of the medicine in Brazilian online pharmacies, with how many pharmacies and the date it was checked. It is only a reference: prices vary by pharmacy and region, and Pillo does not sell medicines. It is checked again when it is more than 30 days old.",
     },
     {
         question: "Where is my data kept?",
-        answer: "On your iPhone. Pillo has no account, shows no ads and does not collect usage analytics. To look up information, it sends only the barcode, registration number or name of the medicine, with nothing that identifies you. See the <a href=\"/apps/pillo/privacy-policy/\">Privacy Policy</a> for details.",
+        answer: "On your iPhone. Pillo has no account, never takes or keeps photos, shows no ads and does not collect usage analytics. To look up information, it sends only the barcode, registration number or name of the medicine, with nothing that identifies you. See the <a href=\"/apps/pillo/privacy-policy/\">Privacy Policy</a> for details.",
     },
     {
         question: "What should I do with an expired medicine?",

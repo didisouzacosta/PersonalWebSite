@@ -18,13 +18,15 @@ const title = "Política de Privacidade – Pillo";
             <p>O Pillo não exige cadastro e não pede seu nome, e-mail, telefone, contatos ou localização.</p>
 
             <h2>3. Seus remédios ficam no seu iPhone</h2>
-            <p>O nome, a validade, o lote, o registro e o código de barras de cada remédio, a foto da caixa, o resumo da bula e os avisos que você escolhe ficam salvos só no seu aparelho. A foto é reduzida e salva sem dados de localização. Essas informações não são enviadas para nenhum servidor do Pillo.</p>
+            <p>O nome, a validade, a fabricação, o lote, o registro e o código de barras de cada remédio, as informações e o preço médio trazidos pela busca e os avisos que você escolhe ficam salvos só no seu aparelho. O Pillo não tira nem guarda fotos; se uma versão de teste anterior guardou a foto da caixa, ela é apagada ao atualizar o app. Essas informações não são enviadas para nenhum servidor, exceto o dado da busca descrito no item 5.</p>
 
             <h2>4. Câmera</h2>
-            <p>A câmera é usada só para ler a caixa enquanto você escaneia um remédio. O reconhecimento do texto e do código de barras acontece no próprio iPhone, com os recursos da Apple, e a foto da caixa só é guardada quando você salva o remédio. Se você não permitir o acesso à câmera, pode digitar os dados à mão.</p>
+            <p>A câmera é usada só para ler a caixa enquanto você escaneia um remédio. O reconhecimento do texto e dos códigos acontece no próprio iPhone, com os recursos da Apple, e nenhuma imagem da câmera é guardada ou enviada. Se você não permitir o acesso à câmera, pode digitar os dados à mão.</p>
 
             <h2>5. Busca das informações do remédio</h2>
-            <p>Para mostrar para que serve o remédio e o resumo da bula, o Pillo busca as informações públicas da ANVISA no serviço de informações do Pillo. Cada busca envia só um destes dados: o código de barras, o número de registro ou o nome do remédio. Fotos, validades, lotes e qualquer informação que identifique você não são enviados. Como em qualquer conexão com a internet, o serviço recebe dados técnicos necessários para responder, como o endereço IP, que não são usados para identificar você. Ao tocar em <em>Ver bula completa</em>, o site do Bulário Eletrônico da ANVISA abre dentro do app e segue as regras de privacidade desse site.</p>
+            <p>Depois que você salva um remédio, o Pillo busca as informações dele no serviço de informações do Pillo, hospedado na Cloudflare: para que serve, como funciona, como usar, uma imagem ilustrativa da caixa e o preço médio em farmácias online. Cada busca envia só um destes dados: o código de barras, o número de registro ou o nome do remédio. Validades, lotes e qualquer informação que identifique você não são enviados.</p>
+            <p>Quando o remédio ainda não é conhecido, o serviço usa um provedor de inteligência artificial (OpenAI) para pesquisar páginas públicas na internet, como a bula do fabricante e o Bulário Eletrônico da ANVISA, escrever o resumo, gerar a imagem da caixa e consultar o preço médio; o provedor recebe só o nome ou o código do remédio. O resultado fica guardado no serviço, por remédio e sem relação com você, para responder às próximas buscas.</p>
+            <p>Como em qualquer conexão com a internet, o serviço recebe dados técnicos necessários para responder, como o endereço IP, usado só para limitar abusos e não guardado pelo Pillo junto com as buscas. Ao tocar em <em>Ver bula completa</em> ou numa das fontes, o site de origem abre dentro do app e segue as regras de privacidade desse site.</p>
 
             <h2>6. Avisos</h2>
             <p>Os avisos de vencimento são notificações locais, agendadas no seu aparelho, não enviadas por um servidor. O Pillo pede permissão para enviar notificações, e você pode mudar essa permissão a qualquer momento nos Ajustes do iOS; sem ela, os avisos não aparecem.</p>
@@ -36,7 +38,7 @@ const title = "Política de Privacidade – Pillo";
             <p>O Pillo não usa serviços de estatísticas de uso, não exibe anúncios, não usa o identificador de publicidade (IDFA) e não rastreia você em apps ou sites de outras empresas.</p>
 
             <h2>9. Compartilhamento</h2>
-            <p>Não vendemos nem alugamos seus dados. Os únicos dados que saem do aparelho são os da busca descrita no item 5, usados só para responder a ela.</p>
+            <p>Não vendemos nem alugamos seus dados. Os únicos dados que saem do aparelho são os da busca descrita no item 5 (o código de barras, o registro ou o nome do remédio), tratados pela Cloudflare e pela OpenAI só para responder a ela.</p>
 
             <h2>10. Retenção, exclusão e pedidos de privacidade</h2>
             <p>Seus remédios ficam no aparelho até você descartá-los no app, o que apaga o remédio e os avisos dele, ou até apagar o app. Os backups do iPhone, no iCloud ou no computador, podem incluir os dados do app conforme os seus ajustes. Os e-mails de suporte ficam guardados pelo tempo necessário para responder ao pedido. Para acesso, correção, exclusão ou outros direitos previstos nas leis de privacidade, inclusive a LGPD, escreva para <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Como não coletamos dados que identifiquem você, talvez precisemos de algumas informações para entender o pedido.</p>
