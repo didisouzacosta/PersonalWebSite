@@ -5,7 +5,7 @@ const title = "Pillo: Medicine Expiry Dates";
 const appName = "Pillo";
 const pageTitle = "Pillo | Medicine expiry dates and reminders for iPhone";
 const description =
-    "An alarm when it is time to take your medicine, with Taken right on the alarm, and a reminder before it expires. Point the camera at the box and Pillo keeps the expiry date, explains the leaflet in plain words and shows how you have been taking it.";
+    "Track your medicines' expiry dates, with a reminder before they expire and an alarm when it is time to take them, all offline. With AI, Pillo searches the main references about each medicine and summarizes them in plain words, always with the sources.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-en.jpg";
@@ -80,34 +80,44 @@ const facts = [
     { label: "Account", value: "Not needed" },
     { label: "Doses", value: "Alarm at dose time" },
     { label: "Reminders", value: "30 and 7 days before" },
+    { label: "Offline", value: "Expiry and alarms" },
+    { label: "Information", value: "AI summary, with sources" },
     { label: "Language", value: "Portuguese (Brazil)" },
     { label: "App Store", value: "Coming soon" },
 ];
 
 const features = [
     {
-        title: "Time to take it, with an alarm",
-        description: "Turn on a dose reminder with the interval, first dose and length of your prescription. An alarm rings on time, even in silent mode, and you mark it as taken right on the alarm or on the highlight in the list. Pillo shows how you have been taking it over the last 7 days and stops the reminders when the medicine expires.",
-    },
-    {
-        title: "Widgets on the Home Screen",
-        description: "Add Pillo to your Home Screen in medium or large size. Choose between the dose reminders, with the dose due and a Taken button to mark it without opening the app, and the upcoming expiries, with the medicines that expire first.",
-    },
-    {
-        title: "Everything in date, in one list",
-        description: "Expired medicines come first, then the ones expiring soon and the ones still in date. Each one shows how many days are left, and you can search any medicine by name.",
-    },
-    {
-        title: "Read the box in 2 steps",
-        description: "Point the camera at the barcode and then at the expiry date, batch and manufacturing date; the name comes from the code. Pillo shows what it read at each step, you can clear it and read again, then check the summary and save with one tap. Or type the details in if you prefer.",
+        title: "Expiry tracking",
+        description: "Expired medicines come first, then the ones expiring soon and the ones still in date. Each one shows the box image and how many days are left, and you can search any medicine by name.",
     },
     {
         title: "A reminder before it expires",
         description: "Get reminders 30 days before, 7 days before and on the expiry day, at the time you choose. If a medicine expires, Pillo reminds you once a week until you dispose of it.",
     },
     {
-        title: "Understand what it is for",
-        description: "After you save, Pillo looks up the medicine in the background: what it is for, how it works, how to take it, the leaflet's general adult dosage and how to store it, in plain words, with an image of the box, the sources it used and the average price in online pharmacies.",
+        title: "Time to take it, with an alarm",
+        description: "Turn on a dose reminder with the interval, first dose and length of your prescription. An alarm rings on time, even in silent mode, and you mark it as taken right on the alarm or on the highlight in the list. Each reminder shows the time, the medicine and the interval, like every 8 hours, and a tap opens the reminder so you can change what you need. Pillo shows how you have been taking it over the last 7 days and stops the reminders when the medicine expires.",
+    },
+    {
+        title: "AI information from the main references",
+        description: "After you save, Pillo uses artificial intelligence to search the web for the main public references about the medicine, such as the manufacturer's leaflet, and summarizes them in plain words: what it is for, how it works, how to take it, the leaflet's general adult dosage and how to store it. Every source used is listed in the medicine's details, with a link so you can check it, along with the average price in online pharmacies. The summary may be wrong and does not replace your doctor or pharmacist.",
+    },
+    {
+        title: "Share and copy",
+        description: "Share a medicine with its box image and summary through Messages, email or any app you like. Under Informações, copy everything with one tap, or just the batch, registration number or barcode.",
+    },
+    {
+        title: "Widgets on the Home Screen",
+        description: "Add Pillo to your Home Screen in medium or large size. Choose between the dose reminders, with the dose due and a Taken button to mark it without opening the app, and the upcoming expiries, with the medicines that expire first.",
+    },
+    {
+        title: "Read the box in 2 steps",
+        description: "Point the camera at the barcode and then at the expiry date, batch and manufacturing date; the name comes from the code. Pillo shows what it read at each step, you can clear it and read again, then check the summary and save with one tap. Or type the details in if you prefer.",
+    },
+    {
+        title: "Works offline",
+        description: "Only looking up the medicine information uses the internet and artificial intelligence. Expiry tracking, reminders, alarms, dose reminders, the doses you mark and reading the box work fully offline.",
     },
     {
         title: "Dispose of it the right way",
@@ -115,7 +125,7 @@ const features = [
     },
     {
         title: "Simple and private",
-        description: "No account and no ads. Pillo never takes or keeps photos: your medicines, dates, reminders and the doses you mark stay on your iPhone, and the app follows the text size you use on your device.",
+        description: "No account and no ads. Pillo never takes or keeps photos: your medicines, dates, reminders and the doses you mark stay on your iPhone and only leave it when you share or copy them. The app follows the text size you use on your device.",
     },
 ];
 
@@ -141,11 +151,11 @@ const faq = [
     },
     {
         question: "How do dose reminders work?",
-        answer: "On the medicine, under Administração, tap Lembrar de tomar and set the interval (every 4 to every 24 hours), the first dose and the length: ongoing or a number of days. At dose time, an iPhone alarm rings even in silent mode, with Stop and Taken buttons. The dose due also shows highlighted in the list, with a Taken button, and Pillo shows how many doses you took on time, late or missed over the last 7 days. If you do not allow alarms, Pillo sends a notification instead. Reminders stop at the end of the treatment or when the medicine expires.",
+        answer: "On the medicine, under Administração, tap Lembrar de tomar and set the interval (every 4 to every 24 hours), the first dose and the length: ongoing or a number of days. At dose time, an iPhone alarm rings even in silent mode, with Stop and Taken buttons. The dose due also shows highlighted in the list, with a Taken button, and Pillo shows how many doses you took on time, late or missed over the last 7 days. Tap a reminder in the list to open the medicine's reminder and change the time, interval or length. If you do not allow alarms, Pillo sends a notification instead. Reminders stop at the end of the treatment or when the medicine expires.",
     },
     {
         question: "Does Pillo have widgets?",
-        answer: "Yes, in medium and large sizes. Touch and hold the Home Screen, tap Edit and Add Widget, and choose Pillo. In Edit Widget, choose what to show: the dose reminders, with a Taken button, or the upcoming expiries. Tapping a medicine opens its details in the app.",
+        answer: "Yes, in medium and large sizes. Touch and hold the Home Screen, tap Edit and Add Widget, and choose Pillo. In Edit Widget, choose what to show: the dose reminders, with a Taken button, or the upcoming expiries. Tapping a reminder opens the medicine's reminder in the app; tapping an expiry opens the medicine's details.",
     },
     {
         question: "Does Pillo tell me which dose to take?",
@@ -157,11 +167,15 @@ const faq = [
     },
     {
         question: "Does Pillo work offline?",
-        answer: "Mostly, yes. Reading the box, the list, the reminders and the alarms work without internet. Looking up the medicine information uses the connection and happens after you save: the medicine shows under Analyzing, at the top of the list, and moves to its place when the lookup ends. Offline, it stays saved with a Try again option, and Pillo tries again when you come back to the app.",
+        answer: "Yes. Only looking up the medicine information uses the internet and artificial intelligence. Expiry tracking, reminders, alarms, dose reminders, the doses you mark and reading the box work fully offline. The lookup happens after you save: the medicine shows under Analyzing, right below the counters, and moves to its place when the lookup ends. Offline, it stays saved with a Try again option, and Pillo tries again when you come back to the app.",
     },
     {
         question: "Where does the medicine information come from?",
-        answer: "From public sources on the web, such as the manufacturer's leaflet. An AI researches these pages and writes the summary in plain words; Pillo shows the sources used for each medicine. The summary may contain mistakes, does not recommend treatments, never calculates a dose and does not replace advice from a health professional. The box image is illustrative. Pillo is not affiliated with any government agency.",
+        answer: "Pillo uses artificial intelligence only to search the web for the main public references about the medicine, such as the manufacturer's leaflet, and write a summary in plain words. Every source used appears in the medicine's details, under Fontes (Sources), with a link so you can check it. The summary may contain mistakes, does not recommend treatments, never calculates a dose and does not replace advice from a doctor or pharmacist. The box image is illustrative, generated by AI. Pillo is not affiliated with any government agency.",
+    },
+    {
+        question: "Can I share or copy the information?",
+        answer: "Yes. In the medicine's details, the share button sends the box image and the summary (name, expiry date, what it is for, how it works, how to take it and the details) to the app or person you choose; reminders and doses are not included. Under Informações, Copiar copies everything at once, and a long press on a row copies just that value.",
     },
     {
         question: "What is the average price?",
@@ -169,7 +183,7 @@ const faq = [
     },
     {
         question: "Where is my data kept?",
-        answer: "On your iPhone, including your dose reminders and the doses you mark. Pillo has no account, never takes or keeps photos, shows no ads and does not collect usage analytics. To look up information, it sends only the barcode, registration number or name of the medicine, with nothing that identifies you. See the <a href=\"/apps/pillo/privacy-policy/\">Privacy Policy</a> for details.",
+        answer: "On your iPhone, including your dose reminders and the doses you mark, and it only leaves it when you share or copy it. Pillo has no account, never takes or keeps photos, shows no ads and does not collect usage analytics. To look up information, it sends only the barcode, registration number or name of the medicine, with nothing that identifies you. See the <a href=\"/apps/pillo/privacy-policy/\">Privacy Policy</a> for details.",
     },
     {
         question: "What should I do with an expired medicine?",

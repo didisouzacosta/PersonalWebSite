@@ -5,7 +5,7 @@ const title = "Pillo: Validade de Remédios";
 const appName = "Pillo";
 const pageTitle = "Pillo | Validade e lembrete de remédios para iPhone";
 const description =
-    "Alarme na hora de tomar, com Tomei no próprio alarme, e aviso antes de vencer. Aponte a câmera para a caixa e o Pillo guarda a validade, explica a bula em palavras simples e mostra como você vem tomando.";
+    "Controle a validade dos remédios, com aviso antes de vencer e alarme na hora de tomar, tudo offline. Com IA, o Pillo busca as principais referências sobre cada remédio e resume em palavras simples, sempre com as fontes.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-pt-br.jpg";
@@ -80,34 +80,43 @@ const facts = [
     { label: "Conta", value: "Não precisa" },
     { label: "Lembretes", value: "Alarme na hora de tomar" },
     { label: "Avisos", value: "30 e 7 dias antes" },
-    { label: "Informações", value: "Resumo por IA" },
+    { label: "Offline", value: "Validade e alarmes" },
+    { label: "Informações", value: "Resumo por IA, com fontes" },
     { label: "App Store", value: "Em breve" },
 ];
 
 const features = [
     {
-        title: "Hora de tomar, com alarme",
-        description: "Ligue o lembrete com o intervalo, a primeira dose e a duração da sua receita. Um alarme toca na hora, mesmo no modo silencioso, e você marca Tomei no próprio alarme ou no destaque da lista. O Pillo mostra como você vem tomando nos últimos 7 dias e para os lembretes quando o remédio vence.",
-    },
-    {
-        title: "Widgets na tela de início",
-        description: "Coloque o Pillo na tela de início, em tamanho médio ou grande. Escolha entre os lembretes de tomada, com a dose da vez e o botão Tomei para marcar sem abrir o app, e os próximos vencimentos, com os remédios que vencem primeiro.",
-    },
-    {
-        title: "Tudo em dia numa lista só",
-        description: "Os remédios vencidos aparecem primeiro, depois os que vencem em breve e os que estão em dia. Cada um mostra quantos dias faltam, e você busca qualquer remédio pelo nome.",
-    },
-    {
-        title: "Leia a caixa em 2 passos",
-        description: "Aponte a câmera para o código de barras e depois para a validade, o lote e a fabricação; o nome vem do código. O Pillo mostra o que leu em cada passo, você apaga e lê de novo se precisar, confere o resumo e salva com um toque. Se preferir, digite à mão.",
+        title: "Controle de validade",
+        description: "Os remédios vencidos aparecem primeiro, depois os que vencem em breve e os que estão em dia. Cada um mostra a imagem da caixa e quantos dias faltam, e você busca qualquer remédio pelo nome.",
     },
     {
         title: "Aviso antes de vencer",
         description: "Receba avisos 30 dias antes, 7 dias antes e no dia do vencimento, no horário que você escolher. Se o remédio vencer, o Pillo lembra uma vez por semana até você descartar.",
     },
     {
-        title: "Entenda para que serve",
-        description: "Depois de salvar, o Pillo busca as informações do remédio em segundo plano: para que serve, como funciona, como usar, a posologia geral da bula para adultos e como guardar, em palavras simples, com a imagem da caixa, as fontes consultadas e o preço médio em farmácias online.",
+        title: "Hora de tomar, com alarme",
+        description: "Ligue o lembrete com o intervalo, a primeira dose e a duração da sua receita. Um alarme toca na hora, mesmo no modo silencioso, e você marca Tomei no próprio alarme ou no destaque da lista. Cada lembrete mostra o horário, o remédio e o período, como De 8 em 8 horas, e um toque abre o lembrete para mudar o que precisar. O Pillo mostra como você vem tomando nos últimos 7 dias e para os lembretes quando o remédio vence.",
+    },
+    {
+        title: "Informações com IA, das principais referências",
+        description: "Depois de salvar, o Pillo usa inteligência artificial para buscar na internet as principais referências públicas sobre o remédio, como a bula do fabricante, e resume em palavras simples: para que serve, como funciona, como usar, a posologia geral da bula para adultos e como guardar. Todas as fontes usadas ficam listadas no detalhe do remédio, com link para você conferir, junto com o preço médio em farmácias online. O resumo pode errar e não dispensa o médico nem o farmacêutico.",
+    },
+    {
+        title: "Compartilhe e copie",
+        description: "Compartilhe um remédio com a imagem da caixa e o resumo, por mensagem, e-mail ou o app que preferir. Em Informações, copie tudo com um toque, ou só o lote, o registro ou o código de barras.",
+    },
+    {
+        title: "Widgets na tela de início",
+        description: "Coloque o Pillo na tela de início, em tamanho médio ou grande. Escolha entre os lembretes de tomada, com a dose da vez e o botão Tomei para marcar sem abrir o app, e os próximos vencimentos, com os remédios que vencem primeiro.",
+    },
+    {
+        title: "Leia a caixa em 2 passos",
+        description: "Aponte a câmera para o código de barras e depois para a validade, o lote e a fabricação; o nome vem do código. O Pillo mostra o que leu em cada passo, você apaga e lê de novo se precisar, confere o resumo e salva com um toque. Se preferir, digite à mão.",
+    },
+    {
+        title: "Funciona sem internet",
+        description: "Só a busca das informações do remédio usa a internet e a inteligência artificial. O controle de validade, os avisos, os alarmes, os lembretes de tomada, o registro das doses e a leitura da caixa funcionam totalmente offline.",
     },
     {
         title: "Descarte do jeito certo",
@@ -115,7 +124,7 @@ const features = [
     },
     {
         title: "Simples e privado",
-        description: "Sem conta e sem anúncios. O Pillo não tira nem guarda fotos: os remédios, as datas, os lembretes e as doses ficam no seu iPhone, e o app acompanha o tamanho de texto que você usa no aparelho.",
+        description: "Sem conta e sem anúncios. O Pillo não tira nem guarda fotos: os remédios, as datas, os lembretes e as doses ficam no seu iPhone e só saem dele quando você compartilha ou copia. O app acompanha o tamanho de texto que você usa no aparelho.",
     },
 ];
 
@@ -141,11 +150,11 @@ const faq = [
     },
     {
         question: "Como funciona o lembrete de tomada?",
-        answer: "No remédio, em Administração, toque em Lembrar de tomar e informe o intervalo (de 4 em 4 até de 24 em 24 horas), a primeira dose e a duração: uso contínuo ou um número de dias. Na hora, um alarme do iPhone toca mesmo no modo silencioso, com os botões Parar e Tomei. A dose da vez também aparece em destaque na lista, com o botão Tomei, e o Pillo mostra quantas doses você tomou no horário, com atraso ou esqueceu nos últimos 7 dias. Se você não permitir os alarmes, o Pillo avisa por notificação. Os lembretes param no fim do tratamento ou quando o remédio vence.",
+        answer: "No remédio, em Administração, toque em Lembrar de tomar e informe o intervalo (de 4 em 4 até de 24 em 24 horas), a primeira dose e a duração: uso contínuo ou um número de dias. Na hora, um alarme do iPhone toca mesmo no modo silencioso, com os botões Parar e Tomei. A dose da vez também aparece em destaque na lista, com o botão Tomei, e o Pillo mostra quantas doses você tomou no horário, com atraso ou esqueceu nos últimos 7 dias. Toque num lembrete da lista para abrir o lembrete do remédio e mudar o horário, o intervalo ou a duração. Se você não permitir os alarmes, o Pillo avisa por notificação. Os lembretes param no fim do tratamento ou quando o remédio vence.",
     },
     {
         question: "O Pillo tem widgets?",
-        answer: "Sim, em tamanho médio e grande. Toque e segure a tela de início, toque em Editar e em Adicionar widget e escolha o Pillo. Em Editar widget, escolha o que mostrar: os lembretes de tomada, com o botão Tomei, ou os próximos vencimentos. Tocar num remédio abre o detalhe no app.",
+        answer: "Sim, em tamanho médio e grande. Toque e segure a tela de início, toque em Editar e em Adicionar widget e escolha o Pillo. Em Editar widget, escolha o que mostrar: os lembretes de tomada, com o botão Tomei, ou os próximos vencimentos. Tocar num lembrete abre o lembrete do remédio no app; tocar num vencimento abre o detalhe do remédio.",
     },
     {
         question: "O Pillo diz qual dose eu devo tomar?",
@@ -157,11 +166,15 @@ const faq = [
     },
     {
         question: "O Pillo funciona sem internet?",
-        answer: "Sim, em grande parte. A leitura da caixa, a lista, os avisos e os alarmes funcionam sem internet. A busca das informações do remédio usa a conexão e acontece depois de salvar: o remédio aparece em Analisando, no topo da lista, e vai para o lugar certo quando a busca termina. Sem internet, ele fica salvo, com a opção de tentar de novo, e o Pillo tenta outra vez quando você volta ao app.",
+        answer: "Sim. Só a busca das informações do remédio usa a internet e a inteligência artificial. O controle de validade, os avisos, os alarmes, os lembretes de tomada, o registro das doses e a leitura da caixa funcionam totalmente offline. A busca acontece depois de salvar: o remédio aparece em Analisando, logo abaixo dos contadores, e vai para o lugar certo quando a busca termina. Sem internet, ele fica salvo, com a opção de tentar de novo, e o Pillo tenta outra vez quando você volta ao app.",
     },
     {
         question: "De onde vêm as informações dos remédios?",
-        answer: "De fontes públicas na internet, como a bula do fabricante. Uma inteligência artificial pesquisa essas páginas e escreve o resumo em palavras simples; o Pillo mostra as fontes usadas em cada remédio. O resumo pode conter erros, não indica tratamento, não calcula dose e não substitui a orientação de um profissional de saúde. A imagem da caixa é ilustrativa. O Pillo não é afiliado a órgãos do governo.",
+        answer: "O Pillo usa inteligência artificial só para buscar na internet as principais referências públicas sobre o remédio, como a bula do fabricante, e escrever um resumo em palavras simples. Todas as fontes usadas aparecem no detalhe do remédio, na seção Fontes, com link para você conferir. O resumo pode conter erros, não indica tratamento, não calcula dose e não dispensa a orientação de um médico ou farmacêutico. A imagem da caixa é ilustrativa, gerada por IA. O Pillo não é afiliado a órgãos do governo.",
+    },
+    {
+        question: "Posso compartilhar ou copiar as informações?",
+        answer: "Sim. No detalhe do remédio, o botão de compartilhar envia a imagem da caixa e o resumo (nome, validade, para que serve, como funciona, como usar e as informações) para o app ou a pessoa que você escolher; os lembretes e as doses não vão junto. Em Informações, Copiar copia tudo de uma vez, e um toque longo numa linha copia só aquele valor.",
     },
     {
         question: "O que é o preço médio?",
@@ -169,7 +182,7 @@ const faq = [
     },
     {
         question: "Meus dados ficam onde?",
-        answer: "No seu iPhone, inclusive os lembretes e as doses que você marca. O Pillo não tem conta, não tira nem guarda fotos, não exibe anúncios e não usa estatísticas de uso. Para buscar as informações, ele envia só o código de barras, o registro ou o nome do remédio, sem nada que identifique você. Veja os detalhes na <a href=\"/pt-br/apps/pillo/privacy-policy/\">Política de Privacidade</a>.",
+        answer: "No seu iPhone, inclusive os lembretes e as doses que você marca, e só saem dele quando você compartilha ou copia. O Pillo não tem conta, não tira nem guarda fotos, não exibe anúncios e não usa estatísticas de uso. Para buscar as informações, ele envia só o código de barras, o registro ou o nome do remédio, sem nada que identifique você. Veja os detalhes na <a href=\"/pt-br/apps/pillo/privacy-policy/\">Política de Privacidade</a>.",
     },
     {
         question: "O que faço com um remédio vencido?",
