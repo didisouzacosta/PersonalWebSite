@@ -9,7 +9,7 @@ const description =
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-pt-br.jpg";
-const socialImageAlt = "Ícone do app Pillo ao lado das telas da lista de remédios e do aviso de vencimento.";
+const socialImageAlt = "Ícone do app Pillo ao lado das telas da lista de remédios com a dose da vez e do alarme na hora de tomar.";
 
 const metas: { name: string; content: string }[] = [];
 const primaryKeyword = "validade de remédios";
@@ -30,36 +30,46 @@ const secondaryKeywords = [
 const screenshots = [
     {
         url: "pillo/screenshots/ptBR/frame-1.jpg",
-        alt: "Lista do Pillo com os remédios vencidos primeiro, depois os que vencem em breve e os que estão em dia, cada um com os dias que faltam.",
-        caption: "Remédios sempre em dia: o que venceu aparece primeiro.",
+        alt: "Alarme do Pillo na tela bloqueada na hora de tomar a dipirona, com os botões Parar e Tomei.",
+        caption: "Hora de tomar, com alarme: toca até no silencioso e você marca Tomei no próprio alarme.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-2.jpg",
+        alt: "Lista do Pillo com a dose da vez em destaque e o botão Tomei, os lembretes de tomada e os remédios vencidos primeiro.",
+        caption: "Remédios sempre em dia: a dose da vez em destaque e o que venceu primeiro.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-3.jpg",
+        alt: "Tela de início do iPhone com o widget grande dos lembretes de tomada, com o botão Tomei, e o widget médio dos próximos vencimentos.",
+        caption: "Widgets na tela de início: marque Tomei sem abrir o app.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-4.jpg",
+        alt: "Detalhe da dipirona com a posologia da bula, o lembrete de tomada e as doses dos últimos 7 dias no horário, com atraso ou esquecidas.",
+        caption: "Como você vem tomando: as doses dos últimos 7 dias.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-5.jpg",
         alt: "Notificação do Pillo na tela bloqueada avisando que a dipirona vence em 7 dias.",
         caption: "Aviso antes de vencer: 30 e 7 dias antes e no dia do vencimento.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-3.jpg",
-        alt: "Câmera do Pillo lendo a caixa de um remédio, com o nome, o código de barras e o registro marcados.",
-        caption: "Aponte a câmera para a caixa: o Pillo lê o nome, o código e a validade, um passo de cada vez.",
-    },
-    {
-        url: "pillo/screenshots/ptBR/frame-4.jpg",
-        alt: "Detalhe da dipirona com a validade, para que serve e como funciona, em palavras simples.",
-        caption: "Para que serve? Um resumo em palavras simples, com as fontes.",
-    },
-    {
-        url: "pillo/screenshots/ptBR/frame-5.jpg",
-        alt: "Tela Confira os dados com o remédio encontrado, a validade lida da caixa e o lembrete.",
-        caption: "Confira os dados e salve com um toque.",
-    },
-    {
         url: "pillo/screenshots/ptBR/frame-6.jpg",
-        alt: "Remédio vencido no Pillo com a orientação de descarte e o botão para encontrar um ponto de coleta.",
-        caption: "Venceu? O Pillo mostra como descartar do jeito certo.",
+        alt: "Câmera do Pillo lendo o código de barras da caixa de dipirona, no passo 1 de 2.",
+        caption: "Aponte a câmera para a caixa: o Pillo lê o código e a validade em 2 passos.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-7.jpg",
+        alt: "Detalhe da dipirona com a validade e para que serve, em palavras simples.",
+        caption: "Para que serve? Um resumo em palavras simples, com as fontes.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-8.jpg",
+        alt: "Remédio vencido no Pillo com a orientação de descarte e o link para encontrar um ponto de coleta.",
+        caption: "Venceu? O Pillo mostra como descartar do jeito certo.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-9.jpg",
         alt: "Cards do Pillo: sem conta e sem anúncios, tudo no seu iPhone, funciona sem internet, avisos do seu jeito, letras grandes e resumo por IA.",
         caption: "Simples e privado: sem conta, sem anúncios, tudo no seu iPhone.",
     },
@@ -80,12 +90,16 @@ const features = [
         description: "Ligue o lembrete com o intervalo, a primeira dose e a duração da sua receita. Um alarme toca na hora, mesmo no modo silencioso, e você marca Tomei no próprio alarme ou no destaque da lista. O Pillo mostra como você vem tomando nos últimos 7 dias e para os lembretes quando o remédio vence.",
     },
     {
+        title: "Widgets na tela de início",
+        description: "Coloque o Pillo na tela de início, em tamanho médio ou grande. Escolha entre os lembretes de tomada, com a dose da vez e o botão Tomei para marcar sem abrir o app, e os próximos vencimentos, com os remédios que vencem primeiro.",
+    },
+    {
         title: "Tudo em dia numa lista só",
         description: "Os remédios vencidos aparecem primeiro, depois os que vencem em breve e os que estão em dia. Cada um mostra quantos dias faltam, e você busca qualquer remédio pelo nome.",
     },
     {
-        title: "Leia a caixa em 3 passos",
-        description: "Aponte a câmera para o nome, depois para o código de barras e por fim para a validade, o lote e a fabricação. O Pillo mostra o que leu em cada passo, você apaga e lê de novo se precisar, confere o resumo e salva com um toque. Se preferir, digite à mão.",
+        title: "Leia a caixa em 2 passos",
+        description: "Aponte a câmera para o código de barras e depois para a validade, o lote e a fabricação; o nome vem do código. O Pillo mostra o que leu em cada passo, você apaga e lê de novo se precisar, confere o resumo e salva com um toque. Se preferir, digite à mão.",
     },
     {
         title: "Aviso antes de vencer",
@@ -123,11 +137,15 @@ const faq = [
     },
     {
         question: "Como o Pillo lê a caixa?",
-        answer: "Em 3 passos, com a câmera reconhecendo o texto e o código de barras no próprio iPhone: primeiro o nome, depois o código de barras (ou o código 2D ou o registro) e por fim a validade, o lote e a fabricação. Cada passo mostra o que foi lido, e você toca em Continuar quando estiver certo. O Pillo não tira foto. Se a leitura não der certo, dá para digitar os dados à mão.",
+        answer: "Em 2 passos, com a câmera reconhecendo o texto e o código de barras no próprio iPhone: primeiro o código de barras (ou o código 2D ou o registro) e depois a validade, o lote e a fabricação. O nome vem do código, depois de salvar. Cada passo mostra o que foi lido, e você toca em Continuar quando estiver certo. O Pillo não tira foto. Se a leitura não der certo, dá para digitar os dados à mão.",
     },
     {
         question: "Como funciona o lembrete de tomada?",
         answer: "No remédio, em Administração, toque em Lembrar de tomar e informe o intervalo (de 4 em 4 até de 24 em 24 horas), a primeira dose e a duração: uso contínuo ou um número de dias. Na hora, um alarme do iPhone toca mesmo no modo silencioso, com os botões Parar e Tomei. A dose da vez também aparece em destaque na lista, com o botão Tomei, e o Pillo mostra quantas doses você tomou no horário, com atraso ou esqueceu nos últimos 7 dias. Se você não permitir os alarmes, o Pillo avisa por notificação. Os lembretes param no fim do tratamento ou quando o remédio vence.",
+    },
+    {
+        question: "O Pillo tem widgets?",
+        answer: "Sim, em tamanho médio e grande. Toque e segure a tela de início, toque em Editar e em Adicionar widget e escolha o Pillo. Em Editar widget, escolha o que mostrar: os lembretes de tomada, com o botão Tomei, ou os próximos vencimentos. Tocar num remédio abre o detalhe no app.",
     },
     {
         question: "O Pillo diz qual dose eu devo tomar?",

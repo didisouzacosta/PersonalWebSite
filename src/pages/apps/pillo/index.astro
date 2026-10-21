@@ -9,7 +9,7 @@ const description =
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-en.jpg";
-const socialImageAlt = "Pillo app icon next to the medicine list and the expiry reminder screens.";
+const socialImageAlt = "Pillo app icon next to the medicine list with the dose due and the alarm when it is time to take it.";
 
 const metas: { name: string; content: string }[] = [];
 const primaryKeyword = "medicine expiry date";
@@ -30,36 +30,46 @@ const secondaryKeywords = [
 const screenshots = [
     {
         url: "pillo/screenshots/ptBR/frame-1.jpg",
-        alt: "Pillo list with expired medicines first, then the ones expiring soon and the ones in date, each with the days left (app in Portuguese).",
-        caption: "Medicines always in date: what has expired comes first.",
+        alt: "Pillo alarm on the Lock Screen when it is time to take the dipyrone, with Stop and Taken buttons (app in Portuguese).",
+        caption: "Time to take it, with an alarm: it rings even on silent and you mark it as taken right on the alarm.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-2.jpg",
+        alt: "Pillo list with the dose due highlighted with a Taken button, the dose reminders and the expired medicines first (app in Portuguese).",
+        caption: "Medicines always in date: the dose due highlighted and what has expired first.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-3.jpg",
+        alt: "iPhone Home Screen with the large dose reminders widget, with a Taken button, and the medium upcoming expiries widget (app in Portuguese).",
+        caption: "Widgets on the Home Screen: mark a dose as taken without opening the app.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-4.jpg",
+        alt: "Dipyrone detail with the leaflet dosage, the dose reminder and the last 7 days of doses on time, late or missed (app in Portuguese).",
+        caption: "How you have been taking it: the doses of the last 7 days.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-5.jpg",
         alt: "Pillo notification on the Lock Screen saying the dipyrone expires in 7 days (app in Portuguese).",
         caption: "A reminder before it expires: 30 and 7 days before and on the day.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-3.jpg",
-        alt: "Pillo camera reading a medicine box, with the name, barcode and registration number highlighted (app in Portuguese).",
-        caption: "Point the camera at the box: Pillo reads the name, code and expiry date, one step at a time.",
-    },
-    {
-        url: "pillo/screenshots/ptBR/frame-4.jpg",
-        alt: "Dipyrone detail with the expiry date, what it is for and how it works, in plain words (app in Portuguese).",
-        caption: "What is it for? A plain-words summary, with its sources.",
-    },
-    {
-        url: "pillo/screenshots/ptBR/frame-5.jpg",
-        alt: "Check the details screen with the medicine found, the expiry date read from the box and the reminder (app in Portuguese).",
-        caption: "Check the details and save with one tap.",
-    },
-    {
         url: "pillo/screenshots/ptBR/frame-6.jpg",
-        alt: "Expired medicine in Pillo with disposal guidance and the button to find a drop-off point (app in Portuguese).",
-        caption: "Expired? Pillo shows how to dispose of it the right way.",
+        alt: "Pillo camera reading the barcode of a dipyrone box, in step 1 of 2 (app in Portuguese).",
+        caption: "Point the camera at the box: Pillo reads the code and the expiry date in 2 steps.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-7.jpg",
+        alt: "Dipyrone detail with the expiry date and what it is for, in plain words (app in Portuguese).",
+        caption: "What is it for? A plain-words summary, with its sources.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-8.jpg",
+        alt: "Expired medicine in Pillo with disposal guidance and the link to find a drop-off point (app in Portuguese).",
+        caption: "Expired? Pillo shows how to dispose of it the right way.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-9.jpg",
         alt: "Pillo cards: no account and no ads, everything on your iPhone, works offline, reminders your way, large text and an AI summary (app in Portuguese).",
         caption: "Simple and private: no account, no ads, everything on your iPhone.",
     },
@@ -80,12 +90,16 @@ const features = [
         description: "Turn on a dose reminder with the interval, first dose and length of your prescription. An alarm rings on time, even in silent mode, and you mark it as taken right on the alarm or on the highlight in the list. Pillo shows how you have been taking it over the last 7 days and stops the reminders when the medicine expires.",
     },
     {
+        title: "Widgets on the Home Screen",
+        description: "Add Pillo to your Home Screen in medium or large size. Choose between the dose reminders, with the dose due and a Taken button to mark it without opening the app, and the upcoming expiries, with the medicines that expire first.",
+    },
+    {
         title: "Everything in date, in one list",
         description: "Expired medicines come first, then the ones expiring soon and the ones still in date. Each one shows how many days are left, and you can search any medicine by name.",
     },
     {
-        title: "Read the box in 3 steps",
-        description: "Point the camera at the name, then at the barcode and finally at the expiry date, batch and manufacturing date. Pillo shows what it read at each step, you can clear it and read again, then check the summary and save with one tap. Or type the details in if you prefer.",
+        title: "Read the box in 2 steps",
+        description: "Point the camera at the barcode and then at the expiry date, batch and manufacturing date; the name comes from the code. Pillo shows what it read at each step, you can clear it and read again, then check the summary and save with one tap. Or type the details in if you prefer.",
     },
     {
         title: "A reminder before it expires",
@@ -123,11 +137,15 @@ const faq = [
     },
     {
         question: "How does Pillo read the box?",
-        answer: "In 3 steps, with the camera recognizing text and barcodes on the iPhone itself: first the name, then the barcode (or the 2D code or the registration number) and finally the expiry date, batch and manufacturing date. Each step shows what was read, and you tap Continue when it is right. Pillo does not take photos. If reading does not work, you can type the details in.",
+        answer: "In 2 steps, with the camera recognizing text and barcodes on the iPhone itself: first the barcode (or the 2D code or the registration number) and then the expiry date, batch and manufacturing date. The name comes from the code after you save. Each step shows what was read, and you tap Continue when it is right. Pillo does not take photos. If reading does not work, you can type the details in.",
     },
     {
         question: "How do dose reminders work?",
         answer: "On the medicine, under Administração, tap Lembrar de tomar and set the interval (every 4 to every 24 hours), the first dose and the length: ongoing or a number of days. At dose time, an iPhone alarm rings even in silent mode, with Stop and Taken buttons. The dose due also shows highlighted in the list, with a Taken button, and Pillo shows how many doses you took on time, late or missed over the last 7 days. If you do not allow alarms, Pillo sends a notification instead. Reminders stop at the end of the treatment or when the medicine expires.",
+    },
+    {
+        question: "Does Pillo have widgets?",
+        answer: "Yes, in medium and large sizes. Touch and hold the Home Screen, tap Edit and Add Widget, and choose Pillo. In Edit Widget, choose what to show: the dose reminders, with a Taken button, or the upcoming expiries. Tapping a medicine opens its details in the app.",
     },
     {
         question: "Does Pillo tell me which dose to take?",
