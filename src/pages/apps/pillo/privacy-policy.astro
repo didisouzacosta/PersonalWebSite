@@ -9,7 +9,7 @@ const title = "Privacy Policy – Pillo";
         <section>
             <nav aria-label="Pillo documents"><a href="/apps/pillo/">Pillo</a> · <a href="/apps/pillo/terms-of-use/">Terms of Use</a> · <a href="/pt-br/apps/pillo/privacy-policy/" lang="pt-BR">Português</a></nav>
             <h1>{title}</h1>
-            <p class="updated">Last updated: October 20, 2026</p>
+            <p class="updated">Last updated: October 21, 2026</p>
 
             <h2>1. Scope and contact</h2>
             <p>This policy covers the Pillo: Medicine Expiry Dates app for iPhone (Pillo: Validade de Remédios on the App Store), including test versions distributed through TestFlight, provided by Adriano Souza Costa. Send privacy questions or requests to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. The website's privacy preferences are separate from the app's.</p>
@@ -18,18 +18,19 @@ const title = "Privacy Policy – Pillo";
             <p>Pillo does not require sign-up and does not ask for your name, email, phone number, contacts or location.</p>
 
             <h2>3. Your medicines stay on your iPhone</h2>
-            <p>Each medicine's name, expiry date, manufacturing date, batch, registration number and barcode, the information and average price brought by the lookup and the reminders you choose are stored only on your device. Pillo never takes or keeps photos; if an earlier test version kept a photo of the box, it is deleted when you update the app. This information is not sent to any server, except the lookup data described in section 5.</p>
+            <p>Each medicine's name, expiry date, manufacturing date, batch, registration number and barcode, the information and average price brought by the lookup, the reminders you choose, your dose reminders and the doses you mark as taken are stored only on your device. Pillo never takes or keeps photos; if an earlier test version kept a photo of the box, it is deleted when you update the app. This information is not sent to any server, except the lookup data described in section 5.</p>
 
             <h2>4. Camera</h2>
             <p>The camera is used only to read the box while you scan a medicine. Text and code recognition happens on the iPhone itself, with Apple's frameworks, and no camera image is kept or sent. If you do not allow camera access, you can type the details in.</p>
 
             <h2>5. Medicine information lookup</h2>
-            <p>After you save a medicine, Pillo looks it up in the Pillo information service, hosted on Cloudflare: what it is for, how it works, how to take it, an illustrative image of the box and the average price in online pharmacies. Each lookup sends only one of these: the barcode, the registration number or the name of the medicine. Expiry dates, batches and anything that identifies you are not sent.</p>
-            <p>When the medicine is not known yet, the service uses an artificial intelligence provider (OpenAI) to research public web pages, such as the manufacturer's leaflet and the Electronic Leaflet Library of ANVISA, Brazil's health agency, write the summary, generate the box image and check the average price; the provider receives only the name or code of the medicine. The result is kept by the service, per medicine and unrelated to you, to answer later lookups.</p>
+            <p>After you save a medicine, Pillo looks it up in the Pillo information service, hosted on Cloudflare: what it is for, how it works, how to take it, the leaflet's general dosage, an illustrative image of the box and the average price in online pharmacies. Each lookup sends only one of these: the barcode, the registration number or the name of the medicine. Expiry dates, batches, reminders, doses and anything that identifies you are not sent.</p>
+            <p>When the medicine is not known yet, the service uses an artificial intelligence provider (OpenAI) to research public web pages, such as the manufacturer's leaflet, write the summary, generate the box image and check the average price; the provider receives only the name or code of the medicine. The result is kept by the service, per medicine and unrelated to you, to answer later lookups.</p>
             <p>As with any internet connection, the service receives the technical data it needs to reply, such as the IP address, which is used only to limit abuse and is not kept by Pillo with the lookups. When you tap <em>Ver bula completa</em> or one of the sources, the original website opens inside the app and follows that website's privacy rules.</p>
 
-            <h2>6. Reminders</h2>
+            <h2>6. Reminders and alarms</h2>
             <p>Expiry reminders are local notifications scheduled on your device, not sent by a server. Pillo asks for permission to send notifications, and you can change it at any time in iOS Settings; without it, reminders do not appear.</p>
+            <p>Dose reminders use iOS alarms (AlarmKit), also scheduled only on your device; Pillo asks for permission to create alarms and, without it, sends a notification instead. When you tap <em>Tomei</em> (Taken) on the alarm or in the app, the dose time is saved on the device to show how you have been taking the medicine.</p>
 
             <h2>7. Maps</h2>
             <p>When you tap <em>Encontrar ponto de coleta</em>, Pillo opens a search in Apple Maps. Maps may use your location according to your settings and Apple's privacy policy; Pillo does not receive that location.</p>
@@ -41,7 +42,7 @@ const title = "Privacy Policy – Pillo";
             <p>We do not sell or rent your data. The only data that leaves the device is the lookup described in section 5 (the barcode, registration number or name of the medicine), handled by Cloudflare and OpenAI only to answer it.</p>
 
             <h2>10. Retention, deletion and privacy requests</h2>
-            <p>Your medicines stay on the device until you discard them in the app, which deletes the medicine and its reminders, or until you delete the app. iPhone backups, in iCloud or on a computer, may include the app's data according to your settings. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under privacy laws, including Brazil's LGPD, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Because we do not collect data that identifies you, we may need some information to understand the request.</p>
+            <p>Your medicines stay on the device until you discard them in the app, which deletes the medicine, its reminders, its dose reminder and the doses you marked, or until you delete the app. Removing only the dose reminder keeps the doses already marked until you discard the medicine. iPhone backups, in iCloud or on a computer, may include the app's data according to your settings. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under privacy laws, including Brazil's LGPD, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Because we do not collect data that identifies you, we may need some information to understand the request.</p>
 
             <h2>11. Security and children</h2>
             <p>We use iOS security features. No storage or transmission method is fully secure, so protect your device with a passcode. Pillo does not knowingly collect personal information from children. Parents or guardians who believe a child sent personal information through support can contact us so we can review and handle the request.</p>
