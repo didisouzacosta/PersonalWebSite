@@ -5,11 +5,11 @@ const title = "Pillo: Medicine Expiry Dates";
 const appName = "Pillo";
 const pageTitle = "Pillo | Medicine expiry dates and reminders for iPhone";
 const description =
-    "Track your medicines' expiry dates, with a reminder before they expire and an alarm when it is time to take them, all offline. With AI, Pillo searches the main references about each medicine and summarizes them in plain words, always with the sources.";
+    "Track your medicines' expiry dates, with a reminder before they expire and an alarm when it is time to take them, all offline. Medicine data comes from the official ANVISA database, and AI summarizes the leaflet in plain words, always with the sources.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-en.jpg";
-const socialImageAlt = "Pillo app icon next to the medicine list with the dose due and the alarm when it is time to take it.";
+const socialImageAlt = "Pillo app icon with the words an alarm at dose time, a heads-up before it expires and official ANVISA data, next to the medicine list and the alarm.";
 
 const metas: { name: string; content: string }[] = [];
 const primaryKeyword = "medicine expiry date";
@@ -21,8 +21,10 @@ const secondaryKeywords = [
     "medicine cabinet",
     "expiry tracker",
     "drug leaflet",
+    "ANVISA data",
+    "generic medicine",
     "medicine disposal",
-    "medicine price",
+    "maximum medicine price",
     "Brazil",
     "app for seniors",
 ];
@@ -35,42 +37,47 @@ const screenshots = [
     },
     {
         url: "pillo/screenshots/ptBR/frame-2.jpg",
+        alt: "Dipyrone detail with the Pain and fever and No prescription needed tags, the reference medicine Novalgina, what it is for, the AI leaflet summary and the link to the full leaflet in the ANVISA Bulário (app in Portuguese).",
+        caption: "Official ANVISA data: what it is for, prescription, reference medicine and the full leaflet.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-3.jpg",
         alt: "Pillo list with the dose due highlighted with a Taken button, the dose reminders and the expired medicines first (app in Portuguese).",
         caption: "Medicines always in date: the dose due highlighted and what has expired first.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-3.jpg",
+        url: "pillo/screenshots/ptBR/frame-4.jpg",
         alt: "iPhone Home Screen with the large dose reminders widget, with a Taken button, and the medium upcoming expiries widget (app in Portuguese).",
         caption: "Widgets on the Home Screen: mark a dose as taken without opening the app.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-4.jpg",
+        url: "pillo/screenshots/ptBR/frame-5.jpg",
         alt: "Dipyrone detail with the leaflet dosage, the dose reminder and the last 7 days of doses on time, late or missed (app in Portuguese).",
         caption: "How you have been taking it: the doses of the last 7 days.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-5.jpg",
+        url: "pillo/screenshots/ptBR/frame-6.jpg",
         alt: "Pillo notification on the Lock Screen saying the dipyrone expires in 7 days (app in Portuguese).",
         caption: "A reminder before it expires: 30 and 7 days before and on the day.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-6.jpg",
-        alt: "Pillo camera reading the barcode of a dipyrone box, in step 1 of 2 (app in Portuguese).",
-        caption: "Point the camera at the box: Pillo reads the code and the expiry date in 2 steps.",
-    },
-    {
         url: "pillo/screenshots/ptBR/frame-7.jpg",
-        alt: "Dipyrone detail with the expiry date and what it is for, in plain words (app in Portuguese).",
-        caption: "What is it for? A plain-words summary, with its sources.",
+        alt: "Pillo camera reading the barcode of a dipyrone box, in step 1 of 2 (app in Portuguese).",
+        caption: "Point the camera at the box: the code brings the ANVISA data, and the expiry date comes in 2 steps.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-8.jpg",
-        alt: "Expired medicine in Pillo with disposal guidance and the link to find a drop-off point (app in Portuguese).",
-        caption: "Expired? Pillo shows how to dispose of it the right way.",
+        alt: "Dipyrone detail with the average price, the maximum allowed price, the details with the registration number and the reference sources, starting with gov.br/anvisa (app in Portuguese).",
+        caption: "The official maximum price and the sources, with links to check them.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-9.jpg",
-        alt: "Pillo cards: no account and no ads, everything on your iPhone, works offline, reminders your way, large text and an AI summary (app in Portuguese).",
+        alt: "Expired amoxicillin in Pillo, with the Bacterial infection and The pharmacy keeps the prescription tags, the disposal guidance and the link to find a drop-off point (app in Portuguese).",
+        caption: "Expired? Pillo shows how to dispose of it the right way.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-10.jpg",
+        alt: "Pillo cards: no account and no ads, everything on your iPhone, works offline, reminders your way, large text and ANVISA data with an AI summary (app in Portuguese).",
         caption: "Simple and private: no account, no ads, everything on your iPhone.",
     },
 ];
@@ -81,7 +88,7 @@ const facts = [
     { label: "Doses", value: "Alarm at dose time" },
     { label: "Reminders", value: "30 and 7 days before" },
     { label: "Offline", value: "Expiry and alarms" },
-    { label: "Information", value: "AI summary, with sources" },
+    { label: "Information", value: "ANVISA data and AI summary" },
     { label: "Language", value: "Portuguese (Brazil)" },
     { label: "App Store", value: "Coming soon" },
 ];
@@ -100,8 +107,12 @@ const features = [
         description: "Turn on a dose reminder with the interval, first dose and length of your prescription. An alarm rings on time, even in silent mode, and you mark it as taken right on the alarm or on the highlight in the list. Each reminder shows the time, the medicine and the interval, like every 8 hours, and a tap opens the reminder so you can change what you need. Pillo shows how you have been taking it over the last 7 days and stops the reminders when the medicine expires.",
     },
     {
-        title: "AI information from the main references",
-        description: "After you save, Pillo uses artificial intelligence to search the web for the main public references about the medicine, such as the manufacturer's leaflet, and summarizes them in plain words: what it is for, how it works, how to take it, the leaflet's general adult dosage and how to store it. Every source used is listed in the medicine's details, with a link so you can check it, along with the average price in online pharmacies. The summary may be wrong and does not replace your doctor or pharmacist.",
+        title: "Official ANVISA data",
+        description: "Medicine data comes from the official database of ANVISA, Brazil's health regulatory agency: the name, presentation, active ingredient, manufacturer and registration number. Pillo shows in plain words what it is for, whether it is sold without a prescription, needs one or the pharmacy keeps the prescription, the reference medicine of generics and similars, like Equivalente ao Novalgina, and the maximum price a pharmacy may charge, from the official list published by ANVISA. If the registration is no longer valid, Pillo tells you, and Ver bula completa opens the ANVISA leaflet library (Bulário). Pillo is not affiliated with ANVISA.",
+    },
+    {
+        title: "AI leaflet summary",
+        description: "After you save, Pillo uses artificial intelligence to read the patient leaflet on the manufacturer's website and summarize it in plain words: how it works, how to take it, the general adult dosage and how to store it. Without the manufacturer's leaflet, it summarizes the main public references and leaves the dosage out. Every source used, from ANVISA and the leaflet, is listed in the medicine's details, with a link so you can check it, along with the average price in online pharmacies. The summary may be wrong and does not replace your doctor or pharmacist.",
     },
     {
         title: "Share and copy",
@@ -147,7 +158,7 @@ const faq = [
     },
     {
         question: "How does Pillo read the box?",
-        answer: "In 2 steps, with the camera recognizing text and barcodes on the iPhone itself: first the barcode (or the 2D code or the registration number) and then the expiry date, batch and manufacturing date. The name comes from the code after you save. Each step shows what was read, and you tap Continue when it is right. Pillo does not take photos. If reading does not work, you can type the details in.",
+        answer: "In 2 steps, with the camera recognizing text and barcodes on the iPhone itself: first the barcode (or the 2D code or the registration number) and then the expiry date, batch and manufacturing date. The name comes from the code, through the ANVISA database, after you save. Each step shows what was read, and you tap Continue when it is right. Pillo does not take photos. If reading does not work, you can type the details in.",
     },
     {
         question: "How do dose reminders work?",
@@ -171,15 +182,15 @@ const faq = [
     },
     {
         question: "Where does the medicine information come from?",
-        answer: "Pillo uses artificial intelligence only to search the web for the main public references about the medicine, such as the manufacturer's leaflet, and write a summary in plain words. Every source used appears in the medicine's details, under Fontes (Sources), with a link so you can check it. The summary may contain mistakes, does not recommend treatments, never calculates a dose and does not replace advice from a doctor or pharmacist. The box image is illustrative, generated by AI. Pillo is not affiliated with any government agency.",
+        answer: "Medicine data comes from the official database of ANVISA, Brazil's health regulatory agency, through its open data and the CMED price list: the name, presentation, active ingredient, manufacturer, registration number, what it is for, whether it needs a prescription, the reference medicine and the maximum price. Artificial intelligence only summarizes the patient leaflet, read on the manufacturer's website, or, without it, the main public references, in plain words. Every source appears in the medicine's details, under Fontes de referência (Reference sources), with a link so you can check it, and Ver bula completa opens the ANVISA leaflet library. The summary may contain mistakes, does not recommend treatments, never calculates a dose and does not replace advice from a doctor or pharmacist. Supplements and other products that are not in the ANVISA medicine database, like creatine, show only the AI summary of public sources. The box image is illustrative, generated by AI. Pillo is not affiliated with ANVISA or any other government agency.",
     },
     {
         question: "Can I share or copy the information?",
         answer: "Yes. In the medicine's details, the share button sends the box image and the summary (name, expiry date, what it is for, how it works, how to take it and the details) to the app or person you choose; reminders and doses are not included. Under Informações, Copiar copies everything at once, and a long press on a row copies just that value.",
     },
     {
-        question: "What is the average price?",
-        answer: "The average price of the same presentation of the medicine in Brazilian online pharmacies, with how many pharmacies and the date it was checked. It is only a reference: prices vary by pharmacy and region, and Pillo does not sell medicines. It is checked again when it is more than 30 days old.",
+        question: "What are the average and maximum prices?",
+        answer: "The maximum allowed price is the most a pharmacy may charge for that presentation, from the official CMED list published by ANVISA, with 18% ICMS tax. The average price is the average of the same presentation in Brazilian online pharmacies, with how many pharmacies and the date it was checked, checked again when it is more than 30 days old. Both are only a reference: prices vary by pharmacy and region, and Pillo does not sell medicines.",
     },
     {
         question: "Where is my data kept?",

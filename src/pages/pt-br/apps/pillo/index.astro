@@ -5,11 +5,11 @@ const title = "Pillo: Validade de Remédios";
 const appName = "Pillo";
 const pageTitle = "Pillo | Validade e lembrete de remédios para iPhone";
 const description =
-    "Controle a validade dos remédios, com aviso antes de vencer e alarme na hora de tomar, tudo offline. Com IA, o Pillo busca as principais referências sobre cada remédio e resume em palavras simples, sempre com as fontes.";
+    "Controle a validade dos remédios, com aviso antes de vencer e alarme na hora de tomar, tudo offline. Os dados dos remédios vêm da base oficial da ANVISA, e a IA resume a bula em palavras simples, sempre com as fontes.";
 const favicon = "apps/pillo/favicon.png";
 const appIcon = "pillo/app-icon.png";
 const socialImage = "pillo/pillo-share-pt-br.jpg";
-const socialImageAlt = "Ícone do app Pillo ao lado das telas da lista de remédios com a dose da vez e do alarme na hora de tomar.";
+const socialImageAlt = "Ícone do app Pillo com o texto alarme na hora de tomar, aviso antes de vencer e dados oficiais da ANVISA, ao lado das telas da lista de remédios e do alarme.";
 
 const metas: { name: string; content: string }[] = [];
 const primaryKeyword = "validade de remédios";
@@ -22,8 +22,10 @@ const secondaryKeywords = [
     "controle de validade",
     "farmacinha de casa",
     "bula",
+    "dados da anvisa",
+    "remédio genérico",
     "descarte de medicamentos",
-    "preço de remédio",
+    "preço máximo de remédio",
     "app para idosos",
 ];
 
@@ -35,42 +37,47 @@ const screenshots = [
     },
     {
         url: "pillo/screenshots/ptBR/frame-2.jpg",
+        alt: "Detalhe da dipirona com as etiquetas Dor e febre e Venda sem receita, o remédio de referência Novalgina, para que serve, o resumo da bula por IA e o link Ver bula completa no Bulário da ANVISA.",
+        caption: "Dados oficiais da ANVISA: para que serve, receita, referência e a bula completa.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-3.jpg",
         alt: "Lista do Pillo com a dose da vez em destaque e o botão Tomei, os lembretes de tomada e os remédios vencidos primeiro.",
         caption: "Remédios sempre em dia: a dose da vez em destaque e o que venceu primeiro.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-3.jpg",
+        url: "pillo/screenshots/ptBR/frame-4.jpg",
         alt: "Tela de início do iPhone com o widget grande dos lembretes de tomada, com o botão Tomei, e o widget médio dos próximos vencimentos.",
         caption: "Widgets na tela de início: marque Tomei sem abrir o app.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-4.jpg",
+        url: "pillo/screenshots/ptBR/frame-5.jpg",
         alt: "Detalhe da dipirona com a posologia da bula, o lembrete de tomada e as doses dos últimos 7 dias no horário, com atraso ou esquecidas.",
         caption: "Como você vem tomando: as doses dos últimos 7 dias.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-5.jpg",
+        url: "pillo/screenshots/ptBR/frame-6.jpg",
         alt: "Notificação do Pillo na tela bloqueada avisando que a dipirona vence em 7 dias.",
         caption: "Aviso antes de vencer: 30 e 7 dias antes e no dia do vencimento.",
     },
     {
-        url: "pillo/screenshots/ptBR/frame-6.jpg",
-        alt: "Câmera do Pillo lendo o código de barras da caixa de dipirona, no passo 1 de 2.",
-        caption: "Aponte a câmera para a caixa: o Pillo lê o código e a validade em 2 passos.",
-    },
-    {
         url: "pillo/screenshots/ptBR/frame-7.jpg",
-        alt: "Detalhe da dipirona com a validade e para que serve, em palavras simples.",
-        caption: "Para que serve? Um resumo em palavras simples, com as fontes.",
+        alt: "Câmera do Pillo lendo o código de barras da caixa de dipirona, no passo 1 de 2.",
+        caption: "Aponte a câmera para a caixa: o código traz os dados da ANVISA, e a validade vem em 2 passos.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-8.jpg",
-        alt: "Remédio vencido no Pillo com a orientação de descarte e o link para encontrar um ponto de coleta.",
-        caption: "Venceu? O Pillo mostra como descartar do jeito certo.",
+        alt: "Detalhe da dipirona com o preço médio, o preço máximo permitido, as informações com o Registro MS e as fontes de referência, começando por gov.br/anvisa.",
+        caption: "Preço máximo oficial e as fontes, com link para conferir.",
     },
     {
         url: "pillo/screenshots/ptBR/frame-9.jpg",
-        alt: "Cards do Pillo: sem conta e sem anúncios, tudo no seu iPhone, funciona sem internet, avisos do seu jeito, letras grandes e resumo por IA.",
+        alt: "Amoxicilina vencida no Pillo, com as etiquetas Infecção por bactéria e A farmácia fica com a receita, a orientação de descarte e o link para encontrar um ponto de coleta.",
+        caption: "Venceu? O Pillo mostra como descartar do jeito certo.",
+    },
+    {
+        url: "pillo/screenshots/ptBR/frame-10.jpg",
+        alt: "Cards do Pillo: sem conta e sem anúncios, tudo no seu iPhone, funciona sem internet, avisos do seu jeito, letras grandes e dados da ANVISA com resumo por IA.",
         caption: "Simples e privado: sem conta, sem anúncios, tudo no seu iPhone.",
     },
 ];
@@ -81,7 +88,7 @@ const facts = [
     { label: "Lembretes", value: "Alarme na hora de tomar" },
     { label: "Avisos", value: "30 e 7 dias antes" },
     { label: "Offline", value: "Validade e alarmes" },
-    { label: "Informações", value: "Resumo por IA, com fontes" },
+    { label: "Informações", value: "Dados da ANVISA e resumo por IA" },
     { label: "App Store", value: "Em breve" },
 ];
 
@@ -99,8 +106,12 @@ const features = [
         description: "Ligue o lembrete com o intervalo, a primeira dose e a duração da sua receita. Um alarme toca na hora, mesmo no modo silencioso, e você marca Tomei no próprio alarme ou no destaque da lista. Cada lembrete mostra o horário, o remédio e o período, como De 8 em 8 horas, e um toque abre o lembrete para mudar o que precisar. O Pillo mostra como você vem tomando nos últimos 7 dias e para os lembretes quando o remédio vence.",
     },
     {
-        title: "Informações com IA, das principais referências",
-        description: "Depois de salvar, o Pillo usa inteligência artificial para buscar na internet as principais referências públicas sobre o remédio, como a bula do fabricante, e resume em palavras simples: para que serve, como funciona, como usar, a posologia geral da bula para adultos e como guardar. Todas as fontes usadas ficam listadas no detalhe do remédio, com link para você conferir, junto com o preço médio em farmácias online. O resumo pode errar e não dispensa o médico nem o farmacêutico.",
+        title: "Dados oficiais da ANVISA",
+        description: "Os dados dos remédios vêm da base oficial da ANVISA: o nome, a apresentação, o princípio ativo, o laboratório e o registro. O Pillo mostra em palavras simples para que serve, se é venda sem receita, se precisa de receita ou se a farmácia fica com a receita, o remédio de referência dos genéricos e similares, como Equivalente ao Novalgina, e o preço máximo que a farmácia pode cobrar, da lista oficial publicada pela ANVISA. Se o registro não estiver mais válido, o Pillo avisa, e Ver bula completa abre o Bulário da ANVISA. O Pillo não é afiliado à ANVISA.",
+    },
+    {
+        title: "Resumo da bula com IA",
+        description: "Depois de salvar, o Pillo usa inteligência artificial para ler a bula do paciente no site do fabricante e resumir em palavras simples: como funciona, como usar, a posologia geral para adultos e como guardar. Sem a bula do fabricante, ele resume as principais referências públicas e não mostra a posologia. Todas as fontes usadas, da ANVISA e da bula, ficam listadas no detalhe do remédio, com link para você conferir, junto com o preço médio em farmácias online. O resumo pode errar e não dispensa o médico nem o farmacêutico.",
     },
     {
         title: "Compartilhe e copie",
@@ -146,7 +157,7 @@ const faq = [
     },
     {
         question: "Como o Pillo lê a caixa?",
-        answer: "Em 2 passos, com a câmera reconhecendo o texto e o código de barras no próprio iPhone: primeiro o código de barras (ou o código 2D ou o registro) e depois a validade, o lote e a fabricação. O nome vem do código, depois de salvar. Cada passo mostra o que foi lido, e você toca em Continuar quando estiver certo. O Pillo não tira foto. Se a leitura não der certo, dá para digitar os dados à mão.",
+        answer: "Em 2 passos, com a câmera reconhecendo o texto e o código de barras no próprio iPhone: primeiro o código de barras (ou o código 2D ou o registro) e depois a validade, o lote e a fabricação. O nome vem do código, pela base da ANVISA, depois de salvar. Cada passo mostra o que foi lido, e você toca em Continuar quando estiver certo. O Pillo não tira foto. Se a leitura não der certo, dá para digitar os dados à mão.",
     },
     {
         question: "Como funciona o lembrete de tomada?",
@@ -170,15 +181,15 @@ const faq = [
     },
     {
         question: "De onde vêm as informações dos remédios?",
-        answer: "O Pillo usa inteligência artificial só para buscar na internet as principais referências públicas sobre o remédio, como a bula do fabricante, e escrever um resumo em palavras simples. Todas as fontes usadas aparecem no detalhe do remédio, na seção Fontes, com link para você conferir. O resumo pode conter erros, não indica tratamento, não calcula dose e não dispensa a orientação de um médico ou farmacêutico. A imagem da caixa é ilustrativa, gerada por IA. O Pillo não é afiliado a órgãos do governo.",
+        answer: "Os dados dos remédios vêm da base oficial da ANVISA, a partir dos Dados Abertos e da lista de preços da CMED: o nome, a apresentação, o princípio ativo, o laboratório, o registro, para que serve, se precisa de receita, o remédio de referência e o preço máximo. A inteligência artificial só resume a bula do paciente, lida no site do fabricante, ou, sem ela, as principais referências públicas, em palavras simples. Todas as fontes aparecem no detalhe do remédio, em Fontes de referência, com link para você conferir, e Ver bula completa abre o Bulário da ANVISA. O resumo pode conter erros, não indica tratamento, não calcula dose e não dispensa a orientação de um médico ou farmacêutico. Suplementos e outros produtos que não estão na base de medicamentos da ANVISA, como a creatina, aparecem só com o resumo por IA das fontes públicas. A imagem da caixa é ilustrativa, gerada por IA. O Pillo não é afiliado à ANVISA nem a outros órgãos do governo.",
     },
     {
         question: "Posso compartilhar ou copiar as informações?",
         answer: "Sim. No detalhe do remédio, o botão de compartilhar envia a imagem da caixa e o resumo (nome, validade, para que serve, como funciona, como usar e as informações) para o app ou a pessoa que você escolher; os lembretes e as doses não vão junto. Em Informações, Copiar copia tudo de uma vez, e um toque longo numa linha copia só aquele valor.",
     },
     {
-        question: "O que é o preço médio?",
-        answer: "É a média do preço da mesma apresentação do remédio em farmácias online do Brasil, com o número de farmácias e a data da consulta. Serve só como referência: o preço varia por farmácia e região, e o Pillo não vende remédios. A consulta é refeita quando o preço tem mais de 30 dias.",
+        question: "O que são o preço médio e o preço máximo?",
+        answer: "O preço máximo permitido é o teto que a farmácia pode cobrar pela apresentação, da lista oficial da CMED publicada pela ANVISA, com ICMS de 18%. O preço médio é a média da mesma apresentação em farmácias online do Brasil, com o número de farmácias e a data da consulta, refeita quando tem mais de 30 dias. Os dois servem só como referência: o preço varia por farmácia e região, e o Pillo não vende remédios.",
     },
     {
         question: "Meus dados ficam onde?",
