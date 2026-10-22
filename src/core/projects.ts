@@ -220,7 +220,7 @@ export const portfolioProjects: PortfolioProject[] = [
         resumeUrl: "https://adrianosouzacosta.com.br/apps/telepro/",
         imageUrl: appIconUrl("telepro"),
         tags: ["iOS App", "Video"],
-        isEnabled: true,
+        isEnabled: false,
         descriptions: {
             en: {
                 card: "Teleprompter camera",
@@ -238,7 +238,7 @@ export const portfolioProjects: PortfolioProject[] = [
         resumeUrl: "https://adrianosouzacosta.com.br/apps/pillo/",
         imageUrl: appIconUrl("pillo"),
         tags: ["iOS App", "Health"],
-        isEnabled: true,
+        isEnabled: false,
         descriptions: {
             en: {
                 card: "Medicine reminders and expiry dates",
