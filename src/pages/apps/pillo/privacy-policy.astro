@@ -18,13 +18,13 @@ const title = "Privacy Policy – Pillo";
             <p>Pillo does not require sign-up and does not ask for your name, email, phone number, contacts or location.</p>
 
             <h2>3. Your medicines stay on your iPhone</h2>
-            <p>Each medicine's name, expiry date, manufacturing date, batch, registration number and barcode, the information and prices brought by the lookup, the reminders you choose, your dose reminders and the doses you mark as taken are stored only on your device. Pillo never takes or keeps photos; if an earlier test version kept a photo of the box, it is deleted when you update the app. This information is not sent to any server, except the lookup data described in section 5 and what you share or copy yourself (section 9). Expiry tracking, reminders, alarms and dose reminders work without internet. The Home Screen widgets show a summary of this data, kept on the iPhone itself in an area shared only between the app and its widgets.</p>
+            <p>Each medicine's name, expiry date, manufacturing date, batch, registration number and barcode, the information and prices brought by the lookup, the reminders you choose, your dose reminders and the doses you mark as taken are stored only on your device. Pillo never takes or keeps photos; if an earlier test version kept a photo of the box, it is deleted when you update the app. This information is not sent to any server, except the lookup data described in section 5 and what you share or copy yourself (section 9). The usage statistics and ad measurement in section 8 never include your medicines or any of this information. Expiry tracking, reminders, alarms and dose reminders work without internet. The Home Screen widgets show a summary of this data, kept on the iPhone itself in an area shared only between the app and its widgets.</p>
 
             <h2>4. Camera</h2>
             <p>The camera is used only to read the box while you scan a medicine. Text and code recognition happens on the iPhone itself, with Apple's frameworks, and no camera image is kept or sent. If you do not allow camera access, you can type the details in.</p>
 
             <h2>5. Medicine information lookup</h2>
-            <p>This is the only part of Pillo that uses the internet and artificial intelligence. After you save a medicine, Pillo looks it up in the Pillo information service, hosted on Cloudflare: the public ANVISA data, such as the maximum price, what it is for, how it works, how to take it, the leaflet's general dosage, an illustrative image of the box and the average price in online pharmacies. Each lookup sends only one of these: the barcode, the registration number or the name of the medicine. While the summary is being written, Pillo asks again a few times with the same detail, and the box image is downloaded from the same service by the medicine's identifier. Expiry dates, batches, reminders, doses and anything that identifies you are not sent.</p>
+            <p>This is the only part of Pillo that sends a medicine's details and uses artificial intelligence. After you save a medicine, Pillo looks it up in the Pillo information service, hosted on Cloudflare: the public ANVISA data, such as the maximum price, what it is for, how it works, how to take it, the leaflet's general dosage, an illustrative image of the box and the average price in online pharmacies. Each lookup sends only one of these: the barcode, the registration number or the name of the medicine. While the summary is being written, Pillo asks again a few times with the same detail, and the box image is downloaded from the same service by the medicine's identifier. Expiry dates, batches, reminders, doses and anything that identifies you are not sent.</p>
             <p>The service identifies the medicine in a copy of the public databases of ANVISA, Brazil's health regulatory agency, kept in the service itself; nothing is sent to ANVISA. When the medicine's summary does not exist yet, the service uses an artificial intelligence provider (OpenAI) to read the manufacturer's leaflet or other public references on the web, write the summary, generate the box image and check the average price; the provider receives only the public data of the medicine, such as its name, strength and manufacturer, or its code. The result is kept by the service, per product and strength and unrelated to you, and is reused by every lookup of the same medicine. The pages used for the summary appear in the medicine's details, under Fontes de referência (Reference sources), along with the ANVISA pages.</p>
             <p>As with any internet connection, the service receives the technical data it needs to reply, such as the IP address, which is used only to limit abuse and is not kept by Pillo with the lookups. When you tap <em>Ver bula completa</em>, which opens the ANVISA leaflet library (Bulário), or one of the sources, the original website opens inside the app and follows that website's privacy rules.</p>
 
@@ -35,15 +35,26 @@ const title = "Privacy Policy – Pillo";
             <h2>7. Maps</h2>
             <p>When you tap <em>Encontrar ponto de coleta</em>, Pillo opens a search in Apple Maps. Maps may use your location according to your settings and Apple's privacy policy; Pillo does not receive that location.</p>
 
-            <h2>8. No analytics, ads or tracking</h2>
-            <p>Pillo does not use usage analytics services, does not show ads, does not use the advertising identifier (IDFA) and does not track you across other companies' apps or websites.</p>
+            <h2>8. Usage statistics and ad measurement</h2>
+            <p>To understand how the app is used and learn which Pillo ads bring new people, Pillo sends a few events to Himetrica, Meta and TikTok. These three services never receive medicine, health, expiry, batch, reminder or dose data, or photos. Pillo still shows no ads. The tracking request on first launch (the “De onde você veio” step) is for this: helping measure Pillo ads on TikTok and Meta. Your medicines never go to advertisers.</p>
+            <p><strong>Usage statistics (Himetrica).</strong> Himetrica, an analytics service, receives only these events:</p>
+            <ul>
+                <li>the first time you open the app;</li>
+                <li>each onboarding step you see;</li>
+                <li>your answer to the notification, alarm and tracking permission requests;</li>
+                <li>the end of the onboarding;</li>
+                <li>"medicine saved", with only whether it came from scanning the box or was typed in.</li>
+            </ul>
+            <p>With the events go the app and iOS versions, the device model, the language, the screen size and a random identifier created on the device. Himetrica works out an approximate city or country from the IP address and handles this data according to its <a href="https://himetrica.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a>. If you do not allow tracking, Pillo stops sending these statistics.</p>
+            <p><strong>Ad measurement (Meta and TikTok).</strong> Meta and TikTok receive only two events, the install and each app open, with device identifiers and technical data, so we can measure which Pillo ads bring new people. The advertising identifier (IDFA) is included only if you allow tracking. The Meta and TikTok SDKs, those companies' code inside the app, also send diagnostics about their own operation: TikTok receives reports of crashes caused by its SDK and performance measures of the SDK, such as how long it took to start, and Meta may receive diagnostic data about its SDK. None of this includes your medicines. These companies may use this data, including the device identifier, under their own policies, from <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta</a> and <a href="https://www.tiktok.com/legal/page/row/privacy-policy/en" target="_blank" rel="noopener noreferrer">TikTok</a>, not only to measure Pillo ads but also to show ads in other apps.</p>
+            <p>You can change the tracking permission at any time in Settings › Privacy &amp; Security › Tracking or in Settings › Pillo.</p>
 
             <h2>9. Data sharing</h2>
-            <p>We do not sell or rent your data. Besides what you share or copy yourself, the only data that leaves the device is the lookup described in section 5 (the barcode, registration number or name of the medicine), handled by Cloudflare and OpenAI only to answer it.</p>
+            <p>We do not sell or rent your data. Besides what you share or copy yourself, the only data that leaves the device is the lookup described in section 5 (the barcode, registration number or name of the medicine), handled by Cloudflare and OpenAI only to answer it, and the data described in section 8, sent to Himetrica for usage statistics and to Meta and TikTok for ad measurement. These providers may process data outside Brazil.</p>
             <p>When you tap Share in a medicine's details, Pillo hands iOS the box image and a summary of the medicine (name, presentation, expiry date, what it is for, how it works, how to take it and the Informações details, such as batch, registration number and barcode) for the app or person you choose; reminders and doses are not included. When you use Copy, the text goes to the iPhone clipboard. Pillo does not receive or keep any of it, and what you send follows the privacy rules of whoever receives it.</p>
 
             <h2>10. Retention, deletion and privacy requests</h2>
-            <p>Your medicines stay on the device until you discard them in the app, which deletes the medicine, its reminders, its dose reminder and the doses you marked, or until you delete the app. Removing only the dose reminder keeps the doses already marked until you discard the medicine. iPhone backups, in iCloud or on a computer, may include the app's data according to your settings. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under privacy laws, including Brazil's LGPD, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Because we do not collect data that identifies you, we may need some information to understand the request.</p>
+            <p>Your medicines stay on the device until you discard them in the app, which deletes the medicine, its reminders, its dose reminder and the doses you marked, or until you delete the app. Removing only the dose reminder keeps the doses already marked until you discard the medicine. iPhone backups, in iCloud or on a computer, may include the app's data according to your settings. Usage statistics, ad measurement data and SDK diagnostics are kept by Himetrica, Meta and TikTok for the periods set in each one's policies. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under privacy laws, including Brazil's LGPD, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Because Pillo has no account, we may need some information to understand the request.</p>
 
             <h2>11. Security and children</h2>
             <p>We use iOS security features. No storage or transmission method is fully secure, so protect your device with a passcode. Pillo does not knowingly collect personal information from children. Parents or guardians who believe a child sent personal information through support can contact us so we can review and handle the request.</p>
@@ -64,6 +75,13 @@ const title = "Privacy Policy – Pillo";
         margin-bottom: 16px;
         color: var(--text-secondary);
     }
+    ul {
+        margin: 0 0 16px;
+        padding-left: 24px;
+        list-style: disc;
+        color: var(--text-secondary);
+    }
+    li { margin-bottom: 8px; }
     nav { margin-bottom: 24px; color: var(--text-secondary); }
     h2 { font-size: 1.25rem; }
     a { overflow-wrap: anywhere; }
