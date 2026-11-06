@@ -5,7 +5,7 @@ const title = "HorseScore";
 const appName = "HorseScore";
 const pageTitle = "HorseScore | Condição corporal e adiposidade em equinos";
 const description =
-    "Quatro fotos guiadas e uma estimativa visual do escore de condição corporal (BCS Henneke 1–9) e da crista do pescoço (CNS 0–5) de cavalos e pôneis, com classificação de risco. Triagem educativa, não diagnóstico.";
+    "Cinco fotos guiadas e uma estimativa visual do escore de condição corporal (BCS Henneke 1–9) e da crista do pescoço (CNS 0–5) de cavalos e pôneis, com classificação de risco. Triagem educativa, não diagnóstico.";
 const favicon = "/apps/horsescore/favicon.png";
 const appIcon = "/apps/horsescore/app-icon.png";
 const socialImageAlt = "Ícone do app HorseScore.";
@@ -31,7 +31,7 @@ const screenshots = [
     {
         url: "/apps/horsescore/screenshots/frame-1.jpg",
         alt: "Tela inicial do HorseScore com um cavalo em vista lateral e o botão Iniciar avaliação.",
-        caption: "Quatro fotos guiadas e uma estimativa visual de BCS e CNS segundo o atlas.",
+        caption: "Cinco fotos guiadas e uma estimativa visual de BCS e CNS segundo o atlas.",
     },
     {
         url: "/apps/horsescore/screenshots/frame-2.jpg",
@@ -70,7 +70,7 @@ const facts = [
 const features = [
     {
         title: "Captura guiada",
-        description: "Silhuetas e instruções para as quatro vistas: lateral do corpo inteiro, posterior, frontal e close do pescoço. Use a câmera ou a galeria.",
+        description: "Silhuetas e instruções para as cinco vistas: lateral do corpo inteiro, posterior, frontal, close do pescoço e o outro lado do pescoço. Use a câmera ou a galeria.",
     },
     {
         title: "Estimativa visual de BCS e CNS",
@@ -100,19 +100,19 @@ const useCases = [
 const faq = [
     {
         question: "O que é o HorseScore?",
-        answer: "O HorseScore é um app para iPhone que faz uma triagem visual da condição corporal (escala Henneke, BCS 1–9) e da adiposidade do pescoço (CNS 0–5) de cavalos e pôneis a partir de quatro fotos guiadas, com classificação de risco e próximos passos.",
+        answer: "O HorseScore é um app para iPhone que faz uma triagem visual da condição corporal (escala Henneke, BCS 1–9) e da adiposidade do pescoço (CNS 0–5) de cavalos e pôneis a partir de cinco fotos guiadas, com classificação de risco e próximos passos.",
     },
     {
         question: "O resultado substitui o veterinário?",
-        answer: "Não. O resultado é uma estimativa visual e educativa. Ele não avalia a palpação descrita no atlas, pode conter erros e não é diagnóstico. Decisões sobre saúde, alimentação e tratamento devem ser tomadas com um médico-veterinário.",
+        answer: "Não. O resultado é uma estimativa visual e educativa. Ele combina as fotos com a palpação que você informar, pode conter erros e não é diagnóstico. Decisões sobre saúde, alimentação e tratamento devem ser tomadas com um médico-veterinário.",
     },
     {
         question: "Como as fotos são analisadas?",
-        answer: "Depois que você confirma o envio, as fotos, o tipo de animal e as medidas vão diretamente do iPhone para a API da OpenAI, que faz a leitura visual. O app calcula a classificação de risco e a morfometria com regras fixas. Nada fica salvo no aparelho. Veja a <a href=\"/pt-br/apps/horsescore/privacy-policy/\">Política de Privacidade</a>.",
+        answer: "Depois que você confirma o envio, as fotos e os dados da avaliação vão para o servidor do HorseScore, que pede a leitura visual à API da OpenAI. O servidor calcula a classificação de risco e a morfometria com regras fixas e guarda o histórico de cada animal. Veja a <a href=\"/pt-br/apps/horsescore/privacy-policy/\">Política de Privacidade</a>.",
     },
     {
         question: "Preciso informar medidas?",
-        answer: "Não, as medidas são opcionais. Com a altura, o perímetro torácico e a circunferência do pescoço, o app confirma a estimativa com as razões morfométricas do atlas e aumenta a confiança do resultado.",
+        answer: "Não, as medidas são opcionais. Com a altura, o perímetro torácico e a circunferência do pescoço, o HorseScore confirma a estimativa com as razões morfométricas do atlas e aumenta a confiança do resultado.",
     },
     {
         question: "Por que o resultado veio indeterminado?",

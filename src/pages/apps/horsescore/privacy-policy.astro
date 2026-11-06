@@ -9,34 +9,38 @@ const title = "Privacy Policy – HorseScore";
         <section>
             <nav aria-label="HorseScore documents"><a href="/apps/horsescore/">HorseScore</a> · <a href="/apps/horsescore/terms-of-use/">Terms of Use</a> · <a href="/pt-br/apps/horsescore/privacy-policy/" lang="pt-BR">Português</a></nav>
             <h1>{title}</h1>
-            <p class="updated">Last updated: October 14, 2026</p>
+            <p class="updated">Last updated: November 5, 2026</p>
 
             <h2>1. Scope and contact</h2>
             <p>This policy covers the HorseScore app for iPhone, provided by Adriano Souza Costa. Send privacy questions or requests to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Website privacy preferences are separate from the app.</p>
 
-            <h2>2. No account and no profile</h2>
-            <p>HorseScore does not require registration and does not ask for your name, email, phone number, contacts or location. The app has no ads, does not use third-party analytics, does not track you across apps and websites and does not build user profiles.</p>
+            <h2>2. No registration and no profile</h2>
+            <p>HorseScore does not require registration and does not ask for your name, email, phone number, contacts or location. On first use, the app creates an anonymous identifier: a random secret stored in your iCloud Keychain, which lets you recover your animals after reinstalling the app or moving to a new iPhone with the same Apple ID. The HorseScore server only keeps a cryptographic digest (hash) of that secret and the device model (such as “iPhone17,3”), used to identify sessions. The app has no ads, does not use third-party analytics, does not track you across apps and websites and does not build user profiles.</p>
 
             <h2>3. Camera and photos</h2>
-            <p>The app asks for camera access to photograph the animal in the four assessment positions. You can also pick photos from your library through the iOS photo picker; in that case the app only receives the photos you select and cannot access the rest of your library. Before anything is sent, photos are downsized and metadata such as date, device and location is removed.</p>
+            <p>The app asks for camera access to photograph the animal in the five assessment positions and, if you want, for the animal’s profile photo. You can also pick photos from your library through the iOS photo picker; in that case the app only receives the photos you select and cannot access the rest of your library. Before anything is sent, photos are downsized and metadata such as date, device and location is removed.</p>
 
-            <h2>4. Analysis by OpenAI</h2>
-            <p>The visual estimate is produced by the OpenAI API. Before every analysis, the app asks whether you allow the upload. Only after you confirm are the four photos, the animal type (horse or pony) and any measurements you entered sent directly from your iPhone to OpenAI, together with the atlas reference material bundled with the app. The developer does not receive or keep these photos.</p>
-            <p>Requests are made with response storage turned off. Under OpenAI’s API data policy, submitted data is not used to train models and may be retained for up to 30 days for abuse monitoring before being deleted. OpenAI handles this data under its <a href="https://openai.com/policies/row-terms-of-use/" target="_blank" rel="noopener noreferrer">Terms</a> and <a href="https://openai.com/policies/row-privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. Do not submit photos that show people or personal information.</p>
+            <h2>4. What the HorseScore server keeps</h2>
+            <p>The animals you register (name, type, breed, birth date, sex, training, feeding and photo) and their assessments (history, photos, measurements, tape weight, palpation and result) are stored on the HorseScore server, linked to your anonymous identifier, so that each animal’s profile and timeline work. The server runs on Cloudflare’s infrastructure, which processes this data on our behalf. In the app, photos are opened through temporary links that expire within minutes. The server’s technical logs only contain identifiers and error codes, never photos or animal data.</p>
 
-            <h2>5. Data on your device</h2>
-            <p>The assessment in progress lives only in the app’s memory. Photos, measurements and results are not saved on the device and are discarded when you start a new assessment or close the app. If you use “Share result”, the result image and text go to the app or contact you choose in the iOS share sheet.</p>
+            <h2>5. Analysis by artificial intelligence</h2>
+            <p>Before every analysis, the app asks whether you allow the upload. Only after you confirm are the five photos and the assessment data (measurements, tape weight and palpation answers) sent to the HorseScore server, which requests the visual estimate from the OpenAI API through Cloudflare AI Gateway, together with the atlas reference material. AI Gateway does not log the content of the requests, and the risk classification is computed on the server with fixed rules.</p>
+            <p>Requests to OpenAI are made with response storage turned off. Under OpenAI’s API data policy, submitted data is not used to train models and may be retained for up to 30 days for abuse monitoring before being deleted. OpenAI handles this data under its <a href="https://openai.com/policies/row-terms-of-use/" target="_blank" rel="noopener noreferrer">Terms</a> and <a href="https://openai.com/policies/row-privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. Do not submit photos that show people or personal information.</p>
 
-            <h2>6. Sharing and advertising</h2>
-            <p>We do not sell or rent data and do not use it for advertising. Apart from OpenAI, described above, no other third-party service receives data from the app. If that changes, this policy and the App Store privacy details will be updated before the change takes effect, including any consent required.</p>
+            <h2>6. Data on your device</h2>
+            <p>The assessment in progress stays in the app’s memory until it is sent. On the device, the app only keeps a copy of your animal list, to show it offline, and the identifiers of analyses in progress; access tokens are kept in the iPhone Keychain. If you use Share in the report, the result text goes to the app or contact you choose in the iOS share sheet.</p>
 
-            <h2>7. Retention, deletion and rights</h2>
-            <p>The app keeps no data between launches. Data sent to OpenAI follows the period described in section 4. Support emails are kept as long as needed to answer the request. For access, correction, deletion or other rights under applicable privacy laws, including the LGPD where applicable, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>.</p>
+            <h2>7. Sharing, advertising and transfers</h2>
+            <p>We do not sell or rent data and do not use it for advertising. Apart from Cloudflare and OpenAI, described above, no other third-party service receives data from the app. These companies may process data outside Brazil, with the safeguards set out in their terms. If that changes, this policy and the App Store privacy details will be updated before the change takes effect, including any consent required.</p>
 
-            <h2>8. Security and children</h2>
-            <p>Uploads to OpenAI use an encrypted connection (HTTPS). No transmission method is perfectly secure. HorseScore is not directed to children and does not knowingly collect personal information from them.</p>
+            <h2>8. Retention, deletion and rights</h2>
+            <p>Data stays on the server while the animal remains in the app. Deleting an animal in the app removes its profile, photo, assessments and their photos from the server; canceling an analysis in progress removes that assessment and its photos. Data sent to OpenAI follows the period in section 5, and support emails are kept as long as needed to answer the request.</p>
+            <p>To delete all your data at once, or for access, correction and other rights under applicable privacy laws, including the LGPD where applicable, write to <a href="mailto:adrianosouzacostaios@gmail.com">adrianosouzacostaios@gmail.com</a>. Since there is no account, include the name of a registered animal and the approximate date you added it, so we can find the data.</p>
 
-            <h2>9. Changes</h2>
+            <h2>9. Security and children</h2>
+            <p>Communication between the app, the server and OpenAI uses an encrypted connection (HTTPS). No transmission or storage method is perfectly secure. HorseScore is not directed to children and does not knowingly collect personal information from them.</p>
+
+            <h2>10. Changes</h2>
             <p>We will update this page and its revision date when our practices change, with any additional notice or consent required by applicable law.</p>
         </section>
     </main>

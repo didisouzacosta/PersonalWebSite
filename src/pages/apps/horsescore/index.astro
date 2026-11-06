@@ -5,7 +5,7 @@ const title = "HorseScore";
 const appName = "HorseScore";
 const pageTitle = "HorseScore | Body Condition and Adiposity in Horses";
 const description =
-    "Four guided photos and a visual estimate of the body condition score (Henneke BCS 1–9) and cresty neck score (CNS 0–5) of horses and ponies, with a risk classification. Educational screening, not a diagnosis.";
+    "Five guided photos and a visual estimate of the body condition score (Henneke BCS 1–9) and cresty neck score (CNS 0–5) of horses and ponies, with a risk classification. Educational screening, not a diagnosis.";
 const favicon = "/apps/horsescore/favicon.png";
 const appIcon = "/apps/horsescore/app-icon.png";
 const socialImageAlt = "HorseScore app icon.";
@@ -30,7 +30,7 @@ const screenshots = [
     {
         url: "/apps/horsescore/screenshots/frame-1.jpg",
         alt: "HorseScore home screen with a horse in side view and the Start assessment button (app in Portuguese).",
-        caption: "Four guided photos and a visual BCS and CNS estimate based on the atlas.",
+        caption: "Five guided photos and a visual BCS and CNS estimate based on the atlas.",
     },
     {
         url: "/apps/horsescore/screenshots/frame-2.jpg",
@@ -69,7 +69,7 @@ const facts = [
 const features = [
     {
         title: "Guided capture",
-        description: "Silhouettes and instructions for the four views: full side, rear, front and neck close-up. Use the camera or your photo library.",
+        description: "Silhouettes and instructions for the five views: full side, rear, front, neck close-up and the other side of the neck. Use the camera or your photo library.",
     },
     {
         title: "Visual BCS and CNS estimate",
@@ -99,19 +99,19 @@ const useCases = [
 const faq = [
     {
         question: "What is HorseScore?",
-        answer: "HorseScore is an iPhone app that provides a visual screening of body condition (Henneke scale, BCS 1–9) and neck adiposity (CNS 0–5) in horses and ponies from four guided photos, with a risk classification and next steps. The app is currently in Portuguese (Brazil).",
+        answer: "HorseScore is an iPhone app that provides a visual screening of body condition (Henneke scale, BCS 1–9) and neck adiposity (CNS 0–5) in horses and ponies from five guided photos, with a risk classification and next steps. The app is currently in Portuguese (Brazil).",
     },
     {
         question: "Does the result replace a veterinarian?",
-        answer: "No. The result is a visual, educational estimate. It does not assess the palpation described in the atlas, may be wrong and is not a diagnosis. Decisions about health, feeding and treatment should be made with a veterinarian.",
+        answer: "No. The result is a visual, educational estimate. It combines the photos with the palpation you enter, may be wrong and is not a diagnosis. Decisions about health, feeding and treatment should be made with a veterinarian.",
     },
     {
         question: "How are the photos analyzed?",
-        answer: "After you confirm the upload, the photos, animal type and measurements go directly from your iPhone to the OpenAI API, which performs the visual reading. The app computes the risk classification and morphometry with fixed rules. Nothing is saved on the device. See the <a href=\"/apps/horsescore/privacy-policy/\">Privacy Policy</a>.",
+        answer: "After you confirm the upload, the photos and the assessment data go to the HorseScore server, which requests the visual reading from the OpenAI API. The server computes the risk classification and morphometry with fixed rules and keeps each animal’s history. See the <a href=\"/apps/horsescore/privacy-policy/\">Privacy Policy</a>.",
     },
     {
         question: "Do I need to enter measurements?",
-        answer: "No, measurements are optional. With height, heart girth and neck circumference, the app checks the estimate against the atlas morphometric ratios and increases the confidence of the result.",
+        answer: "No, measurements are optional. With height, heart girth and neck circumference, HorseScore checks the estimate against the atlas morphometric ratios and increases the confidence of the result.",
     },
     {
         question: "Why was my result indeterminate?",
